@@ -18,13 +18,13 @@ Optional npm package may later ship **tokens + `cn` + thin re-exports** for
 plugin runtimes; product apps should prefer the registry so they keep local
 ownership of UI source after install.
 
-## What’s in the registry (35 items)
+## What’s in the registry (38 items)
 
 | Kind | Items |
 |------|--------|
 | Foundation | `utils`, `tokens` |
 | Primitives | button, badge, input, label, tabs, tooltip, dialog, dropdown-menu, select, checkbox, separator, scroll-area, popover, slider, card, table, sheet, skeleton, textarea, alert-dialog, accordion, collapsible, context-menu, switch, empty-state, code, number-field, progress-spinner, resizable, command |
-| Blocks | `settings-section`, `settings-shell`, `edge-panel` (pull-from-edge rail; includes `use-pointer-drag`) |
+| Blocks | `content-section` (semantic page grouping without card chrome), `page-header` (single work-surface title/action cluster), `explorer-shell` (icon rail + explorer column), `settings-section`, `settings-shell`, `edge-panel` (pull-from-edge rail; includes `use-pointer-drag`) |
 
 ### CSS: extract constitution, not brand
 

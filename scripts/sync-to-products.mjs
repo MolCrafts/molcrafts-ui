@@ -13,6 +13,7 @@
  *     molhub/
  */
 
+import { spawn } from "node:child_process";
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -101,6 +102,14 @@ async function write(to, content) {
   console.log("  →", path.relative(molcrafts, to));
 }
 
+/** Archetype density layers, vendored only where a product declares one. */
+async function vendorDensity(productStylesDir, profile) {
+  await copy(
+    path.join(srcStyles, `density-${profile}.css`),
+    path.join(productStylesDir, `density-${profile}.css`),
+  );
+}
+
 async function vendorConstitution(productStylesDir) {
   await copy(
     path.join(srcStyles, "constitution-base.css"),
@@ -110,6 +119,30 @@ async function vendorConstitution(productStylesDir) {
     path.join(srcStyles, "constitution-theme.css"),
     path.join(productStylesDir, "constitution-theme.css"),
   );
+}
+
+/**
+ * Hand each product's copies to that product's own formatter.
+ *
+ * The three products do not share a Biome config — molhub is still on the 1.x
+ * schema, molvis sets no line width — so one canonical formatting of the
+ * registry cannot satisfy all of them. Without this the first check after every
+ * sync reports import-order errors and reformats twenty files, which trains
+ * people to ignore what sync did. The copy is the product's; so is its layout.
+ */
+function formatIn(cwd, paths) {
+  return new Promise((resolve) => {
+    const child = spawn("npx", ["biome", "check", "--write", ...paths], {
+      cwd: path.join(molcrafts, cwd),
+      stdio: "ignore",
+      shell: false,
+    });
+    child.on("error", () => resolve(false));
+    child.on("close", (code) => {
+      console.log(`  formatted ${cwd}${code === 0 ? "" : ` (biome exit ${code})`}`);
+      resolve(code === 0);
+    });
+  });
 }
 
 async function main() {
@@ -122,6 +155,25 @@ async function main() {
   await copy(
     path.join(srcLib, "utils.ts"),
     path.join(molcrafts, "molexp/apps/web/src/lib/utils.ts"),
+  );
+  await copy(
+    path.join(srcBlocks, "content-section.tsx"),
+    path.join(molcrafts, "molexp/apps/web/src/components/layout/ContentSection.tsx"),
+  );
+  await copy(
+    path.join(srcBlocks, "page-header.tsx"),
+    path.join(molcrafts, "molexp/apps/web/src/components/layout/PageHeader.tsx"),
+  );
+  await copy(
+    path.join(srcBlocks, "explorer-shell.tsx"),
+    path.join(molcrafts, "molexp/apps/web/src/components/layout/ExplorerShell.tsx"),
+  );
+  await copy(
+    path.join(srcBlocks, "workbench-operation-state.tsx"),
+    path.join(
+      molcrafts,
+      "molexp/apps/web/src/components/workbench/WorkbenchOperationState.tsx",
+    ),
   );
   await copy(
     path.join(srcBlocks, "settings-shell.tsx"),
@@ -179,6 +231,21 @@ async function main() {
     path.join(molcrafts, "molhub/apps/web/app/src/lib/utils.ts"),
   );
   await vendorConstitution(path.join(molcrafts, "molhub/apps/web/app/src/styles"));
+  // molhub is a registry site, not an instrument: it layers the site density
+  // over the constitution and declares no geometry of its own.
+  await vendorDensity(path.join(molcrafts, "molhub/apps/web/app/src/styles"), "site");
+
+  console.log("formatting each product with its own config");
+  await formatIn("molexp/apps/web", ["src/components", "src/lib/utils.ts"]);
+  await formatIn("molvis", [
+    "page/src/components/ui",
+    "page/src/lib/utils.ts",
+    "page/src/ui/layout/SettingsSection.tsx",
+    "page/src/components/viewer/EdgePanel.tsx",
+    "plugin/src/ui",
+    "plugin/src/utils.ts",
+  ]);
+  await formatIn("molhub/apps/web", ["app/src/components/ui", "app/src/lib/utils.ts"]);
 
   console.log("done");
 }

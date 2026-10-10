@@ -22,10 +22,7 @@ export interface PointerDrag {
   dragging: boolean;
 }
 
-export function usePointerDrag({
-  onMove,
-  onEnd,
-}: PointerDragOptions): PointerDrag {
+export function usePointerDrag({ onMove, onEnd }: PointerDragOptions): PointerDrag {
   const [dragging, setDragging] = useState(false);
   const originRef = useRef<DragOrigin | null>(null);
   const onMoveRef = useRef(onMove);

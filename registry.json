@@ -32,6 +32,21 @@
       ]
     },
     {
+      "name": "density-site",
+      "type": "registry:style",
+      "title": "Site density profile",
+      "description": "Body copy and control heights for the site archetype. Layer over `tokens`; the product then declares no geometry of its own.",
+      "files": [
+        {
+          "path": "src/styles/density-site.css",
+          "type": "registry:style"
+        }
+      ],
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
@@ -550,6 +565,76 @@
       ]
     },
     {
+      "name": "content-section",
+      "type": "registry:block",
+      "title": "Content Section",
+      "description": "Semantic title, description, action, and body grouping without card chrome.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/blocks/content-section.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "workbench-operation-state",
+      "type": "registry:block",
+      "title": "Workbench Operation State",
+      "description": "Accessible loading, running, empty, error, success, and disabled feedback for asynchronous workbench surfaces.",
+      "registryDependencies": [
+        "utils",
+        "progress-spinner",
+        "skeleton"
+      ],
+      "files": [
+        {
+          "path": "src/components/blocks/workbench-operation-state.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "page-header",
+      "type": "registry:block",
+      "title": "Page Header",
+      "description": "Single work-surface title and action cluster with shared toolbar geometry.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/blocks/page-header.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "explorer-shell",
+      "type": "registry:block",
+      "title": "Explorer Shell",
+      "description": "Domain-free icon rail and titled, scrollable explorer column with optional toolbar and blank-area context menu.",
+      "registryDependencies": [
+        "button",
+        "context-menu",
+        "resizable",
+        "scroll-area",
+        "tooltip",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/blocks/explorer-shell.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
       "name": "settings-section",
       "type": "registry:block",
       "title": "Settings Section",
@@ -586,7 +671,7 @@
       "name": "edge-panel",
       "type": "registry:block",
       "title": "Edge Panel",
-      "description": "Pull-from-edge rail panel (bottom / left / right) with drag resize and snap-close — workbench isomorphic bottom + side rails.",
+      "description": "Pull-from-edge rail panel (bottom / left / right) with drag resize and snap-close \u2014 workbench isomorphic bottom + side rails.",
       "registryDependencies": [
         "utils"
       ],

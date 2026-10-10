@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-header",
+  "type": "registry:block",
+  "title": "Page Header",
+  "description": "Single work-surface title and action cluster with shared toolbar geometry.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/page-header.tsx",
+      "type": "registry:block",
+      "content": "/**\n * Page header — one title and one action cluster for a work surface.\n *\n * Domain-free block. Products decide the icon, title, and actions; this block\n * keeps title hierarchy and toolbar geometry consistent without adding cards.\n */\n\nimport type { ComponentType, JSX, ReactNode } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface PageHeaderProps {\n  icon?: ComponentType<{ className?: string }>;\n  title: string;\n  titleTooltip?: string;\n  actions?: ReactNode;\n  className?: string;\n}\n\nexport function PageHeader({\n  icon: Icon,\n  title,\n  titleTooltip,\n  actions,\n  className,\n}: PageHeaderProps): JSX.Element {\n  return (\n    <header className={cn(\"bg-surface\", className)} data-slot=\"page-header\">\n      <div className=\"flex h-toolbar min-w-0 items-center gap-2 px-2\">\n        {Icon ? (\n          <div className=\"hidden size-7 flex-none items-center justify-center text-accent sm:flex\">\n            <Icon className=\"size-icon\" aria-hidden />\n          </div>\n        ) : null}\n        <div className=\"flex min-w-0 flex-1 items-center gap-2\">\n          <h1\n            className=\"truncate text-title font-semibold tracking-tight text-foreground\"\n            title={titleTooltip ?? title}\n          >\n            {title}\n          </h1>\n        </div>\n        {actions ? <div className=\"flex flex-none items-center gap-hairline\">{actions}</div> : null}\n      </div>\n    </header>\n  );\n}\n"
+    }
+  ]
+}

@@ -23,7 +23,7 @@ export interface SettingsNavEntry {
 
 function NavSeparator({ label }: { label: string }): JSX.Element {
   return (
-    <div className="flex items-center gap-2 px-1.5 pb-1 pt-2.5">
+    <div className="flex items-center gap-2 px-1 pb-1 pt-2">
       <Separator className="min-w-0 flex-1" />
       <span className="shrink-0 text-[0.65rem] font-medium uppercase tracking-wider text-muted-foreground">
         {label}
@@ -35,6 +35,7 @@ function NavSeparator({ label }: { label: string }): JSX.Element {
 
 interface SettingsShellProps {
   title?: string;
+  description?: string;
   entries: SettingsNavEntry[];
   defaultId?: string;
   className?: string;
@@ -42,6 +43,7 @@ interface SettingsShellProps {
 
 export function SettingsShell({
   title = "Settings",
+  description,
   entries,
   defaultId,
   className,
@@ -112,65 +114,60 @@ export function SettingsShell({
         className,
       )}
     >
-      <header className="shrink-0 border-b border-border/70 px-5 py-3.5">
+      <header className="shrink-0 border-b border-border/70 bg-surface-subtle px-4 py-3">
         <h2 className="text-title font-semibold tracking-tight">{title}</h2>
+        {description ? (
+          <p className="mt-1 text-micro text-muted-foreground">{description}</p>
+        ) : null}
       </header>
 
       <div className="flex min-h-0 flex-1">
         <nav
           aria-label="Settings categories"
-          className="flex w-[9.5rem] shrink-0 flex-col gap-0.5 overflow-y-auto border-r border-border/70 bg-muted/20 p-2 sm:w-44"
+          className="flex w-rail shrink-0 flex-col gap-hairline overflow-y-auto border-r border-border/70 bg-muted/20 p-2 sm:w-44"
         >
           {visible.map((item, index) => {
             const isActive = activeId === item.id;
             const prev = visible[index - 1];
-            const showGroup =
-              item.group &&
-              item.group !== "general" &&
-              prev?.group !== item.group;
+            const showGroup = item.group && item.group !== "general" && prev?.group !== item.group;
             return (
               <Fragment key={item.id}>
-                {showGroup ? (
-                  <NavSeparator label={item.groupLabel ?? item.group ?? ""} />
-                ) : null}
-                <button
-                  type="button"
-                  onClick={() => scrollToCategory(item.id)}
+                {showGroup ? <NavSeparator label={item.groupLabel ?? item.group ?? ""} /> : null}
+                <a
+                  href={`#${item.id}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    scrollToCategory(item.id);
+                  }}
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "flex w-full items-center gap-2 rounded-control border-l-2 px-2.5 py-1.5 text-left text-micro transition-colors duration-(--motion-fast) ease-standard",
+                    "flex w-full items-center gap-2 rounded-control border-l-2 px-2 py-row-pad text-left text-micro transition-colors duration-(--motion-fast) ease-standard",
                     isActive
-                      ? "border-accent bg-accent/12 font-medium text-foreground"
+                      ? "border-accent bg-accent-muted font-medium text-foreground"
                       : "border-transparent text-muted-foreground hover:bg-interactive hover:text-foreground",
                   )}
                 >
                   {item.icon ? (
                     <span
-                      className={cn(
-                        "shrink-0",
-                        isActive ? "text-accent" : "text-muted-foreground",
-                      )}
+                      className={cn("shrink-0", isActive ? "text-accent" : "text-muted-foreground")}
                     >
                       {item.icon}
                     </span>
                   ) : null}
                   <span className="truncate">{item.label}</span>
-                </button>
+                </a>
               </Fragment>
             );
           })}
         </nav>
 
-        <div
-          ref={scrollRef}
-          className="min-w-0 flex-1 overflow-y-auto overscroll-contain"
-        >
-          <div className="space-y-0 px-5 py-4 sm:px-6">
+        <div ref={scrollRef} className="min-w-0 flex-1 overflow-y-auto overscroll-contain">
+          <div className="space-y-0 px-4 py-4 sm:px-6">
             {visible.map((section, index) => (
               <div
                 key={section.id}
                 className={cn(
-                  "py-5 first:pt-1 last:pb-8",
+                  "py-4 first:pt-1 last:pb-8",
                   index < visible.length - 1 && "border-b border-border/60",
                 )}
               >

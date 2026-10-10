@@ -16,6 +16,60 @@ const outDir = path.join(root, "public", "r");
 
 const registry = JSON.parse(await readFile(path.join(root, "registry.json"), "utf8"));
 
+/**
+ * The constitution ships through two doors — `tokens.css` for `shadcn add`,
+ * `constitution-theme.css` for `sync:products` — so the same key is written
+ * twice. They diverged once already (`--spacing-statusbar`, 28px vs 22px), and
+ * a product then pinned the wrong value in a test. Fail the build instead.
+ */
+const GEOMETRY_KEY = /^\s*(--(?:text|radius|spacing|font|ease)[a-z0-9-]*)\s*:\s*([^;]+);/;
+
+const geometryKeys = async (file) => {
+  const text = await readFile(path.join(root, "src/styles", file), "utf8");
+  const keys = new Map();
+  for (const line of text.split("\n")) {
+    const match = GEOMETRY_KEY.exec(line);
+    if (match) keys.set(match[1], match[2].trim());
+  }
+  return keys;
+};
+
+const tokensKeys = await geometryKeys("tokens.css");
+const themeKeys = await geometryKeys("constitution-theme.css");
+const divergent = [...themeKeys].filter(
+  ([key, value]) => tokensKeys.has(key) && tokensKeys.get(key) !== value,
+);
+if (divergent.length > 0) {
+  console.error(
+    "constitution divergence between tokens.css and constitution-theme.css:\n" +
+      divergent
+        .map(([key, value]) => `  ${key}: ${tokensKeys.get(key)} (tokens) vs ${value} (theme)`)
+        .join("\n"),
+  );
+  process.exit(1);
+}
+
+/**
+ * A block that imports `@/components/ui/x` but does not declare `x` installs as
+ * a file with a broken import. Caught once on `explorer-shell` → `resizable`.
+ */
+const UI_IMPORT = /from\s+"@\/components\/ui\/([a-z-]+)"/g;
+const missingDeps = [];
+for (const item of registry.items ?? []) {
+  const declared = new Set(item.registryDependencies ?? []);
+  for (const f of item.files ?? []) {
+    if (!f.path.endsWith(".tsx")) continue;
+    const text = await readFile(path.join(root, f.path), "utf8");
+    for (const [, dep] of text.matchAll(UI_IMPORT)) {
+      if (item.name !== dep && !declared.has(dep)) missingDeps.push(`  ${item.name} → ${dep}`);
+    }
+  }
+}
+if (missingDeps.length > 0) {
+  console.error("undeclared registryDependencies:\n" + [...new Set(missingDeps)].join("\n"));
+  process.exit(1);
+}
+
 await mkdir(outDir, { recursive: true });
 
 const built = [];

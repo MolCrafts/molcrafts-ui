@@ -1,5 +1,5 @@
-import { ChevronDown } from "lucide-react";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
+import { ChevronDown } from "lucide-react";
 import type * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -23,7 +23,7 @@ function CollapsibleTrigger({
       {...props}
     >
       {children}
-      <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-(--motion-fast) ease-standard group-data-[state=open]/collapsible:rotate-180" />
+      <ChevronDown className="size-icon shrink-0 text-muted-foreground transition-transform duration-(--motion-fast) ease-standard group-data-[state=open]/collapsible:rotate-180" />
     </CollapsiblePrimitive.Trigger>
   );
 }

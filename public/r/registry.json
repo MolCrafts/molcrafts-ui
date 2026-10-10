@@ -14,6 +14,11 @@
       "title": "MolCrafts constitution tokens"
     },
     {
+      "name": "density-site",
+      "type": "registry:style",
+      "title": "Site density profile"
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button"
@@ -162,6 +167,26 @@
       "name": "command",
       "type": "registry:ui",
       "title": "Command"
+    },
+    {
+      "name": "content-section",
+      "type": "registry:block",
+      "title": "Content Section"
+    },
+    {
+      "name": "workbench-operation-state",
+      "type": "registry:block",
+      "title": "Workbench Operation State"
+    },
+    {
+      "name": "page-header",
+      "type": "registry:block",
+      "title": "Page Header"
+    },
+    {
+      "name": "explorer-shell",
+      "type": "registry:block",
+      "title": "Explorer Shell"
     },
     {
       "name": "settings-section",

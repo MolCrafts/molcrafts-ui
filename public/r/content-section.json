@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "content-section",
+  "type": "registry:block",
+  "title": "Content Section",
+  "description": "Semantic title, description, action, and body grouping without card chrome.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/content-section.tsx",
+      "type": "registry:block",
+      "content": "/**\n * Content section — semantic page grouping without card chrome.\n *\n * Domain-free block for operational pages, inventories, and detail overviews.\n * Products own the content and actions; this block owns heading association,\n * spacing, and the shared hierarchy between title, description, and body.\n */\n\nimport { type JSX, type ReactNode, useId } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface ContentSectionProps {\n  id?: string;\n  title: ReactNode;\n  description?: ReactNode;\n  action?: ReactNode;\n  children: ReactNode;\n  className?: string;\n  bodyClassName?: string;\n}\n\nexport function ContentSection({\n  id,\n  title,\n  description,\n  action,\n  children,\n  className,\n  bodyClassName,\n}: ContentSectionProps): JSX.Element {\n  const generatedId = useId();\n  const headingId = id ? `${id}-heading` : `content-section-${generatedId}`;\n\n  return (\n    <section\n      id={id}\n      aria-labelledby={headingId}\n      className={cn(\"space-y-3\", className)}\n      data-slot=\"content-section\"\n    >\n      <header className=\"flex min-w-0 items-start justify-between gap-4\">\n        <div className=\"min-w-0 space-y-1\">\n          <h2 id={headingId} className=\"text-body-lg font-semibold tracking-tight text-foreground\">\n            {title}\n          </h2>\n          {description ? <p className=\"text-label text-muted-foreground\">{description}</p> : null}\n        </div>\n        {action ? <div className=\"shrink-0\">{action}</div> : null}\n      </header>\n      <div className={cn(\"min-w-0\", bodyClassName)}>{children}</div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "density-site",
+  "type": "registry:style",
+  "title": "Site density profile",
+  "description": "Body copy and control heights for the site archetype. Layer over `tokens`; the product then declares no geometry of its own.",
+  "dependencies": [],
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "src/styles/density-site.css",
+      "type": "registry:style",
+      "content": "/**\n * Site density — the third archetype.\n *\n * The constitution's control heights and 13–14px body are tuned for an\n * instrument: a surface an operator holds open all day, at a fixed distance,\n * where every extra pixel costs a row. A public site is the opposite reading\n * situation — a visitor arrives once, at arm's length, on an unknown display,\n * and clicks two or three things. The same numbers read as cramped there.\n *\n * So this layer keeps every role name and meaning and gives four of them the\n * site's scale. It is deliberately small: a difference that cannot be stated\n * as a reading situation is drift, not density.\n *\n * Import AFTER `constitution-theme.css`. A product that imports this declares\n * nothing itself — that is the point. Everything not listed here (radius, the\n * status ramp, motion, icon sizes, row padding, the rest of the type ramp) is\n * the constitution's, unchanged, because nothing about being a site argues for\n * a different answer.\n */\n\n@theme inline {\n  /* Body copy is read once, not scanned for hours; 13px is instrument density. */\n  --text-body: 0.9375rem;\n\n  /* A visitor's first click, not an operator's thousandth: 32 / 40 / 48px. */\n  --spacing-control-compact: 2rem;\n  --spacing-control: 2.5rem;\n  --spacing-control-comfortable: 3rem;\n}\n"
+    }
+  ]
+}

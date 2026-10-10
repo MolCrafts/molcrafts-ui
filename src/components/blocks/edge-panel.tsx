@@ -6,12 +6,9 @@
  * side rails: hairline handle, drag to resize, snap closed below threshold.
  */
 
-import type { JSX, PointerEvent as ReactPointerEvent, ReactNode } from "react";
+import type { JSX, ReactNode, PointerEvent as ReactPointerEvent } from "react";
 import { useCallback, useEffect, useRef } from "react";
-import {
-  type DragOrigin,
-  usePointerDrag,
-} from "@/hooks/use-pointer-drag";
+import { type DragOrigin, usePointerDrag } from "@/hooks/use-pointer-drag";
 import { cn } from "@/lib/utils";
 
 export type EdgeSide = "bottom" | "left" | "right";
@@ -100,10 +97,7 @@ export function EdgePanel({
   const maxPx = maxSize ?? viewportMax(maxSizeRatio, side);
   const closePx = minSize * closeThresholdRatio;
 
-  const clamp = useCallback(
-    (px: number) => Math.min(maxPx, Math.max(0, px)),
-    [maxPx],
-  );
+  const clamp = useCallback((px: number) => Math.min(maxPx, Math.max(0, px)), [maxPx]);
 
   const paint = useCallback(
     (next: number, isOpen: boolean) => {
@@ -184,18 +178,9 @@ export function EdgePanel({
     }
     if (!open) return;
 
-    const growKey =
-      side === "bottom"
-        ? "ArrowUp"
-        : side === "left"
-          ? "ArrowRight"
-          : "ArrowLeft";
+    const growKey = side === "bottom" ? "ArrowUp" : side === "left" ? "ArrowRight" : "ArrowLeft";
     const shrinkKey =
-      side === "bottom"
-        ? "ArrowDown"
-        : side === "left"
-          ? "ArrowLeft"
-          : "ArrowRight";
+      side === "bottom" ? "ArrowDown" : side === "left" ? "ArrowLeft" : "ArrowRight";
 
     if (e.key === growKey) {
       e.preventDefault();
@@ -246,10 +231,7 @@ export function EdgePanel({
     />
   );
 
-  const bodyStyle =
-    side === "bottom"
-      ? { height: open ? size : 0 }
-      : { width: open ? size : 0 };
+  const bodyStyle = side === "bottom" ? { height: open ? size : 0 } : { width: open ? size : 0 };
 
   const shell =
     side === "bottom"
