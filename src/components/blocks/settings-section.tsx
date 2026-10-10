@@ -38,11 +38,11 @@ export function SettingsSection({
     >
       <header className="space-y-1">
         <div className="flex items-center justify-between gap-2">
-          <h3 className="text-sm font-semibold tracking-tight text-foreground">{title}</h3>
+          <h3 className="text-body-lg font-semibold text-foreground">{title}</h3>
           {trailing}
         </div>
         {description ? (
-          <p className="text-micro text-muted-foreground">{description}</p>
+          <p className="text-body text-muted-foreground">{description}</p>
         ) : null}
       </header>
       <div className="space-y-2.5">{children}</div>
@@ -71,7 +71,7 @@ export function SettingsRow({
         className,
       )}
     >
-      <label htmlFor={htmlFor} className="shrink-0 text-micro text-muted-foreground">
+      <label htmlFor={htmlFor} className="shrink-0 text-body text-muted-foreground">
         {label}
       </label>
       <div className="flex min-w-0 flex-wrap items-center justify-end gap-2">{children}</div>

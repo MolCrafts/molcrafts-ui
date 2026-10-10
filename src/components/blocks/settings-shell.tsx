@@ -25,7 +25,7 @@ function NavSeparator({ label }: { label: string }): JSX.Element {
   return (
     <div className="flex items-center gap-2 px-1.5 pb-1 pt-2.5">
       <Separator className="min-w-0 flex-1" />
-      <span className="shrink-0 text-[0.65rem] font-medium uppercase tracking-wider text-muted-foreground">
+      <span className="shrink-0 text-label font-semibold text-muted-foreground">
         {label}
       </span>
       <Separator className="min-w-0 flex-1" />
@@ -108,12 +108,12 @@ export function SettingsShell({
   return (
     <div
       className={cn(
-        "flex h-full min-h-0 w-full flex-col overflow-hidden rounded-control border border-border bg-background",
+        "flex h-full min-h-0 w-full flex-col overflow-hidden rounded-panel border border-border bg-card",
         className,
       )}
     >
       <header className="shrink-0 border-b border-border/70 px-5 py-3.5">
-        <h2 className="text-title font-semibold tracking-tight">{title}</h2>
+        <h2 className="text-title font-semibold">{title}</h2>
       </header>
 
       <div className="flex min-h-0 flex-1">
@@ -138,9 +138,9 @@ export function SettingsShell({
                   onClick={() => scrollToCategory(item.id)}
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "flex w-full items-center gap-2 rounded-control border-l-2 px-2.5 py-1.5 text-left text-micro transition-colors duration-(--motion-fast) ease-standard",
+                    "flex w-full items-center gap-2 rounded-control border-l-2 px-2.5 py-1.5 text-left text-body mol-focus transition-colors duration-(--motion-fast) ease-standard",
                     isActive
-                      ? "border-accent bg-accent/12 font-medium text-foreground"
+                      ? "border-link bg-accent-muted font-semibold text-accent-muted-foreground"
                       : "border-transparent text-muted-foreground hover:bg-interactive hover:text-foreground",
                   )}
                 >
@@ -148,7 +148,7 @@ export function SettingsShell({
                     <span
                       className={cn(
                         "shrink-0",
-                        isActive ? "text-accent" : "text-muted-foreground",
+                        isActive ? "text-link" : "text-muted-foreground",
                       )}
                     >
                       {item.icon}

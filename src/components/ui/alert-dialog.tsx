@@ -41,7 +41,7 @@ function AlertDialogContent({
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         className={cn(
-          "mol-motion-dialog fixed top-1/2 left-1/2 z-50 grid w-full max-w-overlay-viewport -translate-x-1/2 -translate-y-1/2 gap-4 rounded-overlay border bg-background p-6 shadow-overlay sm:max-w-lg",
+          "mol-motion-dialog fixed top-1/2 left-1/2 z-50 grid w-full max-w-overlay-viewport -translate-x-1/2 -translate-y-1/2 gap-4 rounded-overlay border bg-popover p-6 shadow-overlay sm:max-w-lg",
           className,
         )}
         {...props}
@@ -54,7 +54,7 @@ function AlertDialogHeader({ className, ...props }: React.ComponentProps<"div">)
   return (
     <div
       data-slot="alert-dialog-header"
-      className={cn("flex flex-col gap-2 text-center sm:text-left", className)}
+      className={cn("flex flex-col gap-2 text-left", className)}
       {...props}
     />
   );
@@ -90,7 +90,7 @@ function AlertDialogDescription({
   return (
     <AlertDialogPrimitive.Description
       data-slot="alert-dialog-description"
-      className={cn("text-muted-foreground text-body-lg", className)}
+      className={cn("text-muted-foreground text-body", className)}
       {...props}
     />
   );

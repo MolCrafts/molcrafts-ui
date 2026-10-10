@@ -9,7 +9,7 @@ const preview: Preview = {
     controls: {
       matchers: { color: /(background|color)$/i, date: /Date$/i },
     },
-    options: { storySort: { order: ["UI", "Blocks"] } },
+    options: { storySort: { order: ["Foundations", "UI", "Blocks"] } },
   },
   decorators: [
     withThemeByClassName({

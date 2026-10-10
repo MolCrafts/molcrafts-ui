@@ -40,6 +40,24 @@ live under `table`. Plugin package API stays for runtime; sources converge here.
 
 See [docs/extraction-matrix.md](docs/extraction-matrix.md) for the full matrix.
 
+## Visual constitution (Fluent 2)
+
+The [design constitution](docs/design-constitution.md) defines the shared visual
+language using the current Fluent UI React v9 / Fluent 2 Web tokens. Official
+`@fluentui/react-theme` 9.2.2 light/dark themes generate our stable semantic CSS
+slots, typography, geometry, motion, and status foundations.
+
+```bash
+npm run build:tokens     # regenerate official Fluent token mappings
+npm run build:registry   # include all five CSS foundation files
+```
+
+Preview `Foundations/Constitution` in Storybook for light/dark examples and
+interactive controls. Read the constitution's migration section before updating
+product CSS: controls now use 4px corners and 14px text; large controls are 40px;
+badges use soft status colors and tabs use line indicators by default. Existing
+product brand palettes remain product-owned.
+
 ## Spec
 
 - Design: [`.claude/specs/molcrafts-ui-registry-01.md`](.claude/specs/molcrafts-ui-registry-01.md)

@@ -16,7 +16,7 @@ const Checkbox = React.forwardRef<
     data-slot="checkbox"
     className={cn(
       "peer relative size-4 shrink-0 rounded-checkbox border border-input bg-transparent outline-none transition-colors duration-(--motion-fast) ease-standard",
-      "focus-visible:ring-2 focus-visible:ring-ring/50",
+      "mol-focus",
       "disabled:cursor-not-allowed disabled:opacity-50",
       "data-[state=checked]:border-accent data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground",
       "data-[state=indeterminate]:border-accent data-[state=indeterminate]:bg-accent data-[state=indeterminate]:text-accent-foreground",

@@ -25,8 +25,8 @@ const TITLE: Record<EmptyStateDensity, string> = {
 
 const DESCRIPTION: Record<EmptyStateDensity, string> = {
   default: "text-label text-subtle-foreground",
-  compact: "text-micro text-subtle-foreground",
-  inline: "text-micro text-subtle-foreground",
+  compact: "text-label text-subtle-foreground",
+  inline: "text-label text-subtle-foreground",
 };
 
 /** Empty placeholder with density variants tuned for the viewer inspector. */

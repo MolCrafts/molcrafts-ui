@@ -54,7 +54,7 @@ export function NumberField({
       {...inputProps}
       type="number"
       className={cn(
-        "h-control-compact w-16 shrink-0 px-2 text-label tabular-nums",
+        "h-control-compact w-16 shrink-0 px-2 text-body tabular-nums",
         className,
       )}
       value={draft}
