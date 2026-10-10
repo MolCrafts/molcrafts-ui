@@ -57,7 +57,8 @@ pnpm test:storybook
 
 共享 API、token/样式契约或分发文件变更时运行 `pnpm changeset`，描述具体行为
 和消费方影响。文档/开发工具等不影响分发契约的修改不强制制造包版本。
-`pnpm release:status` 只读；`pnpm release:version` 会改 manifests 和各包 CHANGELOG，
+`pnpm release:status` 使用 `origin/main` 的提交历史进行只读检查；浅克隆应先补齐历史，
+CI 使用完整 fetch。`pnpm release:version` 会改 manifests 和各包 CHANGELOG，
 只在实际 release branch 使用。不要为本次准备执行它。
 
 稳定版本遵循 semver：破坏性公共 API/样式契约改变 major，新能力 minor，修复 patch。
