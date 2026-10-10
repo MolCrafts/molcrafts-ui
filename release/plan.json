@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "project": "molcrafts-design",
+  "license": "MIT",
+  "repository": "https://github.com/MolCrafts/molcrafts-ui",
+  "firstRelease": {
+    "target": "0.1.0-alpha.0",
+    "channel": "alpha",
+    "status": "preparation-only"
+  },
+  "packages": [
+    {
+      "directory": "packages/tokens",
+      "name": "@molcrafts/design-tokens"
+    },
+    {
+      "directory": "packages/ui",
+      "name": "@molcrafts/design"
+    },
+    {
+      "directory": "packages/web-components",
+      "name": "@molcrafts/design-web-components"
+    }
+  ],
+  "remaining": [
+    "Complete the selected public component API/state documentation scope",
+    "Verify at least one real MolCrafts product migration",
+    "Verify npm scope ownership and publisher access in an explicit release task",
+    "Confirm final repository rename and URLs",
+    "Review alpha changelogs and candidate artifacts before unsetting private"
+  ]
+}

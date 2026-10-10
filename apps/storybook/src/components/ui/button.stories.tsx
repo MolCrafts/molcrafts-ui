@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, fn, userEvent, within } from "storybook/test";
 import { AddRegular } from "@fluentui/react-icons";
-import { Button } from "@molcrafts/ui";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@molcrafts/ui";
+import { Button } from "@molcrafts/design";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@molcrafts/design";
 
 const meta = {
   title: "UI/Button",

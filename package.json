@@ -1,30 +1,38 @@
 {
-  "name": "@molcrafts/ui-registry",
+  "name": "@molcrafts/design-workspace",
   "version": "0.0.1",
   "private": true,
   "description": "MolCrafts design system workspace (future molcrafts-design)",
   "type": "module",
   "scripts": {
     "build:tokens": "node scripts/build-design-tokens.mjs && node scripts/build-tokens-package.mjs",
-    "build:ui": "pnpm build:tokens && pnpm --filter @molcrafts/ui build",
-    "build:packages": "pnpm build:ui && pnpm build:web-components",
+    "build:ui": "pnpm build:tokens && pnpm --filter @molcrafts/design build",
+    "build:packages": "pnpm build:ui && pnpm build:web-components && pnpm build:notices",
     "build:registry": "node scripts/build-registry.mjs",
     "dev:registry": "pnpm dlx serve public -p 4177",
-    "typecheck": "pnpm build:packages && tsc --noEmit && pnpm --filter @molcrafts/ui typecheck && pnpm --filter @molcrafts/web-components typecheck",
+    "typecheck": "pnpm build:packages && tsc --noEmit && pnpm --filter @molcrafts/design typecheck && pnpm --filter @molcrafts/design-web-components typecheck",
     "storybook": "pnpm build:packages && pnpm --filter @molcrafts/storybook dev",
     "build:storybook": "pnpm build:packages && pnpm --filter @molcrafts/storybook build",
     "generate:web-components": "node scripts/build-web-components.mjs",
-    "build:web-components": "pnpm build:tokens && pnpm generate:web-components && pnpm --filter @molcrafts/web-components build && node scripts/build-web-components.mjs --assets && node scripts/verify-web-components-package.mjs",
+    "build:web-components": "pnpm build:tokens && pnpm generate:web-components && pnpm --filter @molcrafts/design-web-components build && node scripts/build-web-components.mjs --assets && node scripts/verify-web-components-package.mjs",
     "test:web-components": "playwright test",
     "build:consumer": "pnpm build:ui && pnpm --filter @molcrafts/consumer-fixture build",
     "test:consumer": "playwright test --config tests/consumer/playwright.config.ts",
     "verify:packages": "node scripts/verify-packages.mjs",
     "verify:consumer-tarball": "node scripts/verify-consumer-tarball.mjs",
     "test:storybook": "playwright test --config tests/storybook/playwright.config.ts",
-    "build:catalog": "node scripts/build-component-catalog.mjs"
+    "build:catalog": "node scripts/build-component-catalog.mjs",
+    "changeset": "changeset",
+    "release:status": "changeset status",
+    "release:version": "changeset version",
+    "prepare:release": "pnpm build:packages && pnpm verify:packages && pnpm verify:release",
+    "build:notices": "node scripts/build-package-notices.mjs",
+    "verify:release": "pnpm verify:release-version && node scripts/prepare-release.mjs && pnpm verify:consumer-tarball",
+    "verify:release-version": "node scripts/verify-release-version.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
+    "@changesets/cli": "3.0.3",
     "@fluentui/react-theme": "9.2.2",
     "@fluentui/svg-icons": "1.1.344",
     "@playwright/test": "1.64.0",
@@ -44,5 +52,6 @@
   "packageManager": "pnpm@11.25.0",
   "engines": {
     "node": ">=24"
-  }
+  },
+  "license": "MIT"
 }

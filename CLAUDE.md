@@ -1,6 +1,6 @@
 ---
 mol_project:
-  name: molcrafts-ui
+  name: molcrafts-design
   language: typescript
   stage: experimental
   specs_path: .claude/specs/
@@ -13,7 +13,7 @@ mol_project:
     style: google
 ---
 
-# molcrafts-ui / future molcrafts-design
+# molcrafts-design
 
 Read [AGENTS.md](AGENTS.md) for current architecture and development rules.
 
@@ -28,5 +28,6 @@ The target is an independent React design system using pnpm, Rslib and Storybook
 Rsbuild, with versioned packages as future primary distribution. Workspace and public-package
 boundaries are implemented; remaining ownership/quality work follows the roadmap.
 No backward compatibility is required. Implementation does not authorize publishing
-or external renaming; future project name is `molcrafts-design`.
+or external renaming. Confirmed package names use `@molcrafts/design`; MIT and
+local release preparation are approved. See [releasing](docs/releasing.md).
 Do not put product-domain UI here or copy changes into sibling products implicitly.

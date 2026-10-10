@@ -1,9 +1,9 @@
 ---
-name: molcrafts-ui
+name: molcrafts-design
 description: Discover, compose and extend MolCrafts shared UI using its public APIs, Fluent 2 design constitution, semantic themes and Storybook examples.
 ---
 
-# MolCrafts UI / future molcrafts-design
+# MolCrafts Design
 
 This is a vendor-neutral repository skill. Resolve paths from the repository root;
 it requires no custom MCP server or prior shadcn knowledge.
@@ -15,7 +15,7 @@ it requires no custom MCP server or prior shadcn knowledge.
    capabilities and `docs/design-system-roadmap.md` for planned work.
 2. Read `docs/component-catalog.md`, public package exports and Storybook examples
    in `apps/storybook/src`. The canonical implementation lives in `packages/ui`.
-   Consume `@molcrafts/ui` and compiled `styles.css`, not internal source paths.
+   Consume `@molcrafts/design` and compiled `styles.css`, not internal source paths.
 3. Read the selected component's TypeScript props and relevant stories before composing.
    Prefer existing components and documented variants over custom controls.
 
@@ -44,5 +44,6 @@ aliases, product-private merge extensions or core-source Registry distribution.
 Use the current commands in `AGENTS.md`. Validate builds and types, plus interactions,
 keyboard, accessibility and visual behavior relevant to the change. Check built-package/tarball consumption without library Tailwind scanning.
 Report completed scope, compatibility changes, validation evidence and remaining gaps.
-Do not describe roadmap items as shipped. Future name is `molcrafts-design`; do not
-invent finalized package imports or publish/rename resources without an explicit release/rename task.
+Do not describe roadmap items as shipped. Confirmed package names are `@molcrafts/design`, `@molcrafts/design-tokens` and
+`@molcrafts/design-web-components`, with MIT licensing. Read `docs/releasing.md`;
+local release preparation does not authorize publishing or external repository renaming.

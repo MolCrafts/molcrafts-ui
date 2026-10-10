@@ -197,9 +197,9 @@ CI 校验生成结果与提交文件一致。生成的三个文件不手动修�
 
 ## 10. 产品接入与变更验收
 
-React 消费方导入 `@molcrafts/ui/styles.css`，包含默认 tokens、编译 utility 和
-preflight，无需扫描库源码。框架无关 CSS 使用 `@molcrafts/tokens/runtime.css`，
-应用自有 Tailwind utility 可用 `@molcrafts/tokens/tailwind.css`。
+React 消费方导入 `@molcrafts/design/styles.css`，包含默认 tokens、编译 utility 和
+preflight，无需扫描库源码。框架无关 CSS 使用 `@molcrafts/design-tokens/runtime.css`，
+应用自有 Tailwind utility 可用 `@molcrafts/design-tokens/tailwind.css`。
 产品提供完整 primary / secondary 品牌组；中性行动使用 neutral，状态色独立。
 用户要求不向后兼容：旧 src 路径、单独 constitution CSS 公共入口、accent/link
 别名、stock radius 别名、产品私有 cn 扩展与源码同步流程均已删除。

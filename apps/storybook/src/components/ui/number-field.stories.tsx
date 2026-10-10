@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, fn, userEvent, within } from "storybook/test";
-import { NumberField } from "@molcrafts/ui";
+import { NumberField } from "@molcrafts/design";
 
 const meta = {
   title: "UI/NumberField",

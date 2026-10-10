@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { AddRegular, SettingsRegular, CheckmarkCircleRegular, WarningRegular } from "@fluentui/react-icons";
-import { Button } from "@molcrafts/ui";
-import { Badge } from "@molcrafts/ui";
-import { Input } from "@molcrafts/ui";
-import { Label } from "@molcrafts/ui";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@molcrafts/ui";
-import { Card, CardContent, CardHeader, CardTitle } from "@molcrafts/ui";
-import { Checkbox } from "@molcrafts/ui";
-import { Switch } from "@molcrafts/ui";
-import { ProgressSpinner } from "@molcrafts/ui";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@molcrafts/ui";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@molcrafts/ui";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@molcrafts/ui";
+import { Button } from "@molcrafts/design";
+import { Badge } from "@molcrafts/design";
+import { Input } from "@molcrafts/design";
+import { Label } from "@molcrafts/design";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@molcrafts/design";
+import { Card, CardContent, CardHeader, CardTitle } from "@molcrafts/design";
+import { Checkbox } from "@molcrafts/design";
+import { Switch } from "@molcrafts/design";
+import { ProgressSpinner } from "@molcrafts/design";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@molcrafts/design";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@molcrafts/design";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@molcrafts/design";
 
 function ConstitutionPreview() {
   return (

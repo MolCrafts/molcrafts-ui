@@ -3,9 +3,9 @@ import { createRoot } from "react-dom/client";
 import {
   Button, Input, NumberField, Checkbox, Card, CardContent,
   Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger,
-} from "@molcrafts/ui";
-import "@molcrafts/tokens/runtime.css";
-import "@molcrafts/ui/styles.css";
+} from "@molcrafts/design";
+import "@molcrafts/design-tokens/runtime.css";
+import "@molcrafts/design/styles.css";
 import "./page.css";
 import { Themes } from "./themes";
 

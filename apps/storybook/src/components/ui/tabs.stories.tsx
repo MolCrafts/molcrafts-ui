@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@molcrafts/ui";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@molcrafts/design";
 
 const meta = {
   title: "UI/Tabs",

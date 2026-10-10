@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@molcrafts/ui";
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@molcrafts/design";
 
 const meta = {
   title: "UI/Resizable",

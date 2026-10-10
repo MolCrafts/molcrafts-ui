@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@molcrafts/ui";
-import { Button } from "@molcrafts/ui";
-import { Skeleton } from "@molcrafts/ui";
-import { ProgressSpinner } from "@molcrafts/ui";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@molcrafts/design";
+import { Button } from "@molcrafts/design";
+import { Skeleton } from "@molcrafts/design";
+import { ProgressSpinner } from "@molcrafts/design";
 
 const meta = {
   title: "UI/Card",

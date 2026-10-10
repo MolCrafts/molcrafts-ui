@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { FolderOpenRegular } from "@fluentui/react-icons";
-import { EmptyState } from "@molcrafts/ui";
-import { Button } from "@molcrafts/ui";
+import { EmptyState } from "@molcrafts/design";
+import { Button } from "@molcrafts/design";
 
 const meta = {
   title: "UI/EmptyState",

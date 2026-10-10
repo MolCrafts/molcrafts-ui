@@ -4,7 +4,7 @@ import { expect, userEvent, within } from "storybook/test";
 import {
   ThemeScope, Button, Badge, Dialog, DialogContent, DialogTitle, DialogDescription, DialogTrigger,
   type ProductTheme,
-} from "@molcrafts/ui";
+} from "@molcrafts/design";
 
 const brand: ProductTheme = {
   primary: { background: "#00665e", hover: "#00574f", pressed: "#00473f", foreground: "#ffffff", muted: "#dcf3ee", mutedForeground: "#00574f", link: "#65dfcb", linkHover: "#8cf0df" },

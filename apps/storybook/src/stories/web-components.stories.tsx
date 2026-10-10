@@ -1,8 +1,8 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, userEvent, waitFor } from "storybook/test";
-import { fluentIcons, registerMolcraftsComponents } from "@molcrafts/web-components";
-import "@molcrafts/web-components/theme.css";
+import { fluentIcons, registerMolcraftsComponents } from "@molcrafts/design-web-components";
+import "@molcrafts/design-web-components/theme.css";
 
 function WebComponentsPreview({ customBrand = false }: { customBrand?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Input } from "@molcrafts/ui";
-import { Label } from "@molcrafts/ui";
-import { Textarea } from "@molcrafts/ui";
-import { Checkbox } from "@molcrafts/ui";
-import { Switch } from "@molcrafts/ui";
-import { Slider } from "@molcrafts/ui";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@molcrafts/ui";
+import { Input } from "@molcrafts/design";
+import { Label } from "@molcrafts/design";
+import { Textarea } from "@molcrafts/design";
+import { Checkbox } from "@molcrafts/design";
+import { Switch } from "@molcrafts/design";
+import { Slider } from "@molcrafts/design";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@molcrafts/design";
 
 const meta = {
   title: "UI/Input",

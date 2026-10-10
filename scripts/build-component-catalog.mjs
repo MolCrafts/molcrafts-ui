@@ -13,8 +13,8 @@ const purposes = {
   "settings-shell": "设置导航与内容组合", "edge-panel": "边缘拖拽展开面板",
 };
 const lines = ["# React 组件目录", "", "由 `pnpm build:catalog` 生成。当前包名为未发布的内部名称，后续随 molcrafts-design 统一改名。",
-  "唯一实现位于 packages/ui，所有列出的组件通过 `@molcrafts/ui` 根入口消费。", "",
-  "```tsx", 'import { Button } from "@molcrafts/ui";', 'import "@molcrafts/ui/styles.css";', '<Button size="icon" aria-label="Add item">{/* official Fluent icon */}</Button>', "```", "",
+  "唯一实现位于 packages/ui，所有列出的组件通过 `@molcrafts/design` 根入口消费。", "",
+  "```tsx", 'import { Button } from "@molcrafts/design";', 'import "@molcrafts/design/styles.css";', '<Button size="icon" aria-label="Add item">{/* official Fluent icon */}</Button>', "```", "",
   "完整用法查看链接的 TypeScript API 与 stories。无专用 story 的组件仍待后续补齐；有 story 不代表状态覆盖完整。", "",
   "| Module / purpose | Exported values | API source | Story |", "| --- | --- | --- | --- |"];
 for (const group of ["ui", "blocks"]) {
@@ -38,6 +38,6 @@ for (const group of ["ui", "blocks"]) {
     lines.push(`| ${name}：${purposes[name]} | ${names.map(name => `\`${name}\``).join(", ")} | [source](../packages/ui/src/components/${group}/${file}) | ${story} |`);
   }
 }
-lines.push("", "[ThemeScope](../packages/ui/src/theme/theme-scope.tsx) 从 `@molcrafts/ui` 导入：受控模式、完整品牌组与 scoped portal。", "[主题 stories](../apps/storybook/src/theme/theme-scope.stories.tsx) / [主题契约](theming.md)。", "", "`cn` 通过 `@molcrafts/ui` 或 `@molcrafts/ui/utils` 导入；只识别共享设计 scales。", "",
+lines.push("", "[ThemeScope](../packages/ui/src/theme/theme-scope.tsx) 从 `@molcrafts/design` 导入：受控模式、完整品牌组与 scoped portal。", "[主题 stories](../apps/storybook/src/theme/theme-scope.stories.tsx) / [主题契约](theming.md)。", "", "`cn` 通过 `@molcrafts/design` 或 `@molcrafts/design/utils` 导入；只识别共享设计 scales。", "",
   "Web Components 使用独立包/API，清单及接入方式见 [原生包文档](../packages/web-components/README.md)。", "");
 await writeFile(new URL("docs/component-catalog.md", root), lines.join("\n"));
