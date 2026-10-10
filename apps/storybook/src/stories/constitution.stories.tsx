@@ -50,7 +50,7 @@ function ConstitutionPreview() {
             </CardContent></Card>
             <Card><CardHeader><CardTitle>Actions and sizes</CardTitle></CardHeader><CardContent className="space-y-4">
               <div className="flex flex-wrap gap-2"><Button>Primary</Button><Button variant="secondary">Secondary</Button><Button variant="ghost">Subtle</Button><Button disabled>Disabled</Button></div>
-              <div className="flex flex-wrap items-center gap-2"><Button size="sm">Compact</Button><Button>Default</Button><Button size="lg">Comfortable</Button></div>
+              <div className="flex flex-wrap items-center gap-2"><Button size="sm">Compact</Button><Button>Comfortable default</Button><Button size="lg">Large</Button></div>
               <Button variant="link" asChild><a href="#feedback">Learn about feedback</a></Button>
             </CardContent></Card>
             <Card id="feedback"><CardHeader><CardTitle>Feedback</CardTitle></CardHeader><CardContent className="space-y-4">
