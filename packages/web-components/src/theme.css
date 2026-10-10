@@ -1,6 +1,5 @@
 /* Framework-independent CSS: no Tailwind processor required. */
-@import "./fluent-theme.css";
-@import "./constitution-base.css";
+@import "@molcrafts/tokens/runtime.css";
 @import "./fluent-web-theme.css";
 @import "./fluent-host.css";
 

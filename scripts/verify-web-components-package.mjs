@@ -10,7 +10,7 @@ for (const name of ["index.js", "register.js", "components.js", "icons.js"]) {
   const source = await readFile(file, "utf8");
   for (const [, relative] of source.matchAll(/from\s+["'](\.\/.+?)["']/g)) await access(new URL(relative, file));
 }
-for (const name of ["theme.css", "constitution-base.css"]) {
+for (const name of ["theme.css"]) {
   const file = new URL(`dist/${name}`, root);
   const source = await readFile(file, "utf8");
   for (const [, relative] of source.matchAll(/@import\s+["'](.+?)["']/g)) await access(new URL(relative, file));

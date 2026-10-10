@@ -1,0 +1,21 @@
+{
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "name": "@molcrafts/tokens",
+  "description": "Framework-independent MolCrafts tokens and theme CSS",
+  "exports": {
+    "./runtime.css": "./dist/runtime.css",
+    "./tailwind.css": "./dist/tokens.css"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "node ../../scripts/build-design-tokens.mjs && node ../../scripts/build-tokens-package.mjs"
+  }
+}

@@ -1,11 +1,12 @@
 # MolCrafts Design System Refactoring Spec
 
-Version: 1.0 · Status: Proposed (implementation preparation authorized)
+Version: 1.0 · Status: Implementation authorized; incremental delivery
 Date: 2026-10-10 · Scope: current `MolCrafts/molcrafts-ui` repository
 Future project name: **molcrafts-design**
 
 本规范整理用户提供的 v1.0，并纳入此前确认的 Fluent 2、产品品牌色、图标及
-Web Components 要求。形成规范与准备文档不代表架构迁移、产品迁移或发布已经完成。
+Web Components 要求。2026-10-10 用户随后授权实施，并明确要求不向后兼容；该决定覆盖原始 v1.0
+的 Preserve compatibility 要求。实际完成范围以 roadmap 为准，未发包。
 实现顺序见 [roadmap](design-system-roadmap.md)，现状见
 [实施前审计](design-system-readiness.md)。
 
@@ -18,7 +19,7 @@ MolCrafts 拥有视觉语言、tokens、主题、公共 API、样式契约和版
 
 [设计宪法](design-constitution.md) 是具体视觉契约；本文件定义工程与分发边界。
 旧 Registry 规范保留为历史记录，其 Registry 优先、npm 可选的方向由本规范取代。
-迁移期间现有入口仍可使用，不能仅因文档更新删除兼容路径。
+不保留旧导入、旧源码分发、旧 token 别名或同步适配器；产品直接迁移到新入口。
 
 ## 2. Technology decisions
 
@@ -40,7 +41,7 @@ MolCrafts 拥有视觉语言、tokens、主题、公共 API、样式契约和版
 
 ## 3. Architecture and dependency rules
 
-目标目录（尚未实施）：
+目录边界（已建立，具体组件所有权仍分批实施）：
 
 ```text
 packages/tokens/           # CSS、主题、Tailwind 集成
@@ -52,7 +53,7 @@ skills/molcrafts-ui/       # 可移植 Agent 指引
 docs/                     # 规范、决策、迁移与组件目录
 ```
 
-逻辑包角色沿用用户规范的 `@molcrafts/tokens`、`@molcrafts/ui`；这些名称在最终
+逻辑包角色暂用用户规范的 `@molcrafts/tokens`、`@molcrafts/ui`；这些名称在最终
 改名前只作规划标识。`molcrafts-design` 是确定的未来项目名，npm scope、包名、
 子路径、域名与 Registry 标识需在改名阶段统一核对，不能假定它们已确定。
 不要提前改 GitHub repository、npm 身份或产品导入路径。
@@ -94,12 +95,12 @@ info，以及 hover、active/pressed、disabled、focus。
 每个公共组件说明明确 TypeScript props、variants、sizes、相关受控/非受控行为、
 键盘与可访问性、loading/disabled/invalid 等状态、ref 和原生属性支持。
 简单组件采用直接 props，复杂组件采用可组合 API。
-不把不必要的 Base UI/Radix 细节变成长期公共 API 承诺；已有暴露逐项记录并兼容。
+不把不必要的 Base UI/Radix 细节变成长期公共 API 承诺；已有暴露逐项评估，不以兼容为由保留不必要的 API。
 
 组件视觉样式属于组件库。支持可预测的 className 合并和有目的的 variants、slots
 及 tokens 扩展，避免要求消费方靠内部 DOM selectors 大幅覆盖。
 必要时采用标准 CSS；避免不必要的运行时 CSS-in-JS。
-已有 API 和视觉在结构迁移中保持兼容；视觉变更与 breaking changes 单独说明。
+结构迁移尽量避免无关行为和视觉变化；删除旧契约不提供兼容层，变化明确记录。
 
 ## 6. Distribution, naming and releases
 
@@ -116,7 +117,7 @@ API、tokens 和样式契约按 semver 管理；改名不等同于允许行为�
 
 Registry 不是核心组件的主分发机制。可保留配置、示例、模板、组合与 Agent
 脚手架，优先引用 canonical packages。不维护 npm 与 Registry 的独立组件实现。
-迁移期间兼容已有 Registry；删除或调整入口要有迁移说明。
+删除核心源码 Registry items，仅保留包配置与示例；记录新的接入方式。
 
 ## 7. Agent-native development
 
@@ -143,7 +144,7 @@ fixture 不能替代真实产品兼容验收。原生实现继续使用独立 HT
 ## 9. Migration strategy
 
 1. Audit and foundation：组件/API/依赖/token 审计，pnpm boundaries，Rslib，
-   语义主题；结构迁移保持既有行为和视觉。
+   语义主题；移除旧入口，不加入兼容适配。
 2. Component ownership：分批建立契约，迁移语义样式，保留有效 Radix，按需求
    采用 Base UI，一致 variants 与扩展点。
 3. Documentation and Agent support：迁移 Storybook 入口，补 stories/catalog、
@@ -171,11 +172,11 @@ engine、MCP 或索引；不放产品路由、认证、SSR 或业务逻辑；不
 | 6 | 全部迁移公共组件有 Storybook 文档 | 按导出清单逐项覆盖，不以 story 总数替代 |
 | 7 | Agent 无须了解 shadcn 就能发现 API | AGENTS、Skill、目录及可执行示例 |
 | 8 | 相关类型、交互、a11y、视觉检查通过 | 对应批次的 CI 与基线证据 |
-| 9 | 已有产品功能保持 | 真实产品迁移 PR 与兼容检查；当前尚未验证 |
+| 9 | 产品完成新入口迁移后功能正确 | 真实产品迁移 PR 与兼容检查；当前尚未验证 |
 | 10 | 版本与升级流程可复现 | release/rename 文档及本地演练；不要求本轮发布 |
 
 ## 12. Implementation principles
 
-Own the design. Reuse behavior. Preserve compatibility. Publish once.
+Own the design. Reuse behavior. Use explicit migrations without compatibility shims. Publish once.
 Keep Agents informed. Avoid premature infrastructure. Keep the system product-independent.
 每批迁移必须记录完成范围与未完成项，不能以基础构建通过宣称全部重构完成。

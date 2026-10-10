@@ -7,7 +7,7 @@ MolCrafts 的框架无关 Fluent 2 入口。基于官方 `@fluentui/web-componen
 此包目前通过 workspace 或构建后的 tarball 使用，尚未发布到 npm。
 
 ```bash
-npm run build:web-components              # 在仓库根目录运行，Rslib / Rspack
+pnpm build:web-components              # 在仓库根目录运行，Rslib / Rspack
 npm pack --workspace @molcrafts/web-components
 # 在消费项目安装生成的 tarball，然后导入以下入口
 ```
@@ -107,15 +107,18 @@ tooltip 还使用现代 Popover / CSS anchor 能力，兼容回退由官方实�
 ## 开发验收
 
 ```bash
-npm run generate:web-components
-npm run typecheck
-npm run build:web-components
-npx playwright install chromium
-npm run test:web-components
-npm run build:storybook
+pnpm generate:web-components
+pnpm typecheck
+pnpm build:web-components
+pnpm exec playwright install chromium
+pnpm test:web-components
+pnpm build:storybook
 ```
 
 Storybook 的 `Web Components/Foundations` 展示真实原生元素，React 仅作为现有
 Storybook 的宿主。CI 验证生成文件、ESM 包、独立 HTML 包、重复注册、键盘
 与 Tooltip、禁用、原生 FormData/提交、品牌色穿透、明暗、减少动画和高对比度。
 构建导出 `custom-elements.json`，供 IDE 和其他 Web Components 工具消费。
+
+共享颜色、几何与行为源位于 `packages/tokens`；构建时将其独立 runtime CSS
+整合进本包 `theme.css`，不再维护共享 tokens 的源码副本。

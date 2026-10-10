@@ -13,9 +13,9 @@ it requires no custom MCP server or prior shadcn knowledge.
 1. Read `AGENTS.md`, `docs/design-system-refactoring-spec.md` and
    `docs/design-constitution.md`. Check `docs/design-system-readiness.md` for actual
    capabilities and `docs/design-system-roadmap.md` for planned work.
-2. During the current source-based stage, inspect `registry.json`,
-   `src/components/ui`, `src/components/blocks` and colocated `*.stories.tsx`.
-   After package migration, use the public exports and component catalog instead.
+2. Read `docs/component-catalog.md`, public package exports and Storybook examples
+   in `apps/storybook/src`. The canonical implementation lives in `packages/ui`.
+   Consume `@molcrafts/ui` and compiled `styles.css`, not internal source paths.
 3. Read the selected component's TypeScript props and relevant stories before composing.
    Prefer existing components and documented variants over custom controls.
 
@@ -36,9 +36,11 @@ stories. They share tokens, not React rendering or full API parity.
 
 ## Validate and report
 
+No backward compatibility is required: do not restore deleted source paths, token
+aliases, product-private merge extensions or core-source Registry distribution.
+
 Use the current commands in `AGENTS.md`. Validate builds and types, plus interactions,
-keyboard, accessibility and visual behavior relevant to the change. Once available,
-check built-package/tarball consumption without library Tailwind scanning.
+keyboard, accessibility and visual behavior relevant to the change. Check built-package/tarball consumption without library Tailwind scanning.
 Report completed scope, compatibility changes, validation evidence and remaining gaps.
 Do not describe roadmap items as shipped. Future name is `molcrafts-design`; do not
-invent finalized package imports or publish/rename resources during preparation.
+invent finalized package imports or publish/rename resources without an explicit release/rename task.

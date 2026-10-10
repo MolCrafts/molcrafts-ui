@@ -6,9 +6,9 @@ mol_project:
   specs_path: .claude/specs/
   notes_path: .claude/notes/
   build:
-    install: "npm ci"
-    check: "npm run typecheck"
-    test: "npm run build:registry"
+    install: "pnpm install --frozen-lockfile"
+    check: "pnpm typecheck"
+    test: "pnpm build:registry"
   doc:
     style: google
 ---
@@ -25,7 +25,8 @@ Read [AGENTS.md](AGENTS.md) for current architecture and development rules.
 - Historical extraction matrix: `docs/extraction-matrix.md`.
 
 The target is an independent React design system using pnpm, Rslib and Storybook
-Rsbuild, with versioned packages as future primary distribution. Current npm/source
-workflows remain in place until migration. Preparation does not authorize publishing
+Rsbuild, with versioned packages as future primary distribution. Workspace and public-package
+boundaries are implemented; remaining ownership/quality work follows the roadmap.
+No backward compatibility is required. Implementation does not authorize publishing
 or external renaming; future project name is `molcrafts-design`.
 Do not put product-domain UI here or copy changes into sibling products implicitly.

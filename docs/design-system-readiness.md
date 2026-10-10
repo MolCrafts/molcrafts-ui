@@ -1,93 +1,47 @@
-# 实施前审计与准备清单
+# 基线审计与当前实施状态
 
-日期：2026-10-10 · 源码基线：`7c4d9be`（当前工作分支，含待合并 Web Components）。
-这是仓库静态审计，不是外部产品 API 使用情况或全部质量验收。
-目标与排期见 [spec](design-system-refactoring-spec.md) / [roadmap](design-system-roadmap.md)。
+日期：2026-10-10。基线为 `7c4d9be`；当前完成范围见 [roadmap](design-system-roadmap.md)。
+用户随后明确要求不向后兼容；本文件不再把旧 API 保留作为实施约束。
 
-## 已有能力与实际缺口
+## 基线与当前边界
 
-| Area | Current evidence | Gap / next action |
+| Area | Audited baseline | Current implementation / remaining work |
 | --- | --- | --- |
-| Workspace | 根 package.json 使用 npm workspaces，只有原生包 | 尚无 pnpm workspace/lockfile、tokens/ui 包边界 |
-| React | src/components/ui 的 30 个模块、3 个 blocks | 当前为源码/Registry 消费，尚无 React Rslib 产物和独立公共包入口 |
-| Tokens | src/styles 的 5 个 CSS 文件及 build-design-tokens.mjs | 已有 Fluent 映射与明暗/品牌主题，尚未形成独立 tokens 包及完整契约目录 |
-| Primitives | 根依赖中已有 Radix、cmdk、resizable panels | Base UI 尚未采用；新需求再评估，不能无理由替换 |
-| Storybook | 根 .storybook、storybook-react-rsbuild、13 个 story 文件 | 尚未移入 apps，当前读源码；基础示例不等于所有组件状态/导出覆盖 |
-| Registry | registry.json 35 items、scripts/build-registry.mjs、public/r | 当前主分发；迁移成可选入口并保持单一实现 |
-| Web Components | packages/web-components；清单管理 13 个官方标签；Rslib 与 HTML browser tests | 当前共享 CSS 的生成副本需接入 tokens 边界；独立运行时且不宣称 React API 对等 |
-| CI | 类型、生成一致性、原生构建/浏览器、Storybook | 尚缺 React 包、独立 Rsbuild/tarball 消费与持续关键视觉回归 |
-| Products | extraction-matrix、sync-to-products 脚本记录旧路径 | 当前没有重新验证真实产品；需产品 PR，不能凭历史描述宣称兼容 |
-| Release | 根包及原生包 private，未设置发布流程 | 本轮保持不发布；最终改名、license、exports 与版本流程以后落实 |
+| Workspace | npm workspaces，仅有原生包 | pnpm 11.25.0、6 个 workspace projects、唯一 lockfile，依赖按 package 声明 |
+| React | 根 src 下 30 primitives、3 blocks，源码分发 | 唯一实现迁移到 packages/ui；Rslib ESM、types、编译 CSS 和公开 exports；细化公共契约仍待逐批完成 |
+| Tokens | 根 5 个 CSS 文件，Fluent 2 生成映射 | packages/tokens，独立纯 CSS runtime 与 Tailwind 入口；完整 token 清单与主题边缘行为仍待 P2 |
+| Storybook | 根 .storybook，13 个 story 文件 | apps/storybook 通过构建后的公开包入口消费；33 个模块并非都有独立 stories |
+| Registry | 35 个核心源码 items | 删除旧 items，仅 setup 与 button-example；引用 canonical packages |
+| Web Components | 13 标签，独立构建、类型与浏览器测试 | 保留独立运行时；共享 CSS 从 tokens 生成，不再提交 tokens 副本 |
+| Consumer | 未建立独立 React 产物消费验证 | 无 Tailwind 配置的 Rsbuild fixture；本地 tarball 在外部临时目录安装/构建 |
+| Quality | 类型、生成一致性、原生浏览器、Storybook 构建 | 增加 exports/CSS/SSR、消费者行为与所有现有 stories 的 CI；持续 a11y 与关键视觉基线待后续 |
+| Products | 历史 extraction matrix 与源码同步路径 | 同步脚本已删除；没有修改或重验真实产品，需要产品迁移 PR |
+| Release | private、无发布流程 | 所有包仍 private；未发包、未改名、未配置自动发布 |
 
-所有版本以 package.json/lockfile 为准，不将“latest”写成浮动依赖。
-现有 README 的历史产品接入记录不能替代本次重构兼容验证。
+React 源码、用途、exports 和 stories 链接见 [生成组件目录](component-catalog.md)。
+13 个 story 文件包含基础组合示例，不能用文件数量证明公开 API/state 覆盖完整。
+原生清单/API 与 React 不要求功能对等，见 [原生包文档](../packages/web-components/README.md)。
 
-## React 实现与同名 stories 清单
+## 已处理风险与剩余事项
 
-下表链接是当前源码入口，不是最终 npm import 合约。一个模块可能导出多个
-公共组件；正式 catalog 必须按公共导出列出用途、import、示例与 API。
-没有同名 story 不等于完全没有示例，例如 checkbox 在表单组合中出现；
-有同名 story 也不等于 variants、states、themes 和可访问性覆盖完整。
-
-| Module | Canonical source today | Colocated story evidence |
-| --- | --- | --- |
-| `edge-panel` | [`src/components/blocks/edge-panel.tsx`](../src/components/blocks/edge-panel.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `settings-section` | [`src/components/blocks/settings-section.tsx`](../src/components/blocks/settings-section.tsx) | [story](../src/components/blocks/settings-section.stories.tsx) |
-| `settings-shell` | [`src/components/blocks/settings-shell.tsx`](../src/components/blocks/settings-shell.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `accordion` | [`src/components/ui/accordion.tsx`](../src/components/ui/accordion.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `alert-dialog` | [`src/components/ui/alert-dialog.tsx`](../src/components/ui/alert-dialog.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `badge` | [`src/components/ui/badge.tsx`](../src/components/ui/badge.tsx) | [story](../src/components/ui/badge.stories.tsx) |
-| `button` | [`src/components/ui/button.tsx`](../src/components/ui/button.tsx) | [story](../src/components/ui/button.stories.tsx) |
-| `card` | [`src/components/ui/card.tsx`](../src/components/ui/card.tsx) | [story](../src/components/ui/card.stories.tsx) |
-| `checkbox` | [`src/components/ui/checkbox.tsx`](../src/components/ui/checkbox.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `code` | [`src/components/ui/code.tsx`](../src/components/ui/code.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `collapsible` | [`src/components/ui/collapsible.tsx`](../src/components/ui/collapsible.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `command` | [`src/components/ui/command.tsx`](../src/components/ui/command.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `context-menu` | [`src/components/ui/context-menu.tsx`](../src/components/ui/context-menu.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `dialog` | [`src/components/ui/dialog.tsx`](../src/components/ui/dialog.tsx) | [story](../src/components/ui/dialog.stories.tsx) |
-| `dropdown-menu` | [`src/components/ui/dropdown-menu.tsx`](../src/components/ui/dropdown-menu.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `empty-state` | [`src/components/ui/empty-state.tsx`](../src/components/ui/empty-state.tsx) | [story](../src/components/ui/empty-state.stories.tsx) |
-| `input` | [`src/components/ui/input.tsx`](../src/components/ui/input.tsx) | [story](../src/components/ui/input.stories.tsx) |
-| `label` | [`src/components/ui/label.tsx`](../src/components/ui/label.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `number-field` | [`src/components/ui/number-field.tsx`](../src/components/ui/number-field.tsx) | [story](../src/components/ui/number-field.stories.tsx) |
-| `popover` | [`src/components/ui/popover.tsx`](../src/components/ui/popover.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `progress-spinner` | [`src/components/ui/progress-spinner.tsx`](../src/components/ui/progress-spinner.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `resizable` | [`src/components/ui/resizable.tsx`](../src/components/ui/resizable.tsx) | [story](../src/components/ui/resizable.stories.tsx) |
-| `scroll-area` | [`src/components/ui/scroll-area.tsx`](../src/components/ui/scroll-area.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `select` | [`src/components/ui/select.tsx`](../src/components/ui/select.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `separator` | [`src/components/ui/separator.tsx`](../src/components/ui/separator.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `sheet` | [`src/components/ui/sheet.tsx`](../src/components/ui/sheet.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `skeleton` | [`src/components/ui/skeleton.tsx`](../src/components/ui/skeleton.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `slider` | [`src/components/ui/slider.tsx`](../src/components/ui/slider.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `switch` | [`src/components/ui/switch.tsx`](../src/components/ui/switch.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `table` | [`src/components/ui/table.tsx`](../src/components/ui/table.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `tabs` | [`src/components/ui/tabs.tsx`](../src/components/ui/tabs.tsx) | [story](../src/components/ui/tabs.stories.tsx) |
-| `textarea` | [`src/components/ui/textarea.tsx`](../src/components/ui/textarea.tsx) | 无同名独立 story，需检查组合覆盖 |
-| `tooltip` | [`src/components/ui/tooltip.tsx`](../src/components/ui/tooltip.tsx) | 无同名独立 story，需检查组合覆盖 |
-
-## 迁移风险与处理方案
-
-| Risk | Preparation / mitigation |
+| Risk | Result / follow-up |
 | --- | --- |
-| 移动源码打断 @ alias、Registry paths 和产品同步 | 先记录 imports，统一更新生成入口，校验产物；保留迁移说明 |
-| tokens 参考上游变成隐式外部设计契约 | 固定版本、明确 owned 映射，视觉升级有审查和基线 |
-| Tailwind 样式只在 Storybook 中存在 | Rslib/构建流程输出完整 CSS；独立消费者无源码扫描 |
-| utils 的产品专有 class 合并扩展 | 记录现有依赖，在产品迁移前保持兼容，后续拆出产品配置 |
-| scoped theme 丢失于 portal | 明确主题挂载/portal 策略并测试，不仅检查普通 DOM |
-| 原生 CSS 副本漂移或 Tailwind reset 影响宿主 | 使用唯一 tokens 真源，保留 shadow/host reset 浏览器回归 |
-| 一次性更改 API 与视觉难以判断回归 | 按阶段、批次与独立 PR 验证；breaking change 有升级路径 |
-| 改名遗漏资源/导入且提前占用发布身份 | 改名清单统一实施；当前不修改 npm 名字、GitHub repo 或产品 imports |
+| Rslib 非 bundle 模式 flatten 目录或 JSX runtime 缺失 | 显式 outBase 与 React plugin，模块闭包和 SSR 检查覆盖 |
+| CSS 只存在于 Storybook 编译 | UI 输出完整 CSS；独立消费者不配置 Tailwind、不扫描源码 |
+| tokens 引用上游形成隐式设计依赖 | 固定输入版本并保留 owned 映射，完整 token 契约/升级审查继续完善 |
+| Registry/npm 两份组件实现 | 删除核心源码分发与旧 sync，Registry 只提供包配置/组合 |
+| utils 依赖产品私有 scales | 删除产品专有扩展；产品自行迁移，不保留兼容 shim |
+| 局部主题丢失于 portal | 当前消费者验证全局 dark portal；局部主题 portal 策略仍待 P2 |
+| 原生 CSS 副本漂移 | 共享 runtime 由 tokens 构建到 standalone theme.css；保留 reset/shadow/form 测试 |
+| 真实产品迁移失败 | 本仓 fixture 不能证明真实产品接入，产品 PR 与测试仍待完成 |
+| 改名遗漏入口或提前发布 | 最终包名/URL/版本/license 审核在后续阶段，当前不发布或重命名 |
 
-## 实施启动前与命名准备
+## 下一阶段准备
 
-- [x] 权威规范、roadmap、仓库规则与可移植 Skill 已准备。
-- [x] 当前实现目录、同名 stories、生成脚本和 CI 已盘点。
-- [ ] 实施分支重新运行 baseline：typecheck、tokens、Registry、原生包及测试、Storybook。
-- [ ] 记录每个产品当前使用的组件、props、variants、CSS entry 与 custom overrides。
-- [ ] 确定首批兼容导出清单及源码移动后的 temporary compatibility 策略。
-- [ ] 选定独立 Rsbuild fixture 与真实产品验收对象。
-- [ ] 正式改名时确定 package scope/names、subpaths、repo/Registry/docs URLs、
-  internal dependencies、CI/artifacts、旧 imports 迁移与 license/第三方归属。
+- [ ] 完整 foundation/semantic token 契约与主题/portal 验证。
+- [ ] 首批组件 props、variants、sizes、states、refs 与扩展契约。
+- [ ] 全部公共组件 stories/state coverage、a11y 和关键视觉回归。
+- [ ] 至少一个真实产品的新入口接入与功能验证。
+- [ ] molcrafts-design 最终 npm names/subpaths、URLs、版本、license/第三方归属与发布流程。
 
-这些待办是实施前或对应阶段的工作，文档提交不会自动满足它们。
-本轮未运行跨产品同步，未重命名，未发包，未改变组件实现、主题或构建配置。
+使用新入口见 [迁移说明](workspace-migration.md)；不提供旧源码、旧 CSS 别名或同步兼容层。
