@@ -60,8 +60,8 @@ test("form-associated controls participate in native FormData and submission", a
 
 test("host geometry and neutral borders survive application resets", async ({ page }) => {
   await page.addStyleTag({ content: "* { border: 0 solid; padding: 0; margin: 0; font: inherit; }" });
-  await expect(page.locator("#add")).toHaveCSS("width", "32px");
-  await expect(page.locator("#add")).toHaveCSS("height", "32px");
+  await expect(page.locator("#add")).toHaveCSS("width", "40px");
+  await expect(page.locator("#add")).toHaveCSS("height", "40px");
   await expect(page.locator('fluent-button[type="submit"]')).toHaveCSS("border-top-width", "1px");
   expect(await page.locator("#tab-one").evaluate(el => parseFloat(getComputedStyle(el).paddingInlineStart))).toBeGreaterThan(0);
 });

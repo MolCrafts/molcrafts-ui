@@ -10,3 +10,6 @@ p { margin-bottom: 16px; }
 [data-mol-theme] { padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-panel); }
 h2 { font-size: var(--text-title); font-weight: var(--font-weight-semibold); }
 h3 { font-size: var(--text-body-lg); margin-bottom: 16px; }
+
+/* Deterministic visual fixture font: platform UI fonts differ between CI and developer machines. */
+:root, [data-mol-theme] { --font-sans: Arial, sans-serif; }

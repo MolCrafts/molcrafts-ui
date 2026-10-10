@@ -51,3 +51,5 @@ local release preparation does not authorize publishing or external repository r
 For 2D plots, read docs/chart-architecture.md and the optional package READMEs.
 Use design-vega for native Vega specs, design-vega-lite for compilation plus the same
 viewer. Do not import MolPlot for plain charts or add engines to the core UI package.
+
+Default to comfortable spacing and 40px controls. Compact density requires an explicit space constraint. Use sans typography and tabular figures for numeric readings; reserve monospace for code, paths and identifiers.

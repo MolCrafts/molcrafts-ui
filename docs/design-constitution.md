@@ -1,6 +1,6 @@
 # MolCrafts 设计宪法 · Fluent 2
 
-版本：v1.4，2026-10-10。适用于 molexp、molvis、molhub 的共享基础 UI。
+版本：v1.5，2026-10-10。适用于 molexp、molvis、molhub 的共享基础 UI。
 
 ## 1. 设计基线与来源
 
@@ -26,7 +26,10 @@
 
 ## 2. 字体与信息密度
 
-采用官方 Segoe UI 字体栈，平台原生字体作为回退；等宽字体采用 Consolas。
+以 Segoe UI 为首选，使用 system-ui 和平台原生字体回退。等宽字体使用
+ui-monospace、SFMono-Regular、Menlo、Consolas 等平台字体，避免 Courier 回退。
+普通文字和指标使用正文栈；仅代码、路径、提交哈希等标识符使用等宽字体。
+对齐数字使用 tabular-nums，不以等宽字体代替。
 不从网络加载专有字体。中文由系统字体回退，必须保留清晰的混排与行高。
 
 | 角色 | CSS 工具类 | 字号 / 行高 | 用途 |
@@ -40,16 +43,18 @@
 | 展示标题 | `text-display` | 32 / 40px | 低密度介绍页 |
 
 正文使用 400，标题和行动文字使用 600。必要信息至少 12px；设置标签和
-导航采用 14px。标题行高跟随 tokens，不额外压成 `leading-none`。
+导航采用 14–16px。标题行高跟随 tokens，不额外压成 `leading-none`。
 采用句式大小写，左对齐正文，数字列右对齐并使用 `tabular-nums`。
 
 | 密度 | 高度 | 约束 |
 |---|---|---|
-| Compact | 28px | MolCrafts 科学工作台的明确适配，仅用于高密度桌面工具栏 |
-| Default | 32px | 默认按钮、输入、选择器，对齐 Fluent medium |
-| Comfortable | 40px | 大按钮，对齐 Fluent large |
+| Default / Comfortable | 40px | 默认按钮、输入、选择器；采用 Fluent large 作为默认尺寸 |
+| Large | 48px | MolCrafts 扩展的大尺寸控件 |
+| Compact | 28px | 必须显式选择并说明空间约束，不作为科学工作台的默认值 |
 | Touch target | ≥44px | 触屏点击区域，必要时扩大命中区域 |
 
+取消 compact 优先：默认阅读与操作舒适，项目导航行至少 40px，常规内边距至少 8px。
+不得因为应用属于科学或工程工具，就预设紧凑布局。Compact 是可选适配。
 同一行控件保持同一密度。不要通过减小正文或压缩行高获得更高密度。
 
 ## 3. 布局、间距与形状
@@ -205,7 +210,7 @@ preflight，无需扫描库源码。框架无关 CSS 使用 `@molcrafts/design-t
 别名、stock radius 别名、产品私有 cn 扩展与源码同步流程均已删除。
 产品直接迁移到新入口，具体清单见 [迁移说明](workspace-migration.md)。
 
-默认视觉保持已有 Fluent 2 基线：4px 控件圆角、14px 控件文字、40px 大控件、
+默认视觉保持已有 Fluent 2 基线：4px 控件圆角、14px 控件文字、40px 默认控件和 48px 大控件、
 8px 面板/弹窗、柔和状态 badge 和线形 tabs。API 所有权仍按 roadmap 分批落实。
 
 PR 验收：类型检查、tokens 再生成、registry 再生成、Storybook 构建；

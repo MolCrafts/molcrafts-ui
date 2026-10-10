@@ -54,8 +54,8 @@ catalog 仅描述默认值，不在运行时写入主题。产品定制、状态
 | `--focus-offset` | border / focus | `2px` | `2px` |
 | `--font-weight-normal` | typography | `400` | `400` |
 | `--font-weight-semibold` | typography | `600` | `600` |
-| `--font-sans` | typography | `'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif` | `'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif` |
-| `--font-mono` | typography | `Consolas, 'Courier New', Courier, monospace` | `Consolas, 'Courier New', Courier, monospace` |
+| `--font-sans` | typography | `'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif` | `'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif` |
+| `--font-mono` | typography | `ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', monospace` | `ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', monospace` |
 | `--text-micro` | typography | `10px` | `10px` |
 | `--text-micro--line-height` | typography | `14px` | `14px` |
 | `--text-label` | typography | `12px` | `12px` |
@@ -75,10 +75,10 @@ catalog 仅描述默认值，不在运行时写入主题。产品定制、状态
 | `--radius-overlay` | radius | `8px` | `8px` |
 | `--radius-checkbox` | radius | `2px` | `2px` |
 | `--spacing-control-compact` | spacing / sizing | `1.75rem` | `1.75rem` |
-| `--spacing-control` | spacing / sizing | `2rem` | `2rem` |
-| `--spacing-control-comfortable` | spacing / sizing | `2.5rem` | `2.5rem` |
+| `--spacing-control` | spacing / sizing | `2.5rem` | `2.5rem` |
+| `--spacing-control-comfortable` | spacing / sizing | `3rem` | `3rem` |
 | `--spacing-toolbar-compact` | spacing / sizing | `2.5rem` | `2.5rem` |
-| `--spacing-toolbar` | spacing / sizing | `2.75rem` | `2.75rem` |
+| `--spacing-toolbar` | spacing / sizing | `3rem` | `3rem` |
 | `--spacing-statusbar` | spacing / sizing | `1.75rem` | `1.75rem` |
 | `--spacing-touch-target` | spacing / sizing | `2.75rem` | `2.75rem` |
 | `--spacing-menu` | spacing / sizing | `8rem` | `8rem` |

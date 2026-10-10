@@ -96,7 +96,7 @@ icon-only 行动有准确名称和可见说明。没有旧 accent/link、stock r
 降到 0，仍保留可访问状态。`forced-colors` 使用系统 Highlight/ButtonText 等，而不是
 强制保持品牌色。焦点的 focus-width/offset、ring/focus-inner 共同建立指示器。
 
-默认 control 为 32px、compact 28px、comfortable 40px、touch target 至少 44px；
+默认 control 为舒适的 40px、显式 compact 28px、大尺寸 control-comfortable 48px、touch target 至少 44px；
 默认 control radius 4px、panel/overlay 8px、checkbox 2px。改变 foundation 会影响所有
 依赖它的组件，属于受版本管理的样式契约；不是随页面任意改变控件密度的建议。
 组件 variants/slots 优先于广泛 DOM overrides；不要随意增加单组件 token。

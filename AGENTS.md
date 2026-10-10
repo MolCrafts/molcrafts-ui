@@ -74,3 +74,5 @@ Use relevant checks for the actual change; documentation-only preparation needs 
 consistency and diff checks, not new component tests.
 The old source-sync workflow is removed; product migration belongs in product PRs. Record missing coverage
 and real-product verification honestly; future fixture tests do not prove product migration.
+
+Default to comfortable spacing and 40px controls. Compact density requires an explicit space constraint. Use the sans stack for text and numeric readings; reserve monospace for code, paths and identifiers.

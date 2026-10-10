@@ -107,5 +107,5 @@ test("foundation geometry is read from runtime CSS rather than baked into utilit
   await expect(page.locator("#scoped-primary")).toHaveCSS("border-radius", "6px");
   await expect(page.locator("#scoped-primary")).toHaveCSS("font-size", "15px");
   // Explicit nested scope owns its complete foundation again.
-  await expect(page.getByRole("button", { name: "Nested light primary" })).toHaveCSS("height", "32px");
+  await expect(page.getByRole("button", { name: "Nested light primary" })).toHaveCSS("height", "40px");
 });

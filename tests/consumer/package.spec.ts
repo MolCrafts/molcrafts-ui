@@ -5,7 +5,7 @@ test("built public exports provide component CSS, interactions and runtime theme
   page.on("pageerror", error => errors.push(error.message));
   await page.goto("/");
   const primary = page.getByRole("button", { name: "Increment" });
-  await expect(primary).toHaveCSS("height", "32px");
+  await expect(primary).toHaveCSS("height", "40px");
   await expect(primary).toHaveCSS("border-radius", "4px");
   await expect(primary).toHaveCSS("background-color", "rgb(15, 108, 189)");
   await expect(primary).toHaveCSS("font-size", "14px");
