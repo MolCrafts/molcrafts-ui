@@ -55,6 +55,32 @@ npm run build:registry   # writes public/r/*.json
 npm run dev:registry     # optional static server for /r
 ```
 
+## Storybook (component authors)
+
+Requires Node.js 20.19+ or 22.12+ and npm. Storybook 10 uses
+[Rsbuild](https://storybook.rsbuild.rs/guide/framework/react), powered by Rspack.
+
+```bash
+npm ci
+npm run storybook        # http://localhost:6006
+npm run build:storybook  # static site in storybook-static/
+npm run typecheck        # includes stories and Storybook configuration
+```
+
+The preview imports Tailwind v4 and the shared `src/styles/tokens.css` scaffold.
+Use the theme toolbar to switch between light and dark; the theme is applied to
+the preview document so dialogs and other portaled overlays inherit it too.
+The Docs tab shows generated component documentation and controls, and the
+Accessibility panel checks the rendered story.
+
+Stories live next to components as `*.stories.tsx`. Initial examples cover
+buttons, badges, form controls, dialogs, tabs, empty states, numeric fields,
+cards/loading states, resizable panels, and settings sections. The button,
+dialog, and numeric-field stories also exercise interaction behavior through
+`play` functions. Add new stories using typed `Meta` and `StoryObj` imports from
+`storybook-react-rsbuild`. Stories and preview styles are development-only and
+are not included in the generated registry or product sync.
+
 ## Product consumers
 
 In each app’s `components.json`:

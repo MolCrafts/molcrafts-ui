@@ -4,4 +4,5 @@ dist/
 *.log
 .turbo/
 .vite/
+storybook-static/
 node_modules/
