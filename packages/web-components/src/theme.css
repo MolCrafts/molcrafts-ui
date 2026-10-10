@@ -3,11 +3,15 @@
 @import "./fluent-web-theme.css";
 @import "./fluent-host.css";
 
-/* Rebind at product scopes so custom palettes reach Shadow DOM controls. */
-:where(:root, :host), [data-mol-theme], .mol-product-theme {
+/* Keep font aliases consistent when upstream dark selectors reset their defaults. */
+:where(:root, :host), .dark, [data-mol-theme], .mol-product-theme {
   --fontFamilyBase: var(--font-sans);
   --fontFamilyMonospace: var(--font-mono);
   --fontFamilyNumeric: var(--font-sans);
+}
+
+/* Rebind at product scopes so custom palettes reach Shadow DOM controls. */
+:where(:root, :host), [data-mol-theme], .mol-product-theme {
   --colorBrandBackground: var(--primary);
   --colorBrandBackgroundHover: var(--primary-hover);
   --colorBrandBackgroundPressed: var(--primary-pressed);

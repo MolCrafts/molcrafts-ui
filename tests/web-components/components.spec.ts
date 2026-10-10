@@ -68,7 +68,9 @@ test("host geometry and neutral borders survive application resets", async ({ pa
 
 test("product brands cross Shadow DOM while dark, reduced-motion and high-contrast modes work", async ({ page }) => {
   const action = page.locator("#add");
+  await expect(action).toHaveCSS("font-family", /system-ui/);
   await page.locator("html").evaluate(el => el.classList.add("dark"));
+  await expect(action).toHaveCSS("font-family", /system-ui/);
   await expect(action).toHaveCSS("background-color", "rgb(17, 94, 163)");
   await page.locator("#autosave").click();
   await expect(page.locator("#autosave .checked-indicator")).toHaveCSS("background-color", "rgb(255, 255, 255)");
