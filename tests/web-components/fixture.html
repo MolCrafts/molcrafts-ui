@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MolCrafts Web Components</title>
+  <link rel="stylesheet" href="/theme.css">
+  <style>
+    body { margin: 24px; font: var(--fontSizeBase300)/var(--lineHeightBase300) var(--fontFamilyBase); background: var(--background); color: var(--foreground); }
+    main { max-width: 640px; display: grid; gap: 16px; }
+    form { display: grid; gap: 12px; }
+    .row { display: flex; gap: 8px; align-items: center; }
+    fluent-text-input, fluent-textarea { width: 100%; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Framework-independent controls</h1>
+    <div class="row">
+      <fluent-button id="add" appearance="primary" icon-only aria-label="Add item" type="button"></fluent-button>
+      <fluent-tooltip anchor="add" delay="0">Add item</fluent-tooltip>
+      <fluent-button id="disabled" disabled aria-disabled="true" aria-label="Disabled action">Disabled</fluent-button>
+      <output id="count" aria-live="polite">0</output>
+    </div>
+    <form id="preferences">
+      <fluent-field>
+        <fluent-label slot="label">Workspace preferences</fluent-label>
+        <fluent-text-input slot="input" id="name" name="name" value="Workspace" required>Name</fluent-text-input>
+      </fluent-field>
+      <fluent-textarea name="notes"><span slot="label">Notes</span>Shared UI</fluent-textarea>
+      <div class="row"><fluent-checkbox id="notifications" aria-label="Notifications" name="notifications" value="on"></fluent-checkbox><label for="notifications">Notifications</label></div>
+      <div class="row"><fluent-switch id="autosave" aria-label="Auto save" name="autosave" value="on"></fluent-switch><label for="autosave">Auto save</label></div>
+      <fluent-button type="submit">Save changes</fluent-button>
+    </form>
+    <output id="saved" aria-live="polite"></output>
+    <fluent-divider></fluent-divider>
+    <fluent-tablist aria-label="Sections"><fluent-tab id="tab-one">Overview</fluent-tab><fluent-tab id="tab-two">Details</fluent-tab></fluent-tablist>
+    <div class="row"><fluent-badge appearance="tint" color="success">Completed</fluent-badge><fluent-badge appearance="tint" color="danger">Failed</fluent-badge><fluent-spinner size="tiny" aria-label="Loading"></fluent-spinner><span>Loading</span></div>
+  </main>
+  <script type="module">
+    import { fluentIcons, managedComponents, registerMolcraftsComponents } from '/browser.js';
+    await registerMolcraftsComponents(); // Explicit calls and the automatic entry can coexist.
+    document.querySelector('#add').innerHTML = fluentIcons.add;
+    document.querySelector('#add').addEventListener('click', () => {
+      const count = document.querySelector('#count');
+      count.textContent = String(Number(count.textContent) + 1);
+    });
+    document.querySelector('#preferences').addEventListener('submit', event => {
+      event.preventDefault();
+      document.querySelector('#saved').textContent = JSON.stringify(Object.fromEntries(new FormData(event.target)));
+    });
+    window.managedTags = managedComponents.map(component => component.tag);
+    window.registerAgain = registerMolcraftsComponents;
+    window.ready = true;
+  </script>
+</body>
+</html>

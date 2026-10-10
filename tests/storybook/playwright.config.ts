@@ -1,0 +1,13 @@
+import { defineConfig } from "@playwright/test";
+export default defineConfig({
+  testDir: ".", testMatch: "*.spec.ts",
+  use: {
+    baseURL: "http://127.0.0.1:6012",
+    launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+      ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH } : {},
+  },
+  webServer: {
+    command: "node scripts/serve-storybook.mjs", cwd: new URL("../../", import.meta.url).pathname,
+    url: "http://127.0.0.1:6012", reuseExistingServer: !process.env.CI,
+  },
+});

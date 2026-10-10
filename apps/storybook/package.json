@@ -1,0 +1,32 @@
+{
+  "name": "@molcrafts/storybook",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6006 --disable-telemetry",
+    "build": "storybook build --disable-telemetry -o ../../storybook-static"
+  },
+  "dependencies": {
+    "@molcrafts/ui": "workspace:*",
+    "@molcrafts/tokens": "workspace:*",
+    "@molcrafts/web-components": "workspace:*",
+    "@fluentui/react-icons": "2.0.344",
+    "@rsbuild/core": "2.2.12",
+    "@rsbuild/plugin-react": "2.1.1",
+    "@storybook/addon-a11y": "10.6.1",
+    "@storybook/addon-docs": "10.6.1",
+    "@storybook/addon-themes": "10.6.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "storybook": "10.6.1",
+    "storybook-react-rsbuild": "3.6.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4"
+  }
+}

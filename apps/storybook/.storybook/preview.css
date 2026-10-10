@@ -1,0 +1,16 @@
+@import "tailwindcss" source(none);
+@import "@molcrafts/ui/styles.css";
+@import "@molcrafts/tokens/tailwind.css";
+
+@source "../src";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}

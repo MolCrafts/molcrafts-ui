@@ -1,6 +1,6 @@
 # MolCrafts 设计宪法 · Fluent 2
 
-版本：v1.1，2026-10-10。适用于 molexp、molvis、molhub 的共享基础 UI。
+版本：v1.3，2026-10-10。适用于 molexp、molvis、molhub 的共享基础 UI。
 
 ## 1. 设计基线与来源
 
@@ -15,8 +15,11 @@
 [层级](https://fluent2.microsoft.design/elevation)、
 [动效](https://fluent2.microsoft.design/motion)。
 
-保留现有 React/Radix primitives 与 shadcn 源码分发方式。共享 UI 的视觉
-规则由本宪法、生成的 tokens 和 Storybook 示例共同定义。
+保留工作正常的 React/Radix primitives。目标以版本化包为主分发，Registry
+保留为可选集成入口；当前源码流程在迁移期间继续可用。工程边界遵循
+[重构规范](design-system-refactoring-spec.md) 与 [roadmap](design-system-roadmap.md)。
+共享 UI 的视觉规则由本宪法、MolCrafts-owned tokens 和 Storybook 示例共同定义。
+上游 Fluent tokens 是审查后的参考输入，不替代 MolCrafts 对视觉契约的所有权。
 
 原则：阅读优先、控件克制、层级明确、状态可辨。用中性色承载信息，品牌色
 用于主要行动与选中指示。科学数据的可视化配色由产品单独管理。
@@ -96,12 +99,11 @@ primary 与 secondary 两组品牌色**，产品仓库分别提供明暗主题�
 
 primary 承载主要行动、选中和品牌链接；secondary 用于辅助品牌表达和产品
 识别，不覆盖成功、失败、警告等语义色。`Button variant="secondary"` 仍表示
-**中性次要行动**，使用 neutral slots，并不等于第二品牌色按钮。已有 accent
-与 link slots 分别作为 primary 系列的兼容别名。
+**中性次要行动**，使用 neutral slots，并不等于第二品牌色按钮。旧 accent / link 别名已删除；组件直接使用 primary 系列及 primary-link。
 
 在产品根元素覆盖完整的 primary / secondary slots；局部主题容器使用
-`className="mol-product-theme"`，让兼容别名在当前作用域重新绑定。主主题的
-明暗选择器仍由产品维护。Storybook `Foundations/Product themes` 演示明暗
+`className="mol-product-theme"`。React 直接读取当前作用域的语义 tokens，原生
+控件在该作用域绑定官方 camelCase tokens。明暗选择器由产品维护。Storybook `Foundations/Product themes` 演示明暗
 两套独立色组；其中自定义配色仅为示例。
 
 品牌实心背景和链接文字是不同角色，尤其在暗色模式下必须分别映射。
@@ -177,16 +179,17 @@ hover/pressed 100ms，浮层进入 150ms，sheet 200ms。交互颜色采用官�
 
 | 文件 | 责任 |
 |---|---|
-| `scripts/build-design-tokens.mjs` | 官方 tokens → 稳定的 MolCrafts 语义映射 |
+| `scripts/build-design-tokens.mjs` | 固定官方参考输入 → MolCrafts-owned 语义映射 |
 | `fluent-theme.css` | 生成的明暗表面、行动与焦点颜色 |
 | `fluent-foundation.css` | 生成的共享状态、动效和阴影颜色 |
 | `constitution-theme.css` | 生成的字体、圆角、控件尺寸 |
 | `constitution-base.css` | 共享行为、状态柔和背景、焦点、动画与阴影结构 |
-| `tokens.css` | 完整导入入口与 Tailwind 语义映射 |
+| `packages/tokens/src/tokens.css` | Tailwind 语义映射 |
 | Storybook `Foundations/Constitution` | 可以实际交互的视觉对照 |
 | Storybook `Foundations/Product themes` | 产品 primary / secondary 色组与中性、状态色隔离 |
 
-运行 `npm run build:tokens` 更新生成文件，再运行 `npm run build:registry`。
+运行 `pnpm build:tokens` 更新生成文件；共享源位于 `packages/tokens/src`，
+纯 CSS runtime 与 Tailwind 集成作为不同入口构建。React CSS 由 `pnpm build:ui` 编译。
 CI 校验生成结果与提交文件一致。生成的三个文件不手动修改。
 
 更新官方版本时，固定 `@fluentui/react-theme` 的具体版本，重新生成，
@@ -194,21 +197,16 @@ CI 校验生成结果与提交文件一致。生成的三个文件不手动修�
 
 ## 10. 产品接入与变更验收
 
-新消费方导入 `tokens.css`，再叠加完整的产品 primary / secondary 品牌映射。
-已有主题中的 `--secondary` 若表示中性表面，应迁移为 `--neutral`，对应前景
-迁移为 `--neutral-foreground`；新 `--secondary` 专用于第二品牌色。
-已经维护产品表面映射的
-应用导入 `constitution-base.css` 和 `constitution-theme.css`，并提供新的
-`surface`、`link`、`accent-pressed`、`accent-muted`、focus、disabled 等
-语义 slots，连同 primary / secondary 系列及 neutral slots。直接导入 base 的
-产品也须自行定义 accent / link 与 primary 的兼容映射（完整 tokens 入口已提供）。
-base 相邻目录必须有 `fluent-foundation.css`。同步脚本会一起
-复制该文件。Registry 的 tokens item 包含完整的五个 CSS 文件。
+React 消费方导入 `@molcrafts/ui/styles.css`，包含默认 tokens、编译 utility 和
+preflight，无需扫描库源码。框架无关 CSS 使用 `@molcrafts/tokens/runtime.css`，
+应用自有 Tailwind utility 可用 `@molcrafts/tokens/tailwind.css`。
+产品提供完整 primary / secondary 品牌组；中性行动使用 neutral，状态色独立。
+用户要求不向后兼容：旧 src 路径、单独 constitution CSS 公共入口、accent/link
+别名、stock radius 别名、产品私有 cn 扩展与源码同步流程均已删除。
+产品直接迁移到新入口，具体清单见 [迁移说明](workspace-migration.md)。
 
-此次视觉调整：控件圆角 6→4px、正文 13→14px、大控件 36→40px、弹窗
-圆角 10→8px、badge 默认改为柔和填充、tabs 默认改为线形指示器。组件
-props 保持兼容。产品升级时检查工具栏密度、卡片间距、表格换行和自定义
-主题，避免保留与新 tokens 冲突的旧值。
+默认视觉保持已有 Fluent 2 基线：4px 控件圆角、14px 控件文字、40px 大控件、
+8px 面板/弹窗、柔和状态 badge 和线形 tabs。API 所有权仍按 roadmap 分批落实。
 
 PR 验收：类型检查、tokens 再生成、registry 再生成、Storybook 构建；
 明暗模式与高对比度模式；键盘焦点、弹窗关闭、表单错误、加载和空状态；
@@ -216,7 +214,27 @@ PR 验收：类型检查、tokens 再生成、registry 再生成、Storybook 构
 此外检查两组品牌色的明暗状态、纯图标按钮的名称/Tooltip/键盘操作，以及
 产品配色改变后中性次要行动和语义状态色保持一致。
 
-Registry 安装会自动带入 Fluent 图标依赖；直接运行同步脚本的消费方须先
-安装 `@fluentui/react-icons`，同步脚本仅复制源码，不更新产品 package.json。
+Registry 只提供包样式接入与组合示例，不再分发核心源码。包显式声明图标依赖；
+产品自行使用官方图标时也须在产品依赖中声明。
 
 各产品页面的实际迁移通过独立产品 PR 完成。本仓提供共享基线和迁移契约。
+
+## 11. Web Components 同源管理
+
+`packages/web-components` 是框架无关的共享入口，基于核对时最新稳定的官方
+`@fluentui/web-components` **3.1.3**。React 与 Web Components 服从同一宪法、
+primary / secondary 色组、中性次要行动、Fluent 图标和可访问性规则。
+
+Web Components 使用普通 CSS 和官方 camelCase token 映射，产品色组必须
+能够继承进入 Shadow DOM；不要求消费方配置 Tailwind。图标采用官方
+`@fluentui/svg-icons` **1.1.344**，与 React 图标保持同一 Regular 视觉语言。
+减少动画须在 Shadow DOM 内生效，不能只修改宿主页面样式。
+
+组件范围由 `components.json` 管理；生成类型、注册表与 Custom Elements
+Manifest；Rslib/Rspack 构建 ESM 和独立浏览器包。新增组件应更新清单、文档、
+Storybook 和浏览器验证。现阶段纳管 13 个官方标签，未纳管组件不得声称与
+React registry 已达到功能对等。公开 API 遵循原生事件、属性和官方 slots/parts。
+
+验收同时覆盖普通 HTML 的独立消费、异步重复注册、键盘操作和 Tooltip、
+禁用、原生表单提交、品牌色/明暗、高对比度和减少动画。框架集成与 SSR
+接入约束见 [Web Components 文档](../packages/web-components/README.md)。

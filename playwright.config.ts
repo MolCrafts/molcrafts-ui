@@ -1,0 +1,17 @@
+import { defineConfig } from "@playwright/test";
+
+export default defineConfig({
+  testDir: "./tests/web-components",
+  use: {
+    baseURL: "http://127.0.0.1:6010",
+    headless: true,
+    launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+      ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH }
+      : {},
+  },
+  webServer: {
+    command: "node scripts/serve-web-components.mjs",
+    url: "http://127.0.0.1:6010",
+    reuseExistingServer: !process.env.CI,
+  },
+});

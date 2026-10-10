@@ -1,0 +1,43 @@
+/** Generated from @fluentui/react-theme 9.2.2. Run pnpm build:tokens. */
+
+:where(:root, :host) {
+  --motion-fast: 100ms;
+  --motion-base: 150ms;
+  --motion-slow: 200ms;
+  --motion-ease: cubic-bezier(0.33,0,0.67,1);
+  --motion-enter: cubic-bezier(0,0,0,1);
+  --motion-exit: cubic-bezier(1,0,1,1);
+  --neutral-shadow-ambient: rgba(0,0,0,0.12);
+  --neutral-shadow-key: rgba(0,0,0,0.14);
+  --status-draft: #616161;
+  --status-ready: #424242;
+  --status-queued: #004377;
+  --status-running: #0078d4;
+  --status-completed: #107c10;
+  --status-failed: #d13438;
+  --status-failed-hover: #bc2f32;
+  --status-cancelled: #616161;
+  --status-cached: #341a51;
+  --status-warning: #fde300;
+  --status-ready-foreground: #424242;
+  --status-running-foreground: #004377;
+  --status-completed-foreground: #0e700e;
+  --status-failed-foreground: #bc2f32;
+  --status-warning-foreground: #817400;
+}
+
+.dark, :where(:root, :host).dark {
+  --neutral-shadow-ambient: rgba(0,0,0,0.24);
+  --neutral-shadow-key: rgba(0,0,0,0.28);
+  --status-draft: #adadad;
+  --status-ready: #d6d6d6;
+  --status-queued: #a9d3f2;
+  --status-running: #5caae5;
+  --status-cancelled: #adadad;
+  --status-cached: #c6b1de;
+  --status-ready-foreground: #d6d6d6;
+  --status-running-foreground: #a9d3f2;
+  --status-completed-foreground: #54b054;
+  --status-failed-foreground: #e37d80;
+  --status-warning-foreground: #feee66;
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "setup",
+  "type": "registry:style",
+  "title": "MolCrafts package styles",
+  "description": "Install canonical package CSS; no component source copying.",
+  "dependencies": [
+    "@molcrafts/ui",
+    "@molcrafts/tokens"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/setup.css",
+      "type": "registry:style",
+      "content": "@import \"@molcrafts/ui/styles.css\";\n"
+    }
+  ]
+}

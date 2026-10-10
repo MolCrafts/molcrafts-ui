@@ -7,7 +7,7 @@
  * experiments; can be replaced by `npx shadcn@latest build` when ready.
  */
 
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile, readdir, unlink } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -17,6 +17,8 @@ const outDir = path.join(root, "public", "r");
 const registry = JSON.parse(await readFile(path.join(root, "registry.json"), "utf8"));
 
 await mkdir(outDir, { recursive: true });
+// public/r contains generated registry JSON only; remove retired core-source items.
+for (const file of await readdir(outDir)) if (file.endsWith(".json")) await unlink(path.join(outDir, file));
 
 const built = [];
 

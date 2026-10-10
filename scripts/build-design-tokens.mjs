@@ -5,7 +5,7 @@ import { webDarkTheme, webLightTheme } from "@fluentui/react-theme";
 const root = new URL("../", import.meta.url);
 const packageJson = JSON.parse(await readFile(new URL("package.json", root), "utf8"));
 const version = packageJson.devDependencies["@fluentui/react-theme"];
-const header = `/** Generated from @fluentui/react-theme ${version}. Run npm run build:tokens. */\n`;
+const header = `/** Generated from @fluentui/react-theme ${version}. Run pnpm build:tokens. */\n`;
 
 // Keep public MolCrafts names stable; values come from the released Fluent 2 web themes.
 const roles = {
@@ -63,21 +63,9 @@ function themeBlock(selector, theme, scheme) {
   return `${selector} {\n${lines.join("\n")}\n}\n`;
 }
 
-await writeFile(new URL("src/styles/fluent-theme.css", root), header + "\n" +
+await writeFile(new URL("packages/tokens/src/fluent-theme.css", root), header + "\n" +
   themeBlock(":where(:root, :host)", webLightTheme, "light") + "\n" +
-  themeBlock(".dark, :where(:root, :host).dark", webDarkTheme, "dark") + `
-/* Rebind legacy accent slots at each product scope so nested palettes also work. */
-:where(:root, :host), .mol-product-theme {
-  --accent: var(--primary);
-  --accent-hover: var(--primary-hover);
-  --accent-pressed: var(--primary-pressed);
-  --accent-foreground: var(--primary-foreground);
-  --accent-muted: var(--primary-muted);
-  --accent-muted-foreground: var(--primary-muted-foreground);
-  --link: var(--primary-link);
-  --link-hover: var(--primary-link-hover);
-}
-`);
+  themeBlock(".dark, :where(:root, :host).dark", webDarkTheme, "dark"));
 
 const typeScale = {
   micro: ["fontSizeBase100", "lineHeightBase100"],
@@ -97,8 +85,7 @@ for (const [role, [size, height]] of Object.entries(typeScale)) {
 }
 for (const [role, source] of Object.entries({
   control: "borderRadiusMedium", panel: "borderRadiusXLarge", overlay: "borderRadiusXLarge",
-  checkbox: "borderRadiusSmall", sm: "borderRadiusSmall", md: "borderRadiusMedium",
-  lg: "borderRadiusLarge", xl: "borderRadiusXLarge",
+  checkbox: "borderRadiusSmall",
 })) foundation.push(`  --radius-${role}: ${webLightTheme[source]};`);
 
 // Retain the 28px scientific-workbench compact size; Fluent medium/large use 32/40px.
@@ -109,9 +96,11 @@ for (const [role, value] of Object.entries({
   "dialog-lg": "34rem", "dialog-scroll": "80vh", "overlay-viewport": "calc(100% - 2rem)",
 })) foundation.push(`  --spacing-${role}: ${value};`);
 foundation.push(`  --ease-standard: ${webLightTheme.curveEasyEase};`);
-await writeFile(new URL("src/styles/constitution-theme.css", root), header +
+await writeFile(new URL("packages/tokens/src/constitution-theme.css", root), header +
   "/* Shared geometry only. Product brand mappings belong to the product theme. */\n@theme inline {\n" +
   foundation.join("\n") + "\n}\n");
+
+await writeFile(new URL("packages/tokens/src/geometry.css", root), header + ":where(:root, :host) {\n" + foundation.join("\n") + "\n}\n");
 
 const shared = {
   "motion-fast": "durationFaster", "motion-base": "durationFast", "motion-slow": "durationNormal",
@@ -134,7 +123,7 @@ function sharedBlock(selector, theme) {
     return `  --${role}: ${value};`;
   }).join("\n") + "\n}\n";
 }
-await writeFile(new URL("src/styles/fluent-foundation.css", root), header + "\n" +
+await writeFile(new URL("packages/tokens/src/fluent-foundation.css", root), header + "\n" +
   sharedBlock(":where(:root, :host)", webLightTheme) + "\n" +
   sharedBlock(".dark, :where(:root, :host).dark", webDarkTheme));
-console.log(`Generated Fluent 2 theme, foundation, and geometry in ${fileURLToPath(new URL("src/styles/", root))}`);
+console.log(`Generated Fluent 2 theme, foundation, and geometry in ${fileURLToPath(new URL("packages/tokens/src/", root))}`);

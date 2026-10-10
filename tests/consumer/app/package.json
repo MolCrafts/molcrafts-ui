@@ -1,0 +1,23 @@
+{
+  "name": "@molcrafts/consumer-fixture",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rsbuild build",
+    "preview": "rsbuild preview --port 6011 --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@molcrafts/ui": "workspace:*",
+    "@molcrafts/tokens": "workspace:*",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "2.2.12",
+    "@rsbuild/plugin-react": "2.1.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "typescript": "5.9.3"
+  }
+}

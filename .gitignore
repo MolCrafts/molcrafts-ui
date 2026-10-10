@@ -5,4 +5,6 @@ dist/
 .turbo/
 .vite/
 storybook-static/
+test-results/
+playwright-report/
 node_modules/

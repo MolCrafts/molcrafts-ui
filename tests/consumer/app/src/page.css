@@ -1,0 +1,7 @@
+body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); }
+main { margin: 24px auto; padding: 16px; max-width: 640px; }
+h1 { font-size: var(--text-heading); margin-bottom: 16px; }
+p { margin-bottom: 16px; }
+[data-slot="card"] { margin-top: 16px; }
+[data-slot="card-content"] { display: grid; gap: 16px; }
+.product-brand { margin-top: 16px; --primary: #7b327e; --primary-hover: #652669; --primary-pressed: #4f1c53; --primary-foreground: white; }

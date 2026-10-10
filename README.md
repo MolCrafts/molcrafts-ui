@@ -1,133 +1,89 @@
-# @molcrafts/ui — shared shadcn registry for MolCrafts
+# MolCrafts Design System — future molcrafts-design
 
-**Source of truth** for the MolCrafts visual constitution and shadcn-style React
-primitives shared by **molexp**, **molvis**, and **molhub**.
+Independent shared React UI with Fluent 2 visual language, owned semantic tokens,
+Rslib packages and Storybook on Rsbuild/Rspack. **All packages are private and
+unpublished.** Final names and the repository rename to `molcrafts-design` are deferred.
 
-This is **not** only an opaque npm component library. Following
-[shadcn registry](https://ui.shadcn.com/docs/registry):
+This first implementation establishes workspace and distribution boundaries.
+Component API ownership, complete story/state coverage, visual regression and
+real-product integration remain tracked in the [roadmap](docs/design-system-roadmap.md).
 
-1. Author components here as source.
-2. `npm run build:registry` → static JSON under `public/r/`.
-3. Product apps install with:
+## Packages and applications
 
-```bash
-npx shadcn@latest add @molcrafts/button
+| Path | Responsibility |
+| --- | --- |
+| `packages/tokens` | Framework-independent runtime CSS and optional Tailwind v4 integration |
+| `packages/ui` | Canonical React components, public types and complete compiled CSS |
+| `packages/web-components` | 13 managed Fluent custom elements with independent native APIs |
+| `apps/storybook` | Documentation and playground consuming built public package entries |
+| `tests/consumer/app` | Independent Rsbuild application without Tailwind configuration |
+| `registry` | Optional package setup and composition examples; no core source distribution |
+
+## Development
+
+Use Node 24+ and pnpm 11.25.0, pinned by `packageManager`.
+
+```sh
+pnpm install --frozen-lockfile
+pnpm storybook             # build packages, then http://localhost:6006
+pnpm typecheck             # builds packages before checking public types and stories
+pnpm verify:packages       # exports, module closure, CSS and React SSR
+pnpm build:consumer        # independent Rsbuild build, no library source scan
+pnpm exec playwright install chromium
+pnpm test:consumer
+pnpm test:web-components
+pnpm build:storybook
+pnpm test:storybook        # render every story, run plays and verify Autodocs
+pnpm verify:consumer-tarball # pack locally, install/build outside this workspace
+pnpm build:registry
+pnpm build:catalog
 ```
 
-Optional npm package may later ship **tokens + `cn` + thin re-exports** for
-plugin runtimes; product apps should prefer the registry so they keep local
-ownership of UI source after install.
+CI additionally checks generated files and uploads build artifacts. Local packing
+is validation, not publishing. No publish/tag/release automation is configured.
 
-## What’s in the registry (35 items)
+## React consumer
 
-| Kind | Items |
-|------|--------|
-| Foundation | `utils`, `tokens` |
-| Primitives | button, badge, input, label, tabs, tooltip, dialog, dropdown-menu, select, checkbox, separator, scroll-area, popover, slider, card, table, sheet, skeleton, textarea, alert-dialog, accordion, collapsible, context-menu, switch, empty-state, code, number-field, progress-spinner, resizable, command |
-| Blocks | `settings-section`, `settings-shell`, `edge-panel` (pull-from-edge rail; includes `use-pointer-drag`) |
+These are current private workspace imports, not final published names:
 
-### CSS: extract constitution, not brand
+```tsx
+import { Button } from "@molcrafts/ui";
+import "@molcrafts/ui/styles.css";
 
-`tokens` ships the shared **constitution** (type scale, radius, control geometry,
-motion, status roles, semantic slots). Product brand palettes (`--molexp-*`,
-`--molvis-*`) stay in product repos and rebind complete `--primary-*` /
-`--secondary-*` color families and surfaces. Legacy `--accent-*` slots alias
-primary; neutral secondary actions use `--neutral` / `--neutral-foreground`.
-
-### Plugin UI: no Cell type
-
-`molvis/plugin/src/ui` is only **button / checkbox / select**. Those three are
-in this registry. There is no separate “plugin cell” primitive; table cells
-live under `table`. Plugin package API stays for runtime; sources converge here.
-
-See [docs/extraction-matrix.md](docs/extraction-matrix.md) for the full matrix.
-
-## Visual constitution (Fluent 2)
-
-The [design constitution](docs/design-constitution.md) defines the shared visual
-language using the current Fluent UI React v9 / Fluent 2 Web tokens. Official
-`@fluentui/react-theme` 9.2.2 light/dark themes generate our stable semantic CSS
-slots, typography, geometry, motion, and status foundations.
-
-```bash
-npm run build:tokens     # regenerate official Fluent token mappings
-npm run build:registry   # include all five CSS foundation files
+<Button variant="secondary">Save changes</Button>
 ```
 
-Preview `Foundations/Constitution` in Storybook for light/dark examples and
-interactive controls. Read the constitution's migration section before updating
-product CSS: controls now use 4px corners and 14px text; large controls are 40px;
-badges use soft status colors and tabs use line indicators by default. Existing
-product brand palettes remain product-owned.
+React 19 is a peer dependency. Component CSS includes tokens, utilities and
+Tailwind preflight: import once before application styles. Consumers need no
+Tailwind plugin, library source scanning or source alias. For non-React tokens,
+import `@molcrafts/tokens/runtime.css`; for application-authored Tailwind utilities,
+use `@molcrafts/tokens/tailwind.css` with Tailwind v4.
 
-`Foundations/Product themes` demonstrates independent primary/secondary palettes
-in both themes. Toolbar actions prefer icon-only buttons with accessible names
-and tooltips; ambiguous actions and form confirmations keep explicit labels.
-Shared components use official Fluent icons (`@fluentui/react-icons` 2.0.344).
+`.dark` switches runtime theme. Products provide complete primary and secondary
+families; neutral actions and status colors remain shared. Toolbar actions prefer
+accessible icon-only buttons using official Fluent icons. See the
+[constitution](docs/design-constitution.md) and [component catalog](docs/component-catalog.md).
 
-## Spec
+## Migration policy
 
-- Design: [`.claude/specs/molcrafts-ui-registry-01.md`](.claude/specs/molcrafts-ui-registry-01.md)
-- Acceptance: [`.claude/specs/molcrafts-ui-registry-01.acceptance.md`](.claude/specs/molcrafts-ui-registry-01.acceptance.md)
-- Extraction matrix: [docs/extraction-matrix.md](docs/extraction-matrix.md)
+The owner explicitly requested **no backward compatibility**. Old source paths,
+source-sync scripts, core Registry items, `--accent-*` / `--link-*` color aliases,
+stock radius aliases and product-specific `cn` scales are removed. Consumers
+migrate directly to public imports and the compiled stylesheet; see
+[migration guidance](docs/workspace-migration.md). No sibling product is modified
+implicitly, and real product migration has not yet been verified.
 
-## Quick start (registry authors)
+Web Components share canonical tokens but retain independent native APIs. Their
+[package documentation](packages/web-components/README.md) covers registration,
+forms, framework integration and client-only loading; React API parity is not claimed.
 
-```bash
-cd ~/work/molcrafts/molcrafts-ui
-npm install
-npm run build:registry   # writes public/r/*.json
-npm run dev:registry     # optional static server for /r
-```
+## Project guidance
 
-## Storybook (component authors)
+- [Spec](docs/design-system-refactoring-spec.md): architecture and acceptance criteria.
+- [Roadmap](docs/design-system-roadmap.md): phased changes, reasons and development impact.
+- [Readiness audit](docs/design-system-readiness.md): baseline and remaining gaps.
+- [AGENTS.md](AGENTS.md) / [portable Skill](skills/molcrafts-ui/SKILL.md).
 
-Requires Node.js 20.19+ or 22.12+ and npm. Storybook 10 uses
-[Rsbuild](https://storybook.rsbuild.rs/guide/framework/react), powered by Rspack.
-
-```bash
-npm ci
-npm run storybook        # http://localhost:6006
-npm run build:storybook  # static site in storybook-static/
-npm run typecheck        # includes stories and Storybook configuration
-```
-
-The preview imports Tailwind v4 and the shared `src/styles/tokens.css` scaffold.
-Use the theme toolbar to switch between light and dark; the theme is applied to
-the preview document so dialogs and other portaled overlays inherit it too.
-The Docs tab shows generated component documentation and controls, and the
-Accessibility panel checks the rendered story.
-
-Stories live next to components as `*.stories.tsx`. Initial examples cover
-buttons, badges, form controls, dialogs, tabs, empty states, numeric fields,
-cards/loading states, resizable panels, and settings sections. The button,
-dialog, and numeric-field stories also exercise interaction behavior through
-`play` functions. Add new stories using typed `Meta` and `StoryObj` imports from
-`storybook-react-rsbuild`. Stories and preview styles are development-only and
-are not included in the generated registry or product sync.
-
-## Product consumers
-
-In each app’s `components.json`:
-
-```json
-{
-  "registries": {
-    "molcrafts": {
-      "url": "https://ui.molcrafts.dev/r/{name}.json"
-    }
-  }
-}
-```
-
-Until hosted, use a local path or GitHub raw URL during bootstrap.
-
-## Status
-
-**Registry + product rewire complete** for **molexp**, **molvis** (page + plugin),
-and **molhub** web (local `file:` registry, `sync:products`, constitution CSS).
-
-```bash
-npm run build:registry
-npm run sync:products   # push sources into sibling molexp / molvis / molhub trees
-```
+The older `.claude/specs/molcrafts-ui-registry-01*` documents and
+[extraction matrix](docs/extraction-matrix.md) are historical records. Their
+registry-first distribution and compatibility policy are superseded.
