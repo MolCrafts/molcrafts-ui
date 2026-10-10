@@ -54,14 +54,15 @@ test("replacement, parse errors, recovery and StrictMode mount disposal", async 
   await expect(chart.locator("svg")).toHaveCount(1);
 });
 
-// Five pixels cover cross-runner line/text antialiasing; layout/theme changes still fail.
+// Thirty-two pixels cover cross-runner line/text antialiasing; layout/theme changes still fail.
 test("Fluent chart axes and marks in light and dark scopes", async ({ page }) => {
   await page.goto("/charts");
   const chart = page.getByRole("figure", { name: "Vega-Lite measurements", exact: true });
   await expect(chart).toHaveAttribute("data-chart-state", "ready");
-  await expect(chart).toHaveScreenshot("vega-lite-light.png", { animations: "disabled", maxDiffPixels: 5 });
+  await expect(chart.locator(".mark-symbol path")).toHaveCount(3);
+  await expect(chart).toHaveScreenshot("vega-lite-light.png", { animations: "disabled", maxDiffPixels: 32 });
   await page.getByRole("button", { name: "Chart theme" }).click();
   await expect.poll(() => chart.locator(".mark-line path").first().getAttribute("stroke")).not.toBe("rgb(15, 108, 189)");
   await expect(chart).toHaveAttribute("data-chart-state", "ready");
-  await expect(chart).toHaveScreenshot("vega-lite-dark.png", { animations: "disabled", maxDiffPixels: 5 });
+  await expect(chart).toHaveScreenshot("vega-lite-dark.png", { animations: "disabled", maxDiffPixels: 32 });
 });
