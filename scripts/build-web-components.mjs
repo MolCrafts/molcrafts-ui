@@ -105,7 +105,7 @@ await writeFile(new URL("src/fluent-host.css", pkg), "/* Generated official host
 if (process.argv.includes("--assets")) {
   await mkdir(new URL("dist/", pkg), { recursive: true });
   const theme = (await readFile(new URL("src/theme.css", pkg), "utf8"))
-    .replace(/@import "@molcrafts\/tokens\/runtime.css";/, await readFile(new URL("packages/tokens/dist/runtime.css", root), "utf8"))
+    .replace(/@import "@molcrafts\/design-tokens\/runtime.css";/, await readFile(new URL("packages/tokens/dist/runtime.css", root), "utf8"))
     .replace(/@import "\.\/fluent-web-theme.css";/, await readFile(new URL("src/fluent-web-theme.css", pkg), "utf8"))
     .replace(/@import "\.\/fluent-host.css";/, await readFile(new URL("src/fluent-host.css", pkg), "utf8"));
   await writeFile(new URL("dist/theme.css", pkg), theme);

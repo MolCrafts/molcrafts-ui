@@ -1,10 +1,11 @@
 # molcrafts-design 实施 Roadmap
 
-日期：2026-10-10 · 当前阶段：P1 已合并（PR #6，ded1b1e）；P2 主题契约已实现，本地检查通过，等待 CI。
+日期：2026-10-10 · 当前阶段：P1 已合并（PR #6，ded1b1e）；P2 已合并（PR #7，3e1d2dc）；当前做发包前准备。
 2026-10-10 用户要求不向后兼容，覆盖原 roadmap 中的兼容条款。
 依据：[Refactoring Spec v1.0](design-system-refactoring-spec.md)。
 本文件描述未来工作，未勾选事项不代表已经实现。阶段按依赖推进，不预设日期。
-实施已授权；不提前改名、不发布；未来项目名称为 `molcrafts-design`。
+实施已授权；用户确认 @molcrafts/design 系列包名与 MIT。允许仓库内命名及发布准备；
+不发布、不隐式修改外部资源；项目名称为 `molcrafts-design`。
 
 ## 当前准备交付 P0
 
@@ -103,13 +104,13 @@
 **退出条件**：产物消费 CI 通过；真实产品有明确测试证据。产品 PR 尚未完成时，
 库基础设施可以交付，但整个 refactor 的产品兼容验收保持未完成。
 
-## P6 — molcrafts-design 改名与发布准备（后续）
+## P6 — molcrafts-design 命名与发布准备
 
-- [ ] 确定 npm scope、React/tokens/原生包名、subpaths 与版本起点。
-- [ ] 盘点 repository URL、Registry URL、CI/artifacts、文档与产品 imports。
-- [ ] 制定统一改名 PR，提供直接迁移说明，不假设 GitHub redirect 替代 API 迁移。
-- [ ] 编写 semver、changeset/changelog、升级、回退与可复现 release 文档。
-- [ ] 本地打包演练，确认 license、第三方归属和发布文件范围。
+- [x] 确定 npm scope、React/tokens/原生包名、subpaths 与版本起点。
+- [x] 盘点 repository URL、Registry URL、CI/artifacts、文档与产品 imports。
+- [x] 制定统一改名 PR，提供直接迁移说明，不假设 GitHub redirect 替代 API 迁移。
+- [x] 编写 semver、changeset/changelog、升级、回退与可复现 release 文档。
+- [x] 本地打包演练，确认 license、第三方归属和发布文件范围。
 
 **原因与影响**：避免先发布旧名字再迁移；为消费者提供一致且可追踪的入口。
 
@@ -130,7 +131,7 @@
 P1 CI 通过并已合并 PR #6。没有发包、改名或修改外部产品。
 
 同时提前落实少量后续基础：删除 deprecated token 别名、清除产品专有 cn scales、
-生成组件目录、建立产物消费与 story smoke 门禁。P2/P3/P4/P5 未整体完成，
+生成组件目录、建立产物消费与 story smoke 门禁。P3/P4/P5 未整体完成，
 P2 已补齐局部主题 portal 与首批 a11y/visual；完整 API/state、全库视觉覆盖与真实产品验收仍未完成。
 
 ## P2 验证范围（2026-10-10）
@@ -139,4 +140,13 @@ P2 已补齐局部主题 portal 与首批 a11y/visual；完整 API/state、全�
 独立消费者 7 项测试覆盖键盘、axe 对比度、运行时品牌/尺寸、减少动画、高对比度
 以及 3 张截图；原生 6 项测试。详见 [主题契约](theming.md) 与
 [样式审计](style-audit.md)。构建、公开类型、外部 tarball、39 个 stories 的 render/play 与 Autodocs 本地通过；
-最新 CI 全绿后合并。尚未验证真实产品，也没有发布或改名。
+P2 CI 全绿并已合并 PR #7。尚未验证真实产品，也没有发布或外部改名。
+
+## 发包前准备范围（2026-10-10）
+
+用户确认 @molcrafts/design 系列包名与 MIT，完成仓库内命名和直接迁移文档。
+配置 Changesets 统一版本；在临时 workspace 演练 0.1.0-alpha.0 和 changelogs，
+实际工作区版本仍为未发布 0.0.1，三个包保持 private。打包清单/exports/许可证/
+依赖改写/校验和、仓库外三个 tarball 的类型和 React/原生 Rsbuild 消费纳入 CI。
+见 [发布准备](releasing.md) 与 [命名计划](rename-plan.md)。外部仓库改名、npm
+发布权限、组件验收范围、真实产品接入和实际候选发布仍未完成。

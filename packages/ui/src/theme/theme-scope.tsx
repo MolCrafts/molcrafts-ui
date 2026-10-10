@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, type ComponentProps } from "react";
-import type { ProductTheme, ThemeMode } from "@molcrafts/tokens";
+import type { ProductTheme, ThemeMode } from "@molcrafts/design-tokens";
 import { cn } from "../lib/utils";
 
 const ThemePortalContext = createContext<HTMLDivElement | null | undefined>(undefined);

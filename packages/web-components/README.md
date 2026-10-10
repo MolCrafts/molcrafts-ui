@@ -1,4 +1,4 @@
-# @molcrafts/web-components
+# @molcrafts/design-web-components
 
 MolCrafts 的框架无关 Fluent 2 入口。基于官方 `@fluentui/web-components` **3.1.3**，
 采用 FAST Web Components；不依赖 React 或 Tailwind。与 React primitives 共用
@@ -8,17 +8,17 @@ MolCrafts 的框架无关 Fluent 2 入口。基于官方 `@fluentui/web-componen
 
 ```bash
 pnpm build:web-components              # 在仓库根目录运行，Rslib / Rspack
-npm pack --workspace @molcrafts/web-components
+pnpm --filter @molcrafts/design-web-components pack
 # 在消费项目安装生成的 tarball，然后导入以下入口
 ```
 
 ```ts
-import '@molcrafts/web-components/theme.css';
-import { registerMolcraftsComponents } from '@molcrafts/web-components';
+import '@molcrafts/design-web-components/theme.css';
+import { registerMolcraftsComponents } from '@molcrafts/design-web-components';
 await registerMolcraftsComponents();
 ```
 
-或使用自动注册入口 `import '@molcrafts/web-components/register'`。
+或使用自动注册入口 `import '@molcrafts/design-web-components/register'`。
 注册是异步的，重复调用安全；同页面存在其他版本的同名 Fluent 元素会明确
 报错。保留官方 `fluent-*` 标签与属性/API，避免重复实现键盘、表单和 ARIA。
 
@@ -61,7 +61,7 @@ primary / secondary 明暗色组；具体契约见仓库的设计宪法。无须
 `currentColor`，适合装饰性按钮图标。更多图标加入清单，重新生成。
 
 ```ts
-import { fluentIcons } from '@molcrafts/web-components';
+import { fluentIcons } from '@molcrafts/design-web-components';
 const add = document.createElement('fluent-button');
 add.appearance = 'primary';
 add.type = 'button';
@@ -122,3 +122,6 @@ Storybook 的宿主。CI 验证生成文件、ESM 包、独立 HTML 包、重复
 
 共享颜色、几何与行为源位于 `packages/tokens`；构建时将其独立 runtime CSS
 整合进本包 `theme.css`，不再维护共享 tokens 的源码副本。
+
+MIT licensed. See LICENSE, NOTICE.md and THIRD_PARTY_NOTICES.md included in this archive.
+Release preparation: https://github.com/MolCrafts/molcrafts-ui/blob/main/docs/releasing.md

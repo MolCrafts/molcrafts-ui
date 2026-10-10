@@ -9,8 +9,8 @@
       "title": "MolCrafts package styles",
       "description": "Install canonical package CSS; no component source copying.",
       "dependencies": [
-        "@molcrafts/ui",
-        "@molcrafts/tokens"
+        "@molcrafts/design",
+        "@molcrafts/design-tokens"
       ],
       "files": [
         {
@@ -25,7 +25,7 @@
       "title": "Accessible icon action",
       "description": "Compose public MolCrafts components with official Fluent icons.",
       "dependencies": [
-        "@molcrafts/ui",
+        "@molcrafts/design",
         "@fluentui/react-icons"
       ],
       "registryDependencies": [

@@ -49,14 +49,15 @@ packages/ui/               # React 组件、变体、公共 API
 packages/web-components/   # 已有独立原生实现，与 React 共享 tokens
 apps/storybook/            # 组件开发与文档
 registry/                 # 可选配置、示例和集成入口
-skills/molcrafts-ui/       # 可移植 Agent 指引
+skills/molcrafts-design/       # 可移植 Agent 指引
 docs/                     # 规范、决策、迁移与组件目录
 ```
 
-逻辑包角色暂用用户规范的 `@molcrafts/tokens`、`@molcrafts/ui`；这些名称在最终
-改名前只作规划标识。`molcrafts-design` 是确定的未来项目名，npm scope、包名、
-子路径、域名与 Registry 标识需在改名阶段统一核对，不能假定它们已确定。
-不要提前改 GitHub repository、npm 身份或产品导入路径。
+用户已确认 `@molcrafts/design-tokens`、`@molcrafts/design` 与
+`@molcrafts/design-web-components` 及 MIT；仓库内包名和 imports 已统一。
+`molcrafts-design` 是项目名称，GitHub 外部改名、域名、hosting 与 npm 发布权限
+仍需在实际改名/发布任务核对。见 [命名计划](rename-plan.md) 与 [发布准备](releasing.md)。
+不隐式修改外部 GitHub repository、npm 身份或真实产品。
 
 1. tokens 不依赖 React、Base UI、Radix 或应用。
 2. ui 可以依赖 tokens、无头 primitives 和必要的运行时工具。
@@ -121,7 +122,7 @@ Registry 不是核心组件的主分发机制。可保留配置、示例、模�
 
 ## 7. Agent-native development
 
-维护根 `AGENTS.md`、可移植 `skills/molcrafts-ui/SKILL.md`、基于 TS/Storybook
+维护根 `AGENTS.md`、可移植 `skills/molcrafts-design/SKILL.md`、基于 TS/Storybook
 的文档，以及包含名称、用途、imports、示例和状态的组件目录。
 Agent 工作流：先查现有组件，再读公共 API 与 stories，优先复用；采用语义 tokens
 及既有组合方式；新 UI 依赖或 shadcn 默认样式需要合理依据；共享变更同步

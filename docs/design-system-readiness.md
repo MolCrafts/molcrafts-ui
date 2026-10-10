@@ -16,7 +16,7 @@
 | Consumer | 未建立独立 React 产物消费验证 | 无 Tailwind 配置的 Rsbuild fixture；本地 tarball 在外部临时目录安装/构建 |
 | Quality | 类型、生成一致性、原生浏览器、Storybook 构建 | 增加 exports/CSS/SSR、消费者行为与所有现有 stories 的 CI；加入主题页/浮层 axe、键盘、forced-colors/reduced-motion 与 3 张视觉基线；全库覆盖仍待逐批完成 |
 | Products | 历史 extraction matrix 与源码同步路径 | 同步脚本已删除；没有修改或重验真实产品，需要产品迁移 PR |
-| Release | private、无发布流程 | 所有包仍 private；未发包、未改名、未配置自动发布 |
+| Release | private、无发布流程 | 三个包改为确认的 design 系列名称，MIT、Changesets、tarball/版本演练已配置；仍 private，无发布/外部改名/自动发布 |
 
 React 源码、用途、exports 和 stories 链接见 [生成组件目录](component-catalog.md)。
 13 个 story 文件包含基础组合示例，不能用文件数量证明公开 API/state 覆盖完整。
@@ -42,6 +42,7 @@ React 源码、用途、exports 和 stories 链接见 [生成组件目录](compo
 - [ ] 首批组件 props、variants、sizes、states、refs 与扩展契约。
 - [ ] 全部公共组件 stories/state coverage、a11y 和关键视觉回归。
 - [ ] 至少一个真实产品的新入口接入与功能验证。
-- [ ] molcrafts-design 最终 npm names/subpaths、URLs、版本、license/第三方归属与发布流程。
+- [x] 确认 npm names/subpaths、MIT/第三方归属、alpha 版本方案和本地发布演练。
+- [ ] 实际 npm 权限、外部仓库 URLs 改名和正式候选发布。
 
 使用新入口见 [迁移说明](workspace-migration.md)；不提供旧源码、旧 CSS 别名或同步兼容层。

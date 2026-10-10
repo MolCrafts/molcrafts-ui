@@ -5,15 +5,15 @@
   "title": "MolCrafts package styles",
   "description": "Install canonical package CSS; no component source copying.",
   "dependencies": [
-    "@molcrafts/ui",
-    "@molcrafts/tokens"
+    "@molcrafts/design",
+    "@molcrafts/design-tokens"
   ],
   "registryDependencies": [],
   "files": [
     {
       "path": "registry/setup.css",
       "type": "registry:style",
-      "content": "@import \"@molcrafts/ui/styles.css\";\n"
+      "content": "@import \"@molcrafts/design/styles.css\";\n"
     }
   ]
 }

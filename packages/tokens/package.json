@@ -4,9 +4,13 @@
   "type": "module",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE",
+    "NOTICE.md",
+    "THIRD_PARTY_NOTICES.md",
+    "CHANGELOG.md"
   ],
-  "name": "@molcrafts/tokens",
+  "name": "@molcrafts/design-tokens",
   "description": "Framework-independent MolCrafts tokens and theme CSS",
   "exports": {
     "./runtime.css": "./dist/runtime.css",
@@ -22,5 +26,19 @@
   ],
   "scripts": {
     "build": "node ../../scripts/build-design-tokens.mjs && node ../../scripts/build-tokens-package.mjs"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MolCrafts/molcrafts-ui.git",
+    "directory": "packages/tokens"
+  },
+  "homepage": "https://github.com/MolCrafts/molcrafts-ui#readme",
+  "bugs": {
+    "url": "https://github.com/MolCrafts/molcrafts-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

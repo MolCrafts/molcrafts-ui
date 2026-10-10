@@ -31,4 +31,4 @@ export * from "./components/ui/tooltip";
 export * from "./components/blocks/blocks";
 export { cn } from "./lib/utils";
 export { ThemeScope, type ThemeScopeProps } from "./theme/theme-scope";
-export type { ThemeMode, BrandPalette, PrimaryPalette, ProductTheme } from "@molcrafts/tokens";
+export type { ThemeMode, BrandPalette, PrimaryPalette, ProductTheme } from "@molcrafts/design-tokens";

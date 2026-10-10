@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, userEvent, within } from "storybook/test";
-import { Button } from "@molcrafts/ui";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@molcrafts/ui";
+import { Button } from "@molcrafts/design";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@molcrafts/design";
 
 const meta = {
   title: "UI/Dialog",

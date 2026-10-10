@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Badge } from "@molcrafts/ui";
+import { Badge } from "@molcrafts/design";
 
 const meta = {
   title: "UI/Badge",

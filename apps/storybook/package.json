@@ -8,9 +8,9 @@
     "build": "storybook build --disable-telemetry -o ../../storybook-static"
   },
   "dependencies": {
-    "@molcrafts/ui": "workspace:*",
-    "@molcrafts/tokens": "workspace:*",
-    "@molcrafts/web-components": "workspace:*",
+    "@molcrafts/design": "workspace:*",
+    "@molcrafts/design-tokens": "workspace:*",
+    "@molcrafts/design-web-components": "workspace:*",
     "@fluentui/react-icons": "2.0.344",
     "@rsbuild/core": "2.2.12",
     "@rsbuild/plugin-react": "2.1.1",

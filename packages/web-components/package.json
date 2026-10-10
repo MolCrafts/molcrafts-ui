@@ -1,12 +1,15 @@
 {
-  "name": "@molcrafts/web-components",
+  "name": "@molcrafts/design-web-components",
   "version": "0.0.1",
   "description": "Framework-independent MolCrafts Fluent 2 Web Components",
   "type": "module",
   "files": [
     "dist",
     "README.md",
-    "NOTICE.md"
+    "NOTICE.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "CHANGELOG.md"
   ],
   "exports": {
     ".": {
@@ -30,7 +33,7 @@
     "@fluentui/web-components": "3.1.3",
     "@microsoft/fast-element": "3.1.0",
     "@microsoft/focusgroup-polyfill": "1.6.0",
-    "@molcrafts/tokens": "workspace:*"
+    "@molcrafts/design-tokens": "workspace:*"
   },
   "customElements": "./dist/custom-elements.json",
   "private": true,
@@ -41,5 +44,19 @@
   "scripts": {
     "build": "rslib build",
     "typecheck": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MolCrafts/molcrafts-ui.git",
+    "directory": "packages/web-components"
+  },
+  "homepage": "https://github.com/MolCrafts/molcrafts-ui#readme",
+  "bugs": {
+    "url": "https://github.com/MolCrafts/molcrafts-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

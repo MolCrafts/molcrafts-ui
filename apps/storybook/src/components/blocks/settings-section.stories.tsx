@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { SettingsRow, SettingsSection } from "@molcrafts/ui";
-import { Input } from "@molcrafts/ui";
-import { Switch } from "@molcrafts/ui";
-import { Badge } from "@molcrafts/ui";
+import { SettingsRow, SettingsSection } from "@molcrafts/design";
+import { Input } from "@molcrafts/design";
+import { Switch } from "@molcrafts/design";
+import { Badge } from "@molcrafts/design";
 
 const meta = {
   title: "Blocks/SettingsSection",

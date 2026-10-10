@@ -1,16 +1,17 @@
 # Workspace 与消费入口迁移
 
 2026-10-10：用户明确要求不向后兼容。项目未来名称为 `molcrafts-design`，
-目前逻辑包仍使用 spec 中的内部名称，全部 private；没有发包或外部资源改名。
+三个包已采用用户确认的 @molcrafts/design 系列名称和 MIT，全部 private；
+没有发包或外部资源改名。详见 [命名迁移](rename-plan.md)。
 
 ## 新入口
 
 ```tsx
-import { Button, Input, Dialog, DialogContent, DialogTitle } from "@molcrafts/ui";
-import "@molcrafts/ui/styles.css";
+import { Button, Input, Dialog, DialogContent, DialogTitle } from "@molcrafts/design";
+import "@molcrafts/design/styles.css";
 ```
 
-所有组件从根公开入口导入，`cn` 也可从 `@molcrafts/ui/utils` 导入。
+所有组件从根公开入口导入，`cn` 也可从 `@molcrafts/design/utils` 导入。
 不要引用 packages 内部实现，也不要把组件源码再复制进产品。
 CSS 包含默认 tokens、组件全部 utility 和 preflight，不要求产品安装 Tailwind
 或扫描库源码。Tailwind 应用如需自己的 utilities，可额外导入 tokens 的

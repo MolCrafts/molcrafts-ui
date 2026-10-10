@@ -4,9 +4,13 @@
   "type": "module",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE",
+    "NOTICE.md",
+    "THIRD_PARTY_NOTICES.md",
+    "CHANGELOG.md"
   ],
-  "name": "@molcrafts/ui",
+  "name": "@molcrafts/design",
   "description": "MolCrafts reusable React components",
   "exports": {
     ".": {
@@ -23,7 +27,7 @@
     "**/*.css"
   ],
   "dependencies": {
-    "@molcrafts/tokens": "workspace:*",
+    "@molcrafts/design-tokens": "workspace:*",
     "@fluentui/react-icons": "2.0.344",
     "@radix-ui/react-accordion": "1.2.21",
     "@radix-ui/react-alert-dialog": "1.1.24",
@@ -64,5 +68,19 @@
   "scripts": {
     "build": "rslib build && node ../../scripts/build-ui-css.mjs",
     "typecheck": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MolCrafts/molcrafts-ui.git",
+    "directory": "packages/ui"
+  },
+  "homepage": "https://github.com/MolCrafts/molcrafts-ui#readme",
+  "bugs": {
+    "url": "https://github.com/MolCrafts/molcrafts-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

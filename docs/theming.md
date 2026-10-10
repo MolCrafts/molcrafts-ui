@@ -8,11 +8,11 @@ MolCrafts 拥有语义名称、映射、默认值与升级决策。Fluent 2 是�
 
 | Entry | Purpose |
 | --- | --- |
-| `@molcrafts/tokens/runtime.css` | 扁平纯 CSS：颜色、字体、几何、状态、focus、motion、elevation |
-| `@molcrafts/tokens/tailwind.css` | 可选 Tailwind v4 映射，消费同一运行时变量 |
-| `@molcrafts/tokens` | 框架无关 ProductTheme/BrandPalette/ThemeMode 类型及 tokenContract 元数据 |
-| `@molcrafts/tokens/contract.json` | 构建出的 machine-readable 默认 token 清单 |
-| `@molcrafts/ui/styles.css` | tokens、全部 React utility 和 preflight；React 消费方通常只需该入口 |
+| `@molcrafts/design-tokens/runtime.css` | 扁平纯 CSS：颜色、字体、几何、状态、focus、motion、elevation |
+| `@molcrafts/design-tokens/tailwind.css` | 可选 Tailwind v4 映射，消费同一运行时变量 |
+| `@molcrafts/design-tokens` | 框架无关 ProductTheme/BrandPalette/ThemeMode 类型及 tokenContract 元数据 |
+| `@molcrafts/design-tokens/contract.json` | 构建出的 machine-readable 默认 token 清单 |
+| `@molcrafts/design/styles.css` | tokens、全部 React utility 和 preflight；React 消费方通常只需该入口 |
 
 Foundation 包括 Segoe UI 字体栈、字号/行高/字重、4px spacing unit、语义 control/
 layout sizes、border/focus 宽度与 offset、圆角、阴影和 motion。Semantic roles 包括
@@ -41,9 +41,9 @@ Tailwind geometry 与 typography utilities 读取实际 CSS 变量，而不是�
 ## React ThemeScope
 
 ```tsx
-import { ThemeScope, Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, Button } from "@molcrafts/ui";
-import type { ProductTheme, ThemeMode } from "@molcrafts/tokens";
-import "@molcrafts/ui/styles.css";
+import { ThemeScope, Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, Button } from "@molcrafts/design";
+import type { ProductTheme, ThemeMode } from "@molcrafts/design-tokens";
+import "@molcrafts/design/styles.css";
 
 // lightBrand/darkBrand are the product's complete, contrast-checked ProductTheme objects.
 function ProductArea({ mode, lightBrand, darkBrand }: {
