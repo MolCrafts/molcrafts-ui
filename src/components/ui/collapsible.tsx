@@ -17,7 +17,7 @@ function CollapsibleTrigger({
     <CollapsiblePrimitive.Trigger
       data-slot="collapsible-trigger"
       className={cn(
-        "group/collapsible inline-flex items-center gap-2 rounded-control text-body font-medium outline-none transition-colors duration-(--motion-fast) ease-standard hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50",
+        "group/collapsible inline-flex items-center gap-2 rounded-control text-body font-medium outline-none transition-colors duration-(--motion-fast) ease-standard hover:text-foreground mol-focus",
         className,
       )}
       {...props}

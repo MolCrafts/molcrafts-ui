@@ -103,6 +103,10 @@ async function write(to, content) {
 
 async function vendorConstitution(productStylesDir) {
   await copy(
+    path.join(srcStyles, "fluent-foundation.css"),
+    path.join(productStylesDir, "fluent-foundation.css"),
+  );
+  await copy(
     path.join(srcStyles, "constitution-base.css"),
     path.join(productStylesDir, "constitution-base.css"),
   );

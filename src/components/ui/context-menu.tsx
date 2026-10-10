@@ -42,7 +42,7 @@ const ContextMenuSubContent = React.forwardRef<
   <ContextMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "mol-motion-popup z-50 min-w-menu overflow-hidden rounded-overlay border border-border bg-popover p-1 text-popover-foreground shadow-overlay",
+      "mol-motion-popup z-50 min-w-menu overflow-hidden rounded-overlay border border-border bg-popover p-1 text-popover-foreground shadow-popup",
       className,
     )}
     {...props}
@@ -58,7 +58,7 @@ const ContextMenuContent = React.forwardRef<
     <ContextMenuPrimitive.Content
       ref={ref}
       className={cn(
-        "mol-motion-popup z-50 min-w-menu overflow-hidden rounded-overlay border border-border bg-popover p-1 text-popover-foreground shadow-overlay",
+        "mol-motion-popup z-50 min-w-menu overflow-hidden rounded-overlay border border-border bg-popover p-1 text-popover-foreground shadow-popup",
         className,
       )}
       {...props}
@@ -173,7 +173,7 @@ ContextMenuSeparator.displayName = ContextMenuPrimitive.Separator.displayName;
 
 const ContextMenuShortcut = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={cn("ml-auto text-micro tracking-widest text-muted-foreground", className)}
+    className={cn("ml-auto text-label text-muted-foreground", className)}
     {...props}
   />
 );

@@ -28,6 +28,22 @@
         {
           "path": "src/styles/tokens.css",
           "type": "registry:style"
+        },
+        {
+          "path": "src/styles/fluent-theme.css",
+          "type": "registry:style"
+        },
+        {
+          "path": "src/styles/fluent-foundation.css",
+          "type": "registry:style"
+        },
+        {
+          "path": "src/styles/constitution-base.css",
+          "type": "registry:style"
+        },
+        {
+          "path": "src/styles/constitution-theme.css",
+          "type": "registry:style"
         }
       ]
     },

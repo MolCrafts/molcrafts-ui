@@ -56,7 +56,7 @@ function SheetContent({
         data-slot="sheet-content"
         data-side={side}
         className={cn(
-          "mol-motion-sheet fixed z-50 flex flex-col gap-4 bg-background shadow-overlay outline-none",
+          "mol-motion-sheet fixed z-50 flex flex-col gap-4 bg-popover shadow-overlay outline-none",
           SIDE_CLASSES[side],
           className,
         )}
@@ -66,7 +66,7 @@ function SheetContent({
         {showCloseButton && (
           <SheetPrimitive.Close
             data-slot="sheet-close"
-            className="ring-offset-background focus:ring-ring data-[state=open]:bg-interactive absolute top-4 right-4 rounded-control opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+            className="mol-focus absolute top-4 right-4 flex size-control-compact items-center justify-center rounded-control text-muted-foreground outline-none transition-colors hover:bg-interactive hover:text-foreground disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
           >
             <XIcon />
             <span className="sr-only">Close</span>
@@ -97,7 +97,7 @@ function SheetTitle({ className, ...props }: React.ComponentProps<typeof SheetPr
   return (
     <SheetPrimitive.Title
       data-slot="sheet-title"
-      className={cn("text-foreground font-semibold", className)}
+      className={cn("text-title text-foreground font-semibold", className)}
       {...props}
     />
   );
@@ -110,7 +110,7 @@ function SheetDescription({
   return (
     <SheetPrimitive.Description
       data-slot="sheet-description"
-      className={cn("text-muted-foreground text-body-lg", className)}
+      className={cn("text-muted-foreground text-body", className)}
       {...props}
     />
   );

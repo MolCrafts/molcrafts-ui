@@ -24,6 +24,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run typecheck
+      - run: npm run build:tokens
+      - name: Verify committed Fluent tokens
+        run: git diff --exit-code -- src/styles
       - run: npm run build:registry
       - name: Verify committed registry artifacts
         run: git diff --exit-code -- public/r
