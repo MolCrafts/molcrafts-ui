@@ -85,8 +85,8 @@ const foundation = [
   "  --focus-offset: 2px;",
   "  --font-weight-normal: 400;",
   "  --font-weight-semibold: 600;",
-  `  --font-sans: ${webLightTheme.fontFamilyBase};`,
-  `  --font-mono: ${webLightTheme.fontFamilyMonospace};`,
+  "  --font-sans: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;",
+  "  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', monospace;",
 ];
 for (const [role, [size, height]] of Object.entries(typeScale)) {
   foundation.push(`  --text-${role}: ${webLightTheme[size]};`, `  --text-${role}--line-height: ${webLightTheme[height]};`);
@@ -96,10 +96,10 @@ for (const [role, source] of Object.entries({
   checkbox: "borderRadiusSmall",
 })) foundation.push(`  --radius-${role}: ${webLightTheme[source]};`);
 
-// Retain the 28px scientific-workbench compact size; Fluent medium/large use 32/40px.
+// Comfortable controls are the MolCrafts default; compact requires an explicit choice.
 for (const [role, value] of Object.entries({
-  "control-compact": "1.75rem", control: "2rem", "control-comfortable": "2.5rem",
-  "toolbar-compact": "2.5rem", toolbar: "2.75rem", statusbar: "1.75rem",
+  "control-compact": "1.75rem", control: "2.5rem", "control-comfortable": "3rem",
+  "toolbar-compact": "2.5rem", toolbar: "3rem", statusbar: "1.75rem",
   "touch-target": "2.75rem", menu: "8rem", "dialog-sm": "24rem", "dialog-md": "30rem",
   "dialog-lg": "34rem", "dialog-scroll": "80vh", "overlay-viewport": "calc(100% - 2rem)",
 })) foundation.push(`  --spacing-${role}: ${value};`);

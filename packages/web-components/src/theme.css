@@ -5,6 +5,9 @@
 
 /* Rebind at product scopes so custom palettes reach Shadow DOM controls. */
 :where(:root, :host), [data-mol-theme], .mol-product-theme {
+  --fontFamilyBase: var(--font-sans);
+  --fontFamilyMonospace: var(--font-mono);
+  --fontFamilyNumeric: var(--font-sans);
   --colorBrandBackground: var(--primary);
   --colorBrandBackgroundHover: var(--primary-hover);
   --colorBrandBackgroundPressed: var(--primary-pressed);
@@ -35,12 +38,12 @@
   --colorStrokeFocus2: var(--ring);
 }
 
-fluent-button { border-radius: 4px; font-size: 14px; line-height: 20px; font-weight: 600; }
+fluent-button { min-height: var(--spacing-control); border-radius: 4px; font-size: 14px; line-height: 20px; font-weight: 600; }
 fluent-button[size="small"] { min-height: 28px; font-size: 14px; line-height: 20px; font-weight: 600; border-radius: 4px; }
-fluent-button[size="large"] { font-size: 14px; line-height: 20px; border-radius: 4px; }
-fluent-button[icon-only] { min-width: 32px; width: 32px; padding: 0; }
+fluent-button[size="large"] { min-height: var(--spacing-control-comfortable); font-size: 14px; line-height: 20px; border-radius: 4px; }
+fluent-button[icon-only] { min-width: var(--spacing-control); width: var(--spacing-control); padding: 0; }
 fluent-button[size="small"][icon-only] { min-width: 28px; width: 28px; }
-fluent-button[size="large"][icon-only] { min-width: 40px; width: 40px; }
+fluent-button[size="large"][icon-only] { min-width: var(--spacing-control-comfortable); width: var(--spacing-control-comfortable); }
 fluent-button > svg { width: 16px; height: 16px; fill: currentColor; }
 fluent-checkbox, fluent-switch {
   --colorNeutralForegroundInverted: var(--primary-foreground);

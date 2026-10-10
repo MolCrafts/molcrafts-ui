@@ -163,3 +163,7 @@ P2 CI 全绿并已合并 PR #7。尚未验证真实产品，也没有发布或�
 - [ ] MolPlot 迁移与原生 Web Components 图表支持（后续任务）。
 
 本次继续不发包；未发布阶段的固定 tarball 分发及校验见图表架构。
+
+### Typography and density revision (2026-10-10)
+
+Compact-first guidance is withdrawn. Default controls are 40px, large controls 48px; product navigation must provide at least 40px rows. UI fonts use platform sans fallbacks; metrics use tabular figures rather than monospace. React and native controls share this contract. Dashboard migration validates comfortable navigation in the real consumer.
