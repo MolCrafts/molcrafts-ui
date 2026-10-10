@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
@@ -10,8 +14,17 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     }
   },
-  "include": ["src", ".storybook/**/*.ts"]
+  "include": [
+    "src",
+    ".storybook/**/*.ts",
+    "packages/web-components/src/**/*.ts",
+    "packages/web-components/rslib.config.ts",
+    "playwright.config.ts",
+    "tests/web-components/**/*.ts"
+  ]
 }

@@ -1,0 +1,4752 @@
+{
+  "schemaVersion": "1.0.0",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "dist/index.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A Button Custom HTML Element.\nBased on BaseButton and includes style and layout specific attributes",
+          "name": "Button",
+          "members": [
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "ButtonAppearance | undefined"
+              },
+              "privacy": "public",
+              "description": "Indicates the styled appearance of the button.",
+              "parsedType": {
+                "text": "'primary' | 'outline' | 'subtle' | 'transparent' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shape",
+              "type": {
+                "text": "ButtonShape | undefined"
+              },
+              "privacy": "public",
+              "description": "The shape of the button.",
+              "parsedType": {
+                "text": "'circular' | 'rounded' | 'square' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "ButtonSize | undefined"
+              },
+              "privacy": "public",
+              "description": "The size of the button.",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "iconOnly",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Indicates that the button should only display as an icon with no text content."
+            },
+            {
+              "kind": "field",
+              "name": "defaultSlottedContent",
+              "type": {
+                "text": "HTMLElement[]"
+              },
+              "privacy": "public",
+              "description": "Default slotted content.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Sets the element's disabled state.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabledFocusable",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Indicates that the button is focusable while disabled.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "public",
+              "description": "The associated form element.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formAction",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "The URL that processes the form submission.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "readonly": true,
+              "default": "true",
+              "description": "The form-associated flag.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formAttribute",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "The id of a form to associate the element to.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formEnctype",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "The encoding type for the form submission.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formMethod",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "The HTTP method that the browser uses to submit the form.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formNoValidate",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public",
+              "description": "Indicates that the form will not be validated when submitted.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formTarget",
+              "type": {
+                "text": "ButtonFormTarget | undefined"
+              },
+              "privacy": "public",
+              "description": "The target frame or window to open the form submission in.",
+              "parsedType": {
+                "text": "'_blank' | '_self' | '_parent' | '_top' | undefined"
+              },
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "labels",
+              "type": {
+                "text": "ReadonlyArray<Node>"
+              },
+              "privacy": "public",
+              "description": "A reference to all associated label elements.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "ButtonType"
+              },
+              "privacy": "public",
+              "description": "The button type.",
+              "parsedType": {
+                "text": "'submit' | 'reset' | 'button'"
+              },
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "The value attribute.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "keypressHandler",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  },
+                  "description": "the keyboard event"
+                }
+              ],
+              "description": "Handles keypress events for the button.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "press",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Presses the button.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "resetForm",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Resets the associated form.",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "string"
+              },
+              "default": "'button'",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "appearance",
+              "type": {
+                "text": "ButtonAppearance | undefined"
+              },
+              "description": "Indicates the styled appearance of the button.",
+              "fieldName": "appearance",
+              "parsedType": {
+                "text": "'primary' | 'outline' | 'subtle' | 'transparent' | undefined"
+              }
+            },
+            {
+              "name": "shape",
+              "type": {
+                "text": "ButtonShape | undefined"
+              },
+              "description": "The shape of the button.",
+              "fieldName": "shape",
+              "parsedType": {
+                "text": "'circular' | 'rounded' | 'square' | undefined"
+              }
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "ButtonSize | undefined"
+              },
+              "description": "The size of the button.",
+              "fieldName": "size",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "name": "icon-only",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates that the button should only display as an icon with no text content.",
+              "fieldName": "iconOnly"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Sets the element's disabled state.",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "disabled-focusable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates that the button is focusable while disabled.",
+              "fieldName": "disabledFocusable",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "formaction",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The URL that processes the form submission.",
+              "fieldName": "formAction",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "form",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The id of a form to associate the element to.",
+              "fieldName": "formAttribute",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "formenctype",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The encoding type for the form submission.",
+              "fieldName": "formEnctype",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "formmethod",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The HTTP method that the browser uses to submit the form.",
+              "fieldName": "formMethod",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "formnovalidate",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "description": "Indicates that the form will not be validated when submitted.",
+              "fieldName": "formNoValidate",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "formtarget",
+              "type": {
+                "text": "ButtonFormTarget | undefined"
+              },
+              "description": "The target frame or window to open the form submission in.",
+              "fieldName": "formTarget",
+              "parsedType": {
+                "text": "'_blank' | '_self' | '_parent' | '_top' | undefined"
+              },
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "ButtonType"
+              },
+              "description": "The button type.",
+              "fieldName": "type",
+              "parsedType": {
+                "text": "'submit' | 'reset' | 'button'"
+              },
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The value attribute.",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseButton",
+            "module": "/src/button/button.base.js",
+            "package": "@fluentui/web-components"
+          },
+          "tagName": "fluent-button",
+          "customElement": true,
+          "slots": [
+            {
+              "description": "Content which can be provided before the button content",
+              "name": "start",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "description": "Content which can be provided after the button content",
+              "name": "end",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "description": "The default slot for button content",
+              "name": "",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The button content container",
+              "name": "content",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/button/button.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "modulePath": "./dist/esm/button/button.js",
+          "definitionPath": "./dist/esm/button/define.js",
+          "cssProperties": [],
+          "cssStates": [],
+          "events": []
+        },
+        {
+          "kind": "class",
+          "description": "The base class used for constructing a fluent-badge custom element",
+          "name": "Badge",
+          "slots": [
+            {
+              "description": "Content which can be provided inside the badge.",
+              "name": ""
+            },
+            {
+              "description": "Content which can be provided before the badge content.",
+              "name": "start"
+            },
+            {
+              "description": "Content which can be provided after the badge content.",
+              "name": "end"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "BadgeAppearance"
+              },
+              "privacy": "public",
+              "description": "The appearance the badge should have.",
+              "parsedType": {
+                "text": "'outline' | 'filled' | 'ghost' | 'tint'"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "BadgeColor"
+              },
+              "privacy": "public",
+              "description": "The color the badge should have.",
+              "parsedType": {
+                "text": "'subtle' | 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'success' | 'warning'"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shape",
+              "type": {
+                "text": "BadgeShape | undefined"
+              },
+              "privacy": "public",
+              "description": "The shape the badge should have.",
+              "parsedType": {
+                "text": "'circular' | 'rounded' | 'square' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "BadgeSize | undefined"
+              },
+              "privacy": "public",
+              "description": "The size the badge should have.",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | 'extra-large' | 'tiny' | 'extra-small' | undefined"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "appearance",
+              "type": {
+                "text": "BadgeAppearance"
+              },
+              "description": "The appearance the badge should have.",
+              "fieldName": "appearance",
+              "parsedType": {
+                "text": "'outline' | 'filled' | 'ghost' | 'tint'"
+              }
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "BadgeColor"
+              },
+              "description": "The color the badge should have.",
+              "fieldName": "color",
+              "parsedType": {
+                "text": "'subtle' | 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'success' | 'warning'"
+              }
+            },
+            {
+              "name": "shape",
+              "type": {
+                "text": "BadgeShape | undefined"
+              },
+              "description": "The shape the badge should have.",
+              "fieldName": "shape",
+              "parsedType": {
+                "text": "'circular' | 'rounded' | 'square' | undefined"
+              }
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "BadgeSize | undefined"
+              },
+              "description": "The size the badge should have.",
+              "fieldName": "size",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | 'extra-large' | 'tiny' | 'extra-small' | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "FASTElement",
+            "package": "@microsoft/fast-element"
+          },
+          "tagName": "fluent-badge",
+          "customElement": true,
+          "modulePath": "./dist/esm/badge/badge.js",
+          "definitionPath": "./dist/esm/badge/define.js"
+        },
+        {
+          "kind": "class",
+          "description": "A Checkbox Custom HTML Element.\nImplements the https://w3c.github.io/aria/#checkbox | ARIA checkbox .",
+          "name": "Checkbox",
+          "slots": [
+            {
+              "description": "The checked indicator",
+              "name": "checked-indicator"
+            },
+            {
+              "description": "The indeterminate indicator",
+              "name": "indeterminate-indicator"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "indeterminate",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public",
+              "description": "Indicates that the element is in an indeterminate or mixed state."
+            },
+            {
+              "kind": "field",
+              "name": "shape",
+              "type": {
+                "text": "CheckboxShape | undefined"
+              },
+              "privacy": "public",
+              "description": "Indicates the shape of the checkbox.",
+              "parsedType": {
+                "text": "'circular' | 'square' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "CheckboxSize | undefined"
+              },
+              "privacy": "public",
+              "description": "Indicates the size of the control.",
+              "parsedType": {
+                "text": "'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleChecked",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "force",
+                  "default": "!this.checked",
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "description": "Forces the element to be checked or unchecked"
+                }
+              ],
+              "description": "Toggles the checked state of the control.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "string"
+              },
+              "default": "'checkbox'"
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "The element's current checked state.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public",
+              "description": "The disabled state of the control.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabledAttribute",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public",
+              "description": "The initial disabled state of the control.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formAttribute",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "The id of a form to associate the element to.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "initialChecked",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public",
+              "description": "The initial checked state of the element.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "initialValue",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "default": "'on'",
+              "description": "The initial value of the input.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The element's required state.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "public",
+              "description": "The associated `<form>` element.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "static": true,
+              "default": "true",
+              "description": "The form-associated flag.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "labels",
+              "type": {
+                "text": "ReadonlyArray<HTMLLabelElement>"
+              },
+              "privacy": "public",
+              "description": "A reference to all associated `<label>` elements.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validationMessage",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The validation message. Uses the browser's default validation message for native checkboxes if not otherwise\nspecified (e.g., via `setCustomValidity`).",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "type": {
+                "text": "ValidityState"
+              },
+              "privacy": "public",
+              "description": "The element's validity state.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The current value of the input.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "willValidate",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "Determines if the control can be submitted for constraint validation.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks the validity of the element and returns the result.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "reportValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Reports the validity of the element.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setCustomValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "message",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "The message to set"
+                }
+              ],
+              "description": "Sets a custom validity message.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "Event"
+              },
+              "description": "Emits a custom change event when the checked state changes",
+              "name": "change",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "type": {
+                "text": "Event"
+              },
+              "description": "Emits a custom input event when the checked state changes",
+              "name": "input",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "shape",
+              "type": {
+                "text": "CheckboxShape | undefined"
+              },
+              "description": "Indicates the shape of the checkbox.",
+              "fieldName": "shape",
+              "parsedType": {
+                "text": "'circular' | 'square' | undefined"
+              }
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "CheckboxSize | undefined"
+              },
+              "description": "Indicates the size of the control.",
+              "fieldName": "size",
+              "parsedType": {
+                "text": "'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "description": "The initial disabled state of the control.",
+              "fieldName": "disabledAttribute",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "form",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The id of a form to associate the element to.",
+              "fieldName": "formAttribute",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "description": "The initial checked state of the element.",
+              "fieldName": "initialChecked",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "'on'",
+              "description": "The initial value of the input.",
+              "fieldName": "initialValue",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The element's required state.",
+              "fieldName": "required",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseCheckbox",
+            "module": "/src/checkbox/checkbox.base.js",
+            "package": "@fluentui/web-components"
+          },
+          "tagName": "fluent-checkbox",
+          "customElement": true,
+          "modulePath": "./dist/esm/checkbox/checkbox.js",
+          "definitionPath": "./dist/esm/checkbox/define.js",
+          "cssProperties": [],
+          "cssParts": [],
+          "cssStates": []
+        },
+        {
+          "kind": "class",
+          "description": "A Switch Custom HTML Element.\nBased on BaseCheckbox and includes style and layout specific attributes",
+          "name": "Switch",
+          "cssParts": [
+            {
+              "description": "The internal switch indicator element.",
+              "name": "checked-indicator"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "string"
+              },
+              "default": "'switch'"
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "The element's current checked state.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public",
+              "description": "The disabled state of the control.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabledAttribute",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public",
+              "description": "The initial disabled state of the control.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formAttribute",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "The id of a form to associate the element to.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "initialChecked",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public",
+              "description": "The initial checked state of the element.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "initialValue",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "default": "'on'",
+              "description": "The initial value of the input.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The element's required state.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "public",
+              "description": "The associated `<form>` element.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "static": true,
+              "default": "true",
+              "description": "The form-associated flag.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "labels",
+              "type": {
+                "text": "ReadonlyArray<HTMLLabelElement>"
+              },
+              "privacy": "public",
+              "description": "A reference to all associated `<label>` elements.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validationMessage",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The validation message. Uses the browser's default validation message for native checkboxes if not otherwise\nspecified (e.g., via `setCustomValidity`).",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "type": {
+                "text": "ValidityState"
+              },
+              "privacy": "public",
+              "description": "The element's validity state.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The current value of the input.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "willValidate",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "Determines if the control can be submitted for constraint validation.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks the validity of the element and returns the result.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "reportValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Reports the validity of the element.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setCustomValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "message",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "The message to set"
+                }
+              ],
+              "description": "Sets a custom validity message.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleChecked",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "force",
+                  "default": "!this.checked",
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "description": "Forces the element to be checked or unchecked"
+                }
+              ],
+              "description": "Toggles the checked state of the control.",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseCheckbox",
+            "module": "/src/checkbox/checkbox.base.js",
+            "package": "@fluentui/web-components"
+          },
+          "tagName": "fluent-switch",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "description": "The initial disabled state of the control.",
+              "fieldName": "disabledAttribute",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "form",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The id of a form to associate the element to.",
+              "fieldName": "formAttribute",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "description": "The initial checked state of the element.",
+              "fieldName": "initialChecked",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "'on'",
+              "description": "The initial value of the input.",
+              "fieldName": "initialValue",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The element's required state.",
+              "fieldName": "required",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "Event"
+              },
+              "description": "Fires a custom 'change' event when the checked state changes",
+              "name": "change",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "type": {
+                "text": "Event"
+              },
+              "description": "Fires a custom 'input' event when the checked state changes",
+              "name": "input",
+              "inheritedFrom": {
+                "name": "BaseCheckbox",
+                "module": "src/checkbox/checkbox.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "modulePath": "./dist/esm/switch/switch.js",
+          "definitionPath": "./dist/esm/switch/define.js",
+          "cssProperties": [],
+          "cssStates": [],
+          "slots": []
+        },
+        {
+          "kind": "class",
+          "description": "A Text Input Custom HTML Element.\nBased on BaseTextInput and includes style and layout specific attributes",
+          "name": "TextInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "TextInputAppearance | undefined"
+              },
+              "privacy": "public",
+              "description": "Indicates the styled appearance of the element.",
+              "parsedType": {
+                "text": "'outline' | 'filled-darker' | 'filled-lighter' | 'underline' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "controlSize",
+              "type": {
+                "text": "TextInputControlSize | undefined"
+              },
+              "privacy": "public",
+              "description": "Sets the size of the control.",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "autocomplete",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "Indicates the element's autocomplete state.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentValue",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The current value of the input.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dirname",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "Sets the directionality of the element to be submitted with form data.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "description": "Sets the element's disabled state.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formAttribute",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "The id of a form to associate the element to.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "initialValue",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The initial value of the input.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "list",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "Allows associating a `<datalist>` to the element by ID.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxlength",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "public",
+              "description": "The maximum number of characters a user can enter.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "minlength",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "public",
+              "description": "The minimum number of characters a user can enter.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "Indicates that a comma-separated list of email addresses can be entered. This attribute is only valid when `type=\"email\"`.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pattern",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "A regular expression that the value must match to pass validation.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "Sets the placeholder value of the element, generally used to provide a hint to the user.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "readOnly",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public",
+              "description": "When true, the control will be immutable by user interaction.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "The element's required attribute.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "public",
+              "description": "Sets the width of the element to a specified number of characters.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "spellcheck",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "TextInputType"
+              },
+              "privacy": "public",
+              "description": "Allows setting a type or mode of text.",
+              "parsedType": {
+                "text": "'email' | 'password' | 'tel' | 'text' | 'url'"
+              },
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "readonly": true,
+              "default": "true",
+              "description": "The form-associated flag.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "type": {
+                "text": "ValidityState"
+              },
+              "privacy": "public",
+              "description": "The element's validity state.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validationMessage",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The validation message.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The current value of the input.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "willValidate",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "Determines if the control can be submitted for constraint validation.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "public",
+              "description": "The associated form element.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks the validity of the element and returns the result.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "clickHandler",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "boolean | void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "MouseEvent"
+                  },
+                  "description": "the event object"
+                }
+              ],
+              "description": "Clicks the inner control when the component is clicked.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "select",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Selects all the text in the text field.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setCustomValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "message",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "The message to set"
+                }
+              ],
+              "description": "Sets the custom validity message.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "reportValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Reports the validity of the element.",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "Event"
+              },
+              "description": "Fired when the input value is committed via a change event.",
+              "name": "change",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "type": {
+                "text": "Event"
+              },
+              "description": "Fires when the `select()` method is called.",
+              "name": "select",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "appearance",
+              "type": {
+                "text": "TextInputAppearance | undefined"
+              },
+              "description": "Indicates the styled appearance of the element.",
+              "fieldName": "appearance",
+              "parsedType": {
+                "text": "'outline' | 'filled-darker' | 'filled-lighter' | 'underline' | undefined"
+              }
+            },
+            {
+              "name": "control-size",
+              "type": {
+                "text": "TextInputControlSize | undefined"
+              },
+              "description": "Sets the size of the control.",
+              "fieldName": "controlSize",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "name": "autocomplete",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Indicates the element's autocomplete state.",
+              "fieldName": "autocomplete",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "current-value",
+              "type": {
+                "text": "string"
+              },
+              "description": "The current value of the input.",
+              "fieldName": "currentValue",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "dirname",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Sets the directionality of the element to be submitted with form data.",
+              "fieldName": "dirname",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "description": "Sets the element's disabled state.",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "form",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The id of a form to associate the element to.",
+              "fieldName": "formAttribute",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "The initial value of the input.",
+              "fieldName": "initialValue",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "list",
+              "type": {
+                "text": "string"
+              },
+              "description": "Allows associating a `<datalist>` to the element by ID.",
+              "fieldName": "list",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "maxlength",
+              "type": {
+                "text": "number"
+              },
+              "description": "The maximum number of characters a user can enter.",
+              "fieldName": "maxlength",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "minlength",
+              "type": {
+                "text": "number"
+              },
+              "description": "The minimum number of characters a user can enter.",
+              "fieldName": "minlength",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Indicates that a comma-separated list of email addresses can be entered. This attribute is only valid when `type=\"email\"`.",
+              "fieldName": "multiple",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "pattern",
+              "type": {
+                "text": "string"
+              },
+              "description": "A regular expression that the value must match to pass validation.",
+              "fieldName": "pattern",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the placeholder value of the element, generally used to provide a hint to the user.",
+              "fieldName": "placeholder",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "readonly",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "description": "When true, the control will be immutable by user interaction.",
+              "fieldName": "readOnly",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The element's required attribute.",
+              "fieldName": "required",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "description": "Sets the width of the element to a specified number of characters.",
+              "fieldName": "size",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "spellcheck",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used.",
+              "fieldName": "spellcheck",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "TextInputType"
+              },
+              "description": "Allows setting a type or mode of text.",
+              "fieldName": "type",
+              "parsedType": {
+                "text": "'email' | 'password' | 'tel' | 'text' | 'url'"
+              },
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseTextInput",
+            "module": "/src/text-input/text-input.base.js",
+            "package": "@fluentui/web-components"
+          },
+          "tagName": "fluent-text-input",
+          "customElement": true,
+          "slots": [
+            {
+              "description": "Content which can be provided before the input",
+              "name": "start",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "description": "Content which can be provided after the input",
+              "name": "end",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "description": "The default slot for button content",
+              "name": "",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The internal `<label>` element",
+              "name": "label",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "description": "the root container for the internal control",
+              "name": "root",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "description": "The internal `<input>` control",
+              "name": "control",
+              "inheritedFrom": {
+                "name": "BaseTextInput",
+                "module": "src/text-input/text-input.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "modulePath": "./dist/esm/text-input/text-input.js",
+          "definitionPath": "./dist/esm/text-input/define.js",
+          "cssProperties": [],
+          "cssStates": []
+        },
+        {
+          "kind": "class",
+          "description": "The Fluent TextArea Element.",
+          "name": "TextArea",
+          "members": [
+            {
+              "kind": "method",
+              "name": "labelSlottedNodesChanged",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "TextAreaAppearance"
+              },
+              "privacy": "public",
+              "description": "Indicates the visual appearance of the element.",
+              "parsedType": {
+                "text": "'outline' | 'filled-darker' | 'filled-lighter'"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "block",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Indicates whether the textarea should be a block-level element."
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "TextAreaSize | undefined"
+              },
+              "privacy": "public",
+              "description": "Sets the size of the control.",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "readonly": true,
+              "default": "true",
+              "description": "The form-associated flag.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "defaultSlottedNodesChanged",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "filteredLabelSlottedNodes",
+              "type": {
+                "text": "Label[]"
+              },
+              "privacy": "private",
+              "default": "[]",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "userInteracted",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "autoSizerObserver",
+              "type": {
+                "text": "ResizeObserver | undefined"
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "controlElAttrObserver",
+              "type": {
+                "text": "MutationObserver"
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "preConnectControlEl",
+              "type": {
+                "text": "HTMLTextAreaElement | null"
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "autocomplete",
+              "type": {
+                "text": "TextAreaAutocomplete | undefined"
+              },
+              "privacy": "public",
+              "description": "Indicates the element's autocomplete state.",
+              "parsedType": {
+                "text": "'on' | 'off' | undefined"
+              },
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "autoResize",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Indicates whether the element’s block size (height) should be automatically changed based on the content.\nNote: When this property’s value is set to be `true`, the element should not have a fixed block-size\ndefined in CSS. Instead, use `min-height` or `min-block-size`.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "autoResizeChanged",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dirName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "Sets the name of the value directionality to be submitted with form data.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Sets the element's disabled state.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "disabledChanged",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "displayShadow",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Indicates whether the element displays a box shadow. This only has effect when `appearance` is set to be `filled-darker` or `filled-lighter`.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "initialForm",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "The id of a form to associate the element to.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "public",
+              "description": "The form element that’s associated to the element, or `null` if no form is associated.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "labels",
+              "type": {
+                "text": "NodeList"
+              },
+              "privacy": "public",
+              "description": "A `NodeList` of `<label>` element associated with the element.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxLength",
+              "type": {
+                "text": "number | undefined"
+              },
+              "privacy": "public",
+              "description": "The maximum number of characters a user can enter.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "minLength",
+              "type": {
+                "text": "number | undefined"
+              },
+              "privacy": "public",
+              "description": "The minimum number of characters a user can enter.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public",
+              "description": "Sets the placeholder value of the element, generally used to provide a hint to the user.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "readOnly",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "When true, the control will be immutable by user interaction.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "readOnlyChanged",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "The element's required attribute.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "requiredChanged",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "resize",
+              "type": {
+                "text": "TextAreaResize"
+              },
+              "privacy": "public",
+              "description": "Indicates whether the element can be resized by end users.",
+              "parsedType": {
+                "text": "'none' | 'horizontal' | 'vertical' | 'both'"
+              },
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "resizeChanged",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "prev",
+                  "type": {
+                    "text": "TextAreaResize | undefined"
+                  }
+                },
+                {
+                  "name": "next",
+                  "type": {
+                    "text": "TextAreaResize | undefined"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "spellcheck",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "textLength",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "public",
+              "description": "The length of the current value.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'textarea'"
+              },
+              "privacy": "public",
+              "description": "The type of the element, which is always \"textarea\".",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "type": {
+                "text": "ValidityState"
+              },
+              "privacy": "public",
+              "description": "The element's validity state.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validationMessage",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The validation message.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "willValidate",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "Determines if the control can be submitted for constraint validation.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The text content of the element before user interaction.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The value of the element.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks the validity of the element and returns the result.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "reportValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Reports the validity of the element.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setCustomValidity",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "message",
+                  "type": {
+                    "text": "string | null"
+                  },
+                  "description": "The message to set"
+                }
+              ],
+              "description": "Sets the custom validity message.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "select",
+              "privacy": "public",
+              "description": "Selects the content in the element.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getContent",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "description": "Gets the content inside the light DOM, if any HTML element is present, use its `outerHTML` value.",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setDisabledSideEffect",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "disabled",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleUserValidityState",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "maybeCreateAutoSizerEl",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "appearance",
+              "type": {
+                "text": "TextAreaAppearance"
+              },
+              "description": "Indicates the visual appearance of the element.",
+              "fieldName": "appearance",
+              "parsedType": {
+                "text": "'outline' | 'filled-darker' | 'filled-lighter'"
+              }
+            },
+            {
+              "name": "block",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether the textarea should be a block-level element.",
+              "fieldName": "block"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "TextAreaSize | undefined"
+              },
+              "description": "Sets the size of the control.",
+              "fieldName": "size",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "name": "autocomplete",
+              "type": {
+                "text": "TextAreaAutocomplete | undefined"
+              },
+              "description": "Indicates the element's autocomplete state.",
+              "fieldName": "autocomplete",
+              "parsedType": {
+                "text": "'on' | 'off' | undefined"
+              },
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "auto-resize",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether the element’s block size (height) should be automatically changed based on the content.\nNote: When this property’s value is set to be `true`, the element should not have a fixed block-size\ndefined in CSS. Instead, use `min-height` or `min-block-size`.",
+              "fieldName": "autoResize",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "dirname",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Sets the name of the value directionality to be submitted with form data.",
+              "fieldName": "dirName",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets the element's disabled state.",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "display-shadow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether the element displays a box shadow. This only has effect when `appearance` is set to be `filled-darker` or `filled-lighter`.",
+              "fieldName": "displayShadow",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "form",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The id of a form to associate the element to.",
+              "fieldName": "initialForm",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "maxlength",
+              "type": {
+                "text": "number | undefined"
+              },
+              "description": "The maximum number of characters a user can enter.",
+              "fieldName": "maxLength",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "minlength",
+              "type": {
+                "text": "number | undefined"
+              },
+              "description": "The minimum number of characters a user can enter.",
+              "fieldName": "minLength",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Sets the placeholder value of the element, generally used to provide a hint to the user.",
+              "fieldName": "placeholder",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When true, the control will be immutable by user interaction.",
+              "fieldName": "readOnly",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "The element's required attribute.",
+              "fieldName": "required",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "resize",
+              "type": {
+                "text": "TextAreaResize"
+              },
+              "description": "Indicates whether the element can be resized by end users.",
+              "fieldName": "resize",
+              "parsedType": {
+                "text": "'none' | 'horizontal' | 'vertical' | 'both'"
+              },
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "spellcheck",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used.",
+              "fieldName": "spellcheck",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseTextArea",
+            "module": "/src/textarea/textarea.base.js",
+            "package": "@fluentui/web-components"
+          },
+          "tagName": "fluent-textarea",
+          "customElement": true,
+          "slots": [
+            {
+              "description": "The default content/value of the component.",
+              "name": "",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "description": "The content for the `<label>`, it should be a `<fluent-label>` element.",
+              "name": "label",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The `<label>` element.",
+              "name": "label",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "description": "The container element of the `<textarea>` element.",
+              "name": "root",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "description": "The internal `<textarea>` element.",
+              "name": "control",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "Event"
+              },
+              "description": "Fires after the control loses focus, if the content has changed.",
+              "name": "change",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "type": {
+                "text": "Event"
+              },
+              "description": "Fires when the `select()` method is called.",
+              "name": "select",
+              "inheritedFrom": {
+                "name": "BaseTextArea",
+                "module": "src/textarea/textarea.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "modulePath": "./dist/esm/text-area/text-area.js",
+          "definitionPath": "./dist/esm/text-area/define.js",
+          "cssProperties": [],
+          "cssStates": []
+        },
+        {
+          "kind": "class",
+          "description": "The base class used for constructing a fluent-label custom element",
+          "name": "Label",
+          "cssParts": [
+            {
+              "description": "The required-field asterisk indicator.",
+              "name": "asterisk"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The default slot. Accepts the content of the label.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "LabelSize | undefined"
+              },
+              "privacy": "public",
+              "description": "Specifies font size of a label",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "weight",
+              "type": {
+                "text": "LabelWeight | undefined"
+              },
+              "privacy": "public",
+              "description": "Specifies font weight of a label",
+              "parsedType": {
+                "text": "'regular' | 'semibold' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Specifies styles for label when associated input is disabled"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Specifies styles for label when associated input is a required field"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "LabelSize | undefined"
+              },
+              "description": "Specifies font size of a label",
+              "fieldName": "size",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "name": "weight",
+              "type": {
+                "text": "LabelWeight | undefined"
+              },
+              "description": "Specifies font weight of a label",
+              "fieldName": "weight",
+              "parsedType": {
+                "text": "'regular' | 'semibold' | undefined"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Specifies styles for label when associated input is disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Specifies styles for label when associated input is a required field",
+              "fieldName": "required"
+            }
+          ],
+          "superclass": {
+            "name": "FASTElement",
+            "package": "@microsoft/fast-element"
+          },
+          "tagName": "fluent-label",
+          "customElement": true,
+          "modulePath": "./dist/esm/label/label.js",
+          "definitionPath": "./dist/esm/label/define.js"
+        },
+        {
+          "kind": "class",
+          "description": "A Field Custom HTML Element.\nBased on BaseField and includes style and layout specific attributes",
+          "name": "Field",
+          "cssParts": [
+            {
+              "description": "The label slot container.",
+              "name": "label"
+            },
+            {
+              "description": "The input slot container.",
+              "name": "input"
+            },
+            {
+              "description": "The message slot container.",
+              "name": "message"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Label content associated with the control.",
+              "name": "label"
+            },
+            {
+              "description": "Input control content.",
+              "name": "input"
+            },
+            {
+              "description": "Validation and helper message content.",
+              "name": "message"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "labelPosition",
+              "type": {
+                "text": "LabelPosition"
+              },
+              "privacy": "public",
+              "description": "The position of the label relative to the input.",
+              "parsedType": {
+                "text": "'above' | 'after' | 'before'"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "labelSlotChanged",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "prev",
+                  "type": {
+                    "text": "Node[]"
+                  },
+                  "description": "the previous list of slotted label elements"
+                },
+                {
+                  "name": "next",
+                  "type": {
+                    "text": "Node[]"
+                  },
+                  "description": "the current list of slotted label elements"
+                }
+              ],
+              "description": "Updates attributes on the slotted label elements.",
+              "inheritedFrom": {
+                "name": "BaseField",
+                "module": "src/field/field.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "input",
+              "type": {
+                "text": "SlottableInput"
+              },
+              "privacy": "public",
+              "description": "Reference to the first slotted input.",
+              "parsedType": {
+                "text": "HTMLElement & ElementInternals & { elementInternals: ElementInternals, required: false | true, disabled: false | true, readOnly: false | true, checked: false | true, value: string }"
+              },
+              "inheritedFrom": {
+                "name": "BaseField",
+                "module": "src/field/field.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "inputChanged",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "prev",
+                  "type": {
+                    "text": "SlottableInput | undefined"
+                  },
+                  "description": "the previous input"
+                },
+                {
+                  "name": "next",
+                  "type": {
+                    "text": "SlottableInput | undefined"
+                  },
+                  "description": "the current input"
+                }
+              ],
+              "description": "Updates the field's states and label properties when the assigned input changes.",
+              "inheritedFrom": {
+                "name": "BaseField",
+                "module": "src/field/field.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setValidationStates",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseField",
+                "module": "src/field/field.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "string"
+              },
+              "default": "'presentation'",
+              "inheritedFrom": {
+                "name": "BaseField",
+                "module": "src/field/field.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label-position",
+              "type": {
+                "text": "LabelPosition"
+              },
+              "description": "The position of the label relative to the input.",
+              "fieldName": "labelPosition",
+              "parsedType": {
+                "text": "'above' | 'after' | 'before'"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseField",
+            "module": "/src/field/field.base.js",
+            "package": "@fluentui/web-components"
+          },
+          "tagName": "fluent-field",
+          "customElement": true,
+          "modulePath": "./dist/esm/field/field.js",
+          "definitionPath": "./dist/esm/field/define.js",
+          "cssProperties": [],
+          "cssStates": [],
+          "events": []
+        },
+        {
+          "kind": "class",
+          "description": "A Divider Custom HTML Element.\nBased on BaseDivider and includes style and layout specific attributes",
+          "name": "Divider",
+          "members": [
+            {
+              "kind": "field",
+              "name": "alignContent",
+              "type": {
+                "text": "DividerAlignContent | undefined"
+              },
+              "privacy": "public",
+              "parsedType": {
+                "text": "'start' | 'end' | 'center' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "DividerAppearance | undefined"
+              },
+              "privacy": "public",
+              "parsedType": {
+                "text": "'subtle' | 'brand' | 'strong' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inset",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "DividerRole"
+              },
+              "privacy": "public",
+              "description": "The role of the element.",
+              "parsedType": {
+                "text": "'separator' | 'presentation'"
+              },
+              "inheritedFrom": {
+                "name": "BaseDivider",
+                "module": "src/divider/divider.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "DividerOrientation | undefined"
+              },
+              "privacy": "public",
+              "description": "The orientation of the divider.",
+              "parsedType": {
+                "text": "'horizontal' | 'vertical' | undefined"
+              },
+              "inheritedFrom": {
+                "name": "BaseDivider",
+                "module": "src/divider/divider.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "align-content",
+              "type": {
+                "text": "DividerAlignContent | undefined"
+              },
+              "fieldName": "alignContent",
+              "parsedType": {
+                "text": "'start' | 'end' | 'center' | undefined"
+              }
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "DividerAppearance | undefined"
+              },
+              "fieldName": "appearance",
+              "parsedType": {
+                "text": "'subtle' | 'brand' | 'strong' | undefined"
+              }
+            },
+            {
+              "name": "inset",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "fieldName": "inset"
+            },
+            {
+              "name": "role",
+              "type": {
+                "text": "DividerRole"
+              },
+              "description": "The role of the element.",
+              "fieldName": "role",
+              "parsedType": {
+                "text": "'separator' | 'presentation'"
+              },
+              "inheritedFrom": {
+                "name": "BaseDivider",
+                "module": "src/divider/divider.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "orientation",
+              "type": {
+                "text": "DividerOrientation | undefined"
+              },
+              "description": "The orientation of the divider.",
+              "fieldName": "orientation",
+              "parsedType": {
+                "text": "'horizontal' | 'vertical' | undefined"
+              },
+              "inheritedFrom": {
+                "name": "BaseDivider",
+                "module": "src/divider/divider.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseDivider",
+            "module": "/src/divider/divider.base.js",
+            "package": "@fluentui/web-components"
+          },
+          "tagName": "fluent-divider",
+          "customElement": true,
+          "modulePath": "./dist/esm/divider/divider.js",
+          "definitionPath": "./dist/esm/divider/define.js",
+          "cssProperties": [],
+          "cssParts": [],
+          "cssStates": [],
+          "events": [],
+          "slots": []
+        },
+        {
+          "kind": "class",
+          "description": "A Spinner Custom HTML Element.\nBased on BaseSpinner and includes style and layout specific attributes",
+          "name": "Spinner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "SpinnerSize | undefined"
+              },
+              "privacy": "public",
+              "description": "The size of the spinner",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | 'extra-large' | 'tiny' | 'extra-small' | 'huge' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "SpinnerAppearance | undefined"
+              },
+              "privacy": "public",
+              "description": "The appearance of the spinner",
+              "parsedType": {
+                "text": "'primary' | 'inverted' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "string"
+              },
+              "default": "'progressbar'",
+              "inheritedFrom": {
+                "name": "BaseSpinner",
+                "module": "src/spinner/spinner.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "SpinnerSize | undefined"
+              },
+              "description": "The size of the spinner",
+              "fieldName": "size",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | 'extra-large' | 'tiny' | 'extra-small' | 'huge' | undefined"
+              }
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "SpinnerAppearance | undefined"
+              },
+              "description": "The appearance of the spinner",
+              "fieldName": "appearance",
+              "parsedType": {
+                "text": "'primary' | 'inverted' | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseSpinner",
+            "module": "/src/spinner/spinner.base.js",
+            "package": "@fluentui/web-components"
+          },
+          "tagName": "fluent-spinner",
+          "customElement": true,
+          "modulePath": "./dist/esm/spinner/spinner.js",
+          "definitionPath": "./dist/esm/spinner/define.js",
+          "cssProperties": [],
+          "cssParts": [],
+          "cssStates": [],
+          "events": [],
+          "slots": []
+        },
+        {
+          "kind": "class",
+          "description": "Tab extends the FASTTab and is a child of the TabList",
+          "name": "Tab",
+          "members": [
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "description": "When true, the control will be immutable by user interaction. See https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled | disabled HTML attribute for more information."
+            },
+            {
+              "kind": "method",
+              "name": "disabledChanged",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "prev",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "next",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setDisabledSideEffect",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "disabled",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "string"
+              },
+              "default": "'tab'"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When true, the control will be immutable by user interaction. See https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled | disabled HTML attribute for more information.",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "FASTElement",
+            "package": "@microsoft/fast-element"
+          },
+          "tagName": "fluent-tab",
+          "customElement": true,
+          "modulePath": "./dist/esm/tab/tab.js",
+          "definitionPath": "./dist/esm/tab/define.js"
+        },
+        {
+          "kind": "class",
+          "description": "A Tablist component.",
+          "name": "Tablist",
+          "members": [
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "TablistAppearance | undefined"
+              },
+              "privacy": "public",
+              "description": "appearance\nThere are two modes of appearance: transparent and subtle.",
+              "parsedType": {
+                "text": "'subtle' | 'transparent' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "TablistSize | undefined"
+              },
+              "privacy": "public",
+              "description": "size\ndefaults to medium.\nUsed to set the size of all the tab controls, which effects text size and margins. Three sizes: small, medium and large.",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fg",
+              "type": {
+                "text": "FocusGroup | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "fgItems",
+              "type": {
+                "text": "ArrayItemCollection<Tab> | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "tabsChanged",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "prev",
+                  "type": {
+                    "text": "Tab[] | undefined"
+                  }
+                },
+                {
+                  "name": "next",
+                  "type": {
+                    "text": "Tab[] | undefined"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "Used for disabling all click and keyboard events for the tabs, child tab elements.",
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "TablistOrientation"
+              },
+              "privacy": "public",
+              "description": "The orientation",
+              "parsedType": {
+                "text": "'horizontal' | 'vertical'"
+              },
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "orientationChanged",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "prev",
+                  "type": {
+                    "text": "TablistOrientation"
+                  }
+                },
+                {
+                  "name": "next",
+                  "type": {
+                    "text": "TablistOrientation"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "activeid",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The id of the active tab",
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "activetab",
+              "type": {
+                "text": "Tab"
+              },
+              "privacy": "public",
+              "description": "A reference to the active tab",
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tabPanelMap",
+              "privacy": "private",
+              "default": "new WeakMap<HTMLElement, HTMLElement>()",
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "change",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setTabs",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "{ connectToPanel = false, forceDisabled = false }",
+                  "default": "{}"
+                }
+              ],
+              "description": "Function that is invoked whenever the selected tab or the tab collection changes.",
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "changeTab",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "oldId",
+                  "type": {
+                    "text": "undefined | string"
+                  }
+                },
+                {
+                  "name": "newId",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "string"
+              },
+              "default": "'tablist'",
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaOrientation",
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "Event"
+              },
+              "description": "Fired when the active tab changes.",
+              "name": "change"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "appearance",
+              "type": {
+                "text": "TablistAppearance | undefined"
+              },
+              "description": "appearance\nThere are two modes of appearance: transparent and subtle.",
+              "fieldName": "appearance",
+              "parsedType": {
+                "text": "'subtle' | 'transparent' | undefined"
+              }
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "TablistSize | undefined"
+              },
+              "description": "size\ndefaults to medium.\nUsed to set the size of all the tab controls, which effects text size and margins. Three sizes: small, medium and large.",
+              "fieldName": "size",
+              "parsedType": {
+                "text": "'small' | 'medium' | 'large' | undefined"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Used for disabling all click and keyboard events for the tabs, child tab elements.",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "orientation",
+              "type": {
+                "text": "TablistOrientation"
+              },
+              "description": "The orientation",
+              "fieldName": "orientation",
+              "parsedType": {
+                "text": "'horizontal' | 'vertical'"
+              },
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            },
+            {
+              "name": "activeid",
+              "type": {
+                "text": "string"
+              },
+              "description": "The id of the active tab",
+              "fieldName": "activeid",
+              "inheritedFrom": {
+                "name": "BaseTablist",
+                "module": "src/tablist/tablist.base.ts",
+                "package": "@fluentui/web-components"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseTablist",
+            "module": "/src/tablist/tablist.base.js",
+            "package": "@fluentui/web-components"
+          },
+          "tagName": "fluent-tablist",
+          "customElement": true,
+          "modulePath": "./dist/esm/tablist/tablist.js",
+          "definitionPath": "./dist/esm/tablist/define.js",
+          "cssProperties": [],
+          "cssParts": [],
+          "cssStates": [],
+          "slots": []
+        },
+        {
+          "kind": "class",
+          "description": "A Tooltip Custom HTML Element.\nBased on ARIA APG Tooltip Pattern https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/ ",
+          "name": "Tooltip",
+          "slots": [
+            {
+              "description": "The default slot. Accepts the content of the tooltip.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "elementInternals",
+              "privacy": "public",
+              "description": "The attached element internals"
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "description": "The item ID"
+            },
+            {
+              "kind": "field",
+              "name": "delay",
+              "type": {
+                "text": "number | undefined"
+              },
+              "privacy": "public",
+              "description": "Set the delay for the tooltip"
+            },
+            {
+              "kind": "field",
+              "name": "positioning",
+              "type": {
+                "text": "TooltipPositioningOption | undefined"
+              },
+              "privacy": "public",
+              "description": "Set the positioning of the tooltip",
+              "parsedType": {
+                "text": "'block-start span-inline-end' | 'block-start' | 'block-start span-inline-start' | 'block-end span-inline-end' | 'block-end' | 'block-end span-inline-start' | 'inline-start span-block-end' | 'inline-start' | 'inline-start span-block-start' | 'inline-end span-block-end' | 'inline-end' | 'inline-end span-block-start' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "anchor",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "default": "''",
+              "description": "The id of the anchor element for the tooltip"
+            },
+            {
+              "kind": "field",
+              "name": "mouseenterAnchorHandler",
+              "privacy": "public",
+              "description": "Show the tooltip on mouse enter"
+            },
+            {
+              "kind": "field",
+              "name": "mouseleaveAnchorHandler",
+              "privacy": "public",
+              "description": "Hide the tooltip on mouse leave"
+            },
+            {
+              "kind": "field",
+              "name": "focusAnchorHandler",
+              "privacy": "public",
+              "description": "Show the tooltip on focus"
+            },
+            {
+              "kind": "field",
+              "name": "blurAnchorHandler",
+              "privacy": "public",
+              "description": "Hide the tooltip on blur"
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "string"
+              },
+              "default": "'tooltip'"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "The item ID",
+              "fieldName": "id"
+            },
+            {
+              "name": "delay",
+              "type": {
+                "text": "number | undefined"
+              },
+              "description": "Set the delay for the tooltip",
+              "fieldName": "delay"
+            },
+            {
+              "name": "positioning",
+              "type": {
+                "text": "TooltipPositioningOption | undefined"
+              },
+              "description": "Set the positioning of the tooltip",
+              "fieldName": "positioning",
+              "parsedType": {
+                "text": "'block-start span-inline-end' | 'block-start' | 'block-start span-inline-start' | 'block-end span-inline-end' | 'block-end' | 'block-end span-inline-start' | 'inline-start span-block-end' | 'inline-start' | 'inline-start span-block-start' | 'inline-end span-block-end' | 'inline-end' | 'inline-end span-block-start' | undefined"
+              }
+            },
+            {
+              "name": "anchor",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The id of the anchor element for the tooltip",
+              "fieldName": "anchor"
+            }
+          ],
+          "superclass": {
+            "name": "FASTElement",
+            "package": "@microsoft/fast-element"
+          },
+          "tagName": "fluent-tooltip",
+          "customElement": true,
+          "modulePath": "./dist/esm/tooltip/tooltip.js",
+          "definitionPath": "./dist/esm/tooltip/define.js"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Button",
+          "declaration": {
+            "name": "Button",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-button",
+          "declaration": {
+            "name": "Button",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Badge",
+          "declaration": {
+            "name": "Badge",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-badge",
+          "declaration": {
+            "name": "Badge",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Checkbox",
+          "declaration": {
+            "name": "Checkbox",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-checkbox",
+          "declaration": {
+            "name": "Checkbox",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Switch",
+          "declaration": {
+            "name": "Switch",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-switch",
+          "declaration": {
+            "name": "Switch",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TextInput",
+          "declaration": {
+            "name": "TextInput",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-text-input",
+          "declaration": {
+            "name": "TextInput",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TextArea",
+          "declaration": {
+            "name": "TextArea",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-textarea",
+          "declaration": {
+            "name": "TextArea",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Label",
+          "declaration": {
+            "name": "Label",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-label",
+          "declaration": {
+            "name": "Label",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Field",
+          "declaration": {
+            "name": "Field",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-field",
+          "declaration": {
+            "name": "Field",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Divider",
+          "declaration": {
+            "name": "Divider",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-divider",
+          "declaration": {
+            "name": "Divider",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Spinner",
+          "declaration": {
+            "name": "Spinner",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-spinner",
+          "declaration": {
+            "name": "Spinner",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Tab",
+          "declaration": {
+            "name": "Tab",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-tab",
+          "declaration": {
+            "name": "Tab",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Tablist",
+          "declaration": {
+            "name": "Tablist",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-tablist",
+          "declaration": {
+            "name": "Tablist",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Tooltip",
+          "declaration": {
+            "name": "Tooltip",
+            "module": "dist/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fluent-tooltip",
+          "declaration": {
+            "name": "Tooltip",
+            "module": "dist/index.js"
+          }
+        }
+      ]
+    }
+  ]
+}

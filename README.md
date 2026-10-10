@@ -65,6 +65,23 @@ in both themes. Toolbar actions prefer icon-only buttons with accessible names
 and tooltips; ambiguous actions and form confirmations keep explicit labels.
 Shared components use official Fluent icons (`@fluentui/react-icons` 2.0.344).
 
+## Web Components
+
+The managed [Web Components package](packages/web-components/README.md) provides
+13 official Fluent 2 custom elements for Vue, Angular, Svelte, React, and native
+HTML. It shares the design constitution and product color contract, and ships
+typed ESM, a standalone browser bundle, plain CSS, official SVG icons, and a
+Custom Elements Manifest. It uses Rslib/Rspack and has browser tests in CI.
+
+```bash
+npm run build:web-components
+npm run test:web-components  # install Playwright Chromium first
+```
+
+See `Web Components/Foundations` in Storybook. React source distribution stays in
+the 35-item shadcn registry; Web Components are managed under `packages/` and
+distributed as a separate workspace/tarball package.
+
 ## Spec
 
 - Design: [`.claude/specs/molcrafts-ui-registry-01.md`](.claude/specs/molcrafts-ui-registry-01.md)

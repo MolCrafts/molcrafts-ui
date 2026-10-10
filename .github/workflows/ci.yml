@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Typecheck, registry, and Storybook
+    name: Typecheck, registry, Storybook, and Web Components
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +30,17 @@ jobs:
       - run: npm run build:registry
       - name: Verify committed registry artifacts
         run: git diff --exit-code -- public/r
+      - run: npm run build:web-components
+      - name: Verify committed Web Components sources and manifest
+        run: git diff --exit-code -- packages/web-components/src packages/web-components/custom-elements.json
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:web-components
       - run: npm run build:storybook
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-components
+          path: packages/web-components/dist
+          retention-days: 7
       - uses: actions/upload-artifact@v4
         with:
           name: storybook

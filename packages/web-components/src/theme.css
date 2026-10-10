@@ -1,0 +1,66 @@
+/* Framework-independent CSS: no Tailwind processor required. */
+@import "./fluent-theme.css";
+@import "./constitution-base.css";
+@import "./fluent-web-theme.css";
+@import "./fluent-host.css";
+
+/* Rebind at product scopes so custom palettes reach Shadow DOM controls. */
+:where(:root, :host), .mol-product-theme {
+  --colorBrandBackground: var(--primary);
+  --colorBrandBackgroundHover: var(--primary-hover);
+  --colorBrandBackgroundPressed: var(--primary-pressed);
+  --colorBrandBackgroundSelected: var(--primary-pressed);
+  --colorNeutralForegroundOnBrand: var(--primary-foreground);
+  --colorBrandBackground2: var(--primary-muted);
+  --colorBrandForeground2: var(--primary-muted-foreground);
+  --colorBrandForeground1: var(--primary-link);
+  --colorBrandForegroundLink: var(--primary-link);
+  --colorBrandForegroundLinkHover: var(--primary-link-hover);
+  --colorCompoundBrandBackground: var(--primary);
+  --colorCompoundBrandBackgroundHover: var(--primary-hover);
+  --colorCompoundBrandBackgroundPressed: var(--primary-pressed);
+  --colorCompoundBrandForeground1: var(--primary-link);
+  --colorCompoundBrandForeground1Hover: var(--primary-link-hover);
+  --colorCompoundBrandStroke: var(--primary);
+  --colorCompoundBrandStrokeHover: var(--primary-hover);
+  --colorCompoundBrandStrokePressed: var(--primary-pressed);
+  --colorBrandStroke1: var(--primary);
+  --colorNeutralBackground1: var(--neutral);
+  --colorNeutralBackground1Hover: var(--interactive);
+  --colorNeutralBackground1Pressed: var(--interactive-pressed);
+  --colorNeutralForeground1: var(--foreground);
+  --colorNeutralBackgroundDisabled: var(--disabled-background);
+  --colorNeutralForegroundDisabled: var(--disabled-foreground);
+  --colorNeutralStrokeDisabled: var(--disabled-border);
+  --colorStrokeFocus1: var(--focus-inner);
+  --colorStrokeFocus2: var(--ring);
+}
+
+fluent-button { border-radius: 4px; font-size: 14px; line-height: 20px; font-weight: 600; }
+fluent-button[size="small"] { min-height: 28px; font-size: 14px; line-height: 20px; font-weight: 600; border-radius: 4px; }
+fluent-button[size="large"] { font-size: 14px; line-height: 20px; border-radius: 4px; }
+fluent-button[icon-only] { min-width: 32px; width: 32px; padding: 0; }
+fluent-button[size="small"][icon-only] { min-width: 28px; width: 28px; }
+fluent-button[size="large"][icon-only] { min-width: 40px; width: 40px; }
+fluent-button > svg { width: 16px; height: 16px; fill: currentColor; }
+fluent-checkbox, fluent-switch {
+  --colorNeutralForegroundInverted: var(--primary-foreground);
+  --colorNeutralForegroundInvertedHover: var(--primary-foreground);
+  --colorNeutralForegroundInvertedPressed: var(--primary-foreground);
+}
+fluent-badge[appearance="tint"][color="success"] { background: var(--status-completed-soft); color: var(--status-completed-foreground); }
+fluent-badge[appearance="tint"][color="danger"] { background: var(--status-failed-soft); color: var(--status-failed-foreground); }
+fluent-badge[appearance="tint"][color="warning"] { background: var(--status-warning-soft); color: var(--status-warning-foreground); }
+
+@media (prefers-reduced-motion: reduce) {
+  :where(:root, :host), .dark, .mol-product-theme {
+    --durationUltraFast: 0ms;
+    --durationFaster: 0ms;
+    --durationFast: 0ms;
+    --durationNormal: 0ms;
+    --durationSlow: 0ms;
+    --durationSlower: 0ms;
+    --durationUltraSlow: 0ms;
+  }
+  fluent-spinner::part(indicator), fluent-spinner::part(spinner) { animation: none; }
+}

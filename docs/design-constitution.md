@@ -1,6 +1,6 @@
 # MolCrafts 设计宪法 · Fluent 2
 
-版本：v1.1，2026-10-10。适用于 molexp、molvis、molhub 的共享基础 UI。
+版本：v1.2，2026-10-10。适用于 molexp、molvis、molhub 的共享基础 UI。
 
 ## 1. 设计基线与来源
 
@@ -220,3 +220,23 @@ Registry 安装会自动带入 Fluent 图标依赖；直接运行同步脚本的
 安装 `@fluentui/react-icons`，同步脚本仅复制源码，不更新产品 package.json。
 
 各产品页面的实际迁移通过独立产品 PR 完成。本仓提供共享基线和迁移契约。
+
+## 11. Web Components 同源管理
+
+`packages/web-components` 是框架无关的共享入口，基于核对时最新稳定的官方
+`@fluentui/web-components` **3.1.3**。React 与 Web Components 服从同一宪法、
+primary / secondary 色组、中性次要行动、Fluent 图标和可访问性规则。
+
+Web Components 使用普通 CSS 和官方 camelCase token 映射，产品色组必须
+能够继承进入 Shadow DOM；不要求消费方配置 Tailwind。图标采用官方
+`@fluentui/svg-icons` **1.1.344**，与 React 图标保持同一 Regular 视觉语言。
+减少动画须在 Shadow DOM 内生效，不能只修改宿主页面样式。
+
+组件范围由 `components.json` 管理；生成类型、注册表与 Custom Elements
+Manifest；Rslib/Rspack 构建 ESM 和独立浏览器包。新增组件应更新清单、文档、
+Storybook 和浏览器验证。现阶段纳管 13 个官方标签，未纳管组件不得声称与
+React registry 已达到功能对等。公开 API 遵循原生事件、属性和官方 slots/parts。
+
+验收同时覆盖普通 HTML 的独立消费、异步重复注册、键盘操作和 Tooltip、
+禁用、原生表单提交、品牌色/明暗、高对比度和减少动画。框架集成与 SSR
+接入约束见 [Web Components 文档](../packages/web-components/README.md)。
