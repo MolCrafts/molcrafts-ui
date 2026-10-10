@@ -1,22 +1,28 @@
-# @molcrafts/ui — shared shadcn registry for MolCrafts
+# MolCrafts Design System — future molcrafts-design
 
-**Source of truth** for the MolCrafts visual constitution and shadcn-style React
-primitives shared by **molexp**, **molvis**, and **molhub**.
+MolCrafts shared UI is evolving from a shadcn-derived source registry into an
+independent React design system with Fluent 2 visual language, owned tokens,
+public component APIs and versioned package distribution.
 
-This is **not** only an opaque npm component library. Following
-[shadcn registry](https://ui.shadcn.com/docs/registry):
+**Current stage: implementation preparation.** The repository still uses npm,
+root `src/` and `.storybook/`, and source-based React registry distribution.
+The pnpm workspace, React/tokens packages and compiled React CSS distribution
+are planned, not yet implemented. No packages are being published. The future
+project name is **molcrafts-design**; final package names and external renaming
+are deferred.
 
-1. Author components here as source.
-2. `npm run build:registry` → static JSON under `public/r/`.
-3. Product apps install with:
+Start here:
 
-```bash
-npx shadcn@latest add @molcrafts/button
-```
+- [Refactoring spec v1.0](docs/design-system-refactoring-spec.md): target architecture and acceptance criteria.
+- [Implementation roadmap](docs/design-system-roadmap.md): changes, reasons, development impact and stage gates.
+- [Readiness audit](docs/design-system-readiness.md): existing components, stories, gaps and migration risks.
+- [Design constitution](docs/design-constitution.md): Fluent 2 and product-theme rules.
+- [Repository rules](AGENTS.md) and [portable Agent skill](skills/molcrafts-ui/SKILL.md).
 
-Optional npm package may later ship **tokens + `cn` + thin re-exports** for
-plugin runtimes; product apps should prefer the registry so they keep local
-ownership of UI source after install.
+The new direction makes versioned packages the primary future distribution;
+Registry becomes optional integration support. Existing Registry consumption
+remains available during migration. The instructions below describe the current
+implementation, not the completed target architecture.
 
 ## What’s in the registry (35 items)
 
@@ -78,11 +84,15 @@ npm run build:web-components
 npm run test:web-components  # install Playwright Chromium first
 ```
 
-See `Web Components/Foundations` in Storybook. React source distribution stays in
-the 35-item shadcn registry; Web Components are managed under `packages/` and
-distributed as a separate workspace/tarball package.
+See `Web Components/Foundations` in Storybook. Currently React source distribution
+uses the 35-item registry; Web Components have an independent workspace/tarball
+boundary. Both will share the canonical tokens package during migration; native
+components do not render React across runtimes.
 
-## Spec
+## Historical Registry spec
+
+The following documents record the earlier registry-first implementation. Their
+distribution direction is superseded by the refactoring spec linked above.
 
 - Design: [`.claude/specs/molcrafts-ui-registry-01.md`](.claude/specs/molcrafts-ui-registry-01.md)
 - Acceptance: [`.claude/specs/molcrafts-ui-registry-01.acceptance.md`](.claude/specs/molcrafts-ui-registry-01.acceptance.md)
@@ -139,12 +149,15 @@ In each app’s `components.json`:
 
 Until hosted, use a local path or GitHub raw URL during bootstrap.
 
-## Status
+## Historical product integration
+
+This records the earlier source-sync integration, not verification of the proposed
+package migration. Revalidate products in separate migration PRs.
 
 **Registry + product rewire complete** for **molexp**, **molvis** (page + plugin),
 and **molhub** web (local `file:` registry, `sync:products`, constitution CSS).
 
 ```bash
 npm run build:registry
-npm run sync:products   # push sources into sibling molexp / molvis / molhub trees
+npm run sync:products   # writes sibling product trees; only for an explicit product migration task
 ```

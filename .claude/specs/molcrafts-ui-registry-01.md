@@ -7,6 +7,10 @@ product: molcrafts-ui
 language: zh
 ---
 
+> Historical Registry document. The registry-first distribution direction is superseded by
+> [Refactoring Spec v1.0](../../docs/design-system-refactoring-spec.md). Existing workflows
+> remain available during migration; this document does not establish completion of the new refactor.
+
 # molcrafts-ui-registry-01 — 跨产品 shadcn Registry
 
 ## Summary

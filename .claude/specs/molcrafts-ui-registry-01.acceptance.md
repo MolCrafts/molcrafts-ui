@@ -1,3 +1,7 @@
+> Historical Registry document. The registry-first distribution direction is superseded by
+> [Refactoring Spec v1.0](../../docs/design-system-refactoring-spec.md). Existing workflows
+> remain available during migration; this document does not establish completion of the new refactor.
+
 # Acceptance — molcrafts-ui-registry-01
 
 Binding “done” contract for the shared registry scaffold and v0 readiness.

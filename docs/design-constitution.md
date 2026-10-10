@@ -15,8 +15,11 @@
 [层级](https://fluent2.microsoft.design/elevation)、
 [动效](https://fluent2.microsoft.design/motion)。
 
-保留现有 React/Radix primitives 与 shadcn 源码分发方式。共享 UI 的视觉
-规则由本宪法、生成的 tokens 和 Storybook 示例共同定义。
+保留工作正常的 React/Radix primitives。目标以版本化包为主分发，Registry
+保留为可选集成入口；当前源码流程在迁移期间继续可用。工程边界遵循
+[重构规范](design-system-refactoring-spec.md) 与 [roadmap](design-system-roadmap.md)。
+共享 UI 的视觉规则由本宪法、MolCrafts-owned tokens 和 Storybook 示例共同定义。
+上游 Fluent tokens 是审查后的参考输入，不替代 MolCrafts 对视觉契约的所有权。
 
 原则：阅读优先、控件克制、层级明确、状态可辨。用中性色承载信息，品牌色
 用于主要行动与选中指示。科学数据的可视化配色由产品单独管理。
