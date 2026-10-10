@@ -71,31 +71,31 @@ molcrafts-ui (source)
 
 **Reuse 结论（摘要）** — 全表见 `docs/extraction-matrix.md`：
 
-- **v0 extract：** cn + tokens + button, badge, input, label, tabs, tooltip, dialog, dropdown-menu, select, checkbox, separator, scroll-area, popover, slider  
-- **v1：** card, table, sheet, skeleton, textarea, alert-dialog, accordion, collapsible, context-menu, switch, empty-state, code, **SettingsShell/Section/Row**  
-- **v2：** WorkbenchAction ↔ ViewerAction 收敛、toast、command  
+- **v0 extract：** cn + tokens + button, badge, input, label, tabs, tooltip, dialog, dropdown-menu, select, checkbox, separator, scroll-area, popover, slider
+- **v1：** card, table, sheet, skeleton, textarea, alert-dialog, accordion, collapsible, context-menu, switch, empty-state, code, **SettingsShell/Section/Row**
+- **v2：** WorkbenchAction ↔ ViewerAction 收敛、toast、command
 - **stay：** tree, markdown, thinking-block, tool-call-row, confirm-dialog 总线、Entity/Dashboard、Molq\*、Viewer\* 工具条、StatusStrip（先留 molexp）
 
 ### 4. 与 molvis-plugin 的关系
 
-- **短期：** plugin 继续 export `@molcrafts/molvis/plugin/ui`（打包 externals 不变）。  
-- **中期：** plugin 内 button/select/checkbox **改为从本 registry 同源**（拷贝或 build 脚本同步），避免两套源。  
+- **短期：** plugin 继续 export `@molcrafts/molvis/plugin/ui`（打包 externals 不变）。
+- **中期：** plugin 内 button/select/checkbox **改为从本 registry 同源**（拷贝或 build 脚本同步），避免两套源。
 - **禁止：** 把 SettingsShell 塞进 molvis-plugin（SDK 边界污染）。
 
 ### 5. Token 策略
 
 v0 建立统一 token 文件（命名对齐现有 molexp/molvis）：
 
-- surfaces: `background`, `foreground`, `card`, `muted`, `accent`, `border`, `ring`  
-- control: `--radius-control`, `--height-control*`（或现有 `h-control` 映射）  
+- surfaces: `background`, `foreground`, `card`, `muted`, `accent`, `border`, `ring`
+- control: `--radius-control`, `--height-control*`（或现有 `h-control` 映射）
 - status: `status-running|succeeded|failed|warning`（v0 可先占位，v1 与三端色值对齐）
 
 产品 CSS `@import` registry tokens，再叠产品专用变量。
 
 ### 6. 版本与变更
 
-- Registry item 变更：源仓 PR + build；消费方 `shadcn add @molcrafts/<name> --overwrite` 或 CI 同步 job。  
-- 不保证 semver 对“拷贝源码”的二进制兼容；用 **changelog + item 描述** 沟通 breaking。  
+- Registry item 变更：源仓 PR + build；消费方 `shadcn add @molcrafts/<name> --overwrite` 或 CI 同步 job。
+- 不保证 semver 对“拷贝源码”的二进制兼容；用 **changelog + item 描述** 沟通 breaking。
 - 源仓 git tag 可选标记 registry 发布点。
 
 ## Files（仓库骨架）
@@ -122,33 +122,33 @@ molcrafts-ui/
 
 ## Tasks
 
-1. **Scaffold** 仓库：package.json、components.json、tokens.css、cn、gitignore、README  
-2. **Registry catalog** 写 `registry.json`（v0 items 列表，文件可先 stub 或从 molexp 拷 button canary）  
-3. **Build pipeline** `pnpm build:registry` → `public/r/{name}.json` + root catalog  
-4. **Canary extract** 从 molexp 拷入 `button` + `utils`，build 成功，本地 `shadcn add` dry-run  
-5. **v0 batch** 按 extraction-matrix 拉齐 intersection primitives（实现可分多 PR）  
-6. **Consumer wiring doc** 文档：molexp / molvis / molhub 的 `components.json` 片段与迁移清单  
+1. **Scaffold** 仓库：package.json、components.json、tokens.css、cn、gitignore、README
+2. **Registry catalog** 写 `registry.json`（v0 items 列表，文件可先 stub 或从 molexp 拷 button canary）
+3. **Build pipeline** `pnpm build:registry` → `public/r/{name}.json` + root catalog
+4. **Canary extract** 从 molexp 拷入 `button` + `utils`，build 成功，本地 `shadcn add` dry-run
+5. **v0 batch** 按 extraction-matrix 拉齐 intersection primitives（实现可分多 PR）
+6. **Consumer wiring doc** 文档：molexp / molvis / molhub 的 `components.json` 片段与迁移清单
 7. **molvis-plugin sync plan** 文档：如何从本仓同步 plugin ui 三件套（不强制本 spec 内改 molvis）
 
 ## Testing
 
-- `pnpm build:registry` 退出 0；`public/r/button.json` 存在且符合 registry-item schema 关键字段  
-- `registry.json` items 与 `public/r` 一一对应（脚本 assert）  
-- Canary：临时目录 `shadcn add` 从 `file://` 或 localhost 安装 button 成功  
-- 单元：`cn()` 简单用例（可选）  
+- `pnpm build:registry` 退出 0；`public/r/button.json` 存在且符合 registry-item schema 关键字段
+- `registry.json` items 与 `public/r` 一一对应（脚本 assert）
+- Canary：临时目录 `shadcn add` 从 `file://` 或 localhost 安装 button 成功
+- 单元：`cn()` 简单用例（可选）
 - 不要求三产品 e2e 在本仓运行
 
 ## Out of scope
 
-- 一次迁完所有 molexp-only / molvis-only 组件  
-- 强制删除各产品本地 `components/ui`  
-- 设计 Figma 文件  
-- 强制 npm 发布 `@molcrafts/ui` 作为主路径  
-- molhub/molvis 代码改动（仅文档约定；实际接线另开产品 PR）  
+- 一次迁完所有 molexp-only / molvis-only 组件
+- 强制删除各产品本地 `components/ui`
+- 设计 Figma 文件
+- 强制 npm 发布 `@molcrafts/ui` 作为主路径
+- molhub/molvis 代码改动（仅文档约定；实际接线另开产品 PR）
 - `ui/.screenshots` 等本地资产
 
 ## Open questions（非阻塞）
 
-- 托管域名：`ui.molcrafts.dev` vs GitHub Pages vs Cloudflare  
-- `public/r` 是否提交 git（小团队可提交；CI 生成亦可）  
+- 托管域名：`ui.molcrafts.dev` vs GitHub Pages vs Cloudflare
+- `public/r` 是否提交 git（小团队可提交；CI 生成亦可）
 - Workbench vs Viewer 命名收敛时间表（v2）

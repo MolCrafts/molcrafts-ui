@@ -17,10 +17,10 @@ Binding “done” contract for the shared registry scaffold and v0 readiness.
 
 ## Non-criteria (explicitly not required)
 
-- Full v0 batch of all 15 primitives landed in one PR  
-- Hosted production URL live  
-- molvis-plugin rewritten to import from this package  
-- Visual regression screenshots  
+- Full v0 batch of all 15 primitives landed in one PR
+- Hosted production URL live
+- molvis-plugin rewritten to import from this package
+- Visual regression screenshots
 
 ## Done when
 
