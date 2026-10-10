@@ -43,3 +43,6 @@ import "@molcrafts/design-web-components/theme.css";
 当前指导。GitHub redirect 不替代产品 API 迁移或 npm 发布身份验证。
 
 发布步骤与剩余条件见 [releasing](releasing.md)；当前仍 private，未发布。
+
+可选图表包：`@molcrafts/design-vega`（packages/vega）与
+`@molcrafts/design-vega-lite`（packages/vega-lite）。不提供旧 ui-vega 名称或兼容 alias。

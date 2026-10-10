@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   Button, Input, NumberField, Checkbox, Card, CardContent,
@@ -8,6 +8,8 @@ import "@molcrafts/design-tokens/runtime.css";
 import "@molcrafts/design/styles.css";
 import "./page.css";
 import { Themes } from "./themes";
+
+const ChartConsumer = lazy(() => import("./charts"));
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,4 +34,4 @@ function App() {
     </section>
   </main>;
 }
-createRoot(document.getElementById("root")!).render(location.pathname === "/themes" ? <Themes /> : <App />);
+createRoot(document.getElementById("root")!).render(location.pathname === "/charts" ? <Suspense fallback="Loading charts"><ChartConsumer /></Suspense> : location.pathname === "/themes" ? <Themes /> : <App />);

@@ -46,6 +46,8 @@ MolCrafts 拥有视觉语言、tokens、主题、公共 API、样式契约和版
 ```text
 packages/tokens/           # CSS、主题、Tailwind 集成
 packages/ui/               # React 组件、变体、公共 API
+packages/vega/             # 可选 Vega Runtime + React Viewer
+packages/vega-lite/        # 可选编译器，复用 Vega Viewer
 packages/web-components/   # 已有独立原生实现，与 React 共享 tokens
 apps/storybook/            # 组件开发与文档
 registry/                 # 可选配置、示例和集成入口
@@ -64,7 +66,9 @@ docs/                     # 规范、决策、迁移与组件目录
 3. 应用通过公共包入口消费组件，不导入实现源码。
 4. packages 不导入消费应用，不依赖应用级 alias、Tailwind 扫描或隐式全局配置。
 5. 禁止循环依赖；工具、图标和组件分类暂不拆包。
-6. Web Components 具有独立运行时和分发边界，可以独立保留；不引用 React 实现。
+6. 可选图表边界见 [chart architecture](chart-architecture.md)：核心 UI/tokens 不依赖 Vega；
+   design-vega 使用 View API，design-vega-lite 只负责编译并复用 Viewer；不依赖 MolPlot。
+7. Web Components 具有独立运行时和分发边界，可以独立保留；不引用 React 实现。
 
 ## 4. Design tokens and Fluent 2 themes
 

@@ -20,6 +20,14 @@
     {
       "directory": "packages/web-components",
       "name": "@molcrafts/design-web-components"
+    },
+    {
+      "directory": "packages/vega",
+      "name": "@molcrafts/design-vega"
+    },
+    {
+      "directory": "packages/vega-lite",
+      "name": "@molcrafts/design-vega-lite"
     }
   ],
   "remaining": [

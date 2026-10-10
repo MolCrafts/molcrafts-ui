@@ -1,6 +1,6 @@
 # molcrafts-design 实施 Roadmap
 
-日期：2026-10-10 · 当前阶段：P1 已合并（PR #6，ded1b1e）；P2 已合并（PR #7，3e1d2dc）；当前做发包前准备。
+日期：2026-10-10 · 当前阶段：P1 已合并（PR #6，ded1b1e）；P2 已合并（PR #7，3e1d2dc）；发布准备已合并（PR #8）；当前实施可选图表与 CI dashboard 迁移。
 2026-10-10 用户要求不向后兼容，覆盖原 roadmap 中的兼容条款。
 依据：[Refactoring Spec v1.0](design-system-refactoring-spec.md)。
 本文件描述未来工作，未勾选事项不代表已经实现。阶段按依赖推进，不预设日期。
@@ -150,3 +150,16 @@ P2 CI 全绿并已合并 PR #7。尚未验证真实产品，也没有发布或�
 依赖改写/校验和、仓库外三个 tarball 的类型和 React/原生 Rsbuild 消费纳入 CI。
 见 [发布准备](releasing.md) 与 [命名计划](rename-plan.md)。外部仓库改名、npm
 发布权限、组件验收范围、真实产品接入和实际候选发布仍未完成。
+
+## 可选图表与首个真实消费者
+
+依据：[图表架构](chart-architecture.md)。用户授权新增 Vega 组件库并迁移 CI dashboard。
+
+- [x] 建立 design-vega / design-vega-lite，Runtime 与 Compiler 单向依赖。
+- [x] Viewer 生命周期、主题、signals/data、SVG/Canvas 与导出契约及 stories。
+- [x] 浏览器交互/主题/无障碍检查和 native-only 编译依赖隔离验证。
+- [ ] 真实 CI 产品 PR 完成编译 CSS、public imports、图表和 Fluent 图标接入。
+- [ ] 产品浏览器验收及两仓库精确提交 CI 完成。
+- [ ] MolPlot 迁移与原生 Web Components 图表支持（后续任务）。
+
+本次继续不发包；未发布阶段的固定 tarball 分发及校验见图表架构。

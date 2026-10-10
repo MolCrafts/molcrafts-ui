@@ -47,3 +47,7 @@ Report completed scope, compatibility changes, validation evidence and remaining
 Do not describe roadmap items as shipped. Confirmed package names are `@molcrafts/design`, `@molcrafts/design-tokens` and
 `@molcrafts/design-web-components`, with MIT licensing. Read `docs/releasing.md`;
 local release preparation does not authorize publishing or external repository renaming.
+
+For 2D plots, read docs/chart-architecture.md and the optional package READMEs.
+Use design-vega for native Vega specs, design-vega-lite for compilation plus the same
+viewer. Do not import MolPlot for plain charts or add engines to the core UI package.

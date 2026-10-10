@@ -6,7 +6,9 @@
     [
       "@molcrafts/design-tokens",
       "@molcrafts/design",
-      "@molcrafts/design-web-components"
+      "@molcrafts/design-web-components",
+      "@molcrafts/design-vega",
+      "@molcrafts/design-vega-lite"
     ]
   ],
   "linked": [],

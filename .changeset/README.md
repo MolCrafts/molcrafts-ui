@@ -1,7 +1,7 @@
 # Version records
 
 Run `pnpm changeset` when a public API, token or styling contract changes.
-The three distributable packages use fixed versions. Private packages participate
+The five distributable packages use fixed versions. Private packages participate
 in local version planning but create no tags. Apps and the root remain private.
 
 `pnpm release:status` is read-only. `pnpm release:version` updates manifests and

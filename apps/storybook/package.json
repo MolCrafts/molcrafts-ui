@@ -20,7 +20,9 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "storybook": "10.6.1",
-    "storybook-react-rsbuild": "3.6.1"
+    "storybook-react-rsbuild": "3.6.1",
+    "@molcrafts/design-vega": "workspace:*",
+    "@molcrafts/design-vega-lite": "workspace:*"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",
