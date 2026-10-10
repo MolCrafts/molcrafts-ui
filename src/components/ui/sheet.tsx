@@ -1,5 +1,5 @@
 import * as SheetPrimitive from "@radix-ui/react-dialog";
-import { XIcon } from "lucide-react";
+import { DismissRegular } from "@fluentui/react-icons";
 import type * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -68,7 +68,7 @@ function SheetContent({
             data-slot="sheet-close"
             className="mol-focus absolute top-4 right-4 flex size-control-compact items-center justify-center rounded-control text-muted-foreground outline-none transition-colors hover:bg-interactive hover:text-foreground disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
           >
-            <XIcon />
+            <DismissRegular />
             <span className="sr-only">Close</span>
           </SheetPrimitive.Close>
         )}

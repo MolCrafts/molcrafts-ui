@@ -1,5 +1,5 @@
 import { Command as CommandPrimitive } from "cmdk";
-import { SearchIcon } from "lucide-react";
+import { SearchRegular } from "@fluentui/react-icons";
 import type * as React from "react";
 import {
   Dialog,
@@ -63,7 +63,7 @@ function CommandInput({
       data-slot="command-input-wrapper"
       className="flex h-control-comfortable items-center gap-2 border-b px-3"
     >
-      <SearchIcon className="size-4 shrink-0 opacity-50" />
+      <SearchRegular className="size-4 shrink-0 opacity-50" />
       <CommandPrimitive.Input
         data-slot="command-input"
         className={cn(

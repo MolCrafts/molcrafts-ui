@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, fn, userEvent, within } from "storybook/test";
-import { Plus } from "lucide-react";
+import { AddRegular } from "@fluentui/react-icons";
 import { Button } from "./button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 
 const meta = {
   title: "UI/Button",
@@ -28,7 +29,21 @@ export const Default: Story = {
   },
 };
 export const Disabled: Story = { args: { disabled: true } };
-export const WithIcon: Story = { args: { children: <><Plus /> Add item</> } };
+export const WithIcon: Story = { args: { children: <><AddRegular /> Add item</> } };
+export const IconOnly: Story = {
+  args: { size: "icon", "aria-label": "Add item", children: <AddRegular aria-hidden="true" /> },
+  render: (args) => (
+    <Tooltip><TooltipTrigger asChild><Button {...args} /></TooltipTrigger><TooltipContent>Add item</TooltipContent></Tooltip>
+  ),
+  play: async ({ canvasElement, args }) => {
+    const button = within(canvasElement).getByRole("button", { name: "Add item" });
+    await userEvent.tab();
+    await expect(button).toHaveFocus();
+    await expect(await within(canvasElement.ownerDocument.body).findByRole("tooltip")).toHaveTextContent("Add item");
+    await userEvent.keyboard("{Enter}");
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+  },
+};
 export const Variants: Story = {
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
@@ -44,7 +59,7 @@ export const Sizes: Story = {
       <Button {...args} size="sm">Compact</Button>
       <Button {...args}>Default</Button>
       <Button {...args} size="lg">Comfortable</Button>
-      <Button {...args} size="icon" aria-label="Add item"><Plus /></Button>
+      <Button {...args} size="icon" aria-label="Add item"><AddRegular /></Button>
     </div>
   ),
 };

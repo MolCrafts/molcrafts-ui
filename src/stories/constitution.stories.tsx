@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Plus, Settings, CheckCircle2, AlertTriangle } from "lucide-react";
+import { AddRegular, SettingsRegular, CheckmarkCircleRegular, WarningRegular } from "@fluentui/react-icons";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Input } from "../components/ui/input";
@@ -11,6 +11,7 @@ import { Switch } from "../components/ui/switch";
 import { ProgressSpinner } from "../components/ui/progress-spinner";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../components/ui/dialog";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../components/ui/dropdown-menu";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../components/ui/tooltip";
 
 function ConstitutionPreview() {
   return (
@@ -22,10 +23,10 @@ function ConstitutionPreview() {
           <p className="text-body text-muted-foreground">Clear hierarchy, familiar controls, and calm surfaces.</p>
         </div>
         <div className="flex gap-2">
-          <DropdownMenu><DropdownMenuTrigger asChild><Button variant="secondary"><Settings /> Actions</Button></DropdownMenuTrigger>
+          <DropdownMenu><Tooltip><TooltipTrigger asChild><DropdownMenuTrigger asChild><Button variant="ghost" size="icon" aria-label="Actions"><SettingsRegular aria-hidden="true" /></Button></DropdownMenuTrigger></TooltipTrigger><TooltipContent>Actions</TooltipContent></Tooltip>
             <DropdownMenuContent><DropdownMenuItem>Rename</DropdownMenuItem><DropdownMenuItem>Duplicate</DropdownMenuItem></DropdownMenuContent>
           </DropdownMenu>
-          <Dialog><DialogTrigger asChild><Button><Plus /> Create item</Button></DialogTrigger>
+          <Dialog><Tooltip><TooltipTrigger asChild><DialogTrigger asChild><Button size="icon" aria-label="Create item"><AddRegular aria-hidden="true" /></Button></DialogTrigger></TooltipTrigger><TooltipContent>Create item</TooltipContent></Tooltip>
             <DialogContent><DialogHeader><DialogTitle>Create an item</DialogTitle><DialogDescription>Give the item a name to get started.</DialogDescription></DialogHeader>
               <Label htmlFor="dialog-item">Name</Label><Input id="dialog-item" placeholder="Untitled item" />
             </DialogContent>
@@ -53,7 +54,7 @@ function ConstitutionPreview() {
               <Button variant="link" asChild><a href="#feedback">Learn about feedback</a></Button>
             </CardContent></Card>
             <Card id="feedback"><CardHeader><CardTitle>Feedback</CardTitle></CardHeader><CardContent className="space-y-4">
-              <div className="flex flex-wrap gap-2"><Badge variant="info">Running</Badge><Badge variant="success"><CheckCircle2 className="size-3" /> Completed</Badge><Badge variant="warning"><AlertTriangle className="size-3" /> Warning</Badge><Badge variant="destructive">Failed</Badge></div>
+              <div className="flex flex-wrap gap-2"><Badge variant="info">Running</Badge><Badge variant="success"><CheckmarkCircleRegular className="size-3" /> Completed</Badge><Badge variant="warning"><WarningRegular className="size-3" /> Warning</Badge><Badge variant="destructive">Failed</Badge></div>
               <div className="flex items-center gap-2 text-body"><ProgressSpinner /><span>Loading items…</span></div>
               <p className="text-body text-muted-foreground">Status always includes a readable label.</p>
             </CardContent></Card>

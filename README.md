@@ -30,7 +30,9 @@ ownership of UI source after install.
 
 `tokens` ships the shared **constitution** (type scale, radius, control geometry,
 motion, status roles, semantic slots). Product brand palettes (`--molexp-*`,
-`--molvis-*`) stay in product repos and rebind `--accent` / surfaces.
+`--molvis-*`) stay in product repos and rebind complete `--primary-*` /
+`--secondary-*` color families and surfaces. Legacy `--accent-*` slots alias
+primary; neutral secondary actions use `--neutral` / `--neutral-foreground`.
 
 ### Plugin UI: no Cell type
 
@@ -57,6 +59,11 @@ interactive controls. Read the constitution's migration section before updating
 product CSS: controls now use 4px corners and 14px text; large controls are 40px;
 badges use soft status colors and tabs use line indicators by default. Existing
 product brand palettes remain product-owned.
+
+`Foundations/Product themes` demonstrates independent primary/secondary palettes
+in both themes. Toolbar actions prefer icon-only buttons with accessible names
+and tooltips; ambiguous actions and form confirmations keep explicit labels.
+Shared components use official Fluent icons (`@fluentui/react-icons` 2.0.344).
 
 ## Spec
 
