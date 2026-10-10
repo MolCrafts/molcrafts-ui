@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDownRegular } from "@fluentui/react-icons";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import type * as React from "react";
 
@@ -23,7 +23,7 @@ function CollapsibleTrigger({
       {...props}
     >
       {children}
-      <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-(--motion-fast) ease-standard group-data-[state=open]/collapsible:rotate-180" />
+      <ChevronDownRegular className="size-4 shrink-0 text-muted-foreground transition-transform duration-(--motion-fast) ease-standard group-data-[state=open]/collapsible:rotate-180" />
     </CollapsiblePrimitive.Trigger>
   );
 }

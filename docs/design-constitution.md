@@ -1,6 +1,6 @@
 # MolCrafts 设计宪法 · Fluent 2
 
-版本：v1，2026-10-10。适用于 molexp、molvis、molhub 的共享基础 UI。
+版本：v1.1，2026-10-10。适用于 molexp、molvis、molhub 的共享基础 UI。
 
 ## 1. 设计基线与来源
 
@@ -68,8 +68,10 @@
 
 ## 4. 颜色与主题
 
-所有组件使用语义 slots，明暗模式由同一套官方别名映射。默认 scaffold
-使用 Fluent Web 蓝色；各产品可以整体重绑定品牌 slots。
+所有组件使用语义 slots，明暗模式由同一套官方别名映射。**各产品独立拥有
+primary 与 secondary 两组品牌色**，产品仓库分别提供明暗主题。默认 scaffold
+以 Fluent Web 蓝色作为 primary、官方紫色 palette 作为 secondary；默认值
+只是共享组件的预览基线，不替 molexp、molvis、molhub 决定品牌色。
 
 | 角色 | MolCrafts slot | 官方来源 |
 |---|---|---|
@@ -81,9 +83,26 @@
 | 辅助文字 | `subtle-foreground` | `colorNeutralForeground3` |
 | 结构边框 | `border` | `colorNeutralStroke2` |
 | 控件边框 / 底边 | `input` / `input-bottom` | `colorNeutralStroke1` / `colorNeutralStrokeAccessible` |
-| 主要行动 | `accent` / `accent-hover` / `accent-pressed` | `colorBrandBackground` 系列 |
-| 选中背景 / 文字 | `accent-muted` / `accent-muted-foreground` | `colorBrandBackground2` / `colorBrandForeground2` |
-| 链接 | `link` / `link-hover` | `colorBrandForegroundLink` 系列 |
+| 主要行动 | `primary` / `primary-hover` / `primary-pressed` | `colorBrandBackground` 系列 |
+| 选中背景 / 文字 | `primary-muted` / `primary-muted-foreground` | `colorBrandBackground2` / `colorBrandForeground2` |
+| 链接 | `primary-link` / `primary-link-hover` | `colorBrandForegroundLink` 系列 |
+| 第二品牌色 | `secondary` / `secondary-muted` / `secondary-muted-foreground` | 默认官方 purple palette，产品独立覆盖 |
+| 中性次要行动 | `neutral` / `neutral-foreground` | `colorNeutralBackground1` / `colorNeutralForeground1` |
+
+每组品牌色提供实心背景、hover、pressed、实心背景上的 foreground、muted
+背景和 muted-foreground；primary 另提供 link / link-hover。CSS 名称均以
+`--` 开头，如 `--primary-hover`、`--secondary-foreground`。通过完整色阶
+定义状态，不能只更换一个基础色后继续使用默认蓝色 hover 或白色文字。
+
+primary 承载主要行动、选中和品牌链接；secondary 用于辅助品牌表达和产品
+识别，不覆盖成功、失败、警告等语义色。`Button variant="secondary"` 仍表示
+**中性次要行动**，使用 neutral slots，并不等于第二品牌色按钮。已有 accent
+与 link slots 分别作为 primary 系列的兼容别名。
+
+在产品根元素覆盖完整的 primary / secondary slots；局部主题容器使用
+`className="mol-product-theme"`，让兼容别名在当前作用域重新绑定。主主题的
+明暗选择器仍由产品维护。Storybook `Foundations/Product themes` 演示明暗
+两套独立色组；其中自定义配色仅为示例。
 
 品牌实心背景和链接文字是不同角色，尤其在暗色模式下必须分别映射。
 不得使用浅色主题的色值覆盖暗色主题。不要在组件中写 hex 或任意透明度
@@ -133,9 +152,19 @@ hover/pressed 100ms，浮层进入 150ms，sheet 200ms。交互颜色采用官�
 
 ## 8. 图标、内容与可访问性
 
-现有 Lucide outline 图标保持统一，大小采用 16 / 20 / 24px；同一语境保持
-相同线条与尺寸。只含图标的按钮必须有可访问名称。不能混用 emoji、填充
-图标和不同笔画来表达同一类操作。
+统一使用微软官方 **`@fluentui/react-icons`**，本次核对并固定最新发布版本
+**2.0.344**。操作图标默认采用 `Regular`，大小采用 16 / 20 / 24px；选中态
+或状态点确有需要时使用对应 `Filled`，同一语境保持相同尺寸和视觉重量。
+不混用 Lucide、emoji 或其他图标库。Registry 中使用图标的组件声明该依赖。
+
+**纯图标按钮优先于带文字按钮**：工具栏、面板操作、常见新增/搜索/设置/
+关闭操作默认使用 `Button size="icon"`（紧凑场景用 `icon-sm`）。每个按钮
+必须有准确的 `aria-label`，图标设为 `aria-hidden`，并用 Tooltip 提供可见
+说明；Tooltip 在悬停和键盘焦点时都能显示，不能作为唯一的可访问名称。
+图标尺寸与按钮命中区域分别定义，触屏命中区域至少 44px。
+
+难以用熟悉图标表达的操作、破坏性确认和需要明确结果的表单提交保留文字，
+如“永久删除”“保存更改”“取消”。纯图标是优先规则，不以牺牲可理解性为代价。
 
 正常正文对比度至少 4.5:1，大字至少 3:1。可辨识的控件边界和焦点指示器
 至少 3:1。键盘焦点使用 `.mol-focus` 的内外双色指示器；高对比度系统
@@ -155,6 +184,7 @@ hover/pressed 100ms，浮层进入 150ms，sheet 200ms。交互颜色采用官�
 | `constitution-base.css` | 共享行为、状态柔和背景、焦点、动画与阴影结构 |
 | `tokens.css` | 完整导入入口与 Tailwind 语义映射 |
 | Storybook `Foundations/Constitution` | 可以实际交互的视觉对照 |
+| Storybook `Foundations/Product themes` | 产品 primary / secondary 色组与中性、状态色隔离 |
 
 运行 `npm run build:tokens` 更新生成文件，再运行 `npm run build:registry`。
 CI 校验生成结果与提交文件一致。生成的三个文件不手动修改。
@@ -164,10 +194,15 @@ CI 校验生成结果与提交文件一致。生成的三个文件不手动修�
 
 ## 10. 产品接入与变更验收
 
-新消费方导入 `tokens.css`，再叠加产品品牌映射。已经维护产品表面映射的
+新消费方导入 `tokens.css`，再叠加完整的产品 primary / secondary 品牌映射。
+已有主题中的 `--secondary` 若表示中性表面，应迁移为 `--neutral`，对应前景
+迁移为 `--neutral-foreground`；新 `--secondary` 专用于第二品牌色。
+已经维护产品表面映射的
 应用导入 `constitution-base.css` 和 `constitution-theme.css`，并提供新的
 `surface`、`link`、`accent-pressed`、`accent-muted`、focus、disabled 等
-语义 slots。base 相邻目录必须有 `fluent-foundation.css`。同步脚本会一起
+语义 slots，连同 primary / secondary 系列及 neutral slots。直接导入 base 的
+产品也须自行定义 accent / link 与 primary 的兼容映射（完整 tokens 入口已提供）。
+base 相邻目录必须有 `fluent-foundation.css`。同步脚本会一起
 复制该文件。Registry 的 tokens item 包含完整的五个 CSS 文件。
 
 此次视觉调整：控件圆角 6→4px、正文 13→14px、大控件 36→40px、弹窗
@@ -178,5 +213,10 @@ props 保持兼容。产品升级时检查工具栏密度、卡片间距、表�
 PR 验收：类型检查、tokens 再生成、registry 再生成、Storybook 构建；
 明暗模式与高对比度模式；键盘焦点、弹窗关闭、表单错误、加载和空状态；
 正文与状态对比度；至少在桌面和窄屏检查一次。
+此外检查两组品牌色的明暗状态、纯图标按钮的名称/Tooltip/键盘操作，以及
+产品配色改变后中性次要行动和语义状态色保持一致。
+
+Registry 安装会自动带入 Fluent 图标依赖；直接运行同步脚本的消费方须先
+安装 `@fluentui/react-icons`，同步脚本仅复制源码，不更新产品 package.json。
 
 各产品页面的实际迁移通过独立产品 PR 完成。本仓提供共享基线和迁移契约。

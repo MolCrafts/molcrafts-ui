@@ -170,7 +170,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-dialog"
+        "@radix-ui/react-dialog",
+        "@fluentui/react-icons"
       ]
     },
     {
@@ -188,7 +189,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-dropdown-menu"
+        "@radix-ui/react-dropdown-menu",
+        "@fluentui/react-icons"
       ]
     },
     {
@@ -206,7 +208,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-select"
+        "@radix-ui/react-select",
+        "@fluentui/react-icons"
       ]
     },
     {
@@ -224,7 +227,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-checkbox"
+        "@radix-ui/react-checkbox",
+        "@fluentui/react-icons"
       ]
     },
     {
@@ -345,7 +349,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-dialog"
+        "@radix-ui/react-dialog",
+        "@fluentui/react-icons"
       ]
     },
     {
@@ -412,7 +417,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-accordion"
+        "@radix-ui/react-accordion",
+        "@fluentui/react-icons"
       ]
     },
     {
@@ -430,7 +436,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-collapsible"
+        "@radix-ui/react-collapsible",
+        "@fluentui/react-icons"
       ]
     },
     {
@@ -448,7 +455,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-context-menu"
+        "@radix-ui/react-context-menu",
+        "@fluentui/react-icons"
       ]
     },
     {
@@ -543,7 +551,8 @@
         }
       ],
       "dependencies": [
-        "react-resizable-panels"
+        "react-resizable-panels",
+        "@fluentui/react-icons"
       ]
     },
     {
@@ -562,7 +571,8 @@
         }
       ],
       "dependencies": [
-        "cmdk"
+        "cmdk",
+        "@fluentui/react-icons"
       ]
     },
     {

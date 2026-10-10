@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { FolderOpen } from "lucide-react";
+import { FolderOpenRegular } from "@fluentui/react-icons";
 import { EmptyState } from "./empty-state";
 import { Button } from "./button";
 
@@ -12,6 +12,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
-export const WithAction: Story = { args: { icon: <FolderOpen />, action: <Button>Create item</Button> } };
+export const WithAction: Story = { args: { icon: <FolderOpenRegular />, action: <Button>Create item</Button> } };
 export const Compact: Story = { args: { density: "compact" } };
 export const Inline: Story = { args: { density: "inline" } };

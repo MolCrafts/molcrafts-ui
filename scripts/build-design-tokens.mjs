@@ -23,19 +23,22 @@ const roles = {
   input: "colorNeutralStroke1",
   "input-bottom": "colorNeutralStrokeAccessible",
   "input-hover": "colorNeutralStroke1Hover",
-  secondary: "colorNeutralBackground1",
-  "secondary-foreground": "colorNeutralForeground1",
+  neutral: "colorNeutralBackground1",
+  "neutral-foreground": "colorNeutralForeground1",
   interactive: "colorNeutralBackground1Hover",
   "interactive-pressed": "colorNeutralBackground1Pressed",
   "interactive-foreground": "colorNeutralForeground1",
-  accent: "colorBrandBackground",
-  "accent-hover": "colorBrandBackgroundHover",
-  "accent-pressed": "colorBrandBackgroundPressed",
-  "accent-foreground": "colorNeutralForegroundOnBrand",
-  "accent-muted": "colorBrandBackground2",
-  "accent-muted-foreground": "colorBrandForeground2",
-  link: "colorBrandForegroundLink",
-  "link-hover": "colorBrandForegroundLinkHover",
+  primary: "colorBrandBackground",
+  "primary-hover": "colorBrandBackgroundHover",
+  "primary-pressed": "colorBrandBackgroundPressed",
+  "primary-foreground": "colorNeutralForegroundOnBrand",
+  "primary-muted": "colorBrandBackground2",
+  "primary-muted-foreground": "colorBrandForeground2",
+  "primary-link": "colorBrandForegroundLink",
+  "primary-link-hover": "colorBrandForegroundLinkHover",
+  secondary: "colorPalettePurpleBorderActive",
+  "secondary-muted": "colorPalettePurpleBackground2",
+  "secondary-muted-foreground": "colorPalettePurpleForeground2",
   ring: "colorStrokeFocus2",
   "focus-inner": "colorStrokeFocus1",
   "disabled-background": "colorNeutralBackgroundDisabled",
@@ -52,12 +55,29 @@ function themeBlock(selector, theme, scheme) {
     if (!theme[source]) throw new Error(`Missing Fluent token ${source}`);
     lines.push(`  --${role}: ${theme[source]};`);
   }
+  lines.push(
+    `  --secondary-foreground: ${scheme === "light" ? "#ffffff" : "#000000"};`,
+    `  --secondary-hover: color-mix(in srgb, var(--secondary), ${scheme === "light" ? "black" : "white"} 10%);`,
+    `  --secondary-pressed: color-mix(in srgb, var(--secondary), ${scheme === "light" ? "black" : "white"} 20%);`,
+  );
   return `${selector} {\n${lines.join("\n")}\n}\n`;
 }
 
 await writeFile(new URL("src/styles/fluent-theme.css", root), header + "\n" +
   themeBlock(":where(:root, :host)", webLightTheme, "light") + "\n" +
-  themeBlock(".dark, :where(:root, :host).dark", webDarkTheme, "dark"));
+  themeBlock(".dark, :where(:root, :host).dark", webDarkTheme, "dark") + `
+/* Rebind legacy accent slots at each product scope so nested palettes also work. */
+:where(:root, :host), .mol-product-theme {
+  --accent: var(--primary);
+  --accent-hover: var(--primary-hover);
+  --accent-pressed: var(--primary-pressed);
+  --accent-foreground: var(--primary-foreground);
+  --accent-muted: var(--primary-muted);
+  --accent-muted-foreground: var(--primary-muted-foreground);
+  --link: var(--primary-link);
+  --link-hover: var(--primary-link-hover);
+}
+`);
 
 const typeScale = {
   micro: ["fontSizeBase100", "lineHeightBase100"],
