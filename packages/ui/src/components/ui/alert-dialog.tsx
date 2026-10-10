@@ -1,3 +1,4 @@
+import { useThemePortalContainer } from "../../theme/theme-scope";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import type * as React from "react";
 
@@ -14,8 +15,11 @@ function AlertDialogTrigger({
   return <AlertDialogPrimitive.Trigger data-slot="alert-dialog-trigger" {...props} />;
 }
 
-function AlertDialogPortal({ ...props }: React.ComponentProps<typeof AlertDialogPrimitive.Portal>) {
-  return <AlertDialogPrimitive.Portal data-slot="alert-dialog-portal" {...props} />;
+function AlertDialogPortal({ container, ...props }: React.ComponentProps<typeof AlertDialogPrimitive.Portal>) {
+  const scopedContainer = useThemePortalContainer();
+  const destination = container ?? scopedContainer;
+  if (destination === null) return null;
+  return <AlertDialogPrimitive.Portal container={destination} {...props} />;
 }
 
 function AlertDialogOverlay({

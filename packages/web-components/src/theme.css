@@ -4,7 +4,7 @@
 @import "./fluent-host.css";
 
 /* Rebind at product scopes so custom palettes reach Shadow DOM controls. */
-:where(:root, :host), .mol-product-theme {
+:where(:root, :host), [data-mol-theme], .mol-product-theme {
   --colorBrandBackground: var(--primary);
   --colorBrandBackgroundHover: var(--primary-hover);
   --colorBrandBackgroundPressed: var(--primary-pressed);

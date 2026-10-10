@@ -1,5 +1,5 @@
 /* Generated from the shared Fluent 2 themes. */
-:where(:root, :host) {
+:where(:root, :host), [data-mol-theme=light] {
   --borderRadiusNone: 0;
   --borderRadiusSmall: 2px;
   --borderRadiusMedium: 4px;
@@ -461,7 +461,7 @@
   --shadow64Brand: 0 0 8px rgba(0,0,0,0.30), 0 32px 64px rgba(0,0,0,0.25);
 }
 
-.dark, :where(:root, :host).dark {
+.dark, [data-mol-theme=dark] {
   --borderRadiusNone: 0;
   --borderRadiusSmall: 2px;
   --borderRadiusMedium: 4px;

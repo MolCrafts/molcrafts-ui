@@ -7,6 +7,7 @@ import {
 import "@molcrafts/tokens/runtime.css";
 import "@molcrafts/ui/styles.css";
 import "./page.css";
+import { Themes } from "./themes";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,4 +32,4 @@ function App() {
     </section>
   </main>;
 }
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(location.pathname === "/themes" ? <Themes /> : <App />);

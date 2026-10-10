@@ -74,7 +74,7 @@ await writeFile(new URL("custom-elements.json", pkg), JSON.stringify(manifest, n
 
 const block = (selector, theme) => `${selector} {\n` + Object.entries(theme).map(([name, value]) => `  --${name}: ${value};`).join("\n") + "\n}\n";
 await writeFile(new URL("src/fluent-web-theme.css", pkg),
-  "/* Generated from the shared Fluent 2 themes. */\n" + block(":where(:root, :host)", webLightTheme) + "\n" + block(".dark, :where(:root, :host).dark", webDarkTheme));
+  "/* Generated from the shared Fluent 2 themes. */\n" + block(":where(:root, :host), [data-mol-theme=light]", webLightTheme) + "\n" + block(".dark, [data-mol-theme=dark]", webDarkTheme));
 
 // Document resets outrank :host rules. Mirror only official host rules into the
 // document scope, retaining their state/media selectors and Shadow DOM internals.

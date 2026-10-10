@@ -5,3 +5,8 @@ p { margin-bottom: 16px; }
 [data-slot="card"] { margin-top: 16px; }
 [data-slot="card-content"] { display: grid; gap: 16px; }
 .product-brand { margin-top: 16px; --primary: #7b327e; --primary-hover: #652669; --primary-pressed: #4f1c53; --primary-foreground: white; }
+
+.theme-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 16px 0; }
+[data-mol-theme] { padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-panel); }
+h2 { font-size: var(--text-title); font-weight: var(--font-weight-semibold); }
+h3 { font-size: var(--text-body-lg); margin-bottom: 16px; }

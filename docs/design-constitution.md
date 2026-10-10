@@ -1,6 +1,6 @@
 # MolCrafts 设计宪法 · Fluent 2
 
-版本：v1.3，2026-10-10。适用于 molexp、molvis、molhub 的共享基础 UI。
+版本：v1.4，2026-10-10。适用于 molexp、molvis、molhub 的共享基础 UI。
 
 ## 1. 设计基线与来源
 
@@ -16,7 +16,7 @@
 [动效](https://fluent2.microsoft.design/motion)。
 
 保留工作正常的 React/Radix primitives。目标以版本化包为主分发，Registry
-保留为可选集成入口；当前源码流程在迁移期间继续可用。工程边界遵循
+保留为可选集成入口；旧源码分发与同步流程已删除，不提供兼容层。工程边界遵循
 [重构规范](design-system-refactoring-spec.md) 与 [roadmap](design-system-roadmap.md)。
 共享 UI 的视觉规则由本宪法、MolCrafts-owned tokens 和 Storybook 示例共同定义。
 上游 Fluent tokens 是审查后的参考输入，不替代 MolCrafts 对视觉契约的所有权。
@@ -238,3 +238,12 @@ React registry 已达到功能对等。公开 API 遵循原生事件、属性和
 验收同时覆盖普通 HTML 的独立消费、异步重复注册、键盘操作和 Tooltip、
 禁用、原生表单提交、品牌色/明暗、高对比度和减少动画。框架集成与 SSR
 接入约束见 [Web Components 文档](../packages/web-components/README.md)。
+
+## 运行时契约（P2）
+
+CSS Custom Properties 是运行时真源；Tailwind 只映射同一份契约。
+完整清单见 [token catalog](token-catalog.md)，主题 API 与作用域规则见
+[theming](theming.md)，剩余组件样式工作见 [style audit](style-audit.md)。
+React 使用 ThemeScope 管理模式、完整品牌与浮层目标；原生组件使用同一
+`data-mol-theme` 模式。显式嵌套模式重置默认值，产品需要传入对应模式的品牌。
+上游参考版本变更必须审查 owned 映射和视觉差异，不自动套用新版本。

@@ -38,6 +38,6 @@ for (const group of ["ui", "blocks"]) {
     lines.push(`| ${name}：${purposes[name]} | ${names.map(name => `\`${name}\``).join(", ")} | [source](../packages/ui/src/components/${group}/${file}) | ${story} |`);
   }
 }
-lines.push("", "`cn` 通过 `@molcrafts/ui` 或 `@molcrafts/ui/utils` 导入；只识别共享设计 scales。", "",
+lines.push("", "[ThemeScope](../packages/ui/src/theme/theme-scope.tsx) 从 `@molcrafts/ui` 导入：受控模式、完整品牌组与 scoped portal。", "[主题 stories](../apps/storybook/src/theme/theme-scope.stories.tsx) / [主题契约](theming.md)。", "", "`cn` 通过 `@molcrafts/ui` 或 `@molcrafts/ui/utils` 导入；只识别共享设计 scales。", "",
   "Web Components 使用独立包/API，清单及接入方式见 [原生包文档](../packages/web-components/README.md)。", "");
 await writeFile(new URL("docs/component-catalog.md", root), lines.join("\n"));

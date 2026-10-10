@@ -1,3 +1,4 @@
+import { useThemePortalContainer } from "../../theme/theme-scope";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { CheckmarkRegular, ChevronDownRegular, ChevronUpRegular } from "@fluentui/react-icons";
 import type * as React from "react";
@@ -49,8 +50,10 @@ function SelectContent({
   align = "center",
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content>) {
+  const container = useThemePortalContainer();
+  if (container === null) return null;
   return (
-    <SelectPrimitive.Portal>
+    <SelectPrimitive.Portal container={container}>
       <SelectPrimitive.Content
         data-slot="select-content"
         className={cn(

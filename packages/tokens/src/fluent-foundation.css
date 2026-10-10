@@ -1,6 +1,6 @@
 /** Generated from @fluentui/react-theme 9.2.2. Run pnpm build:tokens. */
 
-:where(:root, :host) {
+:where(:root, :host), [data-mol-theme=light] {
   --motion-fast: 100ms;
   --motion-base: 150ms;
   --motion-slow: 200ms;
@@ -26,15 +26,25 @@
   --status-warning-foreground: #817400;
 }
 
-.dark, :where(:root, :host).dark {
+.dark, [data-mol-theme=dark] {
+  --motion-fast: 100ms;
+  --motion-base: 150ms;
+  --motion-slow: 200ms;
+  --motion-ease: cubic-bezier(0.33,0,0.67,1);
+  --motion-enter: cubic-bezier(0,0,0,1);
+  --motion-exit: cubic-bezier(1,0,1,1);
   --neutral-shadow-ambient: rgba(0,0,0,0.24);
   --neutral-shadow-key: rgba(0,0,0,0.28);
   --status-draft: #adadad;
   --status-ready: #d6d6d6;
   --status-queued: #a9d3f2;
   --status-running: #5caae5;
+  --status-completed: #107c10;
+  --status-failed: #d13438;
+  --status-failed-hover: #bc2f32;
   --status-cancelled: #adadad;
   --status-cached: #c6b1de;
+  --status-warning: #fde300;
   --status-ready-foreground: #d6d6d6;
   --status-running-foreground: #a9d3f2;
   --status-completed-foreground: #54b054;

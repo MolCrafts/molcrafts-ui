@@ -1,3 +1,4 @@
+import { useThemePortalContainer } from "../../theme/theme-scope";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { DismissRegular } from "@fluentui/react-icons";
 import type * as React from "react";
@@ -15,8 +16,11 @@ function SheetClose({ ...props }: React.ComponentProps<typeof SheetPrimitive.Clo
   return <SheetPrimitive.Close data-slot="sheet-close" {...props} />;
 }
 
-function SheetPortal({ ...props }: React.ComponentProps<typeof SheetPrimitive.Portal>) {
-  return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />;
+function SheetPortal({ container, ...props }: React.ComponentProps<typeof SheetPrimitive.Portal>) {
+  const scopedContainer = useThemePortalContainer();
+  const destination = container ?? scopedContainer;
+  if (destination === null) return null;
+  return <SheetPrimitive.Portal container={destination} {...props} />;
 }
 
 function SheetOverlay({

@@ -1,3 +1,4 @@
+import { useThemePortalContainer } from "../../theme/theme-scope";
 import { CheckmarkRegular, CircleFilled } from "@fluentui/react-icons";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import * as React from "react";
@@ -10,7 +11,12 @@ const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
 
 const ContextMenuGroup = ContextMenuPrimitive.Group;
 
-const ContextMenuPortal = ContextMenuPrimitive.Portal;
+function ContextMenuPortal({ container, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Portal>) {
+  const scopedContainer = useThemePortalContainer();
+  const destination = container ?? scopedContainer;
+  if (destination === null) return null;
+  return <ContextMenuPrimitive.Portal container={destination} {...props} />;
+}
 
 const ContextMenuSub = ContextMenuPrimitive.Sub;
 

@@ -22,7 +22,9 @@ it requires no custom MCP server or prior shadcn knowledge.
 ## Compose and extend
 
 Use semantic CSS tokens, Fluent 2 geometry, official Fluent icons, full product
-primary/secondary families and documented theme scopes. Keep status colors independent.
+primary/secondary families and documented theme scopes. Read `docs/theming.md`,
+`docs/token-catalog.md` and `docs/style-audit.md`; use `ThemeScope` for React scoped
+overlays and pass mode-specific complete brands. Keep status colors independent.
 Icon-only toolbar actions need accessible names and visible help; ambiguous or important
 confirmations keep text. Check keyboard behavior, theme/portal inheritance and refs.
 Do not introduce default shadcn styling, new UI dependencies or internal DOM selectors

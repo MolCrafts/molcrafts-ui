@@ -1,6 +1,6 @@
 # molcrafts-design 实施 Roadmap
 
-日期：2026-10-10 · 当前阶段：P1 workspace 与包边界已实现，本地验证通过，等待 CI。
+日期：2026-10-10 · 当前阶段：P1 已合并（PR #6，ded1b1e）；P2 主题契约已实现，本地检查通过，等待 CI。
 2026-10-10 用户要求不向后兼容，覆盖原 roadmap 中的兼容条款。
 依据：[Refactoring Spec v1.0](design-system-refactoring-spec.md)。
 本文件描述未来工作，未勾选事项不代表已经实现。阶段按依赖推进，不预设日期。
@@ -39,12 +39,12 @@
 
 ## PR 2 / P2 — 设计 tokens 与主题契约
 
-- [ ] 补齐 foundation/semantic 清单、说明、来源与废弃别名。
-- [ ] 固化 MolCrafts-owned 映射与上游版本审查流程，保持当前 Fluent 2 基线。
-- [ ] 分离纯 CSS runtime entry 与 Tailwind v4 integration。
-- [ ] 验证 light/dark、产品 primary/secondary、局部主题、portal 继承。
-- [ ] 清查原始色值、任意尺寸、品牌色与状态色混用；记录分批处理范围。
-- [ ] 验证 forced-colors、reduced-motion、状态与焦点对比度。
+- [x] 补齐 foundation/semantic 清单、说明、来源并移除废弃别名。
+- [x] 固化 MolCrafts-owned 映射与上游版本审查流程，保持当前 Fluent 2 基线。
+- [x] 分离纯 CSS runtime entry 与 Tailwind v4 integration。
+- [x] 验证 light/dark、产品 primary/secondary、局部主题、portal 继承。
+- [x] 清查原始色值、任意尺寸、品牌色与状态色混用；记录分批处理范围。
+- [x] 验证 forced-colors、reduced-motion、状态与焦点对比度。
 
 **原因**：使所有运行时共享设计契约，产品只提供自己的品牌与主题配置。
 
@@ -91,12 +91,12 @@
 
 ## PR 5 / P5 — 独立消费与质量门禁
 
-- [ ] 独立 Rsbuild fixture 只使用构建 exports 和编译 CSS，无库源码扫描。
-- [ ] 本地 tarball 安装验证 JS、types、CSS、runtime dependencies 与 assets。
-- [ ] 非平凡交互/键盘/a11y 检查纳入 CI，明确关键视觉基线更新方式。
-- [ ] 继续维护 Web Components 原生 HTML、表单、注册与主题浏览器测试。
+- [x] 独立 Rsbuild fixture 只使用构建 exports 和编译 CSS，无库源码扫描。
+- [x] 本地 tarball 安装验证 JS、types、CSS、runtime dependencies 与 assets。
+- [x] 非平凡交互/键盘/a11y 检查纳入 CI，明确关键视觉基线更新方式。
+- [x] 继续维护 Web Components 原生 HTML、表单、注册与主题浏览器测试。
 - [ ] 选定一个真实 MolCrafts 产品，在独立产品 PR 中验证功能兼容与迁移。
-- [ ] 记录新 imports/Registry 用法；旧入口不提供兼容窗口。
+- [x] 记录新 imports/Registry 用法；旧入口不提供兼容窗口。
 
 **原因与影响**：区分“仓库可运行”和“产品可消费”，在产品接入前发现遗漏。
 
@@ -127,8 +127,16 @@
 本地：pnpm 安装与公共类型检查、Rslib 包构建、exports/module/CSS/SSR 检查、
 独立 Rsbuild 及外部临时目录 tarball 构建通过；消费者浏览器检查通过，原生
 5 项测试通过；全部 35 个现有 stories 的 render/play 和 Button Autodocs 通过。
-CI 以当前提交为准。没有发包、改名或修改外部产品。
+P1 CI 通过并已合并 PR #6。没有发包、改名或修改外部产品。
 
 同时提前落实少量后续基础：删除 deprecated token 别名、清除产品专有 cn scales、
 生成组件目录、建立产物消费与 story smoke 门禁。P2/P3/P4/P5 未整体完成，
-特别是局部主题 portal、完整 API/state 覆盖、持续 a11y/visual 与真实产品验收。
+P2 已补齐局部主题 portal 与首批 a11y/visual；完整 API/state、全库视觉覆盖与真实产品验收仍未完成。
+
+## P2 验证范围（2026-10-10）
+
+127 项 token 元数据与文档；ThemeScope 及 8 类浮层就近继承；原生嵌套明暗模式。
+独立消费者 7 项测试覆盖键盘、axe 对比度、运行时品牌/尺寸、减少动画、高对比度
+以及 3 张截图；原生 6 项测试。详见 [主题契约](theming.md) 与
+[样式审计](style-audit.md)。构建、公开类型、外部 tarball、39 个 stories 的 render/play 与 Autodocs 本地通过；
+最新 CI 全绿后合并。尚未验证真实产品，也没有发布或改名。

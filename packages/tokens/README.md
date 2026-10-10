@@ -13,11 +13,14 @@ No package publishing; final names follow the future `molcrafts-design` rename.
 ```
 
 `runtime.css` supplies light/dark semantic colors, geometry, typography, motion,
-focus and state behavior. `.dark` switches theme without rebuilding.
+focus and state behavior. `data-mol-theme="light|dark"` selects explicit scoped modes;
+`.dark` also selects dark. No rebuild is required.
 `tailwind.css` maps the same design into Tailwind utilities and resolves its
-adjacent CSS assets. Only runtime and Tailwind integration entries are public; old individual CSS
-entry points and deprecated brand aliases are not supported. Components use semantic slots; product
-primary/secondary overrides follow `docs/design-constitution.md`.
+adjacent CSS assets. The root entry exports framework-independent `tokenContract`
+metadata and TypeScript theme contracts; `contract.json` exposes the generated list.
+Individual CSS entries and deprecated brand aliases are not supported.
+See [theming](../../docs/theming.md) and [127-token catalog](../../docs/token-catalog.md)
+for semantic roles, full primary/secondary families and reference upgrade review.
 
 Root `pnpm build:tokens` regenerates owned mappings and builds assets. Do not edit
 generated Fluent mappings by hand. React compiled CSS already includes tokens;

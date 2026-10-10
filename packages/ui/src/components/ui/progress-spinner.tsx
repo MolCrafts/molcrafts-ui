@@ -1,11 +1,4 @@
-/**
- * Essential "busy / running" indicator.
- *
- * Pure CSS ring (not a Lucide SVG) so:
- * - macOS Reduce Motion cannot freeze it via layered `* { animation:none }`
- * - React re-renders do not restart a half-drawn SVG stroke animation
- * - transform always applies to a simple block box
- */
+/** Pure CSS progress indicator. Reduced motion keeps a static ring and its accessible name. */
 
 import type { JSX } from "react";
 import { cn } from "../../lib/utils";

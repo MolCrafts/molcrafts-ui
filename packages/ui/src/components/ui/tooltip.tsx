@@ -1,5 +1,7 @@
 "use client";
 
+import { useThemePortalContainer } from "../../theme/theme-scope";
+
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import type * as React from "react";
 
@@ -36,8 +38,10 @@ function TooltipContent({
   children,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Content>) {
+  const container = useThemePortalContainer();
+  if (container === null) return null;
   return (
-    <TooltipPrimitive.Portal>
+    <TooltipPrimitive.Portal container={container}>
       <TooltipPrimitive.Content
         data-slot="tooltip-content"
         sideOffset={sideOffset}

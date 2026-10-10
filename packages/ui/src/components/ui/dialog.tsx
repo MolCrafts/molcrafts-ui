@@ -1,3 +1,4 @@
+import { useThemePortalContainer } from "../../theme/theme-scope";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { DismissRegular } from "@fluentui/react-icons";
 import type * as React from "react";
@@ -12,8 +13,11 @@ function DialogTrigger({ ...props }: React.ComponentProps<typeof DialogPrimitive
   return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />;
 }
 
-function DialogPortal({ ...props }: React.ComponentProps<typeof DialogPrimitive.Portal>) {
-  return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />;
+function DialogPortal({ container, ...props }: React.ComponentProps<typeof DialogPrimitive.Portal>) {
+  const scopedContainer = useThemePortalContainer();
+  const destination = container ?? scopedContainer;
+  if (destination === null) return null;
+  return <DialogPrimitive.Portal container={destination} {...props} />;
 }
 
 function DialogClose({ ...props }: React.ComponentProps<typeof DialogPrimitive.Close>) {

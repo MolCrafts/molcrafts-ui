@@ -88,3 +88,18 @@ test("product brands cross Shadow DOM while dark, reduced-motion and high-contra
   await page.keyboard.press("Shift+Tab");
   await expect(action).toHaveCSS("outline-style", "solid");
 });
+
+
+test("native nested modes reset complete official and semantic themes", async ({ page }) => {
+  await expect(page.locator("#native-dark-action")).toHaveCSS("background-color", "rgb(17, 94, 163)");
+  await expect(page.locator("#native-light-action")).toHaveCSS("background-color", "rgb(15, 108, 189)");
+  await page.locator("#native-dark").evaluate(el => {
+    (el as HTMLElement).style.setProperty("--primary", "#7b327e");
+    (el as HTMLElement).style.setProperty("--primary-hover", "#652669");
+  });
+  await expect(page.locator("#native-dark-action")).toHaveCSS("background-color", "rgb(123, 50, 126)");
+  // A nested explicit light scope restores its own complete default palette.
+  await expect(page.locator("#native-light-action")).toHaveCSS("background-color", "rgb(15, 108, 189)");
+  await page.locator("#native-light").evaluate(el => el.setAttribute("data-mol-theme", "dark"));
+  await expect(page.locator("#native-light-action")).toHaveCSS("background-color", "rgb(17, 94, 163)");
+});

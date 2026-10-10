@@ -1,5 +1,6 @@
 /** MolCrafts Fluent 2 scaffold. Products may rebind semantic brand/surface slots. */
 @import "./fluent-theme.css";
+@import "./geometry.css";
 @import "./constitution-base.css";
 @import "./constitution-theme.css";
 

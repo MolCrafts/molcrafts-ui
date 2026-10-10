@@ -2,6 +2,7 @@ import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: ".",
   testMatch: "*.spec.ts",
+  snapshotPathTemplate: "{testDir}/snapshots/{arg}{ext}",
   use: {
     baseURL: "http://127.0.0.1:6011",
     launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH

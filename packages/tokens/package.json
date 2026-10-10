@@ -10,7 +10,12 @@
   "description": "Framework-independent MolCrafts tokens and theme CSS",
   "exports": {
     "./runtime.css": "./dist/runtime.css",
-    "./tailwind.css": "./dist/tokens.css"
+    "./tailwind.css": "./dist/tokens.css",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./contract.json": "./dist/contract.json"
   },
   "sideEffects": [
     "**/*.css"
