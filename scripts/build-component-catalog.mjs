@@ -2,6 +2,7 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import ts from "typescript";
 const root = new URL("../", import.meta.url);
 const purposes = {
+  "native-select": "平台原生 picker 与 Fluent 表单样式",
   accordion: "可展开的分组内容", "alert-dialog": "需要明确确认的阻断对话框", badge: "非交互状态标签",
   button: "操作按钮、链接与图标按钮", card: "信息容器与分组", checkbox: "多选及不确定状态", code: "代码文本展示",
   collapsible: "单个可折叠区域", command: "可搜索的命令选择", "context-menu": "上下文操作菜单", dialog: "模态对话框",
@@ -40,4 +41,5 @@ for (const group of ["ui", "blocks"]) {
 }
 lines.push("", "[ThemeScope](../packages/ui/src/theme/theme-scope.tsx) 从 `@molcrafts/design` 导入：受控模式、完整品牌组与 scoped portal。", "[主题 stories](../apps/storybook/src/theme/theme-scope.stories.tsx) / [主题契约](theming.md)。", "", "`cn` 通过 `@molcrafts/design` 或 `@molcrafts/design/utils` 导入；只识别共享设计 scales。", "",
   "Web Components 使用独立包/API，清单及接入方式见 [原生包文档](../packages/web-components/README.md)。", "");
+lines.push("## 可选图表模块", "", "核心 UI 不依赖绘图引擎。", "", "| Package | Public API | Docs / stories |", "| --- | --- | --- |", "| @molcrafts/design-vega | VegaView、createChartConfig、useChartTheme、VegaViewHandle、VegaSpec | [contract](../packages/vega/README.md) / [stories](../apps/storybook/src/charts/vega.stories.tsx) |", "| @molcrafts/design-vega-lite | VegaLiteView、compileVegaLite、VegaLiteSpec | [contract](../packages/vega-lite/README.md) / [stories](../apps/storybook/src/charts/vega-lite.stories.tsx) |", "");
 await writeFile(new URL("docs/component-catalog.md", root), lines.join("\n"));

@@ -28,6 +28,7 @@ import "@molcrafts/design/styles.css";
 | empty-state：空内容与行动提示 | `EmptyState` | [source](../packages/ui/src/components/ui/empty-state.tsx) | [story](../apps/storybook/src/components/ui/empty-state.stories.tsx) |
 | input：单行文本输入 | `Input` | [source](../packages/ui/src/components/ui/input.tsx) | [story](../apps/storybook/src/components/ui/input.stories.tsx) |
 | label：表单标签 | `Label` | [source](../packages/ui/src/components/ui/label.tsx) | 待补专用 story |
+| native-select：平台原生 picker 与 Fluent 表单样式 | `NativeSelect` | [source](../packages/ui/src/components/ui/native-select.tsx) | [story](../apps/storybook/src/components/ui/native-select.stories.tsx) |
 | number-field：草稿编辑与数值提交 | `NumberField` | [source](../packages/ui/src/components/ui/number-field.tsx) | [story](../apps/storybook/src/components/ui/number-field.stories.tsx) |
 | popover：锚定浮层 | `Popover`, `PopoverAnchor`, `PopoverContent`, `PopoverTrigger` | [source](../packages/ui/src/components/ui/popover.tsx) | 待补专用 story |
 | progress-spinner：加载进度提示 | `ProgressSpinner` | [source](../packages/ui/src/components/ui/progress-spinner.tsx) | 待补专用 story |
@@ -53,3 +54,12 @@ import "@molcrafts/design/styles.css";
 `cn` 通过 `@molcrafts/design` 或 `@molcrafts/design/utils` 导入；只识别共享设计 scales。
 
 Web Components 使用独立包/API，清单及接入方式见 [原生包文档](../packages/web-components/README.md)。
+
+## 可选图表模块
+
+核心 UI 不依赖绘图引擎。
+
+| Package | Public API | Docs / stories |
+| --- | --- | --- |
+| @molcrafts/design-vega | VegaView、createChartConfig、useChartTheme、VegaViewHandle、VegaSpec | [contract](../packages/vega/README.md) / [stories](../apps/storybook/src/charts/vega.stories.tsx) |
+| @molcrafts/design-vega-lite | VegaLiteView、compileVegaLite、VegaLiteSpec | [contract](../packages/vega-lite/README.md) / [stories](../apps/storybook/src/charts/vega-lite.stories.tsx) |

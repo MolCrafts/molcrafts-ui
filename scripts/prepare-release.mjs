@@ -61,10 +61,10 @@ try {
     const bytes = await readFile(tarball);
     report.packages.push({ name: manifest.name, version: manifest.version, file: filename, bytes: bytes.length, sha256: createHash("sha256").update(bytes).digest("hex"), exports: packed.exports, dependencies: packed.dependencies ?? {}, files: entries });
   }
-  assert.equal(new Set(report.packages.map(pkg => pkg.version)).size, 1, "All three packages must share the release version");
+  assert.equal(new Set(report.packages.map(pkg => pkg.version)).size, 1, "All distributable packages must share the release version");
   // Remove obsolete local rehearsal archives so the report identifies the complete current set.
   const current = new Set(report.packages.map(pkg => pkg.file));
   for (const name of await readdir(out)) if (name.endsWith(".tgz") && !current.has(name)) await rm(join(out, name));
   await writeFile(join(out, "report.json"), JSON.stringify(report, null, 2) + "\n");
-  console.log("Audited three private package archives, exports, dependency rewriting, licenses and checksums. Report: release-artifacts/report.json");
+  console.log("Audited private package archives, exports, dependency rewriting, licenses and checksums. Report: release-artifacts/report.json");
 } finally { await rm(temporary, { recursive: true, force: true }); }

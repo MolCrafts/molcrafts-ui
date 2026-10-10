@@ -38,7 +38,7 @@ async function notices(names, require, recursive = false) {
   for (const [key, { dir, manifest }] of [...found].sort(([a], [b]) => a.localeCompare(b))) {
     sections.push(`## ${key}`, "", `Declared license: ${manifest.license ?? "UNKNOWN"}.`, "");
     if (!manifest.license) throw new Error(`Missing upstream license: ${key}`);
-    const files = (await readdir(dir)).filter(file => /^(?:licen[sc]e|notice|copyrightnotice)(?:\.|$)/i.test(file));
+    const files = (await readdir(dir)).filter(file => /^(?:licen[sc]e|notice|copyrightnotice)(?:[.-]|$)/i.test(file));
     if (!files.length) {
       if (!/^@(?:fluentui|microsoft)\//.test(manifest.name) || manifest.license !== "MIT") throw new Error(`Missing upstream license text: ${key}`);
       sections.push("Microsoft MIT terms retained in this package's NOTICE.md.", "", microsoftNotice.slice(microsoftNotice.indexOf("MIT License")), "");
@@ -55,3 +55,9 @@ for (const [directory, text] of [["tokens", tokens], ["ui", ui], ["web-component
   await writeFile(join(root, `packages/${directory}/THIRD_PARTY_NOTICES.md`), text.replace(/\r\n/g, "\n").replace(/[ \t]+$/gm, "").trimEnd() + "\n");
 }
 console.log("Generated license texts for embedded tokens, CSS, icons and native runtime dependencies.");
+
+for (const directory of ["vega", "vega-lite"]) {
+  const manifest = JSON.parse(await readFile(join(root, `packages/${directory}/package.json`), "utf8"));
+  const text = await notices(Object.keys(manifest.dependencies), createRequire(join(root, `packages/${directory}/package.json`)), true);
+  await writeFile(join(root, `packages/${directory}/THIRD_PARTY_NOTICES.md`), text.replace(/\r\n/g, "\n").replace(/[ \t]+$/gm, "").trimEnd() + "\n");
+}

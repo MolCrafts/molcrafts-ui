@@ -27,6 +27,8 @@ User instructions take precedence over these repository rules.
 - Keep one canonical implementation. Registry contains package setup/examples, not copied core sources.
 - Web Components are an independent managed runtime sharing tokens, not React rendering
   across frameworks. Do not claim React API parity or register elements during SSR.
+- Optional design-vega uses Vega View API; design-vega-lite compiles into that same viewer.
+  Core UI/tokens never depend on plotting engines or MolPlot. See docs/chart-architecture.md.
 - Avoid product-domain UI and premature utility/icon/category packages.
 
 ## Design and component work
