@@ -70,6 +70,12 @@ test("theme and brand changes preserve neutral/status roles, contrast and access
   await expect(page.getByText("Completed", { exact: true })).toHaveCSS("color", success);
   for (const mode of ["dark", "light"] as const) {
     if (mode === "light") await page.getByRole("button", { name: "Toggle scope theme" }).click();
+    await expect(page.locator("#product-scope")).toHaveCSS("color-scheme", mode);
+    // Check the settled theme, not intermediate colors during its CSS transition.
+    // Ignore the intentional, perpetual progress-spinner animation.
+    await expect.poll(() => page.locator("#product-scope").evaluate(el =>
+      el.getAnimations({ subtree: true }).filter(animation => animation instanceof CSSTransition)
+        .every(animation => animation.playState === "finished"))).toBe(true);
     const result = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
     expect(result.violations, `${mode}: ${JSON.stringify(result.violations)}`).toEqual([]);
     await page.getByRole("button", { name: "Open scoped dialog" }).click();
