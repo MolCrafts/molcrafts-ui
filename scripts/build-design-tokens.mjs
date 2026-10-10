@@ -5,6 +5,8 @@ import { webDarkTheme, webLightTheme } from "@fluentui/react-theme";
 const root = new URL("../", import.meta.url);
 const packageJson = JSON.parse(await readFile(new URL("package.json", root), "utf8"));
 const version = packageJson.devDependencies["@fluentui/react-theme"];
+const reference = JSON.parse(await readFile(new URL("packages/tokens/reference.json", root), "utf8"));
+if (reference.reference.version !== version) throw new Error("Review and update packages/tokens/reference.json before changing the Fluent reference version.");
 const header = `/** Generated from @fluentui/react-theme ${version}. Run pnpm build:tokens. */\n`;
 
 // Keep public MolCrafts names stable; values come from the released Fluent 2 web themes.
@@ -64,8 +66,8 @@ function themeBlock(selector, theme, scheme) {
 }
 
 await writeFile(new URL("packages/tokens/src/fluent-theme.css", root), header + "\n" +
-  themeBlock(":where(:root, :host)", webLightTheme, "light") + "\n" +
-  themeBlock(".dark, :where(:root, :host).dark", webDarkTheme, "dark"));
+  themeBlock(":where(:root, :host), [data-mol-theme=light]", webLightTheme, "light") + "\n" +
+  themeBlock(".dark, [data-mol-theme=dark]", webDarkTheme, "dark"));
 
 const typeScale = {
   micro: ["fontSizeBase100", "lineHeightBase100"],
@@ -77,6 +79,12 @@ const typeScale = {
   display: ["fontSizeHero800", "lineHeightHero800"],
 };
 const foundation = [
+  "  --spacing: 0.25rem;",
+  "  --border-width-default: 1px;",
+  "  --focus-width: 2px;",
+  "  --focus-offset: 2px;",
+  "  --font-weight-normal: 400;",
+  "  --font-weight-semibold: 600;",
   `  --font-sans: ${webLightTheme.fontFamilyBase};`,
   `  --font-mono: ${webLightTheme.fontFamilyMonospace};`,
 ];
@@ -97,10 +105,10 @@ for (const [role, value] of Object.entries({
 })) foundation.push(`  --spacing-${role}: ${value};`);
 foundation.push(`  --ease-standard: ${webLightTheme.curveEasyEase};`);
 await writeFile(new URL("packages/tokens/src/constitution-theme.css", root), header +
-  "/* Shared geometry only. Product brand mappings belong to the product theme. */\n@theme inline {\n" +
-  foundation.join("\n") + "\n}\n");
+  "/* Shared geometry only. Product brand mappings belong to the product theme. */\n@theme inline reference {\n" +
+  foundation.map(line => { const name = line.trim().split(":")[0]; return `  ${name}: var(${name});`; }).join("\n") + "\n}\n");
 
-await writeFile(new URL("packages/tokens/src/geometry.css", root), header + ":where(:root, :host) {\n" + foundation.join("\n") + "\n}\n");
+await writeFile(new URL("packages/tokens/src/geometry.css", root), header + ":where(:root, :host), [data-mol-theme] {\n" + foundation.join("\n") + "\n}\n");
 
 const shared = {
   "motion-fast": "durationFaster", "motion-base": "durationFast", "motion-slow": "durationNormal",
@@ -119,11 +127,10 @@ function sharedBlock(selector, theme) {
   return `${selector} {\n` + Object.entries(shared).flatMap(([role, source]) => {
     if (!theme[source]) throw new Error(`Missing Fluent token ${source}`);
     const value = role === "status-failed-hover" ? webLightTheme[source] : theme[source];
-    if (theme === webDarkTheme && value === webLightTheme[source]) return [];
     return `  --${role}: ${value};`;
   }).join("\n") + "\n}\n";
 }
 await writeFile(new URL("packages/tokens/src/fluent-foundation.css", root), header + "\n" +
-  sharedBlock(":where(:root, :host)", webLightTheme) + "\n" +
-  sharedBlock(".dark, :where(:root, :host).dark", webDarkTheme));
+  sharedBlock(":where(:root, :host), [data-mol-theme=light]", webLightTheme) + "\n" +
+  sharedBlock(".dark, [data-mol-theme=dark]", webDarkTheme));
 console.log(`Generated Fluent 2 theme, foundation, and geometry in ${fileURLToPath(new URL("packages/tokens/src/", root))}`);

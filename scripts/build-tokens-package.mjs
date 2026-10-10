@@ -9,4 +9,6 @@ for (const name of ["tokens.css", "constitution-theme.css", "constitution-base.c
 const file = new URL("src/runtime.css", pkg);
 const result = await postcss([postcssImport()]).process(await readFile(file, "utf8"), { from: file.pathname, to: new URL("dist/runtime.css", pkg).pathname });
 await writeFile(new URL("dist/runtime.css", pkg), result.css);
+await cp(new URL("src/index.d.ts", pkg), new URL("dist/index.d.ts", pkg));
+await import("./build-token-contract.mjs");
 console.log("Built standalone runtime tokens and optional Tailwind integration.");

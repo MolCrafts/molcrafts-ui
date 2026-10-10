@@ -30,7 +30,10 @@ User instructions take precedence over these repository rules.
 
 Inspect existing implementations, public contracts and Storybook examples first.
 Follow Fluent 2, MolCrafts semantic tokens, complete product primary/secondary families,
-light/dark themes and documented variants. Use official Fluent icons.
+light/dark themes and documented variants. Read [theming](docs/theming.md),
+[token catalog](docs/token-catalog.md) and [style audit](docs/style-audit.md). Use
+ThemeScope for React scopes and overlays; provide complete mode-specific brands.
+Use official Fluent icons.
 Prefer icon-only for familiar toolbar actions; require accessible names and visible
 help, retain text for ambiguous actions and important confirmations.
 Document relevant props, variants, sizes, controlled/uncontrolled behavior, refs,

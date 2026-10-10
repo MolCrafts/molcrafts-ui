@@ -1,3 +1,4 @@
+import { useThemePortalContainer } from "../../theme/theme-scope";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { CheckmarkRegular, CircleFilled } from "@fluentui/react-icons";
 import * as React from "react";
@@ -10,7 +11,12 @@ const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 
 const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 
-const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
+function DropdownMenuPortal({ container, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>) {
+  const scopedContainer = useThemePortalContainer();
+  const destination = container ?? scopedContainer;
+  if (destination === null) return null;
+  return <DropdownMenuPrimitive.Portal container={destination} {...props} />;
+}
 
 const DropdownMenuSub = DropdownMenuPrimitive.Sub;
 
@@ -54,7 +60,7 @@ const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
 >(({ className, sideOffset = 4, ...props }, ref) => (
-  <DropdownMenuPrimitive.Portal>
+  <DropdownMenuPortal>
     <DropdownMenuPrimitive.Content
       ref={ref}
       sideOffset={sideOffset}
@@ -64,7 +70,7 @@ const DropdownMenuContent = React.forwardRef<
       )}
       {...props}
     />
-  </DropdownMenuPrimitive.Portal>
+  </DropdownMenuPortal>
 ));
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 

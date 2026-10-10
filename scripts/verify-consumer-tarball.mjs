@@ -17,6 +17,7 @@ try {
   const fixture = new URL("tests/consumer/app/", root);
   await cp(new URL("src/", fixture), join(temp, "src"), { recursive: true });
   await cp(new URL("rsbuild.config.ts", fixture), join(temp, "rsbuild.config.ts"));
+  await cp(new URL("index.html", fixture), join(temp, "index.html"));
   const manifest = JSON.parse(await readFile(new URL("package.json", fixture), "utf8"));
   manifest.dependencies["@molcrafts/ui"] = `file:${uiTar}`;
   manifest.dependencies["@molcrafts/tokens"] = `file:${tokenTar}`;

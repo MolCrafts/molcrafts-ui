@@ -11,8 +11,10 @@ import "@molcrafts/ui/styles.css";
 React 19 is a peer dependency. `styles.css` includes semantic tokens, component
 utilities and Tailwind v4 preflight; import it once before application overrides.
 Consumers need no Tailwind plugin, library scanning or source alias. The stylesheet
-includes the default light theme; `.dark` selects dark and `.mol-product-theme`
-scopes product palettes. See the design constitution for complete brand contracts.
+includes default light tokens. `ThemeScope` selects explicit light/dark modes, accepts
+complete product brand families and keeps descendant overlays in the same theme.
+Nested explicit modes reset defaults; pass the appropriate brand to retain it.
+See [theming](../../docs/theming.md) for APIs, inheritance and portal placement limits.
 
 The root entry exports all existing primitive and block APIs. `@molcrafts/ui/utils`
 exports `cn`. Implementation modules are internal; Registry contains package setup and composition examples only. Old source-sync

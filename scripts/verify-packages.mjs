@@ -39,3 +39,11 @@ const { renderToStaticMarkup } = require("react-dom/server");
 const ui = await import(new URL("packages/ui/dist/index.js", root));
 assert.ok(renderToStaticMarkup(react.createElement(ui.Button, null, "Package SSR")).includes("Package SSR"));
 console.log("Verified private package exports, plain tokens, complete CSS, module closure and React SSR.");
+
+const scopeHTML = renderToStaticMarkup(react.createElement(ui.ThemeScope, { theme: "dark" }, react.createElement(ui.Button, null, "Scoped SSR")));
+assert.ok(scopeHTML.includes('data-mol-theme="dark"') && scopeHTML.includes("Scoped SSR"));
+const metadata = await import(new URL("packages/tokens/dist/index.js", root));
+assert.equal(metadata.tokenContract.reference.version, "9.2.2");
+assert.ok(metadata.tokenContract.tokens.some(token => token.name === "--primary"));
+assert.ok(!/--([a-z-]+):var\(--\1\)/.test(css), "Runtime foundation must not contain self-referential declarations");
+console.log("Verified scoped SSR and framework-independent token metadata.");

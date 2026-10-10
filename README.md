@@ -4,8 +4,9 @@ Independent shared React UI with Fluent 2 visual language, owned semantic tokens
 Rslib packages and Storybook on Rsbuild/Rspack. **All packages are private and
 unpublished.** Final names and the repository rename to `molcrafts-design` are deferred.
 
-This first implementation establishes workspace and distribution boundaries.
-Component API ownership, complete story/state coverage, visual regression and
+Workspace boundaries and runtime theme contracts are implemented, with scoped
+React portals, native themes and initial accessibility/visual checks. Component API
+ownership, complete story/state coverage and
 real-product integration remain tracked in the [roadmap](docs/design-system-roadmap.md).
 
 ## Packages and applications
@@ -59,7 +60,10 @@ Tailwind plugin, library source scanning or source alias. For non-React tokens,
 import `@molcrafts/tokens/runtime.css`; for application-authored Tailwind utilities,
 use `@molcrafts/tokens/tailwind.css` with Tailwind v4.
 
-`.dark` switches runtime theme. Products provide complete primary and secondary
+Use `ThemeScope` for React themes and scoped overlays; `data-mol-theme="light|dark"`
+selects explicit CSS modes, including nested themes. `.dark` also selects dark.
+See [theming](docs/theming.md), [token catalog](docs/token-catalog.md) and
+[style audit](docs/style-audit.md). Products provide complete primary and secondary
 families; neutral actions and status colors remain shared. Toolbar actions prefer
 accessible icon-only buttons using official Fluent icons. See the
 [constitution](docs/design-constitution.md) and [component catalog](docs/component-catalog.md).

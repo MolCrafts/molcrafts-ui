@@ -1,7 +1,7 @@
 /** Shared Fluent 2 behavior and status roles. No product brand overrides. */
 @import "./fluent-foundation.css";
 
-:where(:root, :host) {
+:where(:root, :host), [data-mol-theme], .mol-product-theme {
   --constitution-surface: var(--card, var(--background, #ffffff));
   --motion-progress-spin: 850ms;
   --motion-progress-pulse: 1200ms;
@@ -30,9 +30,9 @@
 
 /* Two-color keyboard focus remains legible on neutral and brand surfaces. */
 .mol-focus:focus-visible {
-  outline: 2px solid var(--ring, currentColor);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 2px var(--focus-inner, var(--background, #ffffff));
+  outline: var(--focus-width) solid var(--ring, currentColor);
+  outline-offset: var(--focus-offset);
+  box-shadow: 0 0 0 var(--focus-width) var(--focus-inner, var(--background, #ffffff));
 }
 
 @keyframes mol-progress-spin { to { transform: rotate(360deg); } }
@@ -68,7 +68,7 @@
 .mol-progress-spinner-md { width: 1.25rem; height: 1.25rem; border-width: 2.5px; }
 
 @media (prefers-reduced-motion: reduce) {
-  :where(:root, :host) {
+  :where(:root, :host), [data-mol-theme], .mol-product-theme {
     --motion-fast: 0ms;
     --motion-base: 0ms;
     --motion-slow: 0ms;
@@ -81,7 +81,10 @@
 @media (forced-colors: active) {
   .mol-focus:focus-visible { outline-color: Highlight; box-shadow: none; }
   [data-slot="button"], [data-slot="input"], [data-slot="textarea"],
-  [data-slot="select-trigger"], [data-slot="checkbox"], [data-slot="switch"] { border: 1px solid ButtonText; }
+  [data-slot="select-trigger"], [data-slot="checkbox"], [data-slot="switch"] { border: var(--border-width-default) solid ButtonText; }
   [data-slot="checkbox"][data-state="checked"],
   [data-slot="switch"][data-state="checked"] { background: Highlight; color: HighlightText; }
 }
+
+/* A theme host contributes no layout box; overlays still inherit its tokens. */
+[data-mol-portal] { display: contents; }

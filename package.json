@@ -24,6 +24,7 @@
     "build:catalog": "node scripts/build-component-catalog.mjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
     "@fluentui/react-theme": "9.2.2",
     "@fluentui/svg-icons": "1.1.344",
     "@playwright/test": "1.64.0",
@@ -33,12 +34,12 @@
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
     "postcss": "8.5.29",
+    "postcss-import": "16.1.1",
     "postcss-selector-parser": "7.1.6",
-    "tailwindcss": "4.3.3",
-    "typescript": "5.9.3",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "postcss-import": "16.1.1"
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
   },
   "packageManager": "pnpm@11.25.0",
   "engines": {

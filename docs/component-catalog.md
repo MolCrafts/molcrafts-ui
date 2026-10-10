@@ -47,6 +47,9 @@ import "@molcrafts/ui/styles.css";
 | settings-section：设置字段与分组 | `SettingsSection`, `SettingsRow` | [source](../packages/ui/src/components/blocks/settings-section.tsx) | [story](../apps/storybook/src/components/blocks/settings-section.stories.tsx) |
 | settings-shell：设置导航与内容组合 | `SettingsShell` | [source](../packages/ui/src/components/blocks/settings-shell.tsx) | 待补专用 story |
 
+[ThemeScope](../packages/ui/src/theme/theme-scope.tsx) 从 `@molcrafts/ui` 导入：受控模式、完整品牌组与 scoped portal。
+[主题 stories](../apps/storybook/src/theme/theme-scope.stories.tsx) / [主题契约](theming.md)。
+
 `cn` 通过 `@molcrafts/ui` 或 `@molcrafts/ui/utils` 导入；只识别共享设计 scales。
 
 Web Components 使用独立包/API，清单及接入方式见 [原生包文档](../packages/web-components/README.md)。

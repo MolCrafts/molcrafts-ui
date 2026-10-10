@@ -32,6 +32,9 @@
       <div class="row"><fluent-switch id="autosave" aria-label="Auto save" name="autosave" value="on"></fluent-switch><label for="autosave">Auto save</label></div>
       <fluent-button type="submit">Save changes</fluent-button>
     </form>
+    <div data-mol-theme="dark" id="native-dark"><fluent-button id="native-dark-action" appearance="primary">Dark action</fluent-button>
+      <div data-mol-theme="light" id="native-light"><fluent-button id="native-light-action" appearance="primary">Light action</fluent-button><fluent-badge appearance="tint" color="success">Nested completed</fluent-badge></div>
+    </div>
     <output id="saved" aria-live="polite"></output>
     <fluent-divider></fluent-divider>
     <fluent-tablist aria-label="Sections"><fluent-tab id="tab-one">Overview</fluent-tab><fluent-tab id="tab-two">Details</fluent-tab></fluent-tablist>

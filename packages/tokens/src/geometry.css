@@ -1,5 +1,11 @@
 /** Generated from @fluentui/react-theme 9.2.2. Run pnpm build:tokens. */
-:where(:root, :host) {
+:where(:root, :host), [data-mol-theme] {
+  --spacing: 0.25rem;
+  --border-width-default: 1px;
+  --focus-width: 2px;
+  --focus-offset: 2px;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
   --font-sans: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
   --font-mono: Consolas, 'Courier New', Courier, monospace;
   --text-micro: 10px;
