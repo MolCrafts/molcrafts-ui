@@ -1,7 +1,6 @@
 {
   "name": "@molcrafts/design-vega-lite",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.1.0-alpha.0",
   "type": "module",
   "description": "Optional MolCrafts vega-lite React chart adapter",
   "license": "MIT",

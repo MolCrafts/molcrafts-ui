@@ -1,8 +1,8 @@
 # MolCrafts Design — molcrafts-design
 
 Independent shared React UI with Fluent 2 visual language, owned semantic tokens,
-Rslib packages and Storybook on Rsbuild/Rspack. **All packages are private and
-unpublished.** The package names are confirmed: `@molcrafts/design`,
+Rslib packages and Storybook on Rsbuild/Rspack. The five packages are published to npm
+as `0.1.0-alpha.0` on the `alpha` dist-tag (`npm install @molcrafts/design@alpha`). The package names are confirmed: `@molcrafts/design`,
 `@molcrafts/design-tokens`, `@molcrafts/design-web-components`, plus optional
 `@molcrafts/design-vega` and `@molcrafts/design-vega-lite`. MIT licensed;
 the external repository rename is deferred. See [release preparation](docs/releasing.md)
@@ -55,7 +55,7 @@ is validation, not publishing. No publish/tag/release automation is configured.
 
 ## React consumer
 
-These confirmed package names remain private and unpublished:
+Install from the `alpha` dist-tag:
 
 ```tsx
 import { Button } from "@molcrafts/design";

@@ -51,7 +51,7 @@ keyboard, accessibility and visual behavior relevant to the change. Check built-
 Report completed scope, compatibility changes, validation evidence and remaining gaps.
 Do not describe roadmap items as shipped. Confirmed package names are `@molcrafts/design`, `@molcrafts/design-tokens` and
 `@molcrafts/design-web-components`, with MIT licensing. Read `docs/releasing.md`;
-local release preparation does not authorize publishing or external repository renaming.
+packages ship on npm `alpha` from `0.1.0-alpha.0`; another release or an external repository rename needs an explicit request.
 
 For 2D plots, read docs/chart-architecture.md and the optional package READMEs.
 Use design-vega for native Vega specs, design-vega-lite for compilation plus the same

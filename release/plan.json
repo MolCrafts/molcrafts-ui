@@ -6,7 +6,7 @@
   "firstRelease": {
     "target": "0.1.0-alpha.0",
     "channel": "alpha",
-    "status": "preparation-only"
+    "status": "candidate"
   },
   "packages": [
     {
@@ -32,9 +32,7 @@
   ],
   "remaining": [
     "Complete the selected public component API/state documentation scope",
-    "Verify at least one real MolCrafts product migration",
     "Verify npm scope ownership and publisher access in an explicit release task",
-    "Confirm final repository rename and URLs",
-    "Review alpha changelogs and candidate artifacts before unsetting private"
+    "Confirm final repository rename and URLs"
   ]
 }

@@ -1,6 +1,6 @@
 # @molcrafts/design-vega
 
-Optional native Vega viewer. MIT; private/unpublished. Built with Rslib. Core
+Optional native Vega viewer. MIT; published on npm `alpha`. Built with Rslib. Core
 `@molcrafts/design` does not depend on this package. Import the Design stylesheet
 (or tokens runtime for a plain viewer) in the application.
 

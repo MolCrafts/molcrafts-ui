@@ -6,7 +6,8 @@ const root = new URL("../", import.meta.url);
 for (const name of ["tokens", "ui"]) {
   const pkgRoot = new URL(`packages/${name}/`, root);
   const pkg = JSON.parse(await readFile(new URL("package.json", pkgRoot), "utf8"));
-  assert.equal(pkg.private, true, "Packages remain private until naming/release decisions");
+  // Distributable packages are publishable; the workspace root and applications stay private.
+  assert.notEqual(pkg.private, true, `${pkg.name} must be publishable`);
   for (const entry of Object.values(pkg.exports)) {
     for (const path of typeof entry === "string" ? [entry] : Object.values(entry)) await access(new URL(path, pkgRoot));
   }
@@ -38,7 +39,7 @@ const react = require("react");
 const { renderToStaticMarkup } = require("react-dom/server");
 const ui = await import(new URL("packages/ui/dist/index.js", root));
 assert.ok(renderToStaticMarkup(react.createElement(ui.Button, null, "Package SSR")).includes("Package SSR"));
-console.log("Verified private package exports, plain tokens, complete CSS, module closure and React SSR.");
+console.log("Verified package exports, plain tokens, complete CSS, module closure and React SSR.");
 
 const scopeHTML = renderToStaticMarkup(react.createElement(ui.ThemeScope, { theme: "dark" }, react.createElement(ui.Button, null, "Scoped SSR")));
 assert.ok(scopeHTML.includes('data-mol-theme="dark"') && scopeHTML.includes("Scoped SSR"));

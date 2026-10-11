@@ -14,13 +14,14 @@ const temporary = await mkdtemp(join(tmpdir(), "molcrafts-pack-audit-"));
 for (const directory of ["", "apps/storybook", "tests/consumer/app"]) {
   assert.equal(JSON.parse(await readFile(join(root, directory, "package.json"), "utf8")).private, true, "Workspace and applications must remain private");
 }
-const report = { schemaVersion: 1, mode: "local-rehearsal-only", gitCommit: execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim(), workingTreeDirty: Boolean(execFileSync("git", ["status", "--porcelain"], { cwd: root, encoding: "utf8" }).trim()), firstRelease: plan.firstRelease, npmPublisherAccess: "not-verified", remaining: plan.remaining, packages: [] };
+const report = { schemaVersion: 1, mode: "release-candidate", gitCommit: execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim(), workingTreeDirty: Boolean(execFileSync("git", ["status", "--porcelain"], { cwd: root, encoding: "utf8" }).trim()), firstRelease: plan.firstRelease, npmPublisherAccess: "not-verified", remaining: plan.remaining, packages: [] };
 try {
   for (const item of plan.packages) {
     const dir = join(root, item.directory);
     const manifest = JSON.parse(await readFile(join(dir, "package.json"), "utf8"));
     assert.equal(manifest.name, item.name);
-    assert.equal(manifest.private, true, "Preparation must not enable publishing");
+    assert.notEqual(manifest.private, true, "Distributable packages must be publishable");
+    assert.equal(manifest.version, plan.firstRelease.target, "Candidate archives carry the planned release version");
     assert.equal(manifest.license, "MIT");
     assert.equal(manifest.repository.directory, item.directory);
     assert.equal(manifest.publishConfig.access, "public");
@@ -66,5 +67,5 @@ try {
   const current = new Set(report.packages.map(pkg => pkg.file));
   for (const name of await readdir(out)) if (name.endsWith(".tgz") && !current.has(name)) await rm(join(out, name));
   await writeFile(join(out, "report.json"), JSON.stringify(report, null, 2) + "\n");
-  console.log("Audited private package archives, exports, dependency rewriting, licenses and checksums. Report: release-artifacts/report.json");
+  console.log("Audited release-candidate archives, exports, dependency rewriting, licenses and checksums. Report: release-artifacts/report.json");
 } finally { await rm(temporary, { recursive: true, force: true }); }
