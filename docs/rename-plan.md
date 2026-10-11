@@ -1,6 +1,6 @@
 # Package names
 
-2026-10-11: The owner chose the `@molcrafts/ui` family before the first version reached npm. The package
+2026-10-11: The owner chose the `@molcrafts/ui` family right after the first alpha. The package
 names now follow the repository (`MolCrafts/molcrafts-ui`) and its source directories, so no repository
 rename is planned.
 
@@ -28,8 +28,9 @@ Pure CSS uses `@molcrafts/ui-tokens/runtime.css`. The skill lives in `skills/mol
 ## Retired names
 
 `@molcrafts/design`, `@molcrafts/design-tokens`, `@molcrafts/design-web-components`,
-`@molcrafts/design-vega` and `@molcrafts/design-vega-lite` were reserved on npm but never received a
-version; they are removed from the registry. Earlier internal names (`@molcrafts/tokens`,
+`@molcrafts/design-vega` and `@molcrafts/design-vega-lite` were published as `0.1.0-alpha.0` on
+2026-10-11 and unpublished the same day, inside npm's 72-hour window, before any product depended on
+them. The `@molcrafts/ui*` family starts at that same `0.1.0-alpha.0`. Earlier internal names (`@molcrafts/tokens`,
 `@molcrafts/web-components`) were never published either. There are no aliases or compatibility shims:
 products import the names above directly.
 
