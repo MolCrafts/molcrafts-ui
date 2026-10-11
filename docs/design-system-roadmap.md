@@ -1,6 +1,7 @@
 # molcrafts-ui implementation roadmap
 
 Date: 2026-10-10 · Current stage: P1 merged (PR #6, ded1b1e); P2 merged (PR #7, 3e1d2dc); release preparation merged (PR #8); currently implementing optional charts and the CI dashboard migration.
+On 2026-10-11 the molvis intake at the end of this file was recorded. Those additions are not started.
 On 2026-10-10 the user required no backward compatibility, superseding the compatibility clauses in the original roadmap.
 Based on: [Refactoring Spec v1.0](design-system-refactoring-spec.md).
 This file describes future work; unchecked items are not implemented. Stages proceed by dependency and do not preset dates.
@@ -167,3 +168,62 @@ This round still does not publish; fixed-tarball distribution and verification f
 ### Typography and density revision (2026-10-10)
 
 Compact-first guidance is withdrawn. Default controls are 40px, large controls 48px; product navigation must provide at least 40px rows. UI fonts use platform sans fallbacks; metrics use tabular figures rather than monospace. React and native controls share this contract. Dashboard migration validates comfortable navigation in the real consumer.
+
+## Molvis intake (2026-10-11)
+
+Recorded from molvis. Nothing in this section is implemented. molvis still vendors local copies, and its page `package.json` does not depend on `@molcrafts/ui`. Shared controls are 40px, `primary`, and Fluent icons. The molvis copies still describe 32px and accent, so replacing them is a visual migration even where the names and APIs are close.
+
+### Add to the shared React library
+
+| Piece | molvis today | What the library needs |
+| --- | --- | --- |
+| Alert / Callout | `AnalysisAlert` (`info` / `warning` / `error`), plus handwritten `role="alert"` | A callout with status color, icon, and a live region. `AlertDialog` remains the confirm dialog. |
+| Field | `ParamStack`: label, unit, control, and description | A vertical field. `SettingsRow` stays the horizontal settings row. `fluent-field` stays the Web Components field. |
+| ColorField | About 13 bare `type="color"` inputs in 11 files (representation, box, surface, color band, highlight) | One color field that owns the label, the value, and the commit behavior. |
+| Kbd | Command palette, shortcut dialog, and action panel each style a chip | One shortcut chip. |
+| RadioGroup | Native radios in the key-column mapping dialog | A radio group beside the existing Checkbox and Switch. |
+| IconAction | `ViewerIconAction`, `ViewerToolButton`, `ViewerToggleAction` | An icon button with an accessible name and a tooltip, so each call site does not wrap Button and Tooltip itself. |
+| InspectorSection | `SidebarSection`: subtitle, badge, controlled exclusive expansion, `keepMounted` | The sidebar section. Accordion unmounts closed content and has no badge or subtitle. |
+| Tabs icon strip | `PanelTabStrip`: equal width, icon only, tooltip, underline | A `TabsList` variant. `TabsList` already has `default` and `line`. Keep a single Tabs implementation. |
+
+- [ ] Alert / Callout
+- [ ] Field
+- [ ] ColorField
+- [ ] Kbd
+- [ ] RadioGroup
+- [ ] IconAction
+- [ ] InspectorSection
+- [ ] Tabs icon-strip variant on the existing Tabs
+
+### Extend Slider and NumberField
+
+`ScalarSliderRow` stays out of the library. Drag preview and commit-on-release belong on the existing Slider and NumberField.
+
+Slider is a Radix passthrough: the value updates while the pointer moves, and there is no separate preview or pointer-up commit. NumberField keeps a string draft and commits a clamped, step-rounded value on blur or Enter. It has no drag preview.
+
+- [ ] Slider: preview while dragging, commit on release
+- [ ] NumberField: the same preview and commit-on-release behavior
+
+### Already in this library; molvis still uses local copies
+
+Base controls: badge, button, checkbox, code, dialog, dropdown-menu, empty-state, input, label, number-field, popover, resizable, scroll-area, select, separator, slider, switch, tabs, tooltip.
+
+Blocks: SettingsSection, SettingsRow, EdgePanel.
+
+molvis's plugin package keeps its own button, checkbox, and select.
+
+These can replace the local copies once the page depends on `@molcrafts/ui`. The 40px / `primary` / Fluent generation replaces the 32px / accent copies.
+
+### Swap with components that already exist
+
+- Unsaved, reset, and delete confirmation → AlertDialog
+- Local theme toggle → the controlled ThemeToggle
+- Running spinner and status dot → ProgressSpinner and StatusMark
+- Command-palette list → Command. Command registration stays in molvis.
+- Analysis charts → `@molcrafts/ui-vega` and `@molcrafts/ui-vega-lite`. molvis currently draws them with molplot.
+
+### Leave in molvis
+
+Modifier panel, RDF / MSD / ring / PCA, pipeline tree, sketch, trajectory playback and timeline, ColorScaleLegend (its colors come from the stage colormap), format and key-column dialogs, structure inspector, and WorkbenchSidePanel (drawer, focus trap, drag width).
+
+WorkbenchShell is the dashboard shell: header, navigator, work surface, and dock. The molvis canvas workbench remains WorkbenchSidePanel.
