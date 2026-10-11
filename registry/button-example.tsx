@@ -1,5 +1,5 @@
 import { AddRegular } from "@fluentui/react-icons";
-import { Button, Tooltip, TooltipContent, TooltipTrigger } from "@molcrafts/design";
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from "@molcrafts/ui";
 
 export function AddActionExample() {
   return <Tooltip><TooltipTrigger asChild>

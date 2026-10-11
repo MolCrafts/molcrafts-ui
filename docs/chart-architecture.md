@@ -2,17 +2,17 @@
 
 2026-10-10 · Implementation authorized · Private packages; no publishing.
 
-The project/package family remains **molcrafts-design**, not the historical ui names.
+The project/package family remains **molcrafts-ui**, not the historical ui names.
 `ui/plot` describes optional plotting capabilities; there is no core-root re-export
 that implicitly loads engines. Two real consumers (CI and MolPlot, plus future Molab)
 justify these independent dependency boundaries inside the existing monorepo.
 
 ```text
 Application / MolPlot editor / CI data-to-spec mapping
-    ├── @molcrafts/design (core controls)
-    ├── @molcrafts/design-vega-lite → Vega-Lite compiler
-    │           └── @molcrafts/design-vega → Vega parse + View → SVG / Canvas
-    └── @molcrafts/design-tokens (shared CSS runtime)
+    ├── @molcrafts/ui (core controls)
+    ├── @molcrafts/ui-vega-lite → Vega-Lite compiler
+    │           └── @molcrafts/ui-vega → Vega parse + View → SVG / Canvas
+    └── @molcrafts/ui-tokens (shared CSS runtime)
 ```
 
 Vega-Lite is a compiler producing official Vega specs, not a second renderer.

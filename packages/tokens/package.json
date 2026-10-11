@@ -9,7 +9,7 @@
     "THIRD_PARTY_NOTICES.md",
     "CHANGELOG.md"
   ],
-  "name": "@molcrafts/design-tokens",
+  "name": "@molcrafts/ui-tokens",
   "description": "Framework-independent MolCrafts tokens and theme CSS",
   "exports": {
     "./runtime.css": "./dist/runtime.css",

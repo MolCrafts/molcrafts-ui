@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@molcrafts/design";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Table",
   component: Table,
-  parameters: { docs: { description: { component: 'import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Table>;
 export default meta;
 type Story = StoryObj<typeof meta>;

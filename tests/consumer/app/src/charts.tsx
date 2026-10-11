@@ -1,7 +1,7 @@
 import { StrictMode, useRef, useState } from "react";
-import { VegaView, type VegaSpec, type VegaViewHandle } from "@molcrafts/design-vega";
-import { VegaLiteView, type VegaLiteSpec } from "@molcrafts/design-vega-lite";
-import { Button, ScrollArea, Table, TableBody, TableRow, TableCell, ThemeScope } from "@molcrafts/design";
+import { VegaView, type VegaSpec, type VegaViewHandle } from "@molcrafts/ui-vega";
+import { VegaLiteView, type VegaLiteSpec } from "@molcrafts/ui-vega-lite";
+import { Button, ScrollArea, Table, TableBody, TableRow, TableCell, ThemeScope } from "@molcrafts/ui";
 
 const raw: VegaSpec = {
   padding: 0, autosize: { type: "fit", contains: "padding" },
@@ -16,7 +16,7 @@ const lite: VegaLiteSpec = {
   mark: { type: "line", point: true, tooltip: true },
   encoding: { x: { field: "x", type: "quantitative" }, y: { field: "y", type: "quantitative" } },
 };
-const themed = (theme: import("@molcrafts/design-vega").ChartTheme): VegaLiteSpec => ({ ...lite, mark: { type: "line", color: theme.primary, point: true, tooltip: true } });
+const themed = (theme: import("@molcrafts/ui-vega").ChartTheme): VegaLiteSpec => ({ ...lite, mark: { type: "line", color: theme.primary, point: true, tooltip: true } });
 
 function Charts() {
   const handle = useRef<VegaViewHandle>(null);

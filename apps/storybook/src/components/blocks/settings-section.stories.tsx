@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { SettingsRow, SettingsSection } from "@molcrafts/design";
-import { Input } from "@molcrafts/design";
-import { Switch } from "@molcrafts/design";
-import { Badge } from "@molcrafts/design";
+import { SettingsRow, SettingsSection } from "@molcrafts/ui";
+import { Input } from "@molcrafts/ui";
+import { Switch } from "@molcrafts/ui";
+import { Badge } from "@molcrafts/ui";
 
 const meta = {
   title: "Blocks/SettingsSection",
   component: SettingsSection,
-  parameters: { docs: { description: { component: 'import { SettingsSection, SettingsRow } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { SettingsSection, SettingsRow } from "@molcrafts/ui"' } } },
   args: { title: "General", description: "Configure your workspace preferences.", children: null },
   render: (args) => (
     <div className="w-96"><SettingsSection {...args}>

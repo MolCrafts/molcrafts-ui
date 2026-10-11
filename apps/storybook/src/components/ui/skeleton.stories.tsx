@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Skeleton } from "@molcrafts/design";
+import { Skeleton } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Skeleton",
   component: Skeleton,
-  parameters: { docs: { description: { component: 'import { Skeleton } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Skeleton } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Skeleton>;
 export default meta;
 type Story = StoryObj<typeof meta>;

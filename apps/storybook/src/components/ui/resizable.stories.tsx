@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@molcrafts/design";
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Resizable",
   component: ResizablePanelGroup,
-  parameters: { docs: { description: { component: 'import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@molcrafts/ui"' } } },
   args: { direction: "horizontal" },
   argTypes: { direction: { control: "select", options: ["horizontal", "vertical"] } },
   render: (args) => (

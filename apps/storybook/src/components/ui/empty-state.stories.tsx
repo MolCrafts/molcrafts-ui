@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { FolderOpenRegular } from "@fluentui/react-icons";
-import { EmptyState } from "@molcrafts/design";
-import { Button } from "@molcrafts/design";
+import { EmptyState } from "@molcrafts/ui";
+import { Button } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/EmptyState",
   component: EmptyState,
-  parameters: { docs: { description: { component: 'import { EmptyState } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { EmptyState } from "@molcrafts/ui"' } } },
   args: { title: "No items yet", description: "Create an item to get started.", icon: <FolderOpenRegular />, action: <Button>Create item</Button> },
   argTypes: { density: { control: "select", options: ["default", "compact", "inline"] } },
 } satisfies Meta<typeof EmptyState>;

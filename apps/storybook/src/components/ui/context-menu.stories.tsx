@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@molcrafts/design";
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/ContextMenu",
   component: ContextMenu,
-  parameters: { docs: { description: { component: 'import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof ContextMenu>;
 export default meta;
 type Story = StoryObj<typeof meta>;

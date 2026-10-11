@@ -1,11 +1,11 @@
-# @molcrafts/design-vega-lite
+# @molcrafts/ui-vega-lite
 
 Optional Vega-Lite compiler adapter. MIT; published on npm `alpha`. Depends on the single
-`@molcrafts/design-vega` Viewer and Vega-Lite, not a second renderer or vega-embed.
+`@molcrafts/ui-vega` Viewer and Vega-Lite, not a second renderer or vega-embed.
 The compiler is loaded asynchronously; native Vega consumers never import this package.
 
 ```tsx
-import { VegaLiteView } from "@molcrafts/design-vega-lite";
+import { VegaLiteView } from "@molcrafts/ui-vega-lite";
 <VegaLiteView label="Measurements" description="Three observed values."
   spec={{ data: { values: [{ x: 1, y: 2 }] }, mark: "point",
     encoding: { x: { field: "x", type: "quantitative" }, y: { field: "y", type: "quantitative" } } }} />;

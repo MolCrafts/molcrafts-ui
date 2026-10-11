@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { StatusMark, type Status } from "@molcrafts/design";
+import { StatusMark, type Status } from "@molcrafts/ui";
 
 const statuses: Status[] = ["draft", "ready", "queued", "running", "completed", "failed", "cancelled", "cached", "warning"];
 
 const meta = {
   title: "UI/StatusMark",
   component: StatusMark,
-  parameters: { docs: { description: { component: 'import { StatusMark, type Status } from "@molcrafts/design". Decorative dot for the nine constitution statuses. Always pair it with the status word.' } } },
+  parameters: { docs: { description: { component: 'import { StatusMark, type Status } from "@molcrafts/ui". Decorative dot for the nine constitution statuses. Always pair it with the status word.' } } },
   args: { status: "completed" },
 } satisfies Meta<typeof StatusMark>;
 export default meta;

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Label, Slider } from "@molcrafts/design";
+import { Label, Slider } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Slider",
   component: Slider,
-  parameters: { docs: { description: { component: 'import { Slider } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Slider } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Slider>;
 export default meta;
 type Story = StoryObj<typeof meta>;

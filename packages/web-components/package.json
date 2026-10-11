@@ -1,5 +1,5 @@
 {
-  "name": "@molcrafts/design-web-components",
+  "name": "@molcrafts/ui-web-components",
   "version": "0.1.0-alpha.0",
   "description": "Framework-independent MolCrafts Fluent 2 Web Components",
   "type": "module",
@@ -33,7 +33,7 @@
     "@fluentui/web-components": "3.1.3",
     "@microsoft/fast-element": "3.1.0",
     "@microsoft/focusgroup-polyfill": "1.6.0",
-    "@molcrafts/design-tokens": "workspace:*"
+    "@molcrafts/ui-tokens": "workspace:*"
   },
   "customElements": "./dist/custom-elements.json",
   "devDependencies": {

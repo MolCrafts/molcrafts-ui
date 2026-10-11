@@ -5,7 +5,7 @@ const markup = `<fluent-field><fluent-label slot="label">Workspace preferences</
 
 const meta = {
   title: "Web Components/Field",
-  parameters: { docs: { description: { component: "<fluent-field> from @molcrafts/design-web-components. Label and input use the label and input slots." } } },
+  parameters: { docs: { description: { component: "<fluent-field> from @molcrafts/ui-web-components. Label and input use the label and input slots." } } },
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;

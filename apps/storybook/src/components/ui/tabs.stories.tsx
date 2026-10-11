@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@molcrafts/design";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Tabs",
   component: Tabs,
-  parameters: { docs: { description: { component: 'import { Tabs, TabsContent, TabsList, TabsTrigger } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Tabs, TabsContent, TabsList, TabsTrigger } from "@molcrafts/ui"' } } },
   args: { defaultValue: "overview" },
   render: (args) => (
     <Tabs {...args} className="w-80">

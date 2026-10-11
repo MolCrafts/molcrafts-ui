@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { SettingsSection, SettingsShell, type SettingsNavEntry } from "@molcrafts/design";
+import { SettingsSection, SettingsShell, type SettingsNavEntry } from "@molcrafts/ui";
 
 const entries: SettingsNavEntry[] = [
   {
@@ -21,7 +21,7 @@ const meta = {
   component: SettingsShell,
   parameters: {
     layout: "padded",
-    docs: { description: { component: 'import { SettingsShell, SettingsSection } from "@molcrafts/design"' } },
+    docs: { description: { component: 'import { SettingsShell, SettingsSection } from "@molcrafts/ui"' } },
   },
 } satisfies Meta<typeof SettingsShell>;
 export default meta;

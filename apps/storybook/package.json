@@ -8,9 +8,9 @@
     "build": "storybook build --disable-telemetry -o ../../storybook-static"
   },
   "dependencies": {
-    "@molcrafts/design": "workspace:*",
-    "@molcrafts/design-tokens": "workspace:*",
-    "@molcrafts/design-web-components": "workspace:*",
+    "@molcrafts/ui": "workspace:*",
+    "@molcrafts/ui-tokens": "workspace:*",
+    "@molcrafts/ui-web-components": "workspace:*",
     "@fluentui/react-icons": "2.0.344",
     "@rsbuild/core": "2.2.12",
     "@rsbuild/plugin-react": "2.1.1",
@@ -21,8 +21,8 @@
     "react-dom": "19.2.8",
     "storybook": "10.6.1",
     "storybook-react-rsbuild": "3.6.1",
-    "@molcrafts/design-vega": "workspace:*",
-    "@molcrafts/design-vega-lite": "workspace:*"
+    "@molcrafts/ui-vega": "workspace:*",
+    "@molcrafts/ui-vega-lite": "workspace:*"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",

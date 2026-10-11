@@ -1,4 +1,4 @@
-import type { ChartTheme, VegaSpec } from "@molcrafts/design-vega";
+import type { ChartTheme, VegaSpec } from "@molcrafts/ui-vega";
 
 /**
  * ACS figure rules: single column is 3.33 in wide, lettering is Arial or Helvetica

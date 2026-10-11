@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Badge } from "@molcrafts/design";
+import { Badge } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Badge",
   component: Badge,
-  parameters: { docs: { description: { component: 'import { Badge } from "@molcrafts/design". secondary is the neutral badge. A product secondary brand is a separate swatch.' } } },
+  parameters: { docs: { description: { component: 'import { Badge } from "@molcrafts/ui". secondary is the neutral badge. A product secondary brand is a separate swatch.' } } },
   args: { children: "Badge" },
   argTypes: { variant: { control: "select", options: ["default", "secondary", "destructive", "outline", "success", "warning", "info"] } },
 } satisfies Meta<typeof Badge>;

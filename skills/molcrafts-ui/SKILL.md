@@ -1,9 +1,9 @@
 ---
-name: molcrafts-design
+name: molcrafts-ui
 description: Discover, compose and extend MolCrafts shared UI using its public APIs, Fluent 2 design constitution, semantic themes and Storybook examples.
 ---
 
-# MolCrafts Design
+# MolCrafts UI
 
 This is a vendor-neutral repository skill. Resolve paths from the repository root;
 it requires no custom MCP server or prior shadcn knowledge.
@@ -15,7 +15,7 @@ it requires no custom MCP server or prior shadcn knowledge.
    capabilities and `docs/design-system-roadmap.md` for planned work.
 2. Open the component in Storybook. `docs/component-catalog.md` maps each public
    component to its story. The canonical implementation lives in `packages/ui`.
-   Consume `@molcrafts/design` and compiled `styles.css`, not internal source paths.
+   Consume `@molcrafts/ui` and compiled `styles.css`, not internal source paths.
    A new public component needs a story; `pnpm verify:stories` enforces it.
    Visual review uses Impeccable's own target: bare `/impeccable` follows dirty
    markup and style files, `critique` and `audit` take one story file or iframe,
@@ -49,9 +49,9 @@ aliases, product-private merge extensions or core-source Registry distribution.
 Use the current commands in `AGENTS.md`. Validate builds and types, plus interactions,
 keyboard, accessibility and visual behavior relevant to the change. Check built-package/tarball consumption without library Tailwind scanning.
 Report completed scope, compatibility changes, validation evidence and remaining gaps.
-Do not describe roadmap items as shipped. Confirmed package names are `@molcrafts/design`, `@molcrafts/design-tokens` and
-`@molcrafts/design-web-components`, with MIT licensing. Read `docs/releasing.md`;
-packages ship on npm `alpha` from `0.1.0-alpha.0`; another release or an external repository rename needs an explicit request.
+Do not describe roadmap items as shipped. Confirmed package names are `@molcrafts/ui`, `@molcrafts/ui-tokens` and
+`@molcrafts/ui-web-components`, with MIT licensing. Read `docs/releasing.md`;
+packages ship on npm `alpha` from `0.1.0-alpha.0`; another release needs an explicit request.
 
 For 2D plots, read docs/chart-architecture.md and the optional package READMEs.
 Use design-vega for native Vega specs, design-vega-lite for compilation plus the same

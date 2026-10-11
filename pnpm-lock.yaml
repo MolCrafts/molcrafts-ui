@@ -65,19 +65,19 @@ importers:
       '@fluentui/react-icons':
         specifier: 2.0.344
         version: 2.0.344(react@19.2.8)
-      '@molcrafts/design':
+      '@molcrafts/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@molcrafts/design-tokens':
+      '@molcrafts/ui-tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
-      '@molcrafts/design-vega':
+      '@molcrafts/ui-vega':
         specifier: workspace:*
         version: link:../../packages/vega
-      '@molcrafts/design-vega-lite':
+      '@molcrafts/ui-vega-lite':
         specifier: workspace:*
         version: link:../../packages/vega-lite
-      '@molcrafts/design-web-components':
+      '@molcrafts/ui-web-components':
         specifier: workspace:*
         version: link:../../packages/web-components
       '@rsbuild/core':
@@ -131,7 +131,7 @@ importers:
       '@fluentui/react-icons':
         specifier: 2.0.344
         version: 2.0.344(react@19.2.8)
-      '@molcrafts/design-tokens':
+      '@molcrafts/ui-tokens':
         specifier: workspace:*
         version: link:../tokens
       '@radix-ui/react-accordion':
@@ -225,7 +225,7 @@ importers:
 
   packages/vega:
     dependencies:
-      '@molcrafts/design-tokens':
+      '@molcrafts/ui-tokens':
         specifier: workspace:*
         version: link:../tokens
       react-dom:
@@ -256,7 +256,7 @@ importers:
 
   packages/vega-lite:
     dependencies:
-      '@molcrafts/design-vega':
+      '@molcrafts/ui-vega':
         specifier: workspace:*
         version: link:../vega
       react-dom:
@@ -296,7 +296,7 @@ importers:
       '@microsoft/focusgroup-polyfill':
         specifier: 1.6.0
         version: 1.6.0
-      '@molcrafts/design-tokens':
+      '@molcrafts/ui-tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:
@@ -309,19 +309,19 @@ importers:
 
   tests/consumer/app:
     dependencies:
-      '@molcrafts/design':
+      '@molcrafts/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
-      '@molcrafts/design-tokens':
+      '@molcrafts/ui-tokens':
         specifier: workspace:*
         version: link:../../../packages/tokens
-      '@molcrafts/design-vega':
+      '@molcrafts/ui-vega':
         specifier: workspace:*
         version: link:../../../packages/vega
-      '@molcrafts/design-vega-lite':
+      '@molcrafts/ui-vega-lite':
         specifier: workspace:*
         version: link:../../../packages/vega-lite
-      '@molcrafts/design-web-components':
+      '@molcrafts/ui-web-components':
         specifier: workspace:*
         version: link:../../../packages/web-components
       react:

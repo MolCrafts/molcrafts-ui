@@ -4,7 +4,7 @@ import { create } from "storybook/theming";
 addons.setConfig({
   theme: create({
     base: "light",
-    brandTitle: "MolCrafts Design",
+    brandTitle: "MolCrafts UI",
     colorPrimary: "#0f6cbd",
     colorSecondary: "#0f6cbd",
     appBg: "#fafafa",

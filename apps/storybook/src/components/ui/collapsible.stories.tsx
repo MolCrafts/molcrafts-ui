@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, userEvent, within } from "storybook/test";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@molcrafts/design";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Collapsible",
   component: Collapsible,
-  parameters: { docs: { description: { component: 'import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Collapsible>;
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -5,7 +5,7 @@
   "title": "Accessible icon action",
   "description": "Compose public MolCrafts components with official Fluent icons.",
   "dependencies": [
-    "@molcrafts/design",
+    "@molcrafts/ui",
     "@fluentui/react-icons"
   ],
   "registryDependencies": [
@@ -15,7 +15,7 @@
     {
       "path": "registry/button-example.tsx",
       "type": "registry:component",
-      "content": "import { AddRegular } from \"@fluentui/react-icons\";\nimport { Button, Tooltip, TooltipContent, TooltipTrigger } from \"@molcrafts/design\";\n\nexport function AddActionExample() {\n  return <Tooltip><TooltipTrigger asChild>\n    <Button size=\"icon\" aria-label=\"Add item\"><AddRegular aria-hidden=\"true\" /></Button>\n  </TooltipTrigger><TooltipContent>Add item</TooltipContent></Tooltip>;\n}\n"
+      "content": "import { AddRegular } from \"@fluentui/react-icons\";\nimport { Button, Tooltip, TooltipContent, TooltipTrigger } from \"@molcrafts/ui\";\n\nexport function AddActionExample() {\n  return <Tooltip><TooltipTrigger asChild>\n    <Button size=\"icon\" aria-label=\"Add item\"><AddRegular aria-hidden=\"true\" /></Button>\n  </TooltipTrigger><TooltipContent>Add item</TooltipContent></Tooltip>;\n}\n"
     }
   ]
 }

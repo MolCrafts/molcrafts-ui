@@ -1,6 +1,6 @@
 import { WeatherMoonRegular, WeatherSunnyRegular } from "@fluentui/react-icons";
 import type { JSX } from "react";
-import type { ThemeMode } from "@molcrafts/design-tokens";
+import type { ThemeMode } from "@molcrafts/ui-tokens";
 import { cn } from "../../lib/utils";
 import { Button } from "./button";
 

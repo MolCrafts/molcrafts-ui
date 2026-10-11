@@ -1,6 +1,6 @@
 @import "tailwindcss" source(none);
-@import "@molcrafts/design/styles.css";
-@import "@molcrafts/design-tokens/tailwind.css";
+@import "@molcrafts/ui/styles.css";
+@import "@molcrafts/ui-tokens/tailwind.css";
 
 @source "../src";
 @custom-variant dark (&:where(.dark, .dark *));

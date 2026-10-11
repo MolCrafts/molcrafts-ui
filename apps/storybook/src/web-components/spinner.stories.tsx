@@ -5,7 +5,7 @@ const markup = `<div class="flex items-center gap-2"><fluent-spinner aria-label=
 
 const meta = {
   title: "Web Components/Spinner",
-  parameters: { docs: { description: { component: "<fluent-spinner> from @molcrafts/design-web-components." } } },
+  parameters: { docs: { description: { component: "<fluent-spinner> from @molcrafts/ui-web-components." } } },
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;

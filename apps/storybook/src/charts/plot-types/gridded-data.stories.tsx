@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { VegaView } from "@molcrafts/design-vega";
+import { VegaView } from "@molcrafts/ui-vega";
 import { contour, contourf, imshow, pcolormesh, quiver } from "../figures/gridded";
 import { galleryArgs, galleryParameters } from "./gallery";
 

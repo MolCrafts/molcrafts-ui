@@ -6,7 +6,7 @@ const markup = `<div class="flex items-center gap-2"><fluent-checkbox id="wc-che
 
 const meta = {
   title: "Web Components/Checkbox",
-  parameters: { docs: { description: { component: "<fluent-checkbox> from @molcrafts/design-web-components. Checked state is the element property." } } },
+  parameters: { docs: { description: { component: "<fluent-checkbox> from @molcrafts/ui-web-components. Checked state is the element property." } } },
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;

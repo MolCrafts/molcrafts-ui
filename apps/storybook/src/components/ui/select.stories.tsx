@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@molcrafts/design";
+import { Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Select",
   component: Select,
-  parameters: { docs: { description: { component: 'import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Select>;
 export default meta;
 type Story = StoryObj<typeof meta>;

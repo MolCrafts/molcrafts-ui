@@ -1,11 +1,11 @@
-# MolCrafts Design — molcrafts-design
+# MolCrafts UI — molcrafts-ui
 
 Independent shared React UI with Fluent 2 visual language, owned semantic tokens,
 Rslib packages and Storybook on Rsbuild/Rspack. The five packages are published to npm
-as `0.1.0-alpha.0` on the `alpha` dist-tag (`npm install @molcrafts/design@alpha`). The package names are confirmed: `@molcrafts/design`,
-`@molcrafts/design-tokens`, `@molcrafts/design-web-components`, plus optional
-`@molcrafts/design-vega` and `@molcrafts/design-vega-lite`. MIT licensed;
-the external repository rename is deferred. See [release preparation](docs/releasing.md)
+as `0.1.0-alpha.0` on the `alpha` dist-tag (`npm install @molcrafts/ui@alpha`). The package names are confirmed: `@molcrafts/ui`,
+`@molcrafts/ui-tokens`, `@molcrafts/ui-web-components`, plus optional
+`@molcrafts/ui-vega` and `@molcrafts/ui-vega-lite`. MIT licensed;
+package names follow the repository name. See [release preparation](docs/releasing.md)
 and [rename plan](docs/rename-plan.md).
 
 Workspace boundaries and runtime theme contracts are implemented, with scoped
@@ -58,8 +58,8 @@ is validation, not publishing. No publish/tag/release automation is configured.
 Install from the `alpha` dist-tag:
 
 ```tsx
-import { Button } from "@molcrafts/design";
-import "@molcrafts/design/styles.css";
+import { Button } from "@molcrafts/ui";
+import "@molcrafts/ui/styles.css";
 
 <Button variant="secondary">Save changes</Button>
 ```
@@ -67,8 +67,8 @@ import "@molcrafts/design/styles.css";
 React 19 is a peer dependency. Component CSS includes tokens, utilities and
 Tailwind preflight: import once before application styles. Consumers need no
 Tailwind plugin, library source scanning or source alias. For non-React tokens,
-import `@molcrafts/design-tokens/runtime.css`; for application-authored Tailwind utilities,
-use `@molcrafts/design-tokens/tailwind.css` with Tailwind v4.
+import `@molcrafts/ui-tokens/runtime.css`; for application-authored Tailwind utilities,
+use `@molcrafts/ui-tokens/tailwind.css` with Tailwind v4.
 
 Use `ThemeScope` for React themes and scoped overlays; `data-mol-theme="light|dark"`
 selects explicit CSS modes, including nested themes. `.dark` also selects dark.
@@ -98,7 +98,7 @@ forms, framework integration and client-only loading; React API parity is not cl
 - [Readiness audit](docs/design-system-readiness.md): baseline and remaining gaps.
 - [Optional charts](docs/chart-architecture.md): Vega Runtime, optional Vega-Lite compiler and consumer boundaries.
 - [CI dashboard assessment](docs/dashboard-consumer-assessment.md): first-consumer feasibility, chart integration and CI dependency boundaries.
-- [AGENTS.md](AGENTS.md) / [portable Skill](skills/molcrafts-design/SKILL.md).
+- [AGENTS.md](AGENTS.md) / [portable Skill](skills/molcrafts-ui/SKILL.md).
 
 The older `.claude/specs/molcrafts-ui-registry-01*` documents and
 [extraction matrix](docs/extraction-matrix.md) are historical records. Their

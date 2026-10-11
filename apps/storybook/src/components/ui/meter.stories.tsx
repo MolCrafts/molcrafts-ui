@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Meter } from "@molcrafts/design";
+import { Meter } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Meter",
   component: Meter,
-  parameters: { docs: { description: { component: 'import { Meter } from "@molcrafts/design". A thin bar for one percentage. Without label it is decorative, so show the formatted value next to it.' } } },
+  parameters: { docs: { description: { component: 'import { Meter } from "@molcrafts/ui". A thin bar for one percentage. Without label it is decorative, so show the formatted value next to it.' } } },
   args: { value: 72 },
   render: args => <div className="w-48"><Meter {...args} /></div>,
 } satisfies Meta<typeof Meter>;

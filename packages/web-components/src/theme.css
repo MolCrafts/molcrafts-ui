@@ -1,5 +1,5 @@
 /* Framework-independent CSS: no Tailwind processor required. */
-@import "@molcrafts/design-tokens/runtime.css";
+@import "@molcrafts/ui-tokens/runtime.css";
 @import "./fluent-web-theme.css";
 @import "./fluent-host.css";
 

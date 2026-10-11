@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { MeasureBand, MetaStrip } from "@molcrafts/design";
+import { MeasureBand, MetaStrip } from "@molcrafts/ui";
 
 const meta = {
   title: "Blocks/MetaStrip",
   component: MetaStrip,
-  parameters: { layout: "padded", docs: { description: { component: 'import { MetaStrip, MeasureBand } from "@molcrafts/design". MetaStrip shows three to eight facts in one band. MeasureBand shows several measures of one thing with meters. Values arrive formatted.' } } },
+  parameters: { layout: "padded", docs: { description: { component: 'import { MetaStrip, MeasureBand } from "@molcrafts/ui". MetaStrip shows three to eight facts in one band. MeasureBand shows several measures of one thing with meters. Values arrive formatted.' } } },
   args: { facts: [
     { label: "Records", value: 6 },
     { label: "Snapshots", value: 214 },

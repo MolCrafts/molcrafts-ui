@@ -1,12 +1,12 @@
-# @molcrafts/design-vega
+# @molcrafts/ui-vega
 
 Optional native Vega viewer. MIT; published on npm `alpha`. Built with Rslib. Core
-`@molcrafts/design` does not depend on this package. Import the Design stylesheet
+`@molcrafts/ui` does not depend on this package. Import the Design stylesheet
 (or tokens runtime for a plain viewer) in the application.
 
 ```tsx
-import { VegaView, type VegaViewHandle } from "@molcrafts/design-vega";
-import "@molcrafts/design/styles.css";
+import { VegaView, type VegaViewHandle } from "@molcrafts/ui-vega";
+import "@molcrafts/ui/styles.css";
 <VegaView label="Experiment measurements" description="Measurements increase over time."
   spec={vegaSpec} height={240} renderer="svg" />;
 ```

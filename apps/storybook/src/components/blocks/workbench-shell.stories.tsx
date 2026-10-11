@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import {
   Button, EmptyState, ExplorerPanel, MetaStrip, NavList, NavListItem, Tabs, TabsContent, TabsList, TabsTrigger,
   ThemeToggle, WorkSurface, WorkbenchHeader, WorkbenchShell, useWorkbenchDock, type ThemeMode,
-} from "@molcrafts/design";
+} from "@molcrafts/ui";
 
 function Dock() {
   const { collapsed, toggle } = useWorkbenchDock();
@@ -46,7 +46,7 @@ function Workbench() {
 const meta = {
   title: "Blocks/WorkbenchShell",
   component: WorkbenchShell,
-  parameters: { layout: "fullscreen", docs: { story: { inline: false, height: "560px" }, description: { component: 'import { WorkbenchShell, WorkbenchHeader, useWorkbenchDock } from "@molcrafts/design". Header, resizable navigator, work surface, and a dock that opens collapsed. Sizes persist under storageKey. The product names each landmark.' } } },
+  parameters: { layout: "fullscreen", docs: { story: { inline: false, height: "560px" }, description: { component: 'import { WorkbenchShell, WorkbenchHeader, useWorkbenchDock } from "@molcrafts/ui". Header, resizable navigator, work surface, and a dock that opens collapsed. Sizes persist under storageKey. The product names each landmark.' } } },
   args: { header: null, navigator: null, children: null, labels: { navigator: "Projects", main: "Records", dock: "Operations" }, storageKey: "storybook.workbench" },
   render: () => <Workbench />,
 } satisfies Meta<typeof WorkbenchShell>;

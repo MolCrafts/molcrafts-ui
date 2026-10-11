@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { BandSkeleton, RowsSkeleton } from "@molcrafts/design";
+import { BandSkeleton, RowsSkeleton } from "@molcrafts/ui";
 
 const meta = {
   title: "Blocks/Loading patterns",
   component: BandSkeleton,
-  parameters: { layout: "padded", docs: { description: { component: 'import { BandSkeleton, RowsSkeleton } from "@molcrafts/design". Skeletons shaped like MetaStrip, MeasureBand, and table rows. They are aria-hidden: announce loading from the surrounding region.' } } },
+  parameters: { layout: "padded", docs: { description: { component: 'import { BandSkeleton, RowsSkeleton } from "@molcrafts/ui". Skeletons shaped like MetaStrip, MeasureBand, and table rows. They are aria-hidden: announce loading from the surrounding region.' } } },
 } satisfies Meta<typeof BandSkeleton>;
 export default meta;
 type Story = StoryObj<typeof meta>;

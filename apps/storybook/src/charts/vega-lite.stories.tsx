@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { VegaLiteView, type VegaLiteSpec } from "@molcrafts/design-vega-lite";
-import { ThemeScope } from "@molcrafts/design";
+import { VegaLiteView, type VegaLiteSpec } from "@molcrafts/ui-vega-lite";
+import { ThemeScope } from "@molcrafts/ui";
 const spec: VegaLiteSpec = {
   autosize: { type: "fit", contains: "padding" },
   data: { values: [{ step: 1, value: 2 }, { step: 2, value: 4 }, { step: 3, value: 3 }] },

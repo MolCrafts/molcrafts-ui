@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { ThemeToggle, type ThemeMode } from "@molcrafts/design";
+import { ThemeToggle, type ThemeMode } from "@molcrafts/ui";
 
 function Controlled() {
   const [theme, setTheme] = useState<ThemeMode>("light");
@@ -10,7 +10,7 @@ function Controlled() {
 const meta = {
   title: "UI/ThemeToggle",
   component: ThemeToggle,
-  parameters: { docs: { description: { component: 'import { ThemeToggle } from "@molcrafts/design". Controlled. The product keeps the preference, its storage key, and where the theme class is applied.' } } },
+  parameters: { docs: { description: { component: 'import { ThemeToggle } from "@molcrafts/ui". Controlled. The product keeps the preference, its storage key, and where the theme class is applied.' } } },
   args: { theme: "light", onThemeChange: () => {} },
 } satisfies Meta<typeof ThemeToggle>;
 export default meta;

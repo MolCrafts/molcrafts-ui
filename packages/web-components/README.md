@@ -1,4 +1,4 @@
-# @molcrafts/design-web-components
+# @molcrafts/ui-web-components
 
 The framework-agnostic Fluent 2 entry point for MolCrafts. It is based on the official `@fluentui/web-components` **3.1.3**
 and uses FAST Web Components. It does not depend on React or Tailwind. It shares the design constitution,
@@ -8,17 +8,17 @@ This package is currently used through the workspace or a built tarball. It is n
 
 ```bash
 pnpm build:web-components              # Run from the repository root; Rslib / Rspack
-pnpm --filter @molcrafts/design-web-components pack
+pnpm --filter @molcrafts/ui-web-components pack
 # Install the generated tarball in the consuming project, then import the entry points below
 ```
 
 ```ts
-import '@molcrafts/design-web-components/theme.css';
-import { registerMolcraftsComponents } from '@molcrafts/design-web-components';
+import '@molcrafts/ui-web-components/theme.css';
+import { registerMolcraftsComponents } from '@molcrafts/ui-web-components';
 await registerMolcraftsComponents();
 ```
 
-Or use the auto-registration entry point `import '@molcrafts/design-web-components/register'`.
+Or use the auto-registration entry point `import '@molcrafts/ui-web-components/register'`.
 Registration is asynchronous, and calling it again is safe. If the same page already contains a Fluent element of another version with the same name, registration fails with an explicit error.
 Official `fluent-*` tags and their attributes/API are kept, so keyboard behavior, forms, and ARIA are not reimplemented.
 
@@ -61,7 +61,7 @@ They are inlined and distributed by the generation pipeline, with no React depen
 `currentColor`, and are suitable as decorative button icons. To add more icons, put them in the inventory and regenerate.
 
 ```ts
-import { fluentIcons } from '@molcrafts/design-web-components';
+import { fluentIcons } from '@molcrafts/ui-web-components';
 const add = document.createElement('fluent-button');
 add.appearance = 'primary';
 add.type = 'button';

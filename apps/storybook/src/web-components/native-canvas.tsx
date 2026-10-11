@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { expect, waitFor } from "storybook/test";
-import { registerMolcraftsComponents } from "@molcrafts/design-web-components";
-import "@molcrafts/design-web-components/theme.css";
+import { registerMolcraftsComponents } from "@molcrafts/ui-web-components";
+import "@molcrafts/ui-web-components/theme.css";
 
 /** Storybook host for one managed custom element. React only mounts the canvas. */
 export function NativeCanvas({

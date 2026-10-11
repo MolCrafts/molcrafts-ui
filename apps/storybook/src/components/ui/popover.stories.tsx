@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Button, Popover, PopoverContent, PopoverTrigger } from "@molcrafts/design";
+import { Button, Popover, PopoverContent, PopoverTrigger } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Popover",
   component: Popover,
-  parameters: { docs: { description: { component: 'import { Popover, PopoverContent, PopoverTrigger } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Popover, PopoverContent, PopoverTrigger } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Popover>;
 export default meta;
 type Story = StoryObj<typeof meta>;

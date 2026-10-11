@@ -5,7 +5,7 @@ const markup = `<fluent-textarea><span slot="label">Notes</span>Shared UI</fluen
 
 const meta = {
   title: "Web Components/TextArea",
-  parameters: { docs: { description: { component: "<fluent-textarea> from @molcrafts/design-web-components. Label uses slot=\"label\"; initial text is the default slot." } } },
+  parameters: { docs: { description: { component: "<fluent-textarea> from @molcrafts/ui-web-components. Label uses slot=\"label\"; initial text is the default slot." } } },
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;

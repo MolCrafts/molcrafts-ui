@@ -1,4 +1,4 @@
-import type { ChartTheme, VegaSpec } from "@molcrafts/design-vega";
+import type { ChartTheme, VegaSpec } from "@molcrafts/ui-vega";
 import { AXIS, LINE, MARKER, figure, frame, legend, series } from "./acs";
 
 const xy = { x: { scale: "x", field: "x" }, y: { scale: "y", field: "y" } };

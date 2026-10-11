@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Input, Label } from "@molcrafts/design";
+import { Input, Label } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Input",
   component: Input,
-  parameters: { docs: { description: { component: 'import { Input } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Input } from "@molcrafts/ui"' } } },
   args: { placeholder: "Enter a value", "aria-label": "Value" },
 } satisfies Meta<typeof Input>;
 export default meta;

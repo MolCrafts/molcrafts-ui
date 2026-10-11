@@ -2,10 +2,10 @@ import type { CSSProperties } from "react";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, within } from "storybook/test";
 import { AddRegular } from "@fluentui/react-icons";
-import { Button } from "@molcrafts/design";
-import { Badge } from "@molcrafts/design";
-import { Card, CardContent, CardHeader, CardTitle } from "@molcrafts/design";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@molcrafts/design";
+import { Button } from "@molcrafts/ui";
+import { Badge } from "@molcrafts/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@molcrafts/ui";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@molcrafts/ui";
 
 // Illustrative palettes only; actual product values belong to each product repository.
 const customPalette: Record<"light" | "dark", CSSProperties & Record<string, string>> = {

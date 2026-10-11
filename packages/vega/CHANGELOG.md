@@ -1,4 +1,4 @@
-# @molcrafts/design-vega
+# @molcrafts/ui-vega
 
 ## 0.1.0-alpha.0
 
@@ -11,4 +11,4 @@
 
 - Updated dependencies [4a4e686]
 - Updated dependencies [d2306e8]
-  - @molcrafts/design-tokens@0.1.0-alpha.0
+  - @molcrafts/ui-tokens@0.1.0-alpha.0

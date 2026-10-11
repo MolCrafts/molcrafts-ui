@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { EdgePanel } from "@molcrafts/design";
+import { EdgePanel } from "@molcrafts/ui";
 
 function EdgePanelDemo() {
   const [open, setOpen] = useState(true);
@@ -25,7 +25,7 @@ function EdgePanelDemo() {
 const meta = {
   title: "Blocks/EdgePanel",
   component: EdgePanel,
-  parameters: { docs: { description: { component: 'import { EdgePanel } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { EdgePanel } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof EdgePanel>;
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -37,7 +37,7 @@ for (const group of ["ui", "blocks"]) {
       failures.push(`${name} has no Storybook entry at ${file}`);
       continue;
     }
-    if (!source.includes('from "@molcrafts/design"')) failures.push(`${file} must import @molcrafts/design`);
+    if (!source.includes('from "@molcrafts/ui"')) failures.push(`${file} must import @molcrafts/ui`);
     const title = titleOf(source, file);
     if (title && !title.startsWith(prefix)) failures.push(`${file} title ${title} must start with ${prefix}`);
   }
@@ -45,7 +45,7 @@ for (const group of ["ui", "blocks"]) {
     if (!file.startsWith(`apps/storybook/src/components/${group}/`)) continue;
     const name = file.slice(file.lastIndexOf("/") + 1, -".stories.tsx".length);
     if (!components.includes(name)) failures.push(`${file} has no component module packages/ui/src/components/${group}/${name}.tsx`);
-    if (!source.includes('from "@molcrafts/design"')) failures.push(`${file} must import @molcrafts/design`);
+    if (!source.includes('from "@molcrafts/ui"')) failures.push(`${file} must import @molcrafts/ui`);
   }
 }
 
@@ -76,7 +76,7 @@ for (const component of catalog.components) {
     continue;
   }
   if (!story.source.includes(component.tag)) failures.push(`${story.file} must render <${component.tag}>`);
-  if (!story.source.includes("@molcrafts/design-web-components") && !story.source.includes("./native-canvas")) {
+  if (!story.source.includes("@molcrafts/ui-web-components") && !story.source.includes("./native-canvas")) {
     failures.push(`${story.file} must use the public web-components runtime`);
   }
 }

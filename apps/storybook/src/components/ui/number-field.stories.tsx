@@ -1,12 +1,12 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, fn, userEvent, within } from "storybook/test";
-import { Label, NumberField } from "@molcrafts/design";
+import { Label, NumberField } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/NumberField",
   component: NumberField,
-  parameters: { docs: { description: { component: 'import { NumberField } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { NumberField } from "@molcrafts/ui"' } } },
   args: { value: 5, min: 0, max: 10, step: 1, onChange: fn() },
   render: function StatefulField(args) {
     const [value, setValue] = useState(args.value);

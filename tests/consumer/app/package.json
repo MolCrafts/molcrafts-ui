@@ -9,13 +9,13 @@
     "build:native-vega": "rsbuild build --config rsbuild.native-vega.config.ts"
   },
   "dependencies": {
-    "@molcrafts/design": "workspace:*",
-    "@molcrafts/design-tokens": "workspace:*",
+    "@molcrafts/ui": "workspace:*",
+    "@molcrafts/ui-tokens": "workspace:*",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "@molcrafts/design-web-components": "workspace:*",
-    "@molcrafts/design-vega": "workspace:*",
-    "@molcrafts/design-vega-lite": "workspace:*"
+    "@molcrafts/ui-web-components": "workspace:*",
+    "@molcrafts/ui-vega": "workspace:*",
+    "@molcrafts/ui-vega-lite": "workspace:*"
   },
   "devDependencies": {
     "@rsbuild/core": "2.2.12",

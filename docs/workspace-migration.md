@@ -1,17 +1,17 @@
 # Workspace and consumer-entry migration
 
-2026-10-10: the user explicitly required no backward compatibility. The future project name is `molcrafts-design`.
-The three packages already use the user-confirmed @molcrafts/design series names and MIT, and all are private;
+2026-10-10: the user explicitly required no backward compatibility. The future project name is `molcrafts-ui`.
+The three packages already use the user-confirmed @molcrafts/ui series names and MIT, and all are private;
 nothing has been published and no external resource has been renamed. See [naming migration](rename-plan.md).
 
 ## New entry points
 
 ```tsx
-import { Button, Input, Dialog, DialogContent, DialogTitle } from "@molcrafts/design";
-import "@molcrafts/design/styles.css";
+import { Button, Input, Dialog, DialogContent, DialogTitle } from "@molcrafts/ui";
+import "@molcrafts/ui/styles.css";
 ```
 
-All components are imported from the root public entry, and `cn` can also be imported from `@molcrafts/design/utils`.
+All components are imported from the root public entry, and `cn` can also be imported from `@molcrafts/ui/utils`.
 Do not reference implementation internals under packages, and do not copy component source into products again.
 CSS includes the default tokens, every component utility, and preflight, and does not require the product to install Tailwind
 or scan library source. A Tailwind application that needs its own utilities may additionally import the tokens

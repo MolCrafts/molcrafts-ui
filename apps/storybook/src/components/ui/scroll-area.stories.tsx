@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { ScrollArea } from "@molcrafts/design";
+import { ScrollArea } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/ScrollArea",
   component: ScrollArea,
-  parameters: { docs: { description: { component: 'import { ScrollArea } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { ScrollArea } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof ScrollArea>;
 export default meta;
 type Story = StoryObj<typeof meta>;

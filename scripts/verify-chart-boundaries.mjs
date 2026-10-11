@@ -11,7 +11,7 @@ for (const name of ["ui", "tokens"]) {
 const runtime = await manifest("vega");
 assert.ok(!Object.keys(runtime.dependencies).some(key => /vega-lite|vega-embed|molplot/.test(key)));
 const lite = await manifest("vega-lite");
-assert.ok(lite.dependencies["@molcrafts/design-vega"]);
+assert.ok(lite.dependencies["@molcrafts/ui-vega"]);
 assert.ok(!lite.dependencies["vega"] && !lite.dependencies["vega-embed"]);
 const boundary = JSON.parse(await readFile(new URL("tests/consumer/app/dist-native-vega/dependency-boundary.json", root), "utf8"));
 assert.equal(boundary.compilerAbsent, true);
