@@ -60,13 +60,13 @@ jobs:
           channel=$(node -e 'const v=process.argv[1]; const m=v.match(/-([a-z]+)\./); console.log(m ? m[1] : "latest")' "$version")
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "channel=$channel" >> "$GITHUB_OUTPUT"
-      - name: The tag is that version, on main
+      - name: The tag is that version, on master
         if: github.event_name == 'push'
         env:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           [ "$GITHUB_REF_NAME" = "v$VERSION" ] || { echo "::error::tag $GITHUB_REF_NAME is not v$VERSION"; exit 1; }
-          git merge-base --is-ancestor "$GITHUB_SHA" origin/main || { echo "::error::tag is not on main"; exit 1; }
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/master || { echo "::error::tag is not on master"; exit 1; }
 
   build:
     name: release / build

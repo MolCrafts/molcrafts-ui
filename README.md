@@ -63,7 +63,7 @@ It is this repository's Storybook, served at the host root.
 Storybook has no `base`. The manager and the preview frame use root-relative
 URLs. Keep new pages and assets on that root.
 
-Production is the Cloudflare Pages project `molcrafts-ui`. A push to `main`
+Production is the Cloudflare Pages project `molcrafts-ui`. A push to `master`
 builds with `pnpm install --frozen-lockfile && pnpm build:storybook` and
 publishes `storybook-static`. That Git build is the catalog. Do not upload
 `storybook-static` by hand, and do not add a deploy workflow to this

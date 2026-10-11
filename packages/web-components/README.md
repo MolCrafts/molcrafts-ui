@@ -127,4 +127,4 @@ Shared sources for color, geometry, and behavior live in `packages/tokens`. At b
 is folded into this package's `theme.css`. A source copy of the shared tokens is no longer maintained.
 
 MIT licensed. See LICENSE, NOTICE.md and THIRD_PARTY_NOTICES.md included in this archive.
-Release preparation: https://github.com/MolCrafts/molcrafts-ui/blob/main/docs/releasing.md
+Release preparation: https://github.com/MolCrafts/molcrafts-ui/blob/master/docs/releasing.md
