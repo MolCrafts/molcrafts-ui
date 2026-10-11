@@ -2,7 +2,6 @@ import { useThemePortalContainer } from "../../theme/theme-scope";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { DismissRegular } from "@fluentui/react-icons";
 import type * as React from "react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 import { cn } from "../../lib/utils";
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
@@ -70,18 +69,13 @@ function SheetContent({
       >
         {children}
         {showCloseButton && (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <SheetPrimitive.Close
-                data-slot="sheet-close"
-                aria-label="Close"
-                className="mol-focus absolute top-4 right-4 flex size-control items-center justify-center rounded-control text-muted-foreground outline-none transition-colors hover:bg-interactive hover:text-foreground disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
-              >
-                <DismissRegular />
-              </SheetPrimitive.Close>
-            </TooltipTrigger>
-            <TooltipContent>Close</TooltipContent>
-          </Tooltip>
+          <SheetPrimitive.Close
+            data-slot="sheet-close"
+            aria-label="Close"
+            className="mol-focus absolute top-4 right-4 flex size-control items-center justify-center rounded-control text-muted-foreground outline-none transition-colors hover:bg-interactive hover:text-foreground disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+          >
+            <DismissRegular />
+          </SheetPrimitive.Close>
         )}
       </SheetPrimitive.Content>
     </SheetPortal>
