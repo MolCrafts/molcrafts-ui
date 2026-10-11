@@ -51,7 +51,28 @@ pnpm prepare:release       # private tarballs + disposable alpha-version rehears
 ```
 
 CI additionally checks generated files and uploads build artifacts. Local packing
-is validation, not publishing. No publish/tag/release automation is configured.
+is validation, not publishing. `release.yml` publishes the five packages only when
+a `v*` tag is pushed to MolCrafts/molcrafts-ui. Do not publish from a branch push,
+and do not add a second publish workflow.
+
+## Public catalog
+
+The component catalog is [https://ui.molcrafts.org/](https://ui.molcrafts.org/).
+It is this repository's Storybook, served at the host root.
+
+Storybook has no `base`. The manager and the preview frame use root-relative
+URLs. Keep new pages and assets on that root.
+
+Production is the Cloudflare Pages project `molcrafts-ui`. A push to `main`
+builds with `pnpm install --frozen-lockfile && pnpm build:storybook` and
+publishes `storybook-static`. That Git build is the catalog. Do not upload
+`storybook-static` by hand, and do not add a deploy workflow to this
+repository. The hostname is attached outside this repository; this repository
+does not contain the router.
+
+The catalog and the npm packages are separate. The five packages stay at
+`0.1.0-alpha.0` on the `alpha` dist-tag until a later release tag. Publishing
+the catalog does not publish a package.
 
 ## React consumer
 
