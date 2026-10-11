@@ -1,7 +1,7 @@
 # @molcrafts/design
 
 Canonical React implementation for molcrafts-design, built with Rslib.
-Confirmed name; MIT licensed, private and unpublished. External repository rename is deferred.
+Confirmed name; MIT licensed, published on npm `alpha`. External repository rename is deferred.
 
 ```tsx
 import { Button, Dialog, DialogContent, DialogTitle } from "@molcrafts/design";

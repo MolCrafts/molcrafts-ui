@@ -1,6 +1,6 @@
 # MolCrafts Design: pre-publish preparation and the release process
 
-2026-10-10 · Current status: local rehearsal only. The five packages are still private. Nothing has been published, and no tag or release has been created.
+2026-10-11 · Current status: first release `0.1.0-alpha.0` on the npm `alpha` dist-tag, published on the owner's explicit request.
 The user has chosen the `@molcrafts/design` package-name family and MIT. The GitHub repository is still
 [MolCrafts/molcrafts-ui](https://github.com/MolCrafts/molcrafts-ui). Renaming it externally is handled separately.
 The machine-readable plan is [release/plan.json](../release/plan.json).
@@ -20,7 +20,7 @@ contract can be adopted as one versioned set. A Changesets fixed group manages t
 The packages are ESM. React is a peer dependency. Consumers do not need to build the library's Tailwind sources.
 The native entry loads in the browser. It does not promise direct Node or SSR execution, or React API parity.
 
-The current workspace version is the unpublished `0.0.1`. The first release is planned as `0.1.0-alpha.0` on the npm `alpha` channel,
+The workspace is in Changesets pre mode (`alpha`). The first release is `0.1.0-alpha.0` on the npm `alpha` channel,
 not stable or latest. This rehearsal did not change the actual version and did not enter workspace prerelease mode.
 Alpha means the API and styles are still being completed batch by batch. Passing the pack step does not finish P3/P4 or real-product verification.
 
@@ -109,4 +109,15 @@ changing the dist-tag or deprecating the release. The first release has no previ
 
 Optional chart packages are included in release/plan.json and the fixed Changesets group.
 Core remains engine-free; native Vega consumers do not install the Lite compiler.
-See [plotting architecture](chart-architecture.md). No publication is authorized.
+See [plotting architecture](chart-architecture.md).
+
+## The first release, as run
+
+- Release PR: `changeset pre enter alpha`, `changeset version`, `private` removed from the five packages.
+  `prepare:release` now audits release candidates: packages publishable, at the planned version, with changelogs.
+- npm cannot configure trusted publishing for a package that does not exist yet, so the owner logged in and
+  `0.1.0-alpha.0` was published once by hand from the merged release commit, in dependency order, from the
+  audited `release-artifacts/` tarballs, then reinstalled from the registry and verified.
+- Later releases: add the trusted publisher (MolCrafts/molcrafts-ui, `release.yml`, environment `npm`) on each
+  package's npm settings, then push a `v<version>` tag on main. `release.yml` guards the tag, rebuilds and audits
+  the archives, publishes any version not yet on npm with provenance, and records the GitHub Release.

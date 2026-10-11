@@ -1,6 +1,6 @@
 # @molcrafts/design-vega-lite
 
-Optional Vega-Lite compiler adapter. MIT; private/unpublished. Depends on the single
+Optional Vega-Lite compiler adapter. MIT; published on npm `alpha`. Depends on the single
 `@molcrafts/design-vega` Viewer and Vega-Lite, not a second renderer or vega-embed.
 The compiler is loaded asynchronously; native Vega consumers never import this package.
 

@@ -42,7 +42,7 @@ Package directories, CSS runtime token names, native Fluent tag names, and the r
 just because the project name changes. Historical .claude specs and the extraction matrix keep their historical names. They must not be treated as
 current guidance. A GitHub redirect does not replace a product API migration or npm publish identity checks.
 
-The release steps and the remaining conditions are in [releasing](releasing.md). The packages are still private and unpublished.
+The release steps and the remaining conditions are in [releasing](releasing.md). The packages are published on npm `alpha` from `0.1.0-alpha.0`; the repository rename is still deferred.
 
 Optional chart packages: `@molcrafts/design-vega` (packages/vega) and
 `@molcrafts/design-vega-lite` (packages/vega-lite). There is no old ui-vega name and no compatibility alias.

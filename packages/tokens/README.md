@@ -2,7 +2,7 @@
 
 Framework-independent CSS tokens owned by MolCrafts, with a pinned Fluent 2
 reference input. No React, headless primitive or application runtime dependencies.
-Confirmed name for molcrafts-design; MIT licensed, private and unpublished.
+Confirmed name for molcrafts-design; MIT licensed, published on npm `alpha`.
 
 ```css
 /* Plain CSS; standalone, flattened, no build plugin required. */

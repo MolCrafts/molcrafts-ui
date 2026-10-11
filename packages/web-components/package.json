@@ -1,6 +1,6 @@
 {
   "name": "@molcrafts/design-web-components",
-  "version": "0.0.1",
+  "version": "0.1.0-alpha.0",
   "description": "Framework-independent MolCrafts Fluent 2 Web Components",
   "type": "module",
   "files": [
@@ -36,7 +36,6 @@
     "@molcrafts/design-tokens": "workspace:*"
   },
   "customElements": "./dist/custom-elements.json",
-  "private": true,
   "devDependencies": {
     "@rslib/core": "1.0.3",
     "typescript": "5.9.3"
