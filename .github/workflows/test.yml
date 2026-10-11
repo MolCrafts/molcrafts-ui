@@ -104,6 +104,8 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 11.25.0
+      # uv for `molci snapshot`; Python 3.12+ for actions/report.
+      - uses: MolCrafts/molcrafts-ci/actions/setup-python@0bc767f040a1558799539e6c7012de4ffcc9f499
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm build:packages
