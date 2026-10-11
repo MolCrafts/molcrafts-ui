@@ -59,7 +59,7 @@ A standalone consumer needs network access to npm in order to read existing exte
 
 When a shared API, a token or style contract, or a distributed file changes, run `pnpm changeset` and describe the concrete behavior
 and the effect on consumers. Changes that do not affect the distribution contract, such as documentation and developer tooling, do not have to produce a package version.
-`pnpm release:status` does a read-only check against the commit history of `origin/main`. A shallow clone should fetch the rest of the history first.
+`pnpm release:status` does a read-only check against the commit history of `origin/master`. A shallow clone should fetch the rest of the history first.
 CI uses a full fetch. `pnpm release:version` rewrites the manifests and each package CHANGELOG.
 Use it only on an actual release branch. Do not run it for this preparation.
 
@@ -91,7 +91,7 @@ These are unfinished items on the [roadmap](design-system-roadmap.md). This rehe
 
 The steps below describe a future process. They are not actions authorized by this rehearsal:
 
-1. From a fully green main, create a release branch and confirm the first-release scope and channel. Use Changesets `pre enter alpha`
+1. From a fully green master, create a release branch and confirm the first-release scope and channel. Use Changesets `pre enter alpha`
    and `release:version` to generate the real versions and changelogs, and update the lockfile.
 2. Set `private` to false only for the five distributable packages. Keep the root and the apps private. During preparation,
    `prepare:release` rejects packages that are not private. On the release PR, turn that check into an explicit candidate
@@ -118,5 +118,5 @@ See [plotting architecture](chart-architecture.md).
   `0.1.0-alpha.0` was published once by hand from the merged release commit, in dependency order, from the
   audited `release-artifacts/` tarballs, then reinstalled from the registry and verified.
 - Later releases: add the trusted publisher (MolCrafts/molcrafts-ui, `release.yml`, environment `npm`) on each
-  package's npm settings, then push a `v<version>` tag on main. `release.yml` guards the tag, rebuilds and audits
+  package's npm settings, then push a `v<version>` tag on master. `release.yml` guards the tag, rebuilds and audits
   the archives, publishes any version not yet on npm with provenance, and records the GitHub Release.
