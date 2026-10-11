@@ -1,0 +1,43 @@
+name: lint
+
+# The workflows against the MolCrafts CI scheme. Type, export and generated
+# source checks need the built packages, so they live in test / packages.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [dev, master, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Independent workflow/event/ref groups; feature pushes supersede older runs.
+concurrency:
+  group: lint-${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ !contains(fromJSON('["refs/heads/dev","refs/heads/master","refs/heads/main"]'), github.ref) && !startsWith(github.ref, 'refs/tags/') }}
+
+jobs:
+  # Where this run happens, decided once: MolCrafts/molcrafts-ci/actions/ci-context.
+  context:
+    name: lint / context
+    runs-on: ubuntu-latest
+    outputs:
+      tier: ${{ steps.context.outputs.tier }}
+      upstream: ${{ steps.context.outputs.upstream }}
+      integration: ${{ steps.context.outputs.integration }}
+      skip-pr: ${{ steps.context.outputs.skip-pr }}
+      publish: ${{ steps.context.outputs.publish }}
+    steps:
+      - id: context
+        uses: MolCrafts/molcrafts-ci/actions/ci-context@0bc767f040a1558799539e6c7012de4ffcc9f499
+
+  workflows:
+    name: lint / workflows
+    needs: context
+    # A pull request inside a fork was already run by its push.
+    if: needs.context.outputs.skip-pr != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: MolCrafts/molcrafts-ci/actions/check-workflows@0bc767f040a1558799539e6c7012de4ffcc9f499

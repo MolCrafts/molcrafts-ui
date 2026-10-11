@@ -82,7 +82,11 @@ pnpm build:storybook
 pnpm test:storybook
 ```
 
-Browser tests require Playwright Chromium installed. Token/registry/native generation
+CI follows the MolCrafts CI scheme from molcrafts-ci: `lint.yml` (`lint / workflows` runs
+`actions/check-workflows`) and `test.yml` (`test / packages`, `test / browsers`), each opened by a
+`<file> / context` job. Shared actions are pinned to one molcrafts-ci SHA; bump them together.
+`test / browsers` submits the Playwright results as the `molcrafts-ui` tests record; only a push
+to main is tracked. Browser tests require Playwright Chromium installed. Token/registry/native generation
 must leave committed generated sources consistent; edit generators rather than outputs.
 Use relevant checks for the actual change; documentation-only preparation needs link,
 consistency and diff checks, not new component tests.
