@@ -39,7 +39,7 @@ jobs:
       publish: ${{ steps.context.outputs.publish }}
     steps:
       - id: context
-        uses: MolCrafts/molcrafts-ci/actions/ci-context@0bc767f040a1558799539e6c7012de4ffcc9f499
+        uses: MolCrafts/molcrafts-ci/actions/ci-context@cc46e4eb85fdcfb950d9a4df02c2e04e94ba90f7
 
   guard:
     name: release / guard
@@ -76,7 +76,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: MolCrafts/molcrafts-ci/actions/setup-node@0bc767f040a1558799539e6c7012de4ffcc9f499
+      - uses: MolCrafts/molcrafts-ci/actions/setup-node@cc46e4eb85fdcfb950d9a4df02c2e04e94ba90f7
         with:
           node-version: "24"
           install: "false"
@@ -106,7 +106,7 @@ jobs:
       NODE_AUTH_TOKEN: ""
     steps:
       - uses: actions/checkout@v4
-      - uses: MolCrafts/molcrafts-ci/actions/setup-node@0bc767f040a1558799539e6c7012de4ffcc9f499
+      - uses: MolCrafts/molcrafts-ci/actions/setup-node@cc46e4eb85fdcfb950d9a4df02c2e04e94ba90f7
         with:
           node-version: "24"
           registry-url: https://registry.npmjs.org
