@@ -40,6 +40,7 @@ The native inventory/API is not required to be feature-equivalent to React; see 
 
 - [x] Complete foundation/semantic token contract and theme/portal verification.
 - [ ] First-batch component props, variants, sizes, states, refs, and extension contracts.
+- [ ] Molvis intake in the roadmap: callout, vertical field, color field, shortcut chip, radio group, icon action, inspector section, and a Tabs icon-strip variant. Slider and NumberField gain drag preview and commit-on-release. Product-only surfaces listed there stay in molvis.
 - [ ] Stories/state coverage, a11y, and key visual regression for every public component.
 - [ ] New-entry integration and functional verification for at least one real product.
 - [x] Confirm npm names/subpaths, MIT/third-party attribution, the alpha version plan, and a local release rehearsal.
