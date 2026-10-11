@@ -17,10 +17,11 @@ function ConstitutionPreview() {
   return (
     <main className="mx-auto max-w-6xl space-y-6 p-4 sm:p-8">
       <header className="flex flex-wrap items-center justify-between gap-4">
-        <div className="space-y-1">
-          <p className="text-label text-muted-foreground">MolCrafts design system · Fluent 2</p>
-          <h1 className="text-heading font-semibold">A consistent workspace</h1>
-          <p className="text-body text-muted-foreground">Clear hierarchy, familiar controls, and calm surfaces.</p>
+        <div className="space-y-2">
+          <h1 className="text-balance text-heading font-semibold">MolCrafts Design</h1>
+          <p className="max-w-[65ch] text-body text-muted-foreground">
+            Fluent 2 workspace with clear hierarchy, familiar controls, and calm surfaces.
+          </p>
         </div>
         <div className="flex gap-2">
           <DropdownMenu><Tooltip><TooltipTrigger asChild><DropdownMenuTrigger asChild><Button variant="ghost" size="icon" aria-label="Actions"><SettingsRegular aria-hidden="true" /></Button></DropdownMenuTrigger></TooltipTrigger><TooltipContent>Actions</TooltipContent></Tooltip>

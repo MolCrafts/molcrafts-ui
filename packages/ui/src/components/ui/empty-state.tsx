@@ -18,7 +18,7 @@ const CONTAINER: Record<EmptyStateDensity, string> = {
 };
 
 const TITLE: Record<EmptyStateDensity, string> = {
-  default: "text-sm text-muted-foreground",
+  default: "text-body font-semibold text-foreground",
   compact: "text-xs text-muted-foreground",
   inline: "text-xs text-muted-foreground",
 };
@@ -29,7 +29,7 @@ const DESCRIPTION: Record<EmptyStateDensity, string> = {
   inline: "text-label text-subtle-foreground",
 };
 
-/** Empty placeholder with density variants tuned for the viewer inspector. */
+/** Empty placeholder. The default density uses a readable title and an optional action. */
 export const EmptyState = ({
   title,
   description,

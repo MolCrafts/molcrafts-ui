@@ -7,6 +7,7 @@ import { Badge } from "@molcrafts/design";
 const meta = {
   title: "Blocks/SettingsSection",
   component: SettingsSection,
+  parameters: { docs: { description: { component: 'import { SettingsSection, SettingsRow } from "@molcrafts/design"' } } },
   args: { title: "General", description: "Configure your workspace preferences.", children: null },
   render: (args) => (
     <div className="w-96"><SettingsSection {...args}>

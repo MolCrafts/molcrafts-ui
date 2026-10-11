@@ -1,27 +1,27 @@
-# P2 样式审计
+# P2 style audit
 
-2026-10-10，canonical source 为 packages/ui 与 packages/tokens。用户要求不向后兼容；
-旧色彩 alias、源码复制及产品私有 merge scales 已在 P1 删除。
+2026-10-10. The canonical source is packages/ui and packages/tokens. The user requires no backward compatibility.
+Old color aliases, source copies, and product-private merge scales were removed in P1.
 
-## 已落实
+## Landed
 
-- React 组件未发现 hex/rgb 颜色、默认 red/blue/slate/zinc/gray utility 色阶或新的图标库。
-- 共享颜色使用 MolCrafts semantic roles；品牌、中性行动与状态族分离。
-- geometry/type utility 现在读运行时 CSS，支持 scope 下的 foundation 变化。
-- 全部 8 类浮层挂到最近 ThemeScope，模式/品牌变更在打开状态下立即生效。
-- 明暗状态 alias 在局部作用域重新绑定；原生官方映射也支持同一 data-mol-theme 属性。
-- tokens 补充 border/focus/spacing/font-weight foundation，并生成 machine-readable catalog。
+- React components have no hex/rgb colors, no default red/blue/slate/zinc/gray utility ramps, and no new icon library.
+- Shared color uses MolCrafts semantic roles. Brand, neutral actions, and status families are separate.
+- geometry/type utilities now read runtime CSS and support foundation changes under a scope.
+- All 8 overlay kinds mount to the nearest ThemeScope. Mode and brand changes take effect immediately while open.
+- Light/dark status aliases rebind in a local scope. The native official mapping also supports the same data-mol-theme attribute.
+- tokens add border/focus/spacing/font-weight foundation and generate a machine-readable catalog.
 
-## 需要在 P3 按组件继续处理
+## Still to handle per component in P3
 
 | Pattern | Assessment / next action |
 | --- | --- |
-| `top-1/2`、translate、Radix available-height/transform-origin、drag pixel values | 行为/定位数据，不当作任意设计色值；保留成熟 primitive 与布局行为 |
-| Sheet 的 w-3/4/max-w-sm、Dialog 的 sm:max-w-lg、Popover 的 w-72 | 当前仍是通用 Tailwind 布局，后续 formal size variants 应统一其公开尺寸契约 |
-| Switch/Slider/Checkbox 的 size 与 spacing units | 共享 spacing 已归 MolCrafts；后续验证尺寸、touch hit area 和状态契约 |
-| disabled opacity、部分 hover alpha/ring alpha | 不同控件状态仍需在 P3 统一，不以 P2 的主题测试替代组件状态完整验收 |
-| spinner ring 尺寸与 overlay scale 的 CSS 常量 | 目前位于共享 CSS；若作为组件 customization contract 暴露，需随 P3 正式说明 |
-| 原生上游 CSS 中的内部数值 | 属于成熟独立运行时；只通过公开 slots/parts 与共享 tokens 管理，不声称 React API/视觉全面对等 |
+| `top-1/2`, translate, Radix available-height/transform-origin, drag pixel values | Behavior and position data, not arbitrary design color values; keep mature primitives and layout behavior |
+| Sheet w-3/4/max-w-sm, Dialog sm:max-w-lg, Popover w-72 | Still generic Tailwind layout. Later formal size variants should unify their public size contract |
+| Switch/Slider/Checkbox size and spacing units | Shared spacing is already MolCrafts-owned. Later, verify size, touch hit area, and state contracts |
+| disabled opacity, some hover alpha/ring alpha | Control states still need to be unified in P3. P2 theme tests do not replace full acceptance of component states |
+| CSS constants for spinner ring size and overlay scale | Currently in shared CSS. If exposed as a component customization contract, document them formally with P3 |
+| Internal numbers in upstream native CSS | Belong to a mature independent runtime. Manage them only through public slots/parts and shared tokens. Do not claim full React API or visual parity |
 
-P2 验证范围是主题/关键组合与基础质量门禁，并未完成全部 33 个组件的公开契约、
-所有交互状态或完整视觉基线。完整进度见 roadmap。
+P2 verification covers themes, key combinations, and basic quality gates. It has not completed the public contract,
+every interaction state, or a full visual baseline for all 33 components. Full progress is in the roadmap.

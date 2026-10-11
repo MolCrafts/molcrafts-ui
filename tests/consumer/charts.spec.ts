@@ -60,9 +60,11 @@ test("Fluent chart axes and marks in light and dark scopes", async ({ page }) =>
   const chart = page.getByRole("figure", { name: "Vega-Lite measurements", exact: true });
   await expect(chart).toHaveAttribute("data-chart-state", "ready");
   await expect(chart.locator(".mark-symbol path")).toHaveCount(3);
-  await expect(chart).toHaveScreenshot("vega-lite-light.png", { animations: "disabled", maxDiffPixels: 32 });
+  // The plot only: the figure title and caption are HTML text in the platform font.
+  const plot = chart.locator("svg").first();
+  await expect.soft(plot).toHaveScreenshot("vega-lite-light.png", { animations: "disabled", maxDiffPixels: 32 });
   await page.getByRole("button", { name: "Chart theme" }).click();
   await expect.poll(() => chart.locator(".mark-line path").first().getAttribute("stroke")).not.toBe("rgb(15, 108, 189)");
   await expect(chart).toHaveAttribute("data-chart-state", "ready");
-  await expect(chart).toHaveScreenshot("vega-lite-dark.png", { animations: "disabled", maxDiffPixels: 32 });
+  await expect.soft(plot).toHaveScreenshot("vega-lite-dark.png", { animations: "disabled", maxDiffPixels: 32 });
 });

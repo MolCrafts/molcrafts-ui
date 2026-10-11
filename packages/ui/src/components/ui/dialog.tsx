@@ -52,6 +52,7 @@ function DialogContent({
         data-slot="dialog-content"
         className={cn(
           "mol-motion-dialog fixed top-1/2 left-1/2 z-50 grid w-full max-w-overlay-viewport -translate-x-1/2 -translate-y-1/2 gap-4 rounded-overlay border bg-popover p-6 shadow-overlay outline-none sm:max-w-lg",
+          showCloseButton && "pr-16",
           className,
         )}
         {...props}
@@ -60,10 +61,10 @@ function DialogContent({
         {showCloseButton && (
           <DialogPrimitive.Close
             data-slot="dialog-close"
-            className="mol-focus absolute top-4 right-4 flex size-control-compact items-center justify-center rounded-control text-muted-foreground outline-none transition-colors hover:bg-interactive hover:text-foreground disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+            aria-label="Close"
+            className="mol-focus absolute top-4 right-4 flex size-control items-center justify-center rounded-control text-muted-foreground outline-none transition-colors hover:bg-interactive hover:text-foreground disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
           >
             <DismissRegular />
-            <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Content>

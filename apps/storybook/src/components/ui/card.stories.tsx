@@ -7,6 +7,7 @@ import { ProgressSpinner } from "@molcrafts/design";
 const meta = {
   title: "UI/Card",
   component: Card,
+  parameters: { docs: { description: { component: 'import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@molcrafts/design"' } } },
   render: (args) => (
     <Card {...args} className="w-80">
       <CardHeader><CardTitle>Workspace</CardTitle><CardDescription>Shared component preview</CardDescription></CardHeader>

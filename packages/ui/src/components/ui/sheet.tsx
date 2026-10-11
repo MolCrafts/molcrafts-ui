@@ -62,6 +62,7 @@ function SheetContent({
         className={cn(
           "mol-motion-sheet fixed z-50 flex flex-col gap-4 bg-popover shadow-overlay outline-none",
           SIDE_CLASSES[side],
+          showCloseButton && "pr-16",
           className,
         )}
         {...props}
@@ -70,10 +71,10 @@ function SheetContent({
         {showCloseButton && (
           <SheetPrimitive.Close
             data-slot="sheet-close"
-            className="mol-focus absolute top-4 right-4 flex size-control-compact items-center justify-center rounded-control text-muted-foreground outline-none transition-colors hover:bg-interactive hover:text-foreground disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+            aria-label="Close"
+            className="mol-focus absolute top-4 right-4 flex size-control items-center justify-center rounded-control text-muted-foreground outline-none transition-colors hover:bg-interactive hover:text-foreground disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
           >
             <DismissRegular />
-            <span className="sr-only">Close</span>
           </SheetPrimitive.Close>
         )}
       </SheetPrimitive.Content>

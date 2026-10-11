@@ -1,48 +1,48 @@
-# 基线审计与当前实施状态
+# Baseline audit and current implementation status
 
-日期：2026-10-10。基线为 `7c4d9be`；当前完成范围见 [roadmap](design-system-roadmap.md)。
-用户随后明确要求不向后兼容；本文件不再把旧 API 保留作为实施约束。
+Date: 2026-10-10. The baseline is `7c4d9be`; current completion scope is in [roadmap](design-system-roadmap.md).
+The user later explicitly required no backward compatibility; this file no longer treats retaining old APIs as an implementation constraint.
 
-## 基线与当前边界
+## Baseline and current boundaries
 
 | Area | Audited baseline | Current implementation / remaining work |
 | --- | --- | --- |
-| Workspace | npm workspaces，仅有原生包 | pnpm 11.25.0、6 个 workspace projects、唯一 lockfile，依赖按 package 声明 |
-| React | 根 src 下 30 primitives、3 blocks，源码分发 | 唯一实现迁移到 packages/ui；Rslib ESM、types、编译 CSS 和公开 exports；细化公共契约仍待逐批完成 |
-| Tokens | 根 5 个 CSS 文件，Fluent 2 生成映射 | packages/tokens，独立纯 CSS runtime 与 Tailwind 入口；127 项生成 token 清单、类型/元数据、嵌套主题和浮层继承已实现 |
-| Storybook | 根 .storybook，13 个 story 文件 | apps/storybook 通过构建后的公开包入口消费；33 个模块并非都有独立 stories |
-| Registry | 35 个核心源码 items | 删除旧 items，仅 setup 与 button-example；引用 canonical packages |
-| Web Components | 13 标签，独立构建、类型与浏览器测试 | 保留独立运行时；共享 CSS 从 tokens 生成，不再提交 tokens 副本 |
-| Consumer | 未建立独立 React 产物消费验证 | 无 Tailwind 配置的 Rsbuild fixture；本地 tarball 在外部临时目录安装/构建 |
-| Quality | 类型、生成一致性、原生浏览器、Storybook 构建 | 增加 exports/CSS/SSR、消费者行为与所有现有 stories 的 CI；加入主题页/浮层 axe、键盘、forced-colors/reduced-motion 与 3 张视觉基线；全库覆盖仍待逐批完成 |
-| Products | 历史 extraction matrix 与源码同步路径 | 同步脚本已删除；没有修改或重验真实产品，需要产品迁移 PR |
-| Release | private、无发布流程 | 三个包改为确认的 design 系列名称，MIT、Changesets、tarball/版本演练已配置；仍 private，无发布/外部改名/自动发布 |
+| Workspace | npm workspaces, native package only | pnpm 11.25.0, 6 workspace projects, a single lockfile, dependencies declared per package |
+| React | 30 primitives and 3 blocks under root src, distributed as source | The single implementation moved to packages/ui; Rslib ESM, types, compiled CSS, and public exports; refining public contracts is still done batch by batch |
+| Tokens | 5 CSS files at the root, Fluent 2 generated mappings | packages/tokens, an independent pure-CSS runtime and a Tailwind entry; a generated inventory of 127 tokens, types/metadata, nested themes, and overlay inheritance are implemented |
+| Storybook | Root .storybook, 13 story files | The sidebar covers every React component, ThemeScope, two chart views, and 13 Web Components; `pnpm verify:stories` fails when an entry is missing. Impeccable reviews one target at a time. Full state coverage is still completed batch by batch |
+| Registry | 35 core-source items | Old items deleted; only setup and button-example remain; they reference canonical packages |
+| Web Components | 13 tags, independent build, types, and browser tests | Keep the independent runtime; shared CSS is generated from tokens, and a tokens copy is no longer committed |
+| Consumer | No independent React artifact-consumption verification | An Rsbuild fixture with no Tailwind config; a local tarball is installed/built in an external temporary directory |
+| Quality | Types, generation consistency, native browser, Storybook build | CI added for exports/CSS/SSR, consumer behavior, and all existing stories; theme-page/overlay axe, keyboard, forced-colors/reduced-motion, and 3 visual baselines added; whole-library coverage is still completed batch by batch |
+| Products | Historical extraction matrix and source-sync paths | Sync scripts deleted; real products were not modified or re-verified, and product migration PRs are required |
+| Release | private, no release process | The three packages use the confirmed design-series names; MIT, Changesets, and tarball/version rehearsal are configured; still private, with no publish, external rename, or automatic publishing |
 
-React 源码、用途、exports 和 stories 链接见 [生成组件目录](component-catalog.md)。
-13 个 story 文件包含基础组合示例，不能用文件数量证明公开 API/state 覆盖完整。
-原生清单/API 与 React 不要求功能对等，见 [原生包文档](../packages/web-components/README.md)。
+React source, purpose, exports, and story links are in the [generated component catalog](component-catalog.md).
+A sidebar entry proves the component is wired into Storybook. It does not prove that every public API and state is covered, and it does not widen Impeccable's single-target review scope.
+The native inventory/API is not required to be feature-equivalent to React; see [native package docs](../packages/web-components/README.md).
 
-## 已处理风险与剩余事项
+## Handled risks and remaining items
 
 | Risk | Result / follow-up |
 | --- | --- |
-| Rslib 非 bundle 模式 flatten 目录或 JSX runtime 缺失 | 显式 outBase 与 React plugin，模块闭包和 SSR 检查覆盖 |
-| CSS 只存在于 Storybook 编译 | UI 输出完整 CSS；独立消费者不配置 Tailwind、不扫描源码 |
-| tokens 引用上游形成隐式设计依赖 | 固定输入版本并保留 owned 映射，reference.json 固定输入；生成元数据/清单；升级需审查 owned 映射与截图 |
-| Registry/npm 两份组件实现 | 删除核心源码分发与旧 sync，Registry 只提供包配置/组合 |
-| utils 依赖产品私有 scales | 删除产品专有扩展；产品自行迁移，不保留兼容 shim |
-| 局部主题丢失于 portal | ThemeScope 为 8 类 React 浮层提供就近 host；嵌套模式/品牌热切换已验证；注意祖先 transform/overflow 限制 |
-| 原生 CSS 副本漂移 | 共享 runtime 由 tokens 构建到 standalone theme.css；保留 reset/shadow/form 测试 |
-| 真实产品迁移失败 | 本仓 fixture 不能证明真实产品接入，产品 PR 与测试仍待完成 |
-| 改名遗漏入口或提前发布 | 最终包名/URL/版本/license 审核在后续阶段，当前不发布或重命名 |
+| Rslib non-bundle mode flattens directories or the JSX runtime is missing | Explicit outBase and the React plugin; module-closure and SSR checks cover it |
+| CSS exists only in the Storybook compilation | UI emits complete CSS; standalone consumers do not configure Tailwind and do not scan source |
+| Token references to upstream create an implicit design dependency | Pin the input version and keep owned mappings; reference.json pins the input; generate metadata/inventory; upgrades must review owned mappings and screenshots |
+| Registry/npm have two component implementations | Delete core-source distribution and the old sync; the Registry only provides package configuration/composition |
+| utils depend on product-private scales | Delete product-specific extensions; products migrate themselves, with no compatibility shim |
+| Scoped themes are lost in portals | ThemeScope provides a nearest host for 8 kinds of React overlays; nested mode/brand hot switching is verified; watch ancestor transform/overflow limits |
+| Native CSS copies drift | The shared runtime is built from tokens into standalone theme.css; reset/shadow/form tests remain |
+| Real-product migration fails | This repository's fixture cannot prove real-product integration; product PRs and tests are still unfinished |
+| A rename misses an entry point or publishing happens early | Final package-name/URL/version/license review is a later stage; do not publish or rename now |
 
-## 下一阶段准备
+## Preparation for the next stage
 
-- [x] 完整 foundation/semantic token 契约与主题/portal 验证。
-- [ ] 首批组件 props、variants、sizes、states、refs 与扩展契约。
-- [ ] 全部公共组件 stories/state coverage、a11y 和关键视觉回归。
-- [ ] 至少一个真实产品的新入口接入与功能验证。
-- [x] 确认 npm names/subpaths、MIT/第三方归属、alpha 版本方案和本地发布演练。
-- [ ] 实际 npm 权限、外部仓库 URLs 改名和正式候选发布。
+- [x] Complete foundation/semantic token contract and theme/portal verification.
+- [ ] First-batch component props, variants, sizes, states, refs, and extension contracts.
+- [ ] Stories/state coverage, a11y, and key visual regression for every public component.
+- [ ] New-entry integration and functional verification for at least one real product.
+- [x] Confirm npm names/subpaths, MIT/third-party attribution, the alpha version plan, and a local release rehearsal.
+- [ ] Actual npm permissions, external repository URL renames, and a formal candidate release.
 
-使用新入口见 [迁移说明](workspace-migration.md)；不提供旧源码、旧 CSS 别名或同步兼容层。
+For the new entry points see [migration notes](workspace-migration.md); old source, old CSS aliases, and a sync compatibility layer are not provided.

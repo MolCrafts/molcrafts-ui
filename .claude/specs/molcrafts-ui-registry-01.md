@@ -4,45 +4,45 @@ title: MolCrafts shared shadcn registry (molcrafts-ui)
 status: approved
 created: 2026-08-10
 product: molcrafts-ui
-language: zh
+language: en
 ---
 
 > Historical Registry document. The registry-first distribution direction is superseded by
 > [Refactoring Spec v1.0](../../docs/design-system-refactoring-spec.md). The owner subsequently required no backward compatibility; old source workflows
 > are removed. This document does not establish completion of the new refactor.
 
-# molcrafts-ui-registry-01 — 跨产品 shadcn Registry
+# molcrafts-ui-registry-01 — Cross-product shadcn Registry
 
 ## Summary
 
-在 `~/work/molcrafts/molcrafts-ui` 建立 **MolCrafts 共享 UI 源仓 + shadcn Registry**，使 **molexp / molvis / molhub** 用同一套 tokens 与 primitives 维护方式：源码在此仓维护，`shadcn build` 产出 `/r/{name}.json`，各产品通过 `npx shadcn add @molcrafts/<name>` 安装到本地（产品仍拥有拷贝后的源码）。
+Build a **MolCrafts shared UI source repository and shadcn Registry** at `~/work/molcrafts/molcrafts-ui`, so that **molexp / molvis / molhub** maintain tokens and primitives the same way: source is maintained in this repository, `shadcn build` produces `/r/{name}.json`, and each product installs it locally with `npx shadcn add @molcrafts/<name>` (the product still owns the copied source).
 
-本 spec 覆盖：仓库骨架、registry 契约、**抽取评估（见 docs/extraction-matrix.md）**、v0 组件清单与产品接入步骤。不包含把三端全部迁完的大爆炸重构。
+This spec covers the repository skeleton, the registry contract, the **extraction assessment (see docs/extraction-matrix.md)**, the v0 component list, and the product integration steps. It does not include a big-bang refactor that finishes migrating all three products.
 
 ## Domain basis
 
-- shadcn 官方模型：CLI 拷贝源码，不是唯一 npm 黑盒依赖。跨仓共享的官方方式是 **Custom Registry**（[Introduction](https://ui.shadcn.com/docs/registry)、[Getting Started](https://ui.shadcn.com/docs/registry/getting-started)、[Namespaces](https://ui.shadcn.com/docs/registry/namespace)）。
-- MolCrafts 现状：三端各自 `components/ui/*` fork；molvis 另有 `@molcrafts/molvis/plugin/ui` npm 面（插件 runtime 边界）。button 类名已高度同构（`rounded-control` / accent tokens），适合作为 canary。
-- 科学产品 UI 额外约束：status 色、control 高度、信息密度（见 molexp/molvis 的 `tailwind` token 约定）必须进 **shared tokens**，否则 primitives 共享无效。
+- Official shadcn model: the CLI copies source. It is not a sole black-box npm dependency. The official way to share across repositories is a **Custom Registry** ([Introduction](https://ui.shadcn.com/docs/registry), [Getting Started](https://ui.shadcn.com/docs/registry/getting-started), [Namespaces](https://ui.shadcn.com/docs/registry/namespace)).
+- MolCrafts today: each of the three products forks `components/ui/*`. molvis also has an `@molcrafts/molvis/plugin/ui` npm surface (the plugin runtime boundary). Button class names are already highly isomorphic (`rounded-control` / accent tokens), so button is a suitable canary.
+- Extra constraints for scientific-product UI: status colors, control height, and information density (see the `tailwind` token conventions in molexp and molvis) must live in **shared tokens**. Otherwise sharing primitives has no effect.
 
 ## Design
 
-### 1. 仓库职责
+### 1. Repository responsibilities
 
-| 路径 | 职责 |
+| Path | Responsibility |
 |------|------|
-| `registry.json` | Registry 目录（name / homepage / items） |
-| `src/components/ui/*` | 权威 primitive 源码 |
-| `src/components/blocks/*` | 跨产品块（SettingsShell 等，v1） |
+| `registry.json` | Registry catalog (name / homepage / items) |
+| `src/components/ui/*` | Canonical primitive source |
+| `src/components/blocks/*` | Cross-product blocks (SettingsShell and others, v1) |
 | `src/lib/utils.ts` | `cn()` |
-| `src/styles/tokens.css` | CSS 变量 / 控制尺寸 token |
-| `public/r/` | `shadcn build` 输出（可部署静态站） |
-| `docs/extraction-matrix.md` | 抽取评估（living doc） |
-| `.claude/specs/*` | 本设计与验收 |
+| `src/styles/tokens.css` | CSS variables / control-size tokens |
+| `public/r/` | `shadcn build` output (a static site that can be deployed) |
+| `docs/extraction-matrix.md` | Extraction assessment (living doc) |
+| `.claude/specs/*` | This design and its acceptance criteria |
 
-可选后续：`packages/ui` npm 发布 **tokens + cn** 给 plugin runtime；**不以 npm 作为产品 app 的主分发路径**。
+Optional follow-up: publish `packages/ui` to npm as **tokens + cn** for the plugin runtime. **Do not use npm as the primary distribution path for product apps.**
 
-### 2. 分发与消费
+### 2. Distribution and consumption
 
 ```
 molcrafts-ui (source)
@@ -53,7 +53,7 @@ molcrafts-ui (source)
          └─ molhub/web  components.json registries.molcrafts
 ```
 
-各产品：
+Each product:
 
 ```json
 "registries": {
@@ -61,61 +61,61 @@ molcrafts-ui (source)
 }
 ```
 
-开发期可用 `file:` / `localhost` / GitHub raw。
+During development, `file:` / `localhost` / GitHub raw may be used.
 
-### 3. 抽取原则（Reuse decision）
+### 3. Extraction principles (Reuse decision)
 
-对 inventory 中每个候选：
+For each candidate in the inventory:
 
-| 判定 | 条件 |
+| Decision | Condition |
 |------|------|
-| **extract** | ≥2 产品使用，或明确将成为设计系统一部分；无领域 API |
-| **later** | 有用但依赖重 / 变体未收敛 |
-| **stay** | 绑定单一产品领域、路由、OpenAPI、agent/viewer 专用 |
+| **extract** | Used by 2 or more products, or clearly going to become part of the design system; no domain API |
+| **later** | Useful, but dependencies are heavy or variants have not converged |
+| **stay** | Bound to a single product's domain, routing, OpenAPI, or specific to an agent or viewer |
 
-**Reuse 结论（摘要）** — 全表见 `docs/extraction-matrix.md`：
+**Reuse conclusions (summary)** — the full table is in `docs/extraction-matrix.md`:
 
-- **v0 extract：** cn + tokens + button, badge, input, label, tabs, tooltip, dialog, dropdown-menu, select, checkbox, separator, scroll-area, popover, slider  
-- **v1：** card, table, sheet, skeleton, textarea, alert-dialog, accordion, collapsible, context-menu, switch, empty-state, code, **SettingsShell/Section/Row**  
-- **v2：** WorkbenchAction ↔ ViewerAction 收敛、toast、command  
-- **stay：** tree, markdown, thinking-block, tool-call-row, confirm-dialog 总线、Entity/Dashboard、Molq\*、Viewer\* 工具条、StatusStrip（先留 molexp）
+- **v0 extract:** cn + tokens + button, badge, input, label, tabs, tooltip, dialog, dropdown-menu, select, checkbox, separator, scroll-area, popover, slider
+- **v1:** card, table, sheet, skeleton, textarea, alert-dialog, accordion, collapsible, context-menu, switch, empty-state, code, **SettingsShell/Section/Row**
+- **v2:** converge WorkbenchAction and ViewerAction, toast, command
+- **stay:** tree, markdown, thinking-block, tool-call-row, the confirm-dialog bus, Entity/Dashboard, Molq\*, Viewer\* toolbars, StatusStrip (leave it in molexp first)
 
-### 4. 与 molvis-plugin 的关系
+### 4. Relationship to molvis-plugin
 
-- **短期：** plugin 继续 export `@molcrafts/molvis/plugin/ui`（打包 externals 不变）。  
-- **中期：** plugin 内 button/select/checkbox **改为从本 registry 同源**（拷贝或 build 脚本同步），避免两套源。  
-- **禁止：** 把 SettingsShell 塞进 molvis-plugin（SDK 边界污染）。
+- **Short term:** the plugin keeps exporting `@molcrafts/molvis/plugin/ui` (bundled externals stay the same).
+- **Medium term:** button, select, and checkbox inside the plugin **switch to the same source as this registry** (by copy or by a build-script sync), so there are not two sources.
+- **Forbidden:** putting SettingsShell into molvis-plugin (that pollutes the SDK boundary).
 
-### 5. Token 策略
+### 5. Token strategy
 
-v0 建立统一 token 文件（命名对齐现有 molexp/molvis）：
+v0 establishes one shared token file (names aligned with the existing molexp and molvis tokens):
 
-- surfaces: `background`, `foreground`, `card`, `muted`, `accent`, `border`, `ring`  
-- control: `--radius-control`, `--height-control*`（或现有 `h-control` 映射）  
-- status: `status-running|succeeded|failed|warning`（v0 可先占位，v1 与三端色值对齐）
+- surfaces: `background`, `foreground`, `card`, `muted`, `accent`, `border`, `ring`
+- control: `--radius-control`, `--height-control*` (or a mapping of the existing `h-control`)
+- status: `status-running|succeeded|failed|warning` (v0 may use placeholders first; v1 aligns the color values with the three products)
 
-产品 CSS `@import` registry tokens，再叠产品专用变量。
+Product CSS `@import`s the registry tokens, then layers product-specific variables on top.
 
-### 6. 版本与变更
+### 6. Versions and changes
 
-- Registry item 变更：源仓 PR + build；消费方 `shadcn add @molcrafts/<name> --overwrite` 或 CI 同步 job。  
-- 不保证 semver 对“拷贝源码”的二进制兼容；用 **changelog + item 描述** 沟通 breaking。  
-- 源仓 git tag 可选标记 registry 发布点。
+- Registry item changes: a pull request in the source repository, plus a build. Consumers run `shadcn add @molcrafts/<name> --overwrite`, or a CI sync job.
+- Semver binary compatibility is not guaranteed for copied source. Communicate breaking changes with a **changelog and an item description**.
+- A git tag in the source repository may optionally mark a registry release point.
 
-## Files（仓库骨架）
+## Files (repository skeleton)
 
 ```
 molcrafts-ui/
   README.md
   package.json
-  components.json                 # 源仓自身 shadcn 配置
-  registry.json                   # 入口 catalog
+  components.json                 # this source repository's own shadcn config
+  registry.json                   # entry catalog
   src/
-    components/ui/                # v0 primitives（逐步填入）
+    components/ui/                # v0 primitives (filled in gradually)
     components/blocks/            # v1+
     lib/utils.ts
     styles/tokens.css
-  public/r/                       # build 输出（可 gitignore 或提交）
+  public/r/                       # build output (may be gitignored or committed)
   scripts/build-registry.mjs
   docs/extraction-matrix.md
   .claude/specs/
@@ -126,33 +126,33 @@ molcrafts-ui/
 
 ## Tasks
 
-1. **Scaffold** 仓库：package.json、components.json、tokens.css、cn、gitignore、README  
-2. **Registry catalog** 写 `registry.json`（v0 items 列表，文件可先 stub 或从 molexp 拷 button canary）  
-3. **Build pipeline** `pnpm build:registry` → `public/r/{name}.json` + root catalog  
-4. **Canary extract** 从 molexp 拷入 `button` + `utils`，build 成功，本地 `shadcn add` dry-run  
-5. **v0 batch** 按 extraction-matrix 拉齐 intersection primitives（实现可分多 PR）  
-6. **Consumer wiring doc** 文档：molexp / molvis / molhub 的 `components.json` 片段与迁移清单  
-7. **molvis-plugin sync plan** 文档：如何从本仓同步 plugin ui 三件套（不强制本 spec 内改 molvis）
+1. **Scaffold** the repository: package.json, components.json, tokens.css, cn, gitignore, and README
+2. **Registry catalog:** write `registry.json` (the v0 item list; files may be stubs first, or the button canary may be copied from molexp)
+3. **Build pipeline:** `pnpm build:registry` produces `public/r/{name}.json` and the root catalog
+4. **Canary extract:** copy `button` and `utils` from molexp, the build succeeds, and a local `shadcn add` dry-run succeeds
+5. **v0 batch:** bring the intersection primitives in line with the extraction matrix (the implementation may be split across pull requests)
+6. **Consumer wiring doc:** document the `components.json` snippets and migration checklists for molexp, molvis, and molhub
+7. **molvis-plugin sync plan:** document how to sync the plugin UI trio from this repository (this spec does not require changing molvis)
 
 ## Testing
 
-- `pnpm build:registry` 退出 0；`public/r/button.json` 存在且符合 registry-item schema 关键字段  
-- `registry.json` items 与 `public/r` 一一对应（脚本 assert）  
-- Canary：临时目录 `shadcn add` 从 `file://` 或 localhost 安装 button 成功  
-- 单元：`cn()` 简单用例（可选）  
-- 不要求三产品 e2e 在本仓运行
+- `pnpm build:registry` exits 0; `public/r/button.json` exists and matches the key fields of the registry-item schema
+- Items in `registry.json` correspond one-to-one with `public/r` (asserted by a script)
+- Canary: in a temporary directory, `shadcn add` installs button successfully from `file://` or localhost
+- Unit: simple cases for `cn()` (optional)
+- Do not require the three products' end-to-end tests to run in this repository
 
 ## Out of scope
 
-- 一次迁完所有 molexp-only / molvis-only 组件  
-- 强制删除各产品本地 `components/ui`  
-- 设计 Figma 文件  
-- 强制 npm 发布 `@molcrafts/ui` 作为主路径  
-- molhub/molvis 代码改动（仅文档约定；实际接线另开产品 PR）  
-- `ui/.screenshots` 等本地资产
+- Migrating every molexp-only or molvis-only component in one pass
+- Forcing each product to delete its local `components/ui`
+- Designing a Figma file
+- Forcing an npm publish of `@molcrafts/ui` as the primary path
+- Code changes in molhub or molvis (a documentation agreement only; the actual wiring is a separate product pull request)
+- Local assets such as `ui/.screenshots`
 
-## Open questions（非阻塞）
+## Open questions (non-blocking)
 
-- 托管域名：`ui.molcrafts.dev` vs GitHub Pages vs Cloudflare  
-- `public/r` 是否提交 git（小团队可提交；CI 生成亦可）  
-- Workbench vs Viewer 命名收敛时间表（v2）
+- Hosting domain: `ui.molcrafts.dev` vs GitHub Pages vs Cloudflare
+- Whether `public/r` is committed to git (a small team may commit it; generating it in CI is also fine)
+- Schedule for converging the Workbench and Viewer names (v2)

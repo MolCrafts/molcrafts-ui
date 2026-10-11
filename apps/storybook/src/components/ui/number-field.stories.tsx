@@ -1,15 +1,22 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, fn, userEvent, within } from "storybook/test";
-import { NumberField } from "@molcrafts/design";
+import { Label, NumberField } from "@molcrafts/design";
 
 const meta = {
   title: "UI/NumberField",
   component: NumberField,
-  args: { value: 5, min: 0, max: 10, step: 1, onChange: fn(), "aria-label": "Amount" },
+  parameters: { docs: { description: { component: 'import { NumberField } from "@molcrafts/design"' } } },
+  args: { value: 5, min: 0, max: 10, step: 1, onChange: fn() },
   render: function StatefulField(args) {
     const [value, setValue] = useState(args.value);
-    return <NumberField {...args} value={value} onChange={(next) => { setValue(next); args.onChange(next); }} />;
+    return (
+      <div className="space-y-2">
+        <Label htmlFor="amount">Amount</Label>
+        <NumberField {...args} id="amount" aria-describedby="amount-range" value={value} onChange={(next) => { setValue(next); args.onChange(next); }} />
+        <p id="amount-range" className="text-label text-muted-foreground">Enter a number from {args.min} to {args.max}.</p>
+      </div>
+    );
   },
 } satisfies Meta<typeof NumberField>;
 export default meta;

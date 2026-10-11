@@ -13,9 +13,14 @@ it requires no custom MCP server or prior shadcn knowledge.
 1. Read `AGENTS.md`, `docs/design-system-refactoring-spec.md` and
    `docs/design-constitution.md`. Check `docs/design-system-readiness.md` for actual
    capabilities and `docs/design-system-roadmap.md` for planned work.
-2. Read `docs/component-catalog.md`, public package exports and Storybook examples
-   in `apps/storybook/src`. The canonical implementation lives in `packages/ui`.
+2. Open the component in Storybook. `docs/component-catalog.md` maps each public
+   component to its story. The canonical implementation lives in `packages/ui`.
    Consume `@molcrafts/design` and compiled `styles.css`, not internal source paths.
+   A new public component needs a story; `pnpm verify:stories` enforces it.
+   Visual review uses Impeccable's own target: bare `/impeccable` follows dirty
+   markup and style files, `critique` and `audit` take one story file or iframe,
+   and `polish` reuses that target's snapshot until its bytes change. A full
+   sidebar pass happens only when the user explicitly asks for one.
 3. Read the selected component's TypeScript props and relevant stories before composing.
    Prefer existing components and documented variants over custom controls.
 

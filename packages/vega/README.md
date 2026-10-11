@@ -20,18 +20,23 @@ over default axis/legend/title typography. Explicit data palettes stay product-o
 Theme reads the nearest CSS scope and watches ancestor class/style/data-mol-theme
 changes, including root light/dark and runtime product brand changes.
 
-`label` is required. `description` is visible and should summarize important
-information; applications must supply a readable table/summary for complex charts.
-The renderer DOM is aria-hidden, with the named figure and text as the accessibility
-surface. Tooltip strings/objects are rendered as React text, never injected HTML.
-Tooltip does not replace the accessible data alternative.
+`label` is required and visible. It is the figure title and its accessible name.
+Set `labelHidden` when the page already titles the figure: the label stays the
+accessible name and is not drawn.
+`description` is visible once the chart is ready, and hidden while loading, empty,
+or failed. It is linked with `aria-describedby`. Applications must supply a readable
+table or summary for complex charts. The figure is in tab order. The renderer DOM
+is aria-hidden. Tooltip strings and objects are rendered as React text, never
+injected HTML. A tooltip does not replace the accessible data alternative.
 
 Width defaults to the available container and follows ResizeObserver. Height defaults
 to 240 CSS pixels. Explicit width/height select chart view dimensions; specs can
 supply their own autosize behavior. Pass stable objects/factories to avoid unnecessary
 recreation. New spec/renderer/theme replaces the View; data/signals update it in place.
 Removed data/signal keys are not reset implicitly: pass empty data or a reset value.
-Loading/empty dispose the current View. Error fallback and onError cover parse/render.
+Loading and empty dispose the current View and replace the plot with their own status.
+The default error alert shows the caught message and tells the reader to check the spec.
+`onError` receives that same Error. Pass `errorFallback` to replace the alert.
 Each render generation owns its DOM and finalizes on replacement/unmount; stale
 async work cannot install a View or call ready after cleanup.
 

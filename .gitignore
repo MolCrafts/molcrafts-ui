@@ -10,3 +10,4 @@ playwright-report/
 node_modules/
 release-artifacts/
 dist-native-vega/
+.ci-out/

@@ -1,0 +1,165 @@
+name: test
+
+# Two jobs on every tier (`test / context` decides who runs):
+#
+#   packages  types, exports, SSR, generated sources, registry and catalog,
+#             the release rehearsal and the chart bundle boundaries.
+#   browsers  the Playwright suites (native components, consumer fixture,
+#             Storybook), reported in the summary and, upstream, submitted
+#             to the MolCrafts CI dashboard as the `tests` record. Only a
+#             push to main becomes project history.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [dev, master, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Independent workflow/event/ref groups; feature pushes supersede older runs.
+concurrency:
+  group: test-${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ !contains(fromJSON('["refs/heads/dev","refs/heads/master","refs/heads/main"]'), github.ref) && !startsWith(github.ref, 'refs/tags/') }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Where this run happens, decided once: MolCrafts/molcrafts-ci/actions/ci-context.
+  context:
+    name: test / context
+    runs-on: ubuntu-latest
+    outputs:
+      tier: ${{ steps.context.outputs.tier }}
+      upstream: ${{ steps.context.outputs.upstream }}
+      integration: ${{ steps.context.outputs.integration }}
+      skip-pr: ${{ steps.context.outputs.skip-pr }}
+      publish: ${{ steps.context.outputs.publish }}
+    steps:
+      - id: context
+        uses: MolCrafts/molcrafts-ci/actions/ci-context@0bc767f040a1558799539e6c7012de4ffcc9f499
+
+  packages:
+    name: test / packages
+    needs: context
+    if: needs.context.outputs.skip-pr != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # release:status reads the changeset history against origin/main.
+          fetch-depth: 0
+      # Node only: this workspace installs with pnpm, not npm.
+      - uses: MolCrafts/molcrafts-ci/actions/setup-node@0bc767f040a1558799539e6c7012de4ffcc9f499
+        with:
+          node-version: "24"
+          install: "false"
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm verify:packages
+      - name: Generated tokens and native sources are committed
+        run: git diff --exit-code -- packages/tokens/src packages/web-components/src packages/web-components/custom-elements.json docs/token-catalog.md packages/*/THIRD_PARTY_NOTICES.md
+      - run: pnpm build:registry
+      - run: pnpm build:catalog
+      - name: Registry and component catalog are committed
+        run: git diff --exit-code -- public/r docs/component-catalog.md
+      - run: pnpm verify:chart-boundaries
+      - run: pnpm release:status
+      - run: pnpm verify:release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packages
+          path: |
+            packages/tokens/dist
+            packages/ui/dist
+            packages/web-components/dist
+            packages/vega/dist
+            packages/vega-lite/dist
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-rehearsal
+          path: release-artifacts
+          retention-days: 7
+
+  browsers:
+    name: test / browsers
+    needs: context
+    if: needs.context.outputs.skip-pr != 'true'
+    runs-on: ubuntu-latest
+    env:
+      JUNIT: ${{ github.workspace }}/.ci-out/junit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: MolCrafts/molcrafts-ci/actions/setup-node@0bc767f040a1558799539e6c7012de4ffcc9f499
+        with:
+          node-version: "24"
+          install: "false"
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      # uv for `molci snapshot`; Python 3.12+ for actions/report.
+      - uses: MolCrafts/molcrafts-ci/actions/setup-python@0bc767f040a1558799539e6c7012de4ffcc9f499
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm build:packages
+      - name: Native components
+        env:
+          PLAYWRIGHT_JUNIT_OUTPUT_NAME: ${{ env.JUNIT }}/web-components.xml
+        run: pnpm test:web-components --reporter=list,junit
+      - run: pnpm build:consumer
+      - name: Consumer fixture
+        env:
+          PLAYWRIGHT_JUNIT_OUTPUT_NAME: ${{ env.JUNIT }}/consumer.xml
+        run: pnpm test:consumer --reporter=list,junit
+      - run: pnpm build:storybook
+      - name: Storybook
+        env:
+          PLAYWRIGHT_JUNIT_OUTPUT_NAME: ${{ env.JUNIT }}/storybook.xml
+        run: pnpm test:storybook --reporter=list,junit
+      # These run even when a suite failed: a red run is exactly the one whose
+      # tests record is worth keeping. The suites already decided the verdict.
+      - name: Merge suite reports
+        if: ${{ !cancelled() }}
+        run: node scripts/merge-junit.mjs .ci-out/junit.xml "$JUNIT/web-components.xml" "$JUNIT/consumer.xml" "$JUNIT/storybook.xml"
+      - name: Report
+        if: ${{ !cancelled() }}
+        uses: MolCrafts/molcrafts-ci/actions/report@0bc767f040a1558799539e6c7012de4ffcc9f499
+        with:
+          title: test / browsers
+          junit: .ci-out/junit.xml
+      - name: Build the tests snapshot
+        if: ${{ !cancelled() && needs.context.outputs.upstream == 'true' && hashFiles('.ci-out/junit.xml') != '' }}
+        # Only a push to main becomes project history; anything else is
+        # validated and uploaded untracked, never published.
+        run: |
+          uvx --from "git+https://github.com/MolCrafts/molcrafts-ci@0bc767f040a1558799539e6c7012de4ffcc9f499" molci snapshot \
+            --out .ci-out/snapshots \
+            --junit .ci-out/junit.xml \
+            --tests-producer playwright \
+            ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && '--track' || '' }}
+      - name: Submit to the MolCrafts CI dashboard
+        if: ${{ !cancelled() && needs.context.outputs.upstream == 'true' && hashFiles('.ci-out/snapshots/*.json') != '' }}
+        uses: MolCrafts/molcrafts-ci/actions/submit@0bc767f040a1558799539e6c7012de4ffcc9f499
+        with:
+          snapshot-path: .ci-out/snapshots/*.json
+          project: molcrafts-ui
+          ssh-key: ${{ secrets.MOLCRAFTS_CI_SSH_KEY }}
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: storybook
+          path: storybook-static
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-test-diagnostics
+          path: test-results
+          retention-days: 7

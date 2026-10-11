@@ -1,32 +1,32 @@
-# MolCrafts Design：发包前准备与发布流程
+# MolCrafts Design: pre-publish preparation and the release process
 
-2026-10-10 · 当前状态：仅本地演练，五个包仍为 private，未发布、未创建 tag/release。
-用户已选择 `@molcrafts/design` 系列包名与 MIT。GitHub 仓库仍是
-[MolCrafts/molcrafts-ui](https://github.com/MolCrafts/molcrafts-ui)，外部改名另行处理。
-机器可读计划见 [release/plan.json](../release/plan.json)。
+2026-10-10 · Current status: local rehearsal only. The five packages are still private. Nothing has been published, and no tag or release has been created.
+The user has chosen the `@molcrafts/design` package-name family and MIT. The GitHub repository is still
+[MolCrafts/molcrafts-ui](https://github.com/MolCrafts/molcrafts-ui). Renaming it externally is handled separately.
+The machine-readable plan is [release/plan.json](../release/plan.json).
 
-## 包与发布边界
+## Packages and the release boundary
 
 | Package | Content | Public entries |
 | --- | --- | --- |
-| `@molcrafts/design-tokens` | 框架无关 tokens、类型与元数据 | root、runtime.css、tailwind.css、contract.json |
-| `@molcrafts/design` | React 19 组件与已编译 CSS | root、utils、styles.css |
-| `@molcrafts/design-web-components` | 独立原生组件、注册、CSS、manifest 与 browser bundle | root、register、theme.css、custom-elements.json、browser.js |
-| `@molcrafts/design-vega` | 可选 Vega Runtime 与 React Viewer | root（VegaView、createChartConfig、useChartTheme 与公开类型） |
-| `@molcrafts/design-vega-lite` | 可选 Vega-Lite Compiler，复用同一 Viewer | root（VegaLiteView、compileVegaLite 与公开类型） |
+| `@molcrafts/design-tokens` | Framework-agnostic tokens, types, and metadata | root, runtime.css, tailwind.css, contract.json |
+| `@molcrafts/design` | React 19 components and compiled CSS | root, utils, styles.css |
+| `@molcrafts/design-web-components` | Independent native components, registration, CSS, a manifest, and a browser bundle | root, register, theme.css, custom-elements.json, browser.js |
+| `@molcrafts/design-vega` | Optional Vega runtime and React viewer | root (VegaView, createChartConfig, useChartTheme, and public types) |
+| `@molcrafts/design-vega-lite` | Optional Vega-Lite compiler that reuses the same viewer | root (VegaLiteView, compileVegaLite, and public types) |
 
-root、Storybook 与消费者 fixture 不发布。五个分发包暂用统一版本，确保共享主题
-契约可以按同一版本整组接入；Changesets fixed group 管理这一规则，apps 被排除。
-包都是 ESM；React 为 peer dependency。消费者无需构建库的 Tailwind 源码。
-原生 entry 在浏览器中加载，不承诺 Node/SSR 直接执行或 React API 对等。
+The root, Storybook, and consumer fixtures are not published. The five distributable packages temporarily share one version so the shared theme
+contract can be adopted as one versioned set. A Changesets fixed group manages that rule, and apps are excluded.
+The packages are ESM. React is a peer dependency. Consumers do not need to build the library's Tailwind sources.
+The native entry loads in the browser. It does not promise direct Node or SSR execution, or React API parity.
 
-当前工作区版本是未发布的 `0.0.1`。首发计划是 `0.1.0-alpha.0`、npm `alpha` channel，
-不是 stable/latest。本次没有改变实际版本，也没有进入工作区 prerelease 模式。
-alpha 表示 API/样式仍在逐批完善；P3/P4 与真实产品验证没有因打包通过而完成。
+The current workspace version is the unpublished `0.0.1`. The first release is planned as `0.1.0-alpha.0` on the npm `alpha` channel,
+not stable or latest. This rehearsal did not change the actual version and did not enter workspace prerelease mode.
+Alpha means the API and styles are still being completed batch by batch. Passing the pack step does not finish P3/P4 or real-product verification.
 
-## 当前可重复演练
+## The current repeatable rehearsal
 
-使用 Node 24+、pnpm 11.25.0 和 frozen lockfile：
+Use Node 24+, pnpm 11.25.0, and a frozen lockfile:
 
 ```sh
 pnpm install --frozen-lockfile
@@ -41,71 +41,71 @@ pnpm build:storybook
 pnpm test:storybook
 ```
 
-`prepare:release` 构建五个包并验证 exports/CSS/SSR，然后执行以下步骤：
+`prepare:release` builds the five packages and verifies exports, CSS, and SSR, then runs the following steps:
 
-1. 在临时 workspace 中调用官方 Changesets CLI，演练 `pre enter alpha` 与 `version`。
-   核对五个 alpha 版本、生成 changelogs、apps 不升版；不修改当前版本，不创建 tags。
-2. 用 `pnpm pack` 生成五个真实 tarball，解包检查 files/exports、许可证、来源元数据、
-   dependency rewriting，并记录 SHA-256 与文件清单。
-3. 在仓库外临时目录安装五个 tarball，使用其公开类型和 CSS，执行 TypeScript
-   及 React/原生两个 Rsbuild entry 构建；没有库源码访问或 Tailwind 配置。
+1. In a temporary workspace, call the official Changesets CLI and rehearse `pre enter alpha` and `version`.
+   Check the five alpha versions and the generated changelogs, and confirm that apps are not version-bumped. Do not modify the current versions, and do not create tags.
+2. Use `pnpm pack` to produce five real tarballs. Unpack them and check files and exports, the license, source metadata,
+   and dependency rewriting, and record the SHA-256 hashes and file manifests.
+3. In a temporary directory outside the repository, install the five tarballs and, using their public types and CSS, run TypeScript
+   plus both the React and native Rsbuild entry builds. There is no access to library source and no Tailwind configuration.
 
-`release-artifacts/` 被 gitignore，包含 `report.json`、`version-plan.json`、五个 tarball
-以及 `changelogs/` 预览。**当前 tarball 仍是 0.0.1 演练产物，不能当作 alpha 发布候选。**
-报告记录提交与工作区是否 dirty。CI 上传对应提交的演练产物，不执行 publishing。
-独立消费需要 npm 网络读取既有外部依赖，但不会写 npm registry 或读取发布凭据。
+`release-artifacts/` is gitignored. It contains `report.json`, `version-plan.json`, the five tarballs,
+and a `changelogs/` preview. **The current tarballs are still 0.0.1 rehearsal artifacts and must not be treated as alpha release candidates.**
+The report records the commit and whether the workspace is dirty. CI uploads the rehearsal artifacts for that commit and does not publish.
+A standalone consumer needs network access to npm in order to read existing external dependencies, but it does not write to the npm registry and does not read publish credentials.
 
-## 修改与版本记录
+## Changes and version records
 
-共享 API、token/样式契约或分发文件变更时运行 `pnpm changeset`，描述具体行为
-和消费方影响。文档/开发工具等不影响分发契约的修改不强制制造包版本。
-`pnpm release:status` 使用 `origin/main` 的提交历史进行只读检查；浅克隆应先补齐历史，
-CI 使用完整 fetch。`pnpm release:version` 会改 manifests 和各包 CHANGELOG，
-只在实际 release branch 使用。不要为本次准备执行它。
+When a shared API, a token or style contract, or a distributed file changes, run `pnpm changeset` and describe the concrete behavior
+and the effect on consumers. Changes that do not affect the distribution contract, such as documentation and developer tooling, do not have to produce a package version.
+`pnpm release:status` does a read-only check against the commit history of `origin/main`. A shallow clone should fetch the rest of the history first.
+CI uses a full fetch. `pnpm release:version` rewrites the manifests and each package CHANGELOG.
+Use it only on an actual release branch. Do not run it for this preparation.
 
-稳定版本遵循 semver：破坏性公共 API/样式契约改变 major，新能力 minor，修复 patch。
-在 0.x 阶段，破坏性变化至少提高 minor 并记录直接迁移方法；alpha 每次发布也必须
-记录变化。没有旧包名、旧 token 或源码同步的兼容 shim，不复用旧包名发布同一实现。
-初始 changeset 描述已完成的基础，不宣称全部组件契约或产品接入已验收。
+Stable versions follow semver: a breaking public API or style-contract change is a major bump, a new capability is a minor bump, and a fix is a patch.
+During 0.x, a breaking change at least raises the minor version and records a direct migration method. Every alpha release must also
+record what changed. There is no compatibility shim for an old package name, an old token, or source sync, and the same implementation is not published again under an old package name.
+The initial changeset describes the foundation that is already done. It does not claim that every component contract or product integration has been accepted.
 
-## 授权与第三方来源
+## Licensing and third-party sources
 
-根与五个包携带 MIT LICENSE；MolCrafts 授权不覆盖第三方版权。
-React NOTICE 保留 shadcn/ui 衍生来源及 Microsoft Fluent attribution；tokens NOTICE
-保留官方 token 来源；原生 NOTICE 与 THIRD_PARTY_NOTICES 包含官方 tokens/icons、
-Fluent/FAST 与保守依赖闭包的授权文本，包括 Apache-2.0、0BSD 条款。
-`pnpm build:notices` 从安装的固定依赖生成完整文本；缺失未知来源授权会使生成失败。
-React JS 的 npm runtime dependencies 不被打包，仍携带自身上游授权。
-不分发 Segoe 字体文件；字体栈只使用已安装系统字体，官方字体/assets 条款仍适用。
+The root and the five packages carry an MIT LICENSE. The MolCrafts license does not cover third-party copyrights.
+The React NOTICE keeps the shadcn/ui derivative origin and the Microsoft Fluent attribution. The tokens NOTICE
+keeps the official token sources. The native NOTICE and THIRD_PARTY_NOTICES contain the license text for the official tokens and icons,
+Fluent and FAST, and a conservative dependency closure, including the Apache-2.0 and 0BSD terms.
+`pnpm build:notices` generates the full text from the installed pinned dependencies. A missing license for an unknown source fails the generation.
+The React package's npm runtime dependencies are not bundled. They still carry their own upstream licenses.
+Segoe font files are not distributed. The font stack uses only fonts already installed on the system. Official font and asset terms still apply.
 
-## 尚未完成的发布条件
+## Release conditions that are not yet met
 
-- 首发所选公共组件的 API、states、stories 和升级说明完成审查；其余范围明确标记。
-- 至少一个真实 MolCrafts 产品使用新 imports/CSS，并有功能验证证据。
-- 在明确的发布任务中核对 npm scope 所有权、五个名称与发布账号权限；选包名不等于取得权限。
-- 确认 GitHub 外部改名时间，统一 repository/homepage/bugs、Registry URL、docs 与产品链接。
-- 审查真实 alpha manifests/changelogs 和干净提交上的候选 tarball；确认发布内容、channel 与来源。
+- Review of the API, states, stories, and upgrade notes for the public components chosen for the first release is complete, and the remaining scope is explicitly marked.
+- At least one real MolCrafts product uses the new imports and CSS, and there is evidence of functional verification.
+- In an explicit release task, check npm scope ownership, the five names, and the publish account's permissions. Choosing the package names is not the same as holding those permissions.
+- Confirm when the external GitHub rename happens, and align repository, homepage, and bugs, the Registry URL, the docs, and the product links.
+- Review the real alpha manifests and changelogs, and the candidate tarballs built from a clean commit. Confirm what is published, the channel, and the source.
 
-这些是 [roadmap](design-system-roadmap.md) 中未完成的事项，不在本次演练中自动跳过。
+These are unfinished items on the [roadmap](design-system-roadmap.md). This rehearsal does not skip them automatically.
 
-## 后续实际发布任务
+## The later, actual release task
 
-以下步骤描述未来流程，不是本次授权的动作：
+The steps below describe a future process. They are not actions authorized by this rehearsal:
 
-1. 从全绿 main 建立 release branch，确认首发范围和渠道；用 Changesets `pre enter alpha`
-   与 `release:version` 生成实际版本/changelogs，更新 lockfile。
-2. 仅把五个分发包的 private 改为 false；root/apps 保持 private。准备期的
-   `prepare:release` 会拒绝非 private 包，应在 release PR 将检查升级为明确的 candidate
-   检查，而不是跳过 exports、许可证、依赖或消费验证。
-3. 完成候选构建、公开类型、a11y/视觉、原生、tarball、真实产品检查；review 并合并 release PR。
-4. 发布操作者确认精确提交、版本与 alpha tag。先发布 tokens，再发布 React 与原生包。
-   发布后以 registry 上的实际版本重新安装验证，不以本地 workspace 代替。
-5. 验证后记录发布 tag/release、changelog 与包链接。未来可另行配置 npm Trusted Publishing；
-   当前没有 publish command、发布 workflow、token secret 或自动 tag/release。
+1. From a fully green main, create a release branch and confirm the first-release scope and channel. Use Changesets `pre enter alpha`
+   and `release:version` to generate the real versions and changelogs, and update the lockfile.
+2. Set `private` to false only for the five distributable packages. Keep the root and the apps private. During preparation,
+   `prepare:release` rejects packages that are not private. On the release PR, turn that check into an explicit candidate
+   check instead of skipping export, license, dependency, or consumer verification.
+3. Finish the candidate build, public types, accessibility and visual checks, native checks, tarball checks, and real-product checks. Review the release PR and merge it.
+4. The release operator confirms the exact commit, the versions, and the alpha tag. Publish tokens first, then the React package and the native package.
+   After publishing, install the actual versions from the registry again and verify them. Do not substitute the local workspace.
+5. After verification, record the release tag or GitHub release, the changelog, and the package links. npm Trusted Publishing can be configured separately later.
+   There is currently no publish command, no publish workflow, no token secret, and no automatic tag or release.
 
-已发布版本不能覆盖重发。失败时记录已成功的包与版本，完成其余包或发布修复版本，
-不要修改既有 tarball。产品回退到上一组明确版本；存在严重问题时由发布操作者审查
-调整 dist-tag 或 deprecate。首发没有上一个稳定组，不承诺自动回滚至旧源码。
+A published version cannot be overwritten and published again. On failure, record which packages and versions succeeded, then finish the remaining packages or publish a fix version.
+Do not modify an existing tarball. Products roll back to the previous explicit version set. If there is a serious problem, the release operator reviews
+changing the dist-tag or deprecating the release. The first release has no previous stable set, and it does not promise an automatic rollback to the old source.
 
 Optional chart packages are included in release/plan.json and the fixed Changesets group.
 Core remains engine-free; native Vega consumers do not install the Lite compiler.

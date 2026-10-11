@@ -1,15 +1,15 @@
 # @molcrafts/design-web-components
 
-MolCrafts 的框架无关 Fluent 2 入口。基于官方 `@fluentui/web-components` **3.1.3**，
-采用 FAST Web Components；不依赖 React 或 Tailwind。与 React primitives 共用
-设计宪法、产品 primary / secondary、明暗与无障碍验收规则。
+The framework-agnostic Fluent 2 entry point for MolCrafts. It is based on the official `@fluentui/web-components` **3.1.3**
+and uses FAST Web Components. It does not depend on React or Tailwind. It shares the design constitution,
+product primary / secondary, light and dark modes, and accessibility acceptance rules with the React primitives.
 
-此包目前通过 workspace 或构建后的 tarball 使用，尚未发布到 npm。
+This package is currently used through the workspace or a built tarball. It is not yet published to npm.
 
 ```bash
-pnpm build:web-components              # 在仓库根目录运行，Rslib / Rspack
+pnpm build:web-components              # Run from the repository root; Rslib / Rspack
 pnpm --filter @molcrafts/design-web-components pack
-# 在消费项目安装生成的 tarball，然后导入以下入口
+# Install the generated tarball in the consuming project, then import the entry points below
 ```
 
 ```ts
@@ -18,11 +18,11 @@ import { registerMolcraftsComponents } from '@molcrafts/design-web-components';
 await registerMolcraftsComponents();
 ```
 
-或使用自动注册入口 `import '@molcrafts/design-web-components/register'`。
-注册是异步的，重复调用安全；同页面存在其他版本的同名 Fluent 元素会明确
-报错。保留官方 `fluent-*` 标签与属性/API，避免重复实现键盘、表单和 ARIA。
+Or use the auto-registration entry point `import '@molcrafts/design-web-components/register'`.
+Registration is asynchronous, and calling it again is safe. If the same page already contains a Fluent element of another version with the same name, registration fails with an explicit error.
+Official `fluent-*` tags and their attributes/API are kept, so keyboard behavior, forms, and ARIA are not reimplemented.
 
-原生 HTML 可复制 `dist/` 到静态资源目录，直接加载，不需要 import map：
+Plain HTML can copy `dist/` into a static asset directory and load it directly, with no import map:
 
 ```html
 <link rel="stylesheet" href="/ui/theme.css">
@@ -31,34 +31,34 @@ await registerMolcraftsComponents();
 <fluent-text-input name="name" required>Name</fluent-text-input>
 ```
 
-ESM package 入口由消费方打包；`browser.js` 是包含运行时依赖的独立 ESM 包。
-两种入口均以浏览器为运行环境。SSR 应在客户端挂载阶段动态导入和注册，
-服务端只输出标签；不要在服务端执行包入口。
+The ESM package entry points are bundled by the consumer. `browser.js` is a standalone ESM bundle that includes runtime dependencies.
+Both entry points run in the browser. For SSR, dynamically import and register during client mount.
+The server should only emit the tags. Do not execute the package entry points on the server.
 
-## 纳管范围
+## Managed scope
 
-`components.json` 是组件和图标清单。当前管理 13 个标签：button、badge、
-checkbox、switch、text-input、textarea、label、field、divider、spinner、
-tab、tablist、tooltip（均为 `fluent-` 前缀）。清单生成注册表、TypeScript
-标签类型、官方 API 的 Custom Elements Manifest 和构建资产。
+`components.json` is the component and icon inventory. It currently manages 13 tags: button, badge,
+checkbox, switch, text-input, textarea, label, field, divider, spinner,
+tab, tablist, and tooltip (all with the `fluent-` prefix). The inventory generates the registry, TypeScript
+tag types, the Custom Elements Manifest for the official API, and the build assets.
 
-这是一套独立的 Web Components API；React 的 `variant`、`onCheckedChange`
-等 props 不直接映射到原生元素。使用官方 `appearance` 属性、元素属性和
-原生 `input` / `change` / `click` 事件。尚未列入清单的组件不承诺与 React
-registry 对等；扩展需补齐 Storybook、manifest 和浏览器验收。
+This is an independent Web Components API. React props such as `variant` and `onCheckedChange`
+do not map directly onto the native elements. Use the official `appearance` attribute, element properties, and
+native `input` / `change` / `click` events. Components not yet in the inventory are not promised to match the React
+registry. Extending the set requires Storybook, the manifest, and browser acceptance to be completed.
 
-## 主题和图标
+## Theme and icons
 
-`theme.css` 是普通 CSS，不含 Tailwind 指令。它导入共享颜色与状态，并把
-primary、neutral、disabled、focus 映射到官方 camelCase tokens，让颜色
-继承进入 Shadow DOM。生成的官方宿主样式保护控件不受页面 reset 影响，
-Shadow DOM 内部样式仍由官方组件管理。产品在根元素或 `.mol-product-theme` 容器覆盖完整的
-primary / secondary 明暗色组；具体契约见仓库的设计宪法。无须调用官方
-`setTheme()`，避免它覆盖统一的主题契约。
+`theme.css` is plain CSS and contains no Tailwind directives. It imports shared colors and states, and maps
+primary, neutral, disabled, and focus onto the official camelCase tokens so that color
+inheritance reaches into the Shadow DOM. Generated official host styles protect controls from page resets.
+Styles inside the Shadow DOM remain managed by the official components. A product overrides the complete
+primary / secondary light and dark color groups on the root element or a `.mol-product-theme` container. The concrete contract is the repository design constitution. There is no need to call the official
+`setTheme()`, which would overwrite the shared theme contract.
 
-`fluentIcons` 提供清单内官方 `@fluentui/svg-icons` **1.1.344** 的 Regular SVG
-字符串，按生成流程内联分发，无 React 依赖。字符串包含 `aria-hidden` 和
-`currentColor`，适合装饰性按钮图标。更多图标加入清单，重新生成。
+`fluentIcons` provides Regular SVG strings from the official `@fluentui/svg-icons` **1.1.344** for icons listed in the inventory.
+They are inlined and distributed by the generation pipeline, with no React dependency. The strings include `aria-hidden` and
+`currentColor`, and are suitable as decorative button icons. To add more icons, put them in the inventory and regenerate.
 
 ```ts
 import { fluentIcons } from '@molcrafts/design-web-components';
@@ -68,26 +68,26 @@ add.type = 'button';
 add.iconOnly = true;
 add.id = 'add-item';
 add.setAttribute('aria-label', 'Add item');
-add.innerHTML = fluentIcons.add; // 仅使用包提供的固定 SVG；用户内容使用 textContent。
+add.innerHTML = fluentIcons.add; // Use only the fixed SVG provided by the package; put user content in textContent.
 document.body.append(add);
 ```
 
-关联 `<fluent-tooltip anchor="add-item">Add item</fluent-tooltip>` 提供悬停和
-键盘提示。工具栏优先纯图标操作；表单确认和含义不明确的行动保留文字。
-标准高度 32px，small 适配 28px，large 40px；触屏命中区域至少 44px。
-CSS tokens 不应依赖访问内部 Shadow DOM；使用公开属性与 `::part`。
+Pair it with `<fluent-tooltip anchor="add-item">Add item</fluent-tooltip>` for hover and
+keyboard hints. Toolbars prefer icon-only actions. Keep text for form confirmations and for actions whose meaning is unclear.
+The standard height is 32px, small is sized for 28px, and large is 40px. Touch hit targets are at least 44px.
+CSS tokens must not depend on reaching into the internal Shadow DOM. Use public attributes and `::part`.
 
-文本输入框用默认 slot 提供标签：`<fluent-text-input>Name</fluent-text-input>`；
-textarea 使用 `<span slot="label">Notes</span>`。只在宿主设置 `aria-label`
-不能保证内部原生输入框获得名称。textarea 初始内容放在默认 slot，后续值
-通过元素的 `value` 属性设置。`fluent-label` 提供视觉样式，不等同于原生 label。
+Text inputs take their label from the default slot: `<fluent-text-input>Name</fluent-text-input>`.
+A textarea uses `<span slot="label">Notes</span>`. Setting `aria-label` only on the host
+does not guarantee that the inner native input receives a name. Put a textarea's initial content in the default slot, and set later values
+through the element's `value` property. `fluent-label` provides visual styling and is not equivalent to a native label.
 
-## 框架接入
+## Framework integration
 
-Vue 在构建配置中将 `fluent-` 标签视为自定义元素，例如：
+In the Vue build configuration, treat `fluent-` tags as custom elements, for example:
 
 ```ts
-// Vue 编译器 / vue-loader 的 compilerOptions（例如 Rsbuild 的 Vue 插件）
+// compilerOptions for the Vue compiler / vue-loader (for example, the Rsbuild Vue plugin)
 isCustomElement: (tag: string) => tag.startsWith('fluent-')
 ```
 
@@ -95,16 +95,16 @@ isCustomElement: (tag: string) => tag.startsWith('fluent-')
 <fluent-text-input name="name" @input="onInput">Name</fluent-text-input>
 ```
 
-Angular 在消费组件的 `schemas` 添加 `CUSTOM_ELEMENTS_SCHEMA`，使用原生
-事件和 property binding；双向表单需消费方的 ControlValueAccessor 适配。
-React 19 支持自定义元素，可用 `createElement('fluent-button', props)` 或消费方
-自己的 JSX 声明；复杂原生事件用 ref / addEventListener 接入并清理监听器。
-Svelte 和原生 HTML 直接使用标签。以上框架共用同一浏览器注册入口。
+In Angular, add `CUSTOM_ELEMENTS_SCHEMA` to the consuming component's `schemas`, and use native
+events and property binding. Two-way forms need a ControlValueAccessor adapter in the consumer.
+React 19 supports custom elements. Use `createElement('fluent-button', props)` or the consumer's
+own JSX declarations. Connect complex native events with a ref / addEventListener, and remove the listeners.
+Svelte and plain HTML use the tags directly. The frameworks above share the same browser registration entry point.
 
-浏览器须支持 Custom Elements、Shadow DOM、ElementInternals / 表单关联元素；
-tooltip 还使用现代 Popover / CSS anchor 能力，兼容回退由官方实现管理。
+Browsers must support Custom Elements, Shadow DOM, and ElementInternals / form-associated custom elements.
+Tooltips also use modern Popover / CSS anchor positioning. Compatibility fallbacks are managed by the official implementation.
 
-## 开发验收
+## Development acceptance
 
 ```bash
 pnpm generate:web-components
@@ -115,13 +115,16 @@ pnpm test:web-components
 pnpm build:storybook
 ```
 
-Storybook 的 `Web Components/Foundations` 展示真实原生元素，React 仅作为现有
-Storybook 的宿主。CI 验证生成文件、ESM 包、独立 HTML 包、重复注册、键盘
-与 Tooltip、禁用、原生 FormData/提交、品牌色穿透、明暗、减少动画和高对比度。
-构建导出 `custom-elements.json`，供 IDE 和其他 Web Components 工具消费。
+The Storybook sidebar `Web Components` lists one story per managed tag.
+`Web Components/Foundations` is the combined page. React serves only as the Storybook host.
+`pnpm verify:stories` requires a title for every class in `components.json`.
+An Impeccable review targets one named story and does not walk the group automatically.
+CI checks generated files, the ESM package, the standalone HTML bundle, repeated registration, keyboard
+behavior and Tooltip, disabled state, native FormData/submit, brand-color penetration, light and dark modes, reduced motion, and high contrast.
+The build exports `custom-elements.json` for IDEs and other Web Components tools to consume.
 
-共享颜色、几何与行为源位于 `packages/tokens`；构建时将其独立 runtime CSS
-整合进本包 `theme.css`，不再维护共享 tokens 的源码副本。
+Shared sources for color, geometry, and behavior live in `packages/tokens`. At build time, that package's standalone runtime CSS
+is folded into this package's `theme.css`. A source copy of the shared tokens is no longer maintained.
 
 MIT licensed. See LICENSE, NOTICE.md and THIRD_PARTY_NOTICES.md included in this archive.
 Release preparation: https://github.com/MolCrafts/molcrafts-ui/blob/main/docs/releasing.md

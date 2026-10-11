@@ -33,6 +33,20 @@ User instructions take precedence over these repository rules.
 
 ## Design and component work
 
+Open a component in Storybook (`pnpm storybook`). The sidebar lists Foundations, UI,
+Blocks, Web Components, and Charts. Every public component has one story there.
+`pnpm verify:stories` (also run by `pnpm verify:packages`) fails when an entry is missing.
+
+Visual review follows Impeccable's target rules:
+- Bare `/impeccable` only recommends commands. Its scan prefers dirty markup and style
+  files, then a source directory, then HTML or the repo root. It does not walk the sidebar.
+- `/impeccable critique` and `/impeccable audit` take one file or one URL. Pass that
+  story file or its iframe. A tree of 500 or more files is narrowed or asked about.
+- `/impeccable polish` reuses that target's critique snapshot when its bytes are unchanged,
+  and starts fresh when they change.
+- A full sidebar pass happens only when the user explicitly asks for one. Each critique
+  is still one target.
+
 Inspect existing implementations, public contracts and Storybook examples first.
 Follow Fluent 2, MolCrafts semantic tokens, complete product primary/secondary families,
 light/dark themes and documented variants. Read [theming](docs/theming.md),
@@ -68,7 +82,11 @@ pnpm build:storybook
 pnpm test:storybook
 ```
 
-Browser tests require Playwright Chromium installed. Token/registry/native generation
+CI follows the MolCrafts CI scheme from molcrafts-ci: `lint.yml` (`lint / workflows` runs
+`actions/check-workflows`) and `test.yml` (`test / packages`, `test / browsers`), each opened by a
+`<file> / context` job. Shared actions are pinned to one molcrafts-ci SHA; bump them together.
+`test / browsers` submits the Playwright results as the `molcrafts-ui` tests record; only a push
+to main is tracked. Browser tests require Playwright Chromium installed. Token/registry/native generation
 must leave committed generated sources consistent; edit generators rather than outputs.
 Use relevant checks for the actual change; documentation-only preparation needs link,
 consistency and diff checks, not new component tests.

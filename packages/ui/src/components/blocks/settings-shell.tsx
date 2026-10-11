@@ -23,12 +23,9 @@ export interface SettingsNavEntry {
 
 function NavSeparator({ label }: { label: string }): JSX.Element {
   return (
-    <div className="flex items-center gap-2 px-1.5 pb-1 pt-2.5">
-      <Separator className="min-w-0 flex-1" />
-      <span className="shrink-0 text-label font-semibold text-muted-foreground">
-        {label}
-      </span>
-      <Separator className="min-w-0 flex-1" />
+    <div className="px-2.5 pt-3">
+      <Separator className="mb-2" />
+      <span className="text-label font-semibold text-muted-foreground">{label}</span>
     </div>
   );
 }
@@ -85,6 +82,15 @@ export function SettingsShell({
     const updateActive = (): void => {
       if (performance.now() < navLockUntil.current) return;
 
+      const maxScroll = root.scrollHeight - root.clientHeight;
+      if (maxScroll <= 1) return;
+      if (root.scrollTop >= maxScroll - 1) {
+        const last = nodes[nodes.length - 1];
+        const id = last?.dataset.settingsSection ?? last?.id ?? "";
+        if (id) setActiveId((prev) => (prev === id ? prev : id));
+        return;
+      }
+
       const rootTop = root.getBoundingClientRect().top;
       const threshold = rootTop + root.clientHeight * 0.28;
       let current = nodes[0].dataset.settingsSection ?? nodes[0].id;
@@ -138,10 +144,10 @@ export function SettingsShell({
                   onClick={() => scrollToCategory(item.id)}
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "flex w-full items-center gap-2 rounded-control border-l-2 px-2.5 py-1.5 text-left text-body mol-focus transition-colors duration-(--motion-fast) ease-standard",
+                    "flex min-h-control w-full items-center gap-2 rounded-control px-2.5 text-left text-body mol-focus transition-colors duration-(--motion-fast) ease-standard",
                     isActive
-                      ? "border-primary-link bg-primary-muted font-semibold text-primary-muted-foreground"
-                      : "border-transparent text-muted-foreground hover:bg-interactive hover:text-foreground",
+                      ? "bg-primary-muted font-semibold text-primary-muted-foreground"
+                      : "text-muted-foreground hover:bg-interactive hover:text-foreground",
                   )}
                 >
                   {item.icon ? (

@@ -22,7 +22,7 @@ real-product integration remain tracked in the [roadmap](docs/design-system-road
 | `packages/vega` | Optional native Vega View, lifecycle, themes, data/signals and export |
 | `packages/vega-lite` | Optional compiler adapter reusing the Vega viewer |
 | `packages/web-components` | 13 managed Fluent custom elements with independent native APIs |
-| `apps/storybook` | Documentation and playground consuming built public package entries |
+| `apps/storybook` | Documentation and playground. Sidebar lists every public component |
 | `tests/consumer/app` | Independent Rsbuild application without Tailwind configuration |
 | `registry` | Optional package setup and composition examples; no core source distribution |
 
@@ -34,7 +34,8 @@ Use Node 24+ and pnpm 11.25.0, pinned by `packageManager`.
 pnpm install --frozen-lockfile
 pnpm storybook             # build packages, then http://localhost:6006
 pnpm typecheck             # builds packages before checking public types and stories
-pnpm verify:packages       # exports, module closure, CSS and React SSR
+pnpm verify:packages       # exports, module closure, CSS, React SSR, Storybook coverage
+pnpm verify:stories        # every public component has a Storybook sidebar entry
 pnpm build:consumer        # independent Rsbuild build, no library source scan
 pnpm exec playwright install chromium
 pnpm test:consumer

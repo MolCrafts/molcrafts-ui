@@ -19,6 +19,7 @@
     "build:consumer": "pnpm build:ui && pnpm build:charts && pnpm --filter @molcrafts/consumer-fixture build",
     "test:consumer": "playwright test --config tests/consumer/playwright.config.ts",
     "verify:packages": "node scripts/verify-packages.mjs",
+    "verify:stories": "node scripts/verify-storybook-coverage.mjs",
     "verify:consumer-tarball": "node scripts/verify-consumer-tarball.mjs",
     "test:storybook": "playwright test --config tests/storybook/playwright.config.ts",
     "build:catalog": "node scripts/build-component-catalog.mjs",
