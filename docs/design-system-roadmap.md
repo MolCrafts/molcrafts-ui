@@ -1,168 +1,168 @@
-# molcrafts-design 实施 Roadmap
+# molcrafts-design implementation roadmap
 
-日期：2026-10-10 · 当前阶段：P1 已合并（PR #6，ded1b1e）；P2 已合并（PR #7，3e1d2dc）；发布准备已合并（PR #8）；当前实施可选图表与 CI dashboard 迁移。
-2026-10-10 用户要求不向后兼容，覆盖原 roadmap 中的兼容条款。
-依据：[Refactoring Spec v1.0](design-system-refactoring-spec.md)。
-本文件描述未来工作，未勾选事项不代表已经实现。阶段按依赖推进，不预设日期。
-实施已授权；用户确认 @molcrafts/design 系列包名与 MIT。允许仓库内命名及发布准备；
-不发布、不隐式修改外部资源；项目名称为 `molcrafts-design`。
+Date: 2026-10-10 · Current stage: P1 merged (PR #6, ded1b1e); P2 merged (PR #7, 3e1d2dc); release preparation merged (PR #8); currently implementing optional charts and the CI dashboard migration.
+On 2026-10-10 the user required no backward compatibility, superseding the compatibility clauses in the original roadmap.
+Based on: [Refactoring Spec v1.0](design-system-refactoring-spec.md).
+This file describes future work; unchecked items are not implemented. Stages proceed by dependency and do not preset dates.
+Implementation is authorized; the user confirmed the @molcrafts/design package names and MIT. In-repository naming and release preparation are allowed;
+do not publish and do not implicitly modify external resources; the project name is `molcrafts-design`.
 
-## 当前准备交付 P0
+## Current preparation delivery P0
 
-- [x] 将用户规范和既有 Fluent 2 / 产品品牌 / 图标 / 原生实现要求统一成 spec。
-- [x] 记录现有源码、构建、文档覆盖与迁移风险。
-- [x] 建立 roadmap、根 AGENTS 和可移植 Skill。
-- [x] 更新 README、CLAUDE 与旧规范入口，区分当前实现与目标架构。
-- [x] 实施前重验类型、生成、原生包/测试与 Storybook baseline。
-- [ ] 真实产品 API 使用与迁移验证仍待产品 PR。
+- [x] Unify the user specification and the existing Fluent 2 / product brand / icon / native-implementation requirements into the spec.
+- [x] Record existing source, builds, documentation coverage, and migration risks.
+- [x] Establish the roadmap, root AGENTS, and the portable Skill.
+- [x] Update README, CLAUDE, and the old-spec entry points, distinguishing the current implementation from the target architecture.
+- [x] Re-verify types, generation, the native package/tests, and the Storybook baseline before implementation.
+- [ ] Real-product API usage and migration verification still await a product PR.
 
-文档交付不是 pnpm、React 包分发或产品兼容迁移的完成证据。
+Documentation delivery is not evidence that pnpm, React package distribution, or product-compatible migration is complete.
 
-## PR 1 / P1 — Workspace 与包构建基础
+## PR 1 / P1 — Workspace and package-build foundation
 
-**改什么**
+**What changes**
 
-- [x] 固定 pnpm，建立 workspace 和唯一 lockfile；同步 CI 安装方式。
-- [x] 建立 tokens/ui 逻辑边界，将唯一实现迁移到 packages，更新内部 imports。
-- [x] Rslib 输出 JS、公共类型和已编译 CSS，声明 exports/peers/files/sideEffects。
-- [x] Storybook 移入 apps/storybook，通过公开入口消费，继续 Rsbuild/Rspack。
-- [x] Web Components 改为依赖共享 tokens 资产，消除手工复制形成的独立真源。
-- [x] 调整 Registry/同步脚本路径，并删除旧源码同步与兼容流程；不修改外部产品。
+- [x] Pin pnpm, establish the workspace and a single lockfile; align the CI install method.
+- [x] Establish tokens/ui logical boundaries, move the single implementation into packages, and update internal imports.
+- [x] Rslib emits JS, public types, and compiled CSS, and declares exports/peers/files/sideEffects.
+- [x] Move Storybook into apps/storybook, consume it through public entry points, and keep Rsbuild/Rspack.
+- [x] Make Web Components depend on shared token assets and remove the independent source of truth created by hand-copying.
+- [x] Adjust Registry/sync-script paths and delete the old source-sync and compatibility flow; do not modify external products.
 
-**原因**：建立可验证的模块与分发边界，暴露隐式 alias、依赖和源码扫描要求。
+**Why**: Establish verifiable module and distribution boundaries and expose implicit aliases, dependencies, and source-scan requirements.
 
-**后续影响**：新增共享实现只放 packages；应用和 stories 不再读内部源码。
-消费方使用组件入口和编译 CSS，工具/图标继续留在组件包内部。
+**Downstream impact**: New shared implementations live only in packages; applications and stories no longer read internal source.
+Consumers use component entry points and compiled CSS; utilities and icons stay inside the component package.
 
-**退出条件**：干净安装、类型、包构建、生成一致性及 Storybook 通过；现有 stories 可渲染并完成已有 play，关键控件尺寸/主题/交互通过消费者检查；
-导出与 CSS 入口可从独立进程解析。全量视觉回归仍待后续阶段。
-不添加兼容 shim；旧入口、旧别名与产品专属扩展直接删除，提供新接入文档。
+**Exit criteria**: A clean install, types, package builds, generation consistency, and Storybook pass; existing stories render and complete their existing play functions, and key control size/theme/interaction pass consumer checks;
+exports and the CSS entry can be resolved from an independent process. Full visual regression still waits for a later stage.
+Do not add a compatibility shim; old entry points, old aliases, and product-specific extensions are deleted directly, and new integration docs are provided.
 
-## PR 2 / P2 — 设计 tokens 与主题契约
+## PR 2 / P2 — Design tokens and theme contract
 
-- [x] 补齐 foundation/semantic 清单、说明、来源并移除废弃别名。
-- [x] 固化 MolCrafts-owned 映射与上游版本审查流程，保持当前 Fluent 2 基线。
-- [x] 分离纯 CSS runtime entry 与 Tailwind v4 integration。
-- [x] 验证 light/dark、产品 primary/secondary、局部主题、portal 继承。
-- [x] 清查原始色值、任意尺寸、品牌色与状态色混用；记录分批处理范围。
-- [x] 验证 forced-colors、reduced-motion、状态与焦点对比度。
+- [x] Complete the foundation/semantic inventory, descriptions, and sources, and remove deprecated aliases.
+- [x] Fix the MolCrafts-owned mappings and the upstream-version review process, keeping the current Fluent 2 baseline.
+- [x] Separate the pure CSS runtime entry from the Tailwind v4 integration.
+- [x] Verify light/dark, product primary/secondary, scoped themes, and portal inheritance.
+- [x] Audit raw color values, arbitrary sizes, and mixed brand and status colors; record the batch-handling scope.
+- [x] Verify forced-colors, reduced-motion, and state and focus contrast.
 
-**原因**：使所有运行时共享设计契约，产品只提供自己的品牌与主题配置。
+**Why**: Make every runtime share the design contract so a product only supplies its own brand and theme configuration.
 
-**后续影响**：组件新样式优先使用语义角色；产品不需要覆盖内部 DOM。
-新增 token 需要表达可复用语义或明确定制契约。
+**Downstream impact**: New component styles prefer semantic roles; products do not need to override internal DOM.
+A new token must express reusable semantics or an explicit customization contract.
 
-**退出条件**：tokens 无 React/primitive/application 依赖；主题无需重建；同一
-品牌主题在 React 与已有原生控件中一致生效；视觉变化有独立记录。
+**Exit criteria**: tokens have no React/primitive/application dependencies; themes need no rebuild; the same
+brand theme applies consistently in React and existing native controls; visual changes have a separate record.
 
-## PR 3+ / P3 — 分批组件所有权
+## PR 3+ / P3 — Component ownership in batches
 
-批次可按审计结果调整，每批单独完成 API、stories、相关测试与迁移说明。
+Batches may be adjusted from audit results. Each batch independently completes the API, stories, related tests, and migration notes.
 
 | Batch | Initial scope | Why / downstream impact |
 | --- | --- | --- |
-| A | Button、Badge、Input、Label、Textarea、Card | 固定基本尺寸、状态、品牌与 icon-only 规范，供后续组合复用 |
-| B | Checkbox、Switch、Select、NumberField、Slider | 稳定表单受控/非受控、invalid、disabled、ref 与键盘契约 |
-| C | Dialog、AlertDialog、Sheet、Popover、Tooltip、menus | 验证焦点管理、portal、主题与关闭行为，保留有效 Radix |
-| D | Tabs、Accordion、Collapsible、Command、其余 primitives/blocks | 在基础契约稳定后处理组合、布局与遗留产品耦合 |
+| A | Button, Badge, Input, Label, Textarea, Card | Fix basic sizes, states, brand, and icon-only rules for later composition reuse |
+| B | Checkbox, Switch, Select, NumberField, Slider | Stabilize form controlled/uncontrolled, invalid, disabled, ref, and keyboard contracts |
+| C | Dialog, AlertDialog, Sheet, Popover, Tooltip, menus | Verify focus management, portals, themes, and dismiss behavior, and keep working Radix |
+| D | Tabs, Accordion, Collapsible, Command, and the remaining primitives/blocks | After base contracts are stable, handle composition, layout, and leftover product coupling |
 
-- [ ] 按公共导出清单记录 props、variants、sizes、slots 和实现细节泄漏。
-- [ ] 样式迁移到 MolCrafts 语义 tokens；保留可预测 className 合并。
-- [ ] 复杂新交互按需求评估 Base UI；不为了统一替换有效 Radix。
-- [ ] 对破坏性 API/视觉变化提供前后示例、新入口与升级说明。
-- [ ] 把 utils 中产品专有扩展与共享契约区分，删除产品专有扩展，产品自行迁移配置。
+- [ ] Record props, variants, sizes, slots, and leaked implementation details against the public export list.
+- [ ] Migrate styles to MolCrafts semantic tokens; keep predictable className merging.
+- [ ] Evaluate Base UI for complex new interactions as needed; do not replace working Radix for uniformity.
+- [ ] For breaking API/visual changes, provide before/after examples, the new entry points, and upgrade notes.
+- [ ] Separate product-specific extensions in utils from the shared contract, delete the product-specific extensions, and let products migrate their own configuration.
 
-**退出条件**：每批公开导出有契约和 stories；相关类型、键盘、交互、a11y 与
-关键视觉验证通过；未迁移组件明确标记，不宣称全库完成。
+**Exit criteria**: Each batch's public exports have a contract and stories; related type, keyboard, interaction, a11y, and
+key visual checks pass; unmigrated components are explicitly marked, and the whole library is not claimed complete.
 
-## PR 4 / P4 — 文档、Agent 与覆盖检查
+## PR 4 / P4 — Documentation, Agents, and coverage checks
 
-该阶段可随 P3 逐批交付，最终集中检查遗漏。
+This stage can ship with P3 batch by batch, with a final concentrated check for omissions.
 
-- [ ] 完整组件目录：名称、用途、公开 import、最小示例、状态、story。
-- [ ] 已迁移公共组件覆盖默认/变体/尺寸/主题/状态/组合/重要 a11y 行为。
-- [ ] Autodocs 与公共类型一致，示例不导入内部实现。
-- [ ] AGENTS/Skill 使用最终 workspace 命令和包名，不保留过时引导。
-- [ ] 可选 Registry 项引用 canonical packages，保持单一实现。
+- [ ] A complete component catalog: name, purpose, public import, minimal example, status, and story.
+- [ ] Migrated public components cover default/variants/sizes/themes/states/compositions/important a11y behavior.
+- [ ] Autodocs matches public types, and examples do not import internal implementations.
+- [ ] AGENTS/Skill use the final workspace commands and package names and do not keep outdated guidance.
+- [ ] Optional Registry items reference canonical packages and keep a single implementation.
 
-**原因与影响**：开发者与 Agent 可以先发现再复用；共享组件修改同步更新文档。
+**Why and impact**: Developers and Agents can discover before they reuse; shared component changes update documentation together.
 
-**退出条件**：从仓库文档可完成查找、接入、主题配置和常见组合；按公共导出
-检查覆盖，不能仅统计 story 文件数量。
+**Exit criteria**: Repository docs are enough to find components, integrate them, configure themes, and build common compositions; check coverage
+against public exports, and do not merely count story files.
 
-## PR 5 / P5 — 独立消费与质量门禁
+## PR 5 / P5 — Standalone consumption and quality gates
 
-- [x] 独立 Rsbuild fixture 只使用构建 exports 和编译 CSS，无库源码扫描。
-- [x] 本地 tarball 安装验证 JS、types、CSS、runtime dependencies 与 assets。
-- [x] 非平凡交互/键盘/a11y 检查纳入 CI，明确关键视觉基线更新方式。
-- [x] 继续维护 Web Components 原生 HTML、表单、注册与主题浏览器测试。
-- [ ] 选定一个真实 MolCrafts 产品，在独立产品 PR 中验证功能兼容与迁移。
-- [x] 记录新 imports/Registry 用法；旧入口不提供兼容窗口。
+- [x] The standalone Rsbuild fixture uses only build exports and compiled CSS, with no library source scan.
+- [x] A local tarball install verifies JS, types, CSS, runtime dependencies, and assets.
+- [x] Nontrivial interaction/keyboard/a11y checks are in CI, and the way key visual baselines are updated is explicit.
+- [x] Continue maintaining Web Components native HTML, form, registration, and theme browser tests.
+- [ ] Choose one real MolCrafts product and verify functional compatibility and migration in a separate product PR.
+- [x] Record the new imports/Registry usage; old entry points get no compatibility window.
 
-**原因与影响**：区分“仓库可运行”和“产品可消费”，在产品接入前发现遗漏。
+**Why and impact**: Distinguish "the repository runs" from "products can consume it," and find gaps before product integration.
 
-**退出条件**：产物消费 CI 通过；真实产品有明确测试证据。产品 PR 尚未完成时，
-库基础设施可以交付，但整个 refactor 的产品兼容验收保持未完成。
+**Exit criteria**: Artifact-consumption CI passes; the real product has explicit test evidence. Until the product PR is done,
+library infrastructure may ship, but product-compatibility acceptance for the whole refactor stays incomplete.
 
-## P6 — molcrafts-design 命名与发布准备
+## P6 — molcrafts-design naming and release preparation
 
-- [x] 确定 npm scope、React/tokens/原生包名、subpaths 与版本起点。
-- [x] 盘点 repository URL、Registry URL、CI/artifacts、文档与产品 imports。
-- [x] 制定统一改名 PR，提供直接迁移说明，不假设 GitHub redirect 替代 API 迁移。
-- [x] 编写 semver、changeset/changelog、升级、回退与可复现 release 文档。
-- [x] 本地打包演练，确认 license、第三方归属和发布文件范围。
+- [x] Decide the npm scope, React/tokens/native package names, subpaths, and the version starting point.
+- [x] Inventory repository URLs, Registry URLs, CI/artifacts, docs, and product imports.
+- [x] Plan a unified rename PR and provide direct migration notes; do not assume a GitHub redirect replaces API migration.
+- [x] Write semver, changeset/changelog, upgrade, rollback, and reproducible release documentation.
+- [x] Rehearse local packing and confirm the license, third-party attribution, and the published file set.
 
-**原因与影响**：避免先发布旧名字再迁移；为消费者提供一致且可追踪的入口。
+**Why and impact**: Avoid publishing the old name and migrating later; give consumers a consistent, traceable entry point.
 
-**退出条件**：改名方案和 release 产物可以审查。当前没有发布步骤，所有包保持
-不可自动发布；真正发包、tag/release 和自动发布配置另行安排。
+**Exit criteria**: The rename plan and release artifacts can be reviewed. There is no publish step now, and every package stays
+not auto-publishable; real publishing, tags/releases, and automatic publishing configuration are scheduled separately.
 
-## 每批 PR 的实施纪律
+## Implementation discipline for every PR batch
 
-写清已完成范围、API/样式变化、产品迁移影响、验证和未解决项。结构与视觉变更尽量
-分开；按依赖顺序合并，绿 CI 不能替代公共契约和产品兼容证据。
-不通过源码同步替代真实产品 PR，不把 Web Components 宣称为 React API 对等。
+State the completed scope, API/style changes, product-migration impact, verification, and unresolved items. Keep structural and visual changes
+separate when possible; merge in dependency order. A green CI cannot replace public-contract and product-compatibility evidence.
+Do not substitute source sync for a real product PR, and do not claim that Web Components are React API equivalents.
 
-## P1 验证记录（2026-10-10）
+## P1 verification record (2026-10-10)
 
-本地：pnpm 安装与公共类型检查、Rslib 包构建、exports/module/CSS/SSR 检查、
-独立 Rsbuild 及外部临时目录 tarball 构建通过；消费者浏览器检查通过，原生
-5 项测试通过；全部 35 个现有 stories 的 render/play 和 Button Autodocs 通过。
-P1 CI 通过并已合并 PR #6。没有发包、改名或修改外部产品。
+Local: pnpm install and the public typecheck, Rslib package builds, exports/module/CSS/SSR checks,
+the standalone Rsbuild build, and a tarball build in an external temporary directory passed; consumer browser checks passed, and the native
+5 tests passed; render/play for all 35 existing stories and Button Autodocs passed.
+P1 CI passed and PR #6 was merged. Nothing was published, renamed, or changed in external products.
 
-同时提前落实少量后续基础：删除 deprecated token 别名、清除产品专有 cn scales、
-生成组件目录、建立产物消费与 story smoke 门禁。P3/P4/P5 未整体完成，
-P2 已补齐局部主题 portal 与首批 a11y/visual；完整 API/state、全库视觉覆盖与真实产品验收仍未完成。
+A small amount of later foundation work was also done early: deprecated token aliases were removed, product-specific cn scales were cleared,
+the component catalog was generated, and artifact-consumption and story smoke gates were established. P3/P4/P5 are not complete as a whole.
+P2 has filled in scoped-theme portals and the first a11y/visual checks; full API/state coverage, whole-library visual coverage, and real-product acceptance are still unfinished.
 
-## P2 验证范围（2026-10-10）
+## P2 verification scope (2026-10-10)
 
-127 项 token 元数据与文档；ThemeScope 及 8 类浮层就近继承；原生嵌套明暗模式。
-独立消费者 7 项测试覆盖键盘、axe 对比度、运行时品牌/尺寸、减少动画、高对比度
-以及 3 张截图；原生 6 项测试。详见 [主题契约](theming.md) 与
-[样式审计](style-audit.md)。构建、公开类型、外部 tarball、39 个 stories 的 render/play 与 Autodocs 本地通过；
-P2 CI 全绿并已合并 PR #7。尚未验证真实产品，也没有发布或外部改名。
+127 token metadata entries and docs; ThemeScope and nearest-host inheritance for 8 overlay kinds; native nested light/dark modes.
+The standalone consumer's 7 tests cover keyboard, axe contrast, runtime brand/size, reduced motion, high contrast,
+and 3 screenshots; the native package has 6 tests. See [theme contract](theming.md) and
+[style audit](style-audit.md). Builds, public types, the external tarball, render/play for 39 stories, and Autodocs passed locally;
+P2 CI was fully green and PR #7 was merged. Real products are not yet verified, and there has been no publish or external rename.
 
-## 发包前准备范围（2026-10-10）
+## Pre-publish preparation scope (2026-10-10)
 
-用户确认 @molcrafts/design 系列包名与 MIT，完成仓库内命名和直接迁移文档。
-配置 Changesets 统一版本；在临时 workspace 演练 0.1.0-alpha.0 和 changelogs，
-实际工作区版本仍为未发布 0.0.1，三个包保持 private。打包清单/exports/许可证/
-依赖改写/校验和、仓库外三个 tarball 的类型和 React/原生 Rsbuild 消费纳入 CI。
-见 [发布准备](releasing.md) 与 [命名计划](rename-plan.md)。外部仓库改名、npm
-发布权限、组件验收范围、真实产品接入和实际候选发布仍未完成。
+The user confirmed the @molcrafts/design package names and MIT, and in-repository naming plus direct migration docs are done.
+Changesets are configured for unified versions; 0.1.0-alpha.0 and changelogs were rehearsed in a temporary workspace,
+while the actual workspace version remains the unpublished 0.0.1 and the three packages stay private. Pack manifests/exports/licenses/
+dependency rewriting/checksums, and typechecking plus React/native Rsbuild consumption of the three tarballs outside the repository, are in CI.
+See [release preparation](releasing.md) and [rename plan](rename-plan.md). External repository rename, npm
+publish permissions, component acceptance scope, real-product integration, and an actual candidate release are still unfinished.
 
-## 可选图表与首个真实消费者
+## Optional charts and the first real consumer
 
-依据：[图表架构](chart-architecture.md)。用户授权新增 Vega 组件库并迁移 CI dashboard。
+Based on: [chart architecture](chart-architecture.md). The user authorized adding a Vega component library and migrating the CI dashboard.
 
-- [x] 建立 design-vega / design-vega-lite，Runtime 与 Compiler 单向依赖。
-- [x] Viewer 生命周期、主题、signals/data、SVG/Canvas 与导出契约及 stories。
-- [x] 浏览器交互/主题/无障碍检查和 native-only 编译依赖隔离验证。
-- [ ] 真实 CI 产品 PR 完成编译 CSS、public imports、图表和 Fluent 图标接入。
-- [ ] 产品浏览器验收及两仓库精确提交 CI 完成。
-- [ ] MolPlot 迁移与原生 Web Components 图表支持（后续任务）。
+- [x] Establish design-vega / design-vega-lite, with a one-way dependency between Runtime and Compiler.
+- [x] Viewer lifecycle, theme, signals/data, SVG/Canvas, and export contracts, plus stories.
+- [x] Browser interaction/theme/accessibility checks and verification that native-only compile dependencies are isolated.
+- [ ] The real CI product PR finishes compiled CSS, public imports, charts, and Fluent icon integration.
+- [ ] Product browser acceptance and exact-commit CI across the two repositories are complete.
+- [ ] MolPlot migration and native Web Components chart support (a later task).
 
-本次继续不发包；未发布阶段的固定 tarball 分发及校验见图表架构。
+This round still does not publish; fixed-tarball distribution and verification for the unpublished stage are in the chart architecture.
 
 ### Typography and density revision (2026-10-10)
 

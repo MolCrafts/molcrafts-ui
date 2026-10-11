@@ -4,184 +4,188 @@ Version: 1.0 · Status: Implementation authorized; incremental delivery
 Date: 2026-10-10 · Scope: current `MolCrafts/molcrafts-ui` repository
 Future project name: **molcrafts-design**
 
-本规范整理用户提供的 v1.0，并纳入此前确认的 Fluent 2、产品品牌色、图标及
-Web Components 要求。2026-10-10 用户随后授权实施，并明确要求不向后兼容；该决定覆盖原始 v1.0
-的 Preserve compatibility 要求。实际完成范围以 roadmap 为准，未发包。
-实现顺序见 [roadmap](design-system-roadmap.md)，现状见
-[实施前审计](design-system-readiness.md)。
+This specification consolidates the user-provided v1.0 and incorporates the previously confirmed Fluent 2, product brand colors, icons, and
+Web Components requirements. On 2026-10-10 the user subsequently authorized implementation and explicitly required no backward compatibility; that decision supersedes the original v1.0
+Preserve compatibility requirement. Actual completion scope follows the roadmap; nothing has been published.
+Implementation order is in [roadmap](design-system-roadmap.md); current status is in
+[pre-implementation audit](design-system-readiness.md).
 
 ## 1. Vision and ownership
 
-把 shadcn 派生组件集合演进为独立、可复用、Agent 友好的 React Design System。
-MolCrafts 拥有视觉语言、tokens、主题、公共 API、样式契约和版本流程。
-跨产品共享基础 UI，不依赖单个产品的布局、数据模型或业务逻辑。
-原则：Own the design, reuse the infrastructure。
+Evolve the shadcn-derived component collection into an independent, reusable, Agent-friendly React Design System.
+MolCrafts owns the visual language, tokens, themes, public APIs, style contracts, and versioning process.
+Share foundational UI across products without depending on any single product's layout, data model, or business logic.
+Principle: Own the design, reuse the infrastructure.
 
-[设计宪法](design-constitution.md) 是具体视觉契约；本文件定义工程与分发边界。
-旧 Registry 规范保留为历史记录，其 Registry 优先、npm 可选的方向由本规范取代。
-不保留旧导入、旧源码分发、旧 token 别名或同步适配器；产品直接迁移到新入口。
+[Design constitution](design-constitution.md) is the concrete visual contract; this document defines engineering and distribution boundaries.
+The old Registry specification is retained as a historical record. Its Registry-first, npm-optional direction is superseded by this specification.
+Do not keep old imports, old source distribution, old token aliases, or sync adapters; products migrate directly to the new entry points.
 
 ## 2. Technology decisions
 
 | Layer | Technology | Contract |
 | --- | --- | --- |
-| UI | React + TypeScript | MolCrafts 拥有公共组件 API |
-| Styling | Tailwind CSS v4 | 构建时生成 CSS，消费方无需扫描库源码 |
-| New complex interactions | Base UI | 优先采用成熟无头行为，按需求引入 |
-| Existing interactions | Radix UI | 保留工作正常的实现，逐步迁移 |
-| Tokens / themes | CSS Custom Properties | 框架无关，运行时主题来源 |
-| Library build | Rslib | JS、类型声明、CSS 资产与明确 exports |
-| Development / documentation | Rsbuild + Storybook Rsbuild | 使用 Rspack 生态 |
-| Workspace | pnpm | 固定版本与单一 workspace lockfile |
-| Future primary distribution | npm-compatible versioned packages | 本次不发布 |
-| Agent / optional source integration | Skills + shadcn Registry | 静态发现与集成脚手架 |
+| UI | React + TypeScript | MolCrafts owns the public component APIs |
+| Styling | Tailwind CSS v4 | CSS is generated at build time; consumers do not need to scan library source |
+| New complex interactions | Base UI | Prefer mature headless behavior; introduce it as needed |
+| Existing interactions | Radix UI | Keep implementations that work; migrate incrementally |
+| Tokens / themes | CSS Custom Properties | Framework-agnostic runtime theme source |
+| Library build | Rslib | JS, type declarations, CSS assets, and explicit exports |
+| Development / documentation | Rsbuild + Storybook Rsbuild | Use the Rspack ecosystem |
+| Workspace | pnpm | Pinned versions and a single workspace lockfile |
+| Future primary distribution | npm-compatible versioned packages | Not published in this round |
+| Agent / optional source integration | Skills + shadcn Registry | Static discovery and integration scaffolding |
 
-组件库不引入 Next.js、Vite 或其他应用框架。不为统一而替换所有 Radix 组件，
-也不为架构完整性添加暂时没有使用场景的依赖。
+The component library does not introduce Next.js, Vite, or other application frameworks. Do not replace every Radix component merely to unify them,
+and do not add dependencies that have no current use case merely for architectural completeness.
 
 ## 3. Architecture and dependency rules
 
-目录边界（已建立，具体组件所有权仍分批实施）：
+Directory boundaries (established; concrete component ownership is still implemented in batches):
 
 ```text
-packages/tokens/           # CSS、主题、Tailwind 集成
-packages/ui/               # React 组件、变体、公共 API
-packages/vega/             # 可选 Vega Runtime + React Viewer
-packages/vega-lite/        # 可选编译器，复用 Vega Viewer
-packages/web-components/   # 已有独立原生实现，与 React 共享 tokens
-apps/storybook/            # 组件开发与文档
-registry/                 # 可选配置、示例和集成入口
-skills/molcrafts-design/       # 可移植 Agent 指引
-docs/                     # 规范、决策、迁移与组件目录
+packages/tokens/           # CSS, themes, and Tailwind integration
+packages/ui/               # React components, variants, and public APIs
+packages/vega/             # Optional Vega runtime + React viewer
+packages/vega-lite/        # Optional compiler that reuses the Vega viewer
+packages/web-components/   # Existing independent native implementation that shares tokens with React
+apps/storybook/            # Component development and documentation
+registry/                 # Optional configuration, examples, and integration entry points
+skills/molcrafts-design/       # Portable Agent guidance
+docs/                     # Specifications, decisions, migration, and the component catalog
 ```
 
-用户已确认 `@molcrafts/design-tokens`、`@molcrafts/design` 与
-`@molcrafts/design-web-components` 及 MIT；仓库内包名和 imports 已统一。
-`molcrafts-design` 是项目名称，GitHub 外部改名、域名、hosting 与 npm 发布权限
-仍需在实际改名/发布任务核对。见 [命名计划](rename-plan.md) 与 [发布准备](releasing.md)。
-不隐式修改外部 GitHub repository、npm 身份或真实产品。
+The user has confirmed `@molcrafts/design-tokens`, `@molcrafts/design`, and
+`@molcrafts/design-web-components`, plus MIT; in-repository package names and imports are already unified.
+`molcrafts-design` is the project name. External GitHub rename, domains, hosting, and npm publish permissions
+still need to be checked in the actual rename/release task. See [rename plan](rename-plan.md) and [release preparation](releasing.md).
+Do not implicitly modify the external GitHub repository, npm identity, or real products.
 
-1. tokens 不依赖 React、Base UI、Radix 或应用。
-2. ui 可以依赖 tokens、无头 primitives 和必要的运行时工具。
-3. 应用通过公共包入口消费组件，不导入实现源码。
-4. packages 不导入消费应用，不依赖应用级 alias、Tailwind 扫描或隐式全局配置。
-5. 禁止循环依赖；工具、图标和组件分类暂不拆包。
-6. 可选图表边界见 [chart architecture](chart-architecture.md)：核心 UI/tokens 不依赖 Vega；
-   design-vega 使用 View API，design-vega-lite 只负责编译并复用 Viewer；不依赖 MolPlot。
-7. Web Components 具有独立运行时和分发边界，可以独立保留；不引用 React 实现。
+1. tokens do not depend on React, Base UI, Radix, or applications.
+2. ui may depend on tokens, headless primitives, and necessary runtime utilities.
+3. Applications consume components through public package entry points and do not import implementation source.
+4. Packages do not import consumer applications and do not depend on application-level aliases, Tailwind scanning, or implicit global configuration.
+5. Circular dependencies are forbidden; utilities, icons, and component categories are not split into packages yet.
+6. Optional chart boundaries are in [chart architecture](chart-architecture.md): core UI/tokens do not depend on Vega;
+   design-vega uses the View API, and design-vega-lite only compiles and reuses the Viewer; neither depends on MolPlot.
+7. Web Components have an independent runtime and distribution boundary and may be kept independently; they do not reference the React implementation.
 
 ## 4. Design tokens and Fluent 2 themes
 
-采用当前稳定的 Fluent 2 Web 视觉风格，使用官方 Fluent Icons。
-“latest”表示定期核对稳定版并审查升级，不表示依赖使用浮动 `latest`。
-官方 tokens 是参考与生成输入；MolCrafts 的 CSS slots、映射、默认值及升级
-决策是自己的设计契约，不能让上游更新未经验证直接改变产品视觉。
+Adopt the current stable Fluent 2 Web visual style and use official Fluent Icons.
+"latest" means periodically checking the stable release and reviewing upgrades; it does not mean depending on a floating `latest`.
+Official tokens are a reference and a generation input; MolCrafts CSS slots, mappings, defaults, and upgrade
+decisions are its own design contract. Unverified upstream updates must not directly change product visuals.
 
-Foundation tokens 覆盖颜色、字体、间距、尺寸、边框、圆角、阴影、层级、
-动效时长与曲线、焦点指示器和交互状态。Semantic tokens 覆盖背景、表面、
-前景、边框、primary、secondary、muted、accent、success、warning、danger、
-info，以及 hover、active/pressed、disabled、focus。
+Foundation tokens cover color, typography, spacing, size, borders, radius, shadows, elevation,
+motion duration and curves, focus indicators, and interaction states. Semantic tokens cover background, surface,
+foreground, border, primary, secondary, muted, accent, success, warning, danger,
+info, plus hover, active/pressed, disabled, and focus.
 
-- CSS Custom Properties 是运行时来源；Tailwind v4 通过 `@theme` 映射消费。
-- 组件主要引用语义 tokens，不写默认 shadcn 色值或任意视觉常量。
-- 首阶段支持 light/dark；主题独立于业务逻辑，切换无需重新构建。
-- 支持局部产品主题。每个产品拥有完整 primary / secondary 色组及明暗状态。
-- 中性次要操作与第二品牌色分开，状态色不被品牌色覆盖。
-- 局部主题的 portal 浮层必须保留正确作用域，在 Storybook 中验证。
-- 不任意制造组件专属 tokens；例外需为可复用概念或已文档化定制契约。
-- 保留 reduced-motion、forced-colors、文本/控件/焦点对比度要求。
+- CSS custom properties are the runtime source; Tailwind v4 consumes them through `@theme` mappings.
+- Components primarily reference semantic tokens and do not hard-code default shadcn color values or arbitrary visual constants.
+- The first stage supports light/dark; themes are independent of business logic, and switching does not require a rebuild.
+- Support scoped product themes. Each product owns a complete primary / secondary color family and light/dark states.
+- Neutral secondary actions are separate from the second brand color, and status colors are not overridden by brand colors.
+- Portal overlays of a scoped theme must keep the correct scope and are verified in Storybook.
+- Do not invent component-specific tokens arbitrarily; exceptions must be a reusable concept or a documented customization contract.
+- Keep reduced-motion, forced-colors, and text/control/focus contrast requirements.
 
-工具栏等熟悉操作优先使用 icon-only 按钮；必须提供可访问名称和可见提示。
-难辨认操作、破坏性确认及关键提交保留文字。统一官方 Fluent 图标，React
-使用 React icons，原生实现使用对应 SVG icons，不另拆图标包。
+Familiar actions such as toolbars prefer icon-only buttons; they must provide an accessible name and a visible hint.
+Hard-to-recognize actions, destructive confirmations, and critical submissions keep text. Use official Fluent icons uniformly. React
+uses React icons, native implementations use the corresponding SVG icons, and icons are not split into a separate package.
 
 ## 5. Component contracts
 
-每个公共组件说明明确 TypeScript props、variants、sizes、相关受控/非受控行为、
-键盘与可访问性、loading/disabled/invalid 等状态、ref 和原生属性支持。
-简单组件采用直接 props，复杂组件采用可组合 API。
-不把不必要的 Base UI/Radix 细节变成长期公共 API 承诺；已有暴露逐项评估，不以兼容为由保留不必要的 API。
+Each public component documents explicit TypeScript props, variants, sizes, relevant controlled/uncontrolled behavior,
+keyboard and accessibility behavior, states such as loading/disabled/invalid, refs, and native attribute support.
+Simple components use direct props; complex components use a composable API.
+Do not turn unnecessary Base UI/Radix details into long-term public API commitments; evaluate existing exposures one by one, and do not keep an unnecessary API for compatibility.
 
-组件视觉样式属于组件库。支持可预测的 className 合并和有目的的 variants、slots
-及 tokens 扩展，避免要求消费方靠内部 DOM selectors 大幅覆盖。
-必要时采用标准 CSS；避免不必要的运行时 CSS-in-JS。
-结构迁移尽量避免无关行为和视觉变化；删除旧契约不提供兼容层，变化明确记录。
+Component visual styling belongs to the component library. Support predictable className merging and purposeful variants, slots,
+and token extension, and avoid requiring consumers to override large areas through internal DOM selectors.
+Use standard CSS when needed; avoid unnecessary runtime CSS-in-JS.
+Structural migration should avoid unrelated behavior and visual changes; deleting an old contract provides no compatibility layer, and changes are recorded explicitly.
 
 ## 6. Distribution, naming and releases
 
-目标主分发是版本化 npm-compatible packages。Rslib 构建 React ESM、类型声明和
-CSS；显式声明 exports、React peer dependencies、files 和 CSS entry。
-验证 CSS import closure、tree shaking 与注册/CSS 等实际 side effects。
-消费方不得编译库的 Tailwind 源码，也不得依赖源码 alias。
+The target primary distribution is versioned npm-compatible packages. Rslib builds React ESM, type declarations, and
+CSS; explicitly declare exports, React peer dependencies, files, and the CSS entry.
+Verify CSS import closure, tree shaking, and real side effects such as registration and CSS.
+Consumers must not compile the library's Tailwind source and must not depend on source aliases.
 
-本轮仅准备本地构建/打包验证与版本、changelog、升级、release 流程。
-**不执行 npm publish，不创建发布 tag/release，不配置自动发布，不提前改名。**
-正式改名需统一核对 repository、package manifests/exports、内部依赖、文档示例、
-Registry URLs、CI/artifact 名称及旧导入迁移方案，然后再安排首次发布。
-API、tokens 和样式契约按 semver 管理；改名不等同于允许行为破坏。
+This round only prepares local build/pack verification and the version, changelog, upgrade, and release processes.
+**Do not run npm publish, do not create release tags/releases, do not configure automatic publishing, and do not rename early.**
+A formal rename must jointly check the repository, package manifests/exports, internal dependencies, documentation examples,
+Registry URLs, CI/artifact names, and the old-import migration plan, and only then schedule the first publish.
+APIs, tokens, and style contracts are managed by semver; renaming is not permission to break behavior.
 
-Registry 不是核心组件的主分发机制。可保留配置、示例、模板、组合与 Agent
-脚手架，优先引用 canonical packages。不维护 npm 与 Registry 的独立组件实现。
-删除核心源码 Registry items，仅保留包配置与示例；记录新的接入方式。
+The Registry is not the primary distribution mechanism for core components. It may keep configuration, examples, templates, compositions, and Agent
+scaffolding, and it prefers references to canonical packages. Do not maintain separate component implementations for npm and the Registry.
+Delete core-source Registry items and keep only package configuration and examples; record the new integration method.
 
 ## 7. Agent-native development
 
-维护根 `AGENTS.md`、可移植 `skills/molcrafts-design/SKILL.md`、基于 TS/Storybook
-的文档，以及包含名称、用途、imports、示例和状态的组件目录。
-Agent 工作流：先查现有组件，再读公共 API 与 stories，优先复用；采用语义 tokens
-及既有组合方式；新 UI 依赖或 shadcn 默认样式需要合理依据；共享变更同步
-更新 stories/docs；验证类型、构建、交互与视觉。
+Maintain the root `AGENTS.md`, the portable `skills/molcrafts-design/SKILL.md`, documentation based on TypeScript/Storybook,
+and a component catalog that includes names, purpose, imports, examples, and status.
+Agent workflow: look up existing components first, then read the public API and stories, and prefer reuse; use semantic tokens
+and existing composition patterns; a new UI dependency or default shadcn styles needs a sound reason; shared changes update
+stories/docs together; verify types, builds, interaction, and visuals.
 
-以版本控制中的静态文件和 CLI 为主。不建立自定义索引服务或 MCP server。
-Storybook MCP 可以以后评估，不成为基础工作流前提。
+Prefer static files in version control and the CLI. Do not build a custom index service or MCP server.
+Storybook MCP can be evaluated later and is not a prerequisite for the baseline workflow.
 
 ## 8. Storybook and quality gates
 
-Storybook 是主要开发环境。每个已迁移公共组件都有默认、全部支持的变体/尺寸、
-light/dark、相关状态、可访问性行为和典型组合 stories；适合时启用 Autodocs。
+Storybook is the primary development environment. Every migrated public component has a story, and Autodocs is enabled when appropriate.
+`pnpm verify:stories` fails when a Storybook entry is missing. Visual review follows Impeccable's target rules:
+bare `/impeccable` only recommends commands from changed markup/styles; `critique` and `audit`
+take one story file or iframe; `polish` reuses that target's critique snapshot until its bytes change.
+A full sidebar pass happens only when explicitly requested, and each critique is still one target. Each story should still cover the default,
+every supported variant/size, light/dark, relevant states, accessibility behavior, and typical compositions.
 
-质量检查覆盖类型与公共类型 exports、复杂行为的单元/interaction 测试、键盘、
-可访问性、关键组件视觉回归、包构建和消费者接入。
-独立 Rsbuild fixture 仅导入构建产物与已编译 CSS，不扫描库源码；另外通过本地
-tarball 安装验证 exports/files/依赖闭包。真实产品验证另行以产品 PR 提供证据，
-fixture 不能替代真实产品兼容验收。原生实现继续使用独立 HTML/浏览器验证。
+Quality checks cover types and public type exports, unit/interaction tests for complex behavior, keyboard,
+accessibility, visual regression for key components, package builds, and consumer integration.
+The standalone Rsbuild fixture imports only build artifacts and compiled CSS and does not scan library source; a local
+tarball install additionally verifies exports/files/dependency closure. Real-product verification is evidenced separately by a product PR,
+and the fixture cannot replace real-product compatibility acceptance. Native implementations continue to use independent HTML/browser verification.
 
 ## 9. Migration strategy
 
-1. Audit and foundation：组件/API/依赖/token 审计，pnpm boundaries，Rslib，
-   语义主题；移除旧入口，不加入兼容适配。
-2. Component ownership：分批建立契约，迁移语义样式，保留有效 Radix，按需求
-   采用 Base UI，一致 variants 与扩展点。
-3. Documentation and Agent support：迁移 Storybook 入口，补 stories/catalog、
-   AGENTS/Skill，建立 a11y/visual checks。
-4. Distribution and integration：验证产物、独立 Rsbuild、真实产品迁移，准备版本
-   与升级流程。实际发布放在未来改名及发布安排之后，不在当前授权范围。
+1. Audit and foundation: component/API/dependency/token audit, pnpm boundaries, Rslib,
+   semantic themes; remove old entry points and do not add compatibility adapters.
+2. Component ownership: establish contracts in batches, migrate semantic styles, keep working Radix, adopt
+   Base UI as needed, and align variants and extension points.
+3. Documentation and Agent support: migrate Storybook entry points, fill in stories/catalog and
+   AGENTS/Skill, and establish a11y/visual checks.
+4. Distribution and integration: verify artifacts, standalone Rsbuild, and real-product migration, and prepare version
+   and upgrade processes. Actual publishing comes after a future rename and release plan and is outside the current authorization.
 
-具体 PR 顺序、原因、开发影响、退出条件见 roadmap。
+Concrete PR order, reasons, development impact, and exit criteria are in the roadmap.
 
 ## 10. Non-goals
 
-不一次重设计所有组件；不替换全部 Radix；不新增样式框架；不自建 Registry
-engine、MCP 或索引；不放产品路由、认证、SSR 或业务逻辑；不尝试跨运行时
-渲染 React。Web Components 是已有独立实现，共用 tokens，不要求功能对等。
+Do not redesign every component at once; do not replace all of Radix; do not add a new styling framework; do not build a custom Registry
+engine, MCP, or index; do not put product routing, authentication, SSR, or business logic here; do not try to render React
+across runtimes. Web Components are an existing independent implementation that shares tokens and is not required to be feature-equivalent.
 
 ## 11. Acceptance criteria and evidence
 
 | # | Criterion | Required evidence |
 | --- | --- | --- |
-| 1 | MolCrafts 拥有 tokens、主题、样式与 API | 宪法、tokens 契约、公共导出文档 |
-| 2 | 迁移组件脱离默认 shadcn 设计约定 | 组件审查与明暗视觉对照 |
-| 3 | 运行时主题一致且无需重建 | 全局/局部/portal/品牌切换 stories 与测试 |
-| 4 | UI packages 经 Rslib 构建 | CI 产物、类型、CSS 与 exports 检查 |
-| 5 | 独立 Rsbuild 消费无需源码扫描 | 构建产物及 tarball 消费验证 |
-| 6 | 全部迁移公共组件有 Storybook 文档 | 按导出清单逐项覆盖，不以 story 总数替代 |
-| 7 | Agent 无须了解 shadcn 就能发现 API | AGENTS、Skill、目录及可执行示例 |
-| 8 | 相关类型、交互、a11y、视觉检查通过 | 对应批次的 CI 与基线证据 |
-| 9 | 产品完成新入口迁移后功能正确 | 真实产品迁移 PR 与兼容检查；当前尚未验证 |
-| 10 | 版本与升级流程可复现 | release/rename 文档及本地演练；不要求本轮发布 |
+| 1 | MolCrafts owns tokens, themes, styles, and APIs | Constitution, token contract, and public export documentation |
+| 2 | Migrated components leave default shadcn design conventions | Component review and light/dark visual comparison |
+| 3 | Runtime themes are consistent and do not require a rebuild | Global/scoped/portal/brand-switch stories and tests |
+| 4 | UI packages are built with Rslib | CI artifacts and type, CSS, and exports checks |
+| 5 | Standalone Rsbuild consumption needs no source scan | Build-artifact and tarball consumption verification |
+| 6 | Every migrated public component has Storybook documentation | Coverage item by item against the export list, not a story-count substitute |
+| 7 | Agents can discover APIs without knowing shadcn | AGENTS, Skill, catalog, and runnable examples |
+| 8 | Relevant type, interaction, a11y, and visual checks pass | CI and baseline evidence for the corresponding batch |
+| 9 | Products work correctly after migrating to the new entry points | Real-product migration PRs and compatibility checks; not yet verified |
+| 10 | Version and upgrade processes are reproducible | release/rename docs and a local rehearsal; publishing is not required this round |
 
 ## 12. Implementation principles
 
 Own the design. Reuse behavior. Use explicit migrations without compatibility shims. Publish once.
 Keep Agents informed. Avoid premature infrastructure. Keep the system product-independent.
-每批迁移必须记录完成范围与未完成项，不能以基础构建通过宣称全部重构完成。
+Each migration batch must record completed scope and remaining items. A passing baseline build is not a claim that the whole refactor is done.

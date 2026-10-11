@@ -8,9 +8,19 @@
 @layer base {
   * {
     @apply border-border;
+    scrollbar-color: var(--border) transparent;
   }
 
   body {
     @apply bg-background text-foreground font-sans;
+  }
+
+  ::selection {
+    background: var(--primary-muted);
+    color: var(--primary-muted-foreground);
+  }
+
+  :where(input, textarea) {
+    caret-color: var(--primary);
   }
 }

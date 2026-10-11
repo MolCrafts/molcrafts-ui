@@ -11,13 +11,18 @@ const codeVariants = cva("rounded-control bg-muted font-mono text-foreground", {
   variants: {
     variant: {
       inline: "px-1 py-px font-medium",
-      block: "block w-full overflow-x-auto px-2 py-1.5",
+      block: "block w-full overflow-x-auto px-3 py-2 text-body",
     },
     wrap: {
-      none: "whitespace-nowrap",
+      none: "",
       anywhere: "[overflow-wrap:anywhere]",
     },
   },
+  compoundVariants: [
+    { variant: "inline", wrap: "none", class: "whitespace-nowrap" },
+    { variant: "block", wrap: "none", class: "whitespace-pre" },
+    { variant: "block", wrap: "anywhere", class: "whitespace-pre-wrap" },
+  ],
   defaultVariants: {
     variant: "inline",
     wrap: "none",

@@ -4,6 +4,7 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@molcrafts
 const meta = {
   title: "UI/Resizable",
   component: ResizablePanelGroup,
+  parameters: { docs: { description: { component: 'import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@molcrafts/design"' } } },
   args: { direction: "horizontal" },
   argTypes: { direction: { control: "select", options: ["horizontal", "vertical"] } },
   render: (args) => (

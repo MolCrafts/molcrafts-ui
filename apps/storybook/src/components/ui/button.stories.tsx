@@ -7,6 +7,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@molcrafts/design";
 const meta = {
   title: "UI/Button",
   component: Button,
+  parameters: { docs: { description: { component: 'import { Button } from "@molcrafts/design"' } } },
   args: { children: "Button", onClick: fn() },
   argTypes: {
     variant: {
@@ -44,22 +45,31 @@ export const IconOnly: Story = {
     await expect(args.onClick).toHaveBeenCalledTimes(1);
   },
 };
+const variantLabel = { default: "Primary", destructive: "Destructive", outline: "Outline", secondary: "Secondary", ghost: "Ghost", link: "Link" } as const;
 export const Variants: Story = {
   render: (args) => (
-    <div className="flex flex-wrap items-center gap-3">
-      {(["default", "destructive", "outline", "secondary", "ghost", "link"] as const).map((variant) => (
-        <Button {...args} key={variant} variant={variant}>{variant}</Button>
-      ))}
+    <div className="max-w-xl space-y-3">
+      <p className="text-body text-muted-foreground">Primary is the recommended action. It uses variant="default".</p>
+      <div className="flex flex-wrap items-center gap-3">
+        {(Object.keys(variantLabel) as (keyof typeof variantLabel)[]).map((variant) => (
+          <Button {...args} key={variant} variant={variant}>{variantLabel[variant]}</Button>
+        ))}
+      </div>
     </div>
   ),
 };
 export const Sizes: Story = {
   render: (args) => (
-    <div className="flex items-center gap-3">
+    <div className="flex flex-wrap items-center gap-3">
       <Button {...args} size="sm">Compact</Button>
-      <Button {...args}>Default</Button>
-      <Button {...args} size="lg">Comfortable</Button>
-      <Button {...args} size="icon" aria-label="Add item"><AddRegular /></Button>
+      <Button {...args}>Comfortable default</Button>
+      <Button {...args} size="lg">Large</Button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button {...args} size="icon" aria-label="Add item"><AddRegular aria-hidden="true" /></Button>
+        </TooltipTrigger>
+        <TooltipContent>Add item</TooltipContent>
+      </Tooltip>
     </div>
   ),
 };

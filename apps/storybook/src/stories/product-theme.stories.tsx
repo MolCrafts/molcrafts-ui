@@ -12,14 +12,14 @@ const customPalette: Record<"light" | "dark", CSSProperties & Record<string, str
   light: {
     "--primary": "#007a70", "--primary-hover": "#00665e", "--primary-pressed": "#00574f",
     "--primary-foreground": "#ffffff", "--primary-muted": "#d8f3ed", "--primary-muted-foreground": "#00574f",
-    "--primary-primary-link": "#00665e", "--primary-link-hover": "#00574f",
+    "--primary-link": "#00665e", "--primary-link-hover": "#00574f",
     "--secondary": "#9b4700", "--secondary-hover": "#823c00", "--secondary-pressed": "#6a3100",
     "--secondary-foreground": "#ffffff", "--secondary-muted": "#fff0e0", "--secondary-muted-foreground": "#823c00",
   },
   dark: {
     "--primary": "#009c91", "--primary-hover": "#00b8a9", "--primary-pressed": "#00d4c3",
     "--primary-foreground": "#000000", "--primary-muted": "#003d38", "--primary-muted-foreground": "#65dfcb",
-    "--primary-primary-link": "#65dfcb", "--primary-link-hover": "#8cf0df",
+    "--primary-link": "#65dfcb", "--primary-link-hover": "#8cf0df",
     "--secondary": "#f5a462", "--secondary-hover": "#ffb677", "--secondary-pressed": "#ffc894",
     "--secondary-foreground": "#000000", "--secondary-muted": "#4b280e", "--secondary-muted-foreground": "#ffc894",
   },
@@ -70,6 +70,8 @@ const meta = {
       .toBe(colors(within(normal).getByRole("button", { name: "Cancel" })).backgroundColor);
     await expect(colors(custom.querySelector('[data-slot="badge"]') as HTMLElement).color)
       .toBe(colors(normal.querySelector('[data-slot="badge"]') as HTMLElement).color);
+    const linkColor = (root: HTMLElement) => colors(within(root).getByRole("link", { name: "Brand link" })).color;
+    await expect(linkColor(custom)).not.toBe(linkColor(normal));
   },
 } satisfies Meta<typeof ProductThemes>;
 export default meta;

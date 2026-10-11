@@ -47,3 +47,4 @@ assert.equal(metadata.tokenContract.reference.version, "9.2.2");
 assert.ok(metadata.tokenContract.tokens.some(token => token.name === "--primary"));
 assert.ok(!/--([a-z-]+):var\(--\1\)/.test(css), "Runtime foundation must not contain self-referential declarations");
 console.log("Verified scoped SSR and framework-independent token metadata.");
+await import("./verify-storybook-coverage.mjs");

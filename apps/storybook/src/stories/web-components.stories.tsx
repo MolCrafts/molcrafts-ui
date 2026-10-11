@@ -1,6 +1,7 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { expect, userEvent, waitFor } from "storybook/test";
+import { expect, userEvent, waitFor, within } from "storybook/test";
+import { Code } from "@molcrafts/design";
 import { fluentIcons, registerMolcraftsComponents } from "@molcrafts/design-web-components";
 import "@molcrafts/design-web-components/theme.css";
 
@@ -30,7 +31,10 @@ function WebComponentsPreview({ customBrand = false }: { customBrand?: boolean }
         <div class="flex items-center gap-2"><fluent-badge appearance="tint" color="success">Completed</fluent-badge><fluent-badge appearance="tint" color="danger">Failed</fluent-badge><fluent-spinner size="tiny" aria-label="Loading"></fluent-spinner><span>Loading</span></div>`;
       let count = 0;
       const button = container.querySelector("#wc-add")!;
-      const increment = () => { container.querySelector("#wc-count")!.textContent = `${++count} items added`; };
+      const increment = () => {
+        count += 1;
+        container.querySelector("#wc-count")!.textContent = count === 1 ? "1 item added" : `${count} items added`;
+      };
       button.addEventListener("click", increment);
       container.dataset.ready = "true";
       cleanup = () => { button.removeEventListener("click", increment); container.replaceChildren(); delete container.dataset.ready; };
@@ -39,13 +43,16 @@ function WebComponentsPreview({ customBrand = false }: { customBrand?: boolean }
   }, []);
   const palette: CSSProperties & Record<string, string> = customBrand ? {
     "--primary": "#007a70", "--primary-hover": "#00665e", "--primary-pressed": "#00574f", "--primary-foreground": "#ffffff",
-    "--primary-muted": "#d8f3ed", "--primary-muted-foreground": "#00574f", "--primary-primary-link": "#00665e", "--primary-link-hover": "#00574f",
+    "--primary-muted": "#d8f3ed", "--primary-muted-foreground": "#00574f", "--primary-link": "#00665e", "--primary-link-hover": "#00574f",
     "--secondary": "#9b4700", "--secondary-foreground": "#ffffff",
   } : {};
   return (
     <main className="mx-auto max-w-3xl space-y-6 p-4 sm:p-8 mol-product-theme" style={palette}>
       <h1 className="text-heading font-semibold">Fluent Web Components</h1>
-      <p className="text-body text-muted-foreground">Native custom elements with Shadow DOM, shared tokens, and framework-independent APIs.</p>
+      <p className="text-body text-muted-foreground">Native custom elements with Shadow DOM, shared tokens, and framework-independent APIs. Call register before the first element mounts.</p>
+      <Code variant="block" wrap="anywhere">{`import { registerMolcraftsComponents } from "@molcrafts/design-web-components";
+import "@molcrafts/design-web-components/theme.css";`}</Code>
+      <a href="#wc-contract" className="text-body font-semibold text-primary-link">Brand link</a>
       <div className="flex gap-2 text-body font-semibold"><span className="rounded-control bg-primary p-3 text-primary-foreground">Primary</span><span className="rounded-control bg-secondary p-3 text-secondary-foreground">Secondary</span></div>
       <div ref={ref} className="grid gap-4 text-body" />
     </main>
@@ -55,12 +62,18 @@ function WebComponentsPreview({ customBrand = false }: { customBrand?: boolean }
 const meta = {
   title: "Web Components/Foundations",
   component: WebComponentsPreview,
-  parameters: { layout: "fullscreen" },
-  play: async ({ canvasElement }) => {
+  parameters: {
+    layout: "fullscreen",
+    docs: { description: { component: 'import { registerMolcraftsComponents } from "@molcrafts/design-web-components"' } },
+  },
+  play: async ({ canvasElement, args }) => {
     await waitFor(() => expect(canvasElement.querySelector('[data-ready="true"]')).not.toBeNull());
     const action = canvasElement.querySelector("#wc-add") as HTMLElement;
     await userEvent.click(action);
-    await expect(canvasElement.querySelector("#wc-count")).toHaveTextContent("1 items added");
+    await expect(canvasElement.querySelector("#wc-count")).toHaveTextContent("1 item added");
+    if (args.customBrand) {
+      await expect(getComputedStyle(within(canvasElement).getByRole("link", { name: "Brand link" })).color).toBe("rgb(0, 102, 94)");
+    }
     const check = canvasElement.querySelector("#wc-check") as HTMLElement & { checked: boolean };
     await userEvent.click(check);
     await expect(check.checked).toBe(true);

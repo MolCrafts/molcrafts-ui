@@ -1,7 +1,7 @@
-# molcrafts-design 命名与入口迁移
+# molcrafts-design naming and entry migration
 
-2026-10-10：用户确认三个 npm 包名和 MIT。仓库内名称、公开导入、依赖、Storybook、
-Registry、消费者 fixture 与 portable Skill 已统一。外部 GitHub repository 尚未改名。
+2026-10-10: The user confirmed the three npm package names and MIT. In-repository names, public imports, dependencies, Storybook,
+the Registry, the consumer fixture, and the portable Skill are now consistent. The external GitHub repository has not been renamed.
 
 | Previous internal name | Canonical name | Source directory |
 | --- | --- | --- |
@@ -10,8 +10,8 @@ Registry、消费者 fixture 与 portable Skill 已统一。外部 GitHub reposi
 | @molcrafts/web-components | @molcrafts/design-web-components | packages/web-components |
 | skills/molcrafts-ui | skills/molcrafts-design | skills/molcrafts-design |
 
-目录名称表达分层，不需要随着 npm name 复制或迁移源码。不存在旧包导出、npm aliases
-或兼容 shim；产品直接更换 imports 与 CSS entries。以下名称尚未发布：
+Directory names express the layers. They do not need to copy or move source just because the npm name changes. There are no old package exports, npm aliases,
+or compatibility shims. Products change imports and CSS entries directly. The following names have not been published:
 
 ```tsx
 import { Button, ThemeScope } from "@molcrafts/design";
@@ -24,25 +24,25 @@ import { registerMolcraftsComponents } from "@molcrafts/design-web-components";
 import "@molcrafts/design-web-components/theme.css";
 ```
 
-纯 CSS 使用 `@molcrafts/design-tokens/runtime.css`。Registry setup/examples 引用同一包，
-不是旧 core source items。普通应用暂通过 workspace 或本地 tarball 接入。
+Pure CSS uses `@molcrafts/design-tokens/runtime.css`. Registry setup and examples refer to the same packages.
+They are not the old core source items. Ordinary applications currently connect through the workspace or a local tarball.
 
-## 外部仓库改名时统一处理
+## What to update together when the external repository is renamed
 
-目标 GitHub repository：`MolCrafts/molcrafts-design`，本次没有执行该外部改名。
-准备实际改名 PR 时核对以下位置：
+The target GitHub repository is `MolCrafts/molcrafts-design`. This external rename was not performed.
+When preparing the actual rename PR, check the following places:
 
-- 三个 manifests 的 repository URL/directory、homepage 和 bugs。
-- registry.json 的 homepage 与实际 Registry hosting URL；不要假设已有新的 hosting。
-- README、Skill、发布文档中的 GitHub links，以及 package README 的远程 docs links。
-- Git remotes、CI 环境/权限、npm provenance/trusted-publisher 绑定与产品依赖记录。
-- 各真实产品的新包安装、公开 imports、stylesheet 与锁文件；单独提交产品 PR。
+- The repository URL and directory, homepage, and bugs fields in the three manifests.
+- The homepage in registry.json and the real Registry hosting URL. Do not assume that new hosting already exists.
+- GitHub links in the README, the Skill, and the release docs, and remote docs links in the package READMEs.
+- Git remotes, the CI environment and permissions, npm provenance and trusted-publisher bindings, and product dependency records.
+- In each real product, installation of the new packages, public imports, stylesheets, and lockfiles. Submit those product PRs separately.
 
-包目录、CSS runtime token 名称、Fluent 原生标签及 registerMolcraftsComponents 函数不因
-项目名变化而随意改名。历史 .claude specs 与 extraction matrix 保留历史名称，不能当作
-当前指导。GitHub redirect 不替代产品 API 迁移或 npm 发布身份验证。
+Package directories, CSS runtime token names, native Fluent tag names, and the registerMolcraftsComponents function are not renamed
+just because the project name changes. Historical .claude specs and the extraction matrix keep their historical names. They must not be treated as
+current guidance. A GitHub redirect does not replace a product API migration or npm publish identity checks.
 
-发布步骤与剩余条件见 [releasing](releasing.md)；当前仍 private，未发布。
+The release steps and the remaining conditions are in [releasing](releasing.md). The packages are still private and unpublished.
 
-可选图表包：`@molcrafts/design-vega`（packages/vega）与
-`@molcrafts/design-vega-lite`（packages/vega-lite）。不提供旧 ui-vega 名称或兼容 alias。
+Optional chart packages: `@molcrafts/design-vega` (packages/vega) and
+`@molcrafts/design-vega-lite` (packages/vega-lite). There is no old ui-vega name and no compatibility alias.

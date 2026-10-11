@@ -22,7 +22,7 @@ paths, deprecated color aliases and product-specific merge extensions are remove
 Consumers migrate directly to the new package entries; there are no compatibility shims.
 
 From repository root: `pnpm build:ui`, `pnpm typecheck`, `pnpm build:consumer`.
-Storybook consumes the same built public APIs. See `docs/component-catalog.md`.
+Each component has a Storybook story. See `docs/component-catalog.md`.
 
 MIT licensed. See LICENSE, NOTICE.md and THIRD_PARTY_NOTICES.md included in this archive.
 Release preparation: https://github.com/MolCrafts/molcrafts-ui/blob/main/docs/releasing.md

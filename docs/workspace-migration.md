@@ -1,45 +1,45 @@
-# Workspace 与消费入口迁移
+# Workspace and consumer-entry migration
 
-2026-10-10：用户明确要求不向后兼容。项目未来名称为 `molcrafts-design`，
-三个包已采用用户确认的 @molcrafts/design 系列名称和 MIT，全部 private；
-没有发包或外部资源改名。详见 [命名迁移](rename-plan.md)。
+2026-10-10: the user explicitly required no backward compatibility. The future project name is `molcrafts-design`.
+The three packages already use the user-confirmed @molcrafts/design series names and MIT, and all are private;
+nothing has been published and no external resource has been renamed. See [naming migration](rename-plan.md).
 
-## 新入口
+## New entry points
 
 ```tsx
 import { Button, Input, Dialog, DialogContent, DialogTitle } from "@molcrafts/design";
 import "@molcrafts/design/styles.css";
 ```
 
-所有组件从根公开入口导入，`cn` 也可从 `@molcrafts/design/utils` 导入。
-不要引用 packages 内部实现，也不要把组件源码再复制进产品。
-CSS 包含默认 tokens、组件全部 utility 和 preflight，不要求产品安装 Tailwind
-或扫描库源码。Tailwind 应用如需自己的 utilities，可额外导入 tokens 的
-`tailwind.css`；纯 CSS 用 `runtime.css`。应用自己控制页面布局与产品主题。
+All components are imported from the root public entry, and `cn` can also be imported from `@molcrafts/design/utils`.
+Do not reference implementation internals under packages, and do not copy component source into products again.
+CSS includes the default tokens, every component utility, and preflight, and does not require the product to install Tailwind
+or scan library source. A Tailwind application that needs its own utilities may additionally import the tokens
+`tailwind.css`; pure CSS uses `runtime.css`. The application itself controls page layout and the product theme.
 
-## 已删除的旧契约
+## Deleted old contracts
 
 | Old | New |
 | --- | --- |
-| 根 `src/components`、`src/hooks`、`src/lib` | 唯一实现位于 packages/ui；消费方用公开 exports |
-| 根 `src/styles` 与独立 constitution CSS 导入 | tokens/runtime.css 或 UI/styles.css |
-| `--accent-*`、`--link-*` | `--primary-*`、`--primary-link` / `--primary-link-hover` |
-| `rounded-sm/md/lg/xl` 的 MolCrafts 别名 | 使用 control/panel/overlay/checkbox 等角色；Tailwind stock 值仍由 Tailwind 定义 |
-| utils 中产品私有尺寸/字体/container scales | 产品自己配置；共享 cn 只识别 MolCrafts-owned scales |
-| 35 个核心源码 Registry items | setup 与 button-example 引用 canonical packages |
-| sync:products / 源码复制脚本 | 产品仓库通过独立 PR 接入包 |
-| npm lockfile / 根 Storybook 配置 | pnpm workspace lockfile / apps/storybook |
+| Root `src/components`, `src/hooks`, `src/lib` | The single implementation is in packages/ui; consumers use public exports |
+| Root `src/styles` and the standalone constitution CSS import | tokens/runtime.css or UI/styles.css |
+| `--accent-*`, `--link-*` | `--primary-*`, `--primary-link` / `--primary-link-hover` |
+| MolCrafts aliases for `rounded-sm/md/lg/xl` | Use roles such as control/panel/overlay/checkbox; Tailwind stock values are still defined by Tailwind |
+| Product-private size/font/container scales in utils | Products configure them themselves; shared cn only recognizes MolCrafts-owned scales |
+| 35 core-source Registry items | setup and button-example reference canonical packages |
+| sync:products / source-copy scripts | Product repositories adopt the packages through separate PRs |
+| npm lockfile / root Storybook config | pnpm workspace lockfile / apps/storybook |
 
-没有旧入口 re-export、alias 适配器或双组件实现。正常工作的 Radix 行为仍保留；
-无需为删除兼容层而重写全部行为。此次组件外观仍以既有 Fluent 2 基线为准。
+There is no old-entry re-export, alias adapter, or dual component implementation. Radix behavior that works is kept;
+there is no need to rewrite all behavior just to delete the compatibility layer. Component appearance in this change still follows the existing Fluent 2 baseline.
 
-## 验证与当前限制
+## Verification and current limits
 
-- Rslib 输出完整 ESM 模块树及 declarations；package exports 不依赖源码 alias。
-- 独立 Rsbuild fixture 无 Tailwind/source alias，浏览器验证尺寸、主题、交互与 portal。
-- 本地 tarball 在临时外部目录安装并构建，不依赖 workspace 链接。
-- 原生包的 standalone theme.css 从同一 tokens 构建，源码不再保存共享 tokens 副本。
-- Storybook 使用构建后的公共 API；全部现有 stories 执行，完整 API/state 覆盖仍待补。
-- 没有修改 molexp/molvis/molhub；真实产品功能验收仍待对应产品 PR。
+- Rslib emits a complete ESM module tree and declarations; package exports do not depend on source aliases.
+- The standalone Rsbuild fixture has no Tailwind/source alias; the browser verifies size, theme, interaction, and portals.
+- The local tarball is installed and built in a temporary external directory and does not depend on workspace links.
+- The native package's standalone theme.css is built from the same tokens, and source no longer stores a shared tokens copy.
+- Storybook uses the built public API; all existing stories run, and full API/state coverage is still to be filled in.
+- molexp/molvis/molhub were not modified; real-product functional acceptance still awaits the corresponding product PRs.
 
-主题所有权、API 规范、a11y/视觉覆盖和未来改名/发布依照 roadmap 分批落实。
+Theme ownership, API contracts, a11y/visual coverage, and the future rename/release are carried out in batches according to the roadmap.

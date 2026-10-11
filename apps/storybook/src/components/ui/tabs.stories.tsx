@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@molcrafts/design";
 const meta = {
   title: "UI/Tabs",
   component: Tabs,
+  parameters: { docs: { description: { component: 'import { Tabs, TabsContent, TabsList, TabsTrigger } from "@molcrafts/design"' } } },
   args: { defaultValue: "overview" },
   render: (args) => (
     <Tabs {...args} className="w-80">

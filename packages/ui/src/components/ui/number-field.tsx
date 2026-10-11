@@ -24,8 +24,9 @@ export interface NumberFieldProps
 
 /**
  * Numeric input that holds a string draft while editing and commits a
- * clamped, step-rounded value on blur or Enter. Shared by the View-tab
- * render controls and the Data Source per-component parameters.
+ * clamped, step-rounded value on blur or Enter. Height is the 40px control
+ * default. Pass a compact height only when the surrounding layout states a
+ * space constraint.
  */
 export function NumberField({
   value,
@@ -54,7 +55,7 @@ export function NumberField({
       {...inputProps}
       type="number"
       className={cn(
-        "h-control-compact w-16 shrink-0 px-2 text-body tabular-nums",
+        "h-control w-24 shrink-0 px-2 text-body tabular-nums",
         className,
       )}
       value={draft}

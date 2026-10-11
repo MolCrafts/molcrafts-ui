@@ -14,7 +14,10 @@ const brand: ProductTheme = {
 const meta = {
   title: "Foundations/Theme scope", component: ThemeScope,
   args: { theme: "light" },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: { description: { component: 'import { ThemeScope } from "@molcrafts/design". Pass theme "light" or "dark", and a brand with both complete families. Overlays portal into that scope.' } },
+  },
   render: args => <ThemeScope {...args} className="space-y-4 rounded-panel p-4">
     <h2 className="text-title font-semibold">Scoped design system</h2>
     <div className="flex flex-wrap items-center gap-3"><Button>Primary action</Button><Button variant="secondary">Neutral action</Button><Badge variant="success">Completed</Badge></div>

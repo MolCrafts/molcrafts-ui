@@ -33,6 +33,20 @@ User instructions take precedence over these repository rules.
 
 ## Design and component work
 
+Open a component in Storybook (`pnpm storybook`). The sidebar lists Foundations, UI,
+Blocks, Web Components, and Charts. Every public component has one story there.
+`pnpm verify:stories` (also run by `pnpm verify:packages`) fails when an entry is missing.
+
+Visual review follows Impeccable's target rules:
+- Bare `/impeccable` only recommends commands. Its scan prefers dirty markup and style
+  files, then a source directory, then HTML or the repo root. It does not walk the sidebar.
+- `/impeccable critique` and `/impeccable audit` take one file or one URL. Pass that
+  story file or its iframe. A tree of 500 or more files is narrowed or asked about.
+- `/impeccable polish` reuses that target's critique snapshot when its bytes are unchanged,
+  and starts fresh when they change.
+- A full sidebar pass happens only when the user explicitly asks for one. Each critique
+  is still one target.
+
 Inspect existing implementations, public contracts and Storybook examples first.
 Follow Fluent 2, MolCrafts semantic tokens, complete product primary/secondary families,
 light/dark themes and documented variants. Read [theming](docs/theming.md),
