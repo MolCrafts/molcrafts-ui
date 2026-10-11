@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@molcrafts/design";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Accordion",
   component: Accordion,
-  parameters: { docs: { description: { component: 'import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Accordion>;
 export default meta;
 type Story = StoryObj<typeof meta>;

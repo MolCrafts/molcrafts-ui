@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@molcrafts/design";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Command",
   component: Command,
-  parameters: { docs: { description: { component: 'import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Command>;
 export default meta;
 type Story = StoryObj<typeof meta>;

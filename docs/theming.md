@@ -8,11 +8,11 @@ MolCrafts owns semantic names, mappings, defaults, and upgrade decisions. Fluent
 
 | Entry | Purpose |
 | --- | --- |
-| `@molcrafts/design-tokens/runtime.css` | Flat plain CSS: color, type, geometry, state, focus, motion, and elevation |
-| `@molcrafts/design-tokens/tailwind.css` | Optional Tailwind v4 mapping that consumes the same runtime variables |
-| `@molcrafts/design-tokens` | Framework-agnostic ProductTheme/BrandPalette/ThemeMode types and tokenContract metadata |
-| `@molcrafts/design-tokens/contract.json` | Built machine-readable inventory of default tokens |
-| `@molcrafts/design/styles.css` | Tokens, all React utilities, and preflight; React consumers usually need only this entry |
+| `@molcrafts/ui-tokens/runtime.css` | Flat plain CSS: color, type, geometry, state, focus, motion, and elevation |
+| `@molcrafts/ui-tokens/tailwind.css` | Optional Tailwind v4 mapping that consumes the same runtime variables |
+| `@molcrafts/ui-tokens` | Framework-agnostic ProductTheme/BrandPalette/ThemeMode types and tokenContract metadata |
+| `@molcrafts/ui-tokens/contract.json` | Built machine-readable inventory of default tokens |
+| `@molcrafts/ui/styles.css` | Tokens, all React utilities, and preflight; React consumers usually need only this entry |
 
 Foundation includes the Segoe UI font stack, type size/line height/font weight, the 4px spacing unit, semantic control/
 layout sizes, border/focus width and offset, radii, shadows, and motion. Semantic roles include
@@ -41,9 +41,9 @@ and MolCrafts roles are bound in the theme/product scope. Tailwind or React is n
 ## React ThemeScope
 
 ```tsx
-import { ThemeScope, Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, Button } from "@molcrafts/design";
-import type { ProductTheme, ThemeMode } from "@molcrafts/design-tokens";
-import "@molcrafts/design/styles.css";
+import { ThemeScope, Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, Button } from "@molcrafts/ui";
+import type { ProductTheme, ThemeMode } from "@molcrafts/ui-tokens";
+import "@molcrafts/ui/styles.css";
 
 // lightBrand/darkBrand are the product's complete, contrast-checked ProductTheme objects.
 function ProductArea({ mode, lightBrand, darkBrand }: {

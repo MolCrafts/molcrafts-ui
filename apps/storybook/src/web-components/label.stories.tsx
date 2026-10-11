@@ -5,7 +5,7 @@ const markup = `<fluent-label>Workspace name</fluent-label>`;
 
 const meta = {
   title: "Web Components/Label",
-  parameters: { docs: { description: { component: "<fluent-label> from @molcrafts/design-web-components. Visual label styling; it is not a native label element." } } },
+  parameters: { docs: { description: { component: "<fluent-label> from @molcrafts/ui-web-components. Visual label styling; it is not a native label element." } } },
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;

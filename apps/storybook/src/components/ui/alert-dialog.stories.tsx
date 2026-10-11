@@ -3,12 +3,12 @@ import { expect, userEvent, within } from "storybook/test";
 import {
   AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription,
   AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger, Button,
-} from "@molcrafts/design";
+} from "@molcrafts/ui";
 
 const meta = {
   title: "UI/AlertDialog",
   component: AlertDialog,
-  parameters: { docs: { description: { component: 'import { AlertDialog, AlertDialogAction, AlertDialogCancel } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { AlertDialog, AlertDialogAction, AlertDialogCancel } from "@molcrafts/ui"' } } },
   render: () => (
     <AlertDialog>
       <AlertDialogTrigger asChild><Button variant="destructive">Delete item</Button></AlertDialogTrigger>

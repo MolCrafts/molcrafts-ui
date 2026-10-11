@@ -7,12 +7,11 @@ Read [the refactoring spec](docs/design-system-refactoring-spec.md),
 [design constitution](docs/design-constitution.md) before shared UI work.
 The new spec supersedes the historical registry-first distribution direction.
 Implementation is authorized. Check the roadmap for completed boundaries and remaining work.
-Project name: `molcrafts-design`; npm names are confirmed as `@molcrafts/design`,
-`@molcrafts/design-tokens`, `@molcrafts/design-web-components`; MIT is approved.
-Repository-local naming and release preparation are authorized; external repository rename is deferred.
+Project and repository name: `molcrafts-ui`. npm names are `@molcrafts/ui`, `@molcrafts/ui-tokens`,
+`@molcrafts/ui-web-components`, `@molcrafts/ui-vega`, `@molcrafts/ui-vega-lite`; MIT. No repository rename is planned.
 Read [release preparation](docs/releasing.md) and [rename plan](docs/rename-plan.md).
 Do not publish packages, create release tags/releases, enable automatic publishing, or
-rename external resources without a subsequent release task.
+rename external resources without an explicit request.
 User instructions take precedence over these repository rules.
 
 ## Architecture

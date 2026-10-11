@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Code } from "@molcrafts/design";
+import { Code } from "@molcrafts/ui";
 
 function Packages() {
   return (
@@ -12,19 +12,19 @@ function Packages() {
       </header>
       <section className="space-y-3">
         <h2 className="text-title font-semibold">React</h2>
-        <Code variant="block" wrap="anywhere">{`import { Button, ThemeScope } from "@molcrafts/design";
-import "@molcrafts/design/styles.css";`}</Code>
+        <Code variant="block" wrap="anywhere">{`import { Button, ThemeScope } from "@molcrafts/ui";
+import "@molcrafts/ui/styles.css";`}</Code>
       </section>
       <section className="space-y-3">
         <h2 className="text-title font-semibold">Tokens</h2>
-        <Code variant="block" wrap="anywhere">{`import "@molcrafts/design-tokens/runtime.css";
+        <Code variant="block" wrap="anywhere">{`import "@molcrafts/ui-tokens/runtime.css";
 /* Tailwind v4 apps use this instead */
-import "@molcrafts/design-tokens/tailwind.css";`}</Code>
+import "@molcrafts/ui-tokens/tailwind.css";`}</Code>
       </section>
       <section className="space-y-3">
         <h2 className="text-title font-semibold">Web components</h2>
-        <Code variant="block" wrap="anywhere">{`import { registerMolcraftsComponents } from "@molcrafts/design-web-components";
-import "@molcrafts/design-web-components/theme.css";
+        <Code variant="block" wrap="anywhere">{`import { registerMolcraftsComponents } from "@molcrafts/ui-web-components";
+import "@molcrafts/ui-web-components/theme.css";
 
 await registerMolcraftsComponents();`}</Code>
       </section>

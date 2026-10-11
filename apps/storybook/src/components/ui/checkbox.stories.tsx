@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Checkbox, Label } from "@molcrafts/design";
+import { Checkbox, Label } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Checkbox",
   component: Checkbox,
-  parameters: { docs: { description: { component: 'import { Checkbox } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Checkbox } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Checkbox>;
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { ContentSection, MetaStrip, WorkSurface } from "@molcrafts/design";
+import { ContentSection, MetaStrip, WorkSurface } from "@molcrafts/ui";
 
 const meta = {
   title: "Blocks/WorkSurface",
   component: WorkSurface,
-  parameters: { layout: "fullscreen", docs: { description: { component: 'import { WorkSurface } from "@molcrafts/design". The scroller every tab renders into, with one padding and gap.' } } },
+  parameters: { layout: "fullscreen", docs: { description: { component: 'import { WorkSurface } from "@molcrafts/ui". The scroller every tab renders into, with one padding and gap.' } } },
   args: { children: null },
   render: () => (
     <div className="flex h-96 flex-col">

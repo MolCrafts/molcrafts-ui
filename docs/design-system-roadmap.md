@@ -1,11 +1,11 @@
-# molcrafts-design implementation roadmap
+# molcrafts-ui implementation roadmap
 
 Date: 2026-10-10 · Current stage: P1 merged (PR #6, ded1b1e); P2 merged (PR #7, 3e1d2dc); release preparation merged (PR #8); currently implementing optional charts and the CI dashboard migration.
 On 2026-10-10 the user required no backward compatibility, superseding the compatibility clauses in the original roadmap.
 Based on: [Refactoring Spec v1.0](design-system-refactoring-spec.md).
 This file describes future work; unchecked items are not implemented. Stages proceed by dependency and do not preset dates.
-Implementation is authorized; the user confirmed the @molcrafts/design package names and MIT. In-repository naming and release preparation are allowed;
-do not publish and do not implicitly modify external resources; the project name is `molcrafts-design`.
+Implementation is authorized; the user confirmed the @molcrafts/ui package names and MIT. In-repository naming and release preparation are allowed;
+do not publish and do not implicitly modify external resources; the project name is `molcrafts-ui`.
 
 ## Current preparation delivery P0
 
@@ -104,7 +104,7 @@ against public exports, and do not merely count story files.
 **Exit criteria**: Artifact-consumption CI passes; the real product has explicit test evidence. Until the product PR is done,
 library infrastructure may ship, but product-compatibility acceptance for the whole refactor stays incomplete.
 
-## P6 — molcrafts-design naming and release preparation
+## P6 — molcrafts-ui naming and release preparation
 
 - [x] Decide the npm scope, React/tokens/native package names, subpaths, and the version starting point.
 - [x] Inventory repository URLs, Registry URLs, CI/artifacts, docs, and product imports.
@@ -144,7 +144,7 @@ P2 CI was fully green and PR #7 was merged. Real products are not yet verified, 
 
 ## Pre-publish preparation scope (2026-10-10)
 
-The user confirmed the @molcrafts/design package names and MIT, and in-repository naming plus direct migration docs are done.
+The user confirmed the @molcrafts/ui package names and MIT, and in-repository naming plus direct migration docs are done.
 Changesets are configured for unified versions; 0.1.0-alpha.0 and changelogs were rehearsed in a temporary workspace,
 while the actual workspace version remains the unpublished 0.0.1 and the three packages stay private. Pack manifests/exports/licenses/
 dependency rewriting/checksums, and typechecking plus React/native Rsbuild consumption of the three tarballs outside the repository, are in CI.

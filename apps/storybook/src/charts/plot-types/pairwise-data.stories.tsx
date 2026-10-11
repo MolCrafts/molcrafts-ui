@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { VegaView } from "@molcrafts/design-vega";
+import { VegaView } from "@molcrafts/ui-vega";
 import { bar, fillBetween, plot, scatter, stackplot, stairs, stem } from "../figures/pairwise";
 import { galleryArgs, galleryParameters } from "./gallery";
 

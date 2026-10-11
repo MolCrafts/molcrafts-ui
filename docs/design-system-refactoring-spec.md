@@ -1,8 +1,8 @@
-# MolCrafts Design System Refactoring Spec
+# MolCrafts UI System Refactoring Spec
 
 Version: 1.0 · Status: Implementation authorized; incremental delivery
 Date: 2026-10-10 · Scope: current `MolCrafts/molcrafts-ui` repository
-Future project name: **molcrafts-design**
+Future project name: **molcrafts-ui**
 
 This specification consolidates the user-provided v1.0 and incorporates the previously confirmed Fluent 2, product brand colors, icons, and
 Web Components requirements. On 2026-10-10 the user subsequently authorized implementation and explicitly required no backward compatibility; that decision supersedes the original v1.0
@@ -51,13 +51,13 @@ packages/vega-lite/        # Optional compiler that reuses the Vega viewer
 packages/web-components/   # Existing independent native implementation that shares tokens with React
 apps/storybook/            # Component development and documentation
 registry/                 # Optional configuration, examples, and integration entry points
-skills/molcrafts-design/       # Portable Agent guidance
+skills/molcrafts-ui/       # Portable Agent guidance
 docs/                     # Specifications, decisions, migration, and the component catalog
 ```
 
-The user has confirmed `@molcrafts/design-tokens`, `@molcrafts/design`, and
-`@molcrafts/design-web-components`, plus MIT; in-repository package names and imports are already unified.
-`molcrafts-design` is the project name. External GitHub rename, domains, hosting, and npm publish permissions
+The user has confirmed `@molcrafts/ui-tokens`, `@molcrafts/ui`, and
+`@molcrafts/ui-web-components`, plus MIT; in-repository package names and imports are already unified.
+`molcrafts-ui` is the project name. External GitHub rename, domains, hosting, and npm publish permissions
 still need to be checked in the actual rename/release task. See [rename plan](rename-plan.md) and [release preparation](releasing.md).
 Do not implicitly modify the external GitHub repository, npm identity, or real products.
 
@@ -126,7 +126,7 @@ Delete core-source Registry items and keep only package configuration and exampl
 
 ## 7. Agent-native development
 
-Maintain the root `AGENTS.md`, the portable `skills/molcrafts-design/SKILL.md`, documentation based on TypeScript/Storybook,
+Maintain the root `AGENTS.md`, the portable `skills/molcrafts-ui/SKILL.md`, documentation based on TypeScript/Storybook,
 and a component catalog that includes names, purpose, imports, examples, and status.
 Agent workflow: look up existing components first, then read the public API and stories, and prefer reuse; use semantic tokens
 and existing composition patterns; a new UI dependency or default shadcn styles needs a sound reason; shared changes update

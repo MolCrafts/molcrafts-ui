@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { NativeSelect, ThemeScope } from "@molcrafts/design";
-const meta = { title: "UI/NativeSelect", component: NativeSelect, tags: ["autodocs"], parameters: { docs: { description: { component: 'import { NativeSelect } from "@molcrafts/design"' } } }, args: { "aria-label": "Profile", defaultValue: "linux", children: <><option value="linux">Linux</option><option value="mac">macOS</option></> } } satisfies Meta<typeof NativeSelect>;
+import { NativeSelect, ThemeScope } from "@molcrafts/ui";
+const meta = { title: "UI/NativeSelect", component: NativeSelect, tags: ["autodocs"], parameters: { docs: { description: { component: 'import { NativeSelect } from "@molcrafts/ui"' } } }, args: { "aria-label": "Profile", defaultValue: "linux", children: <><option value="linux">Linux</option><option value="mac">macOS</option></> } } satisfies Meta<typeof NativeSelect>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {};

@@ -1,11 +1,11 @@
-# @molcrafts/design
+# @molcrafts/ui
 
-Canonical React implementation for molcrafts-design, built with Rslib.
-Confirmed name; MIT licensed, published on npm `alpha`. External repository rename is deferred.
+Canonical React implementation for molcrafts-ui, built with Rslib.
+Confirmed name; MIT licensed, published on npm `alpha`.
 
 ```tsx
-import { Button, Dialog, DialogContent, DialogTitle } from "@molcrafts/design";
-import "@molcrafts/design/styles.css";
+import { Button, Dialog, DialogContent, DialogTitle } from "@molcrafts/ui";
+import "@molcrafts/ui/styles.css";
 ```
 
 React 19 is a peer dependency. `styles.css` includes semantic tokens, component
@@ -16,7 +16,7 @@ complete product brand families and keeps descendant overlays in the same theme.
 Nested explicit modes reset defaults; pass the appropriate brand to retain it.
 See [theming](https://github.com/MolCrafts/molcrafts-ui/blob/main/docs/theming.md) for APIs, inheritance and portal placement limits.
 
-The root entry exports all existing primitive and block APIs. `@molcrafts/design/utils`
+The root entry exports all existing primitive and block APIs. `@molcrafts/ui/utils`
 exports `cn`. Implementation modules are internal; Registry contains package setup and composition examples only. Old source-sync
 paths, deprecated color aliases and product-specific merge extensions are removed.
 Consumers migrate directly to the new package entries; there are no compatibility shims.

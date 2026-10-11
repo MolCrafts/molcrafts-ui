@@ -1,5 +1,5 @@
-import { registerMolcraftsComponents } from "@molcrafts/design-web-components";
-import "@molcrafts/design-web-components/theme.css";
+import { registerMolcraftsComponents } from "@molcrafts/ui-web-components";
+import "@molcrafts/ui-web-components/theme.css";
 
 async function start() {
   await registerMolcraftsComponents();

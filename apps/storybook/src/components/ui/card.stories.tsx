@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@molcrafts/design";
-import { Button } from "@molcrafts/design";
-import { Skeleton } from "@molcrafts/design";
-import { ProgressSpinner } from "@molcrafts/design";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@molcrafts/ui";
+import { Button } from "@molcrafts/ui";
+import { Skeleton } from "@molcrafts/ui";
+import { ProgressSpinner } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Card",
   component: Card,
-  parameters: { docs: { description: { component: 'import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@molcrafts/ui"' } } },
   render: (args) => (
     <Card {...args} className="w-80">
       <CardHeader><CardTitle>Workspace</CardTitle><CardDescription>Shared component preview</CardDescription></CardHeader>

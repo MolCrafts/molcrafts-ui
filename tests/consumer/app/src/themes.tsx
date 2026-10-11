@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { ProductTheme, ThemeMode } from "@molcrafts/design-tokens";
+import type { ProductTheme, ThemeMode } from "@molcrafts/ui-tokens";
 import {
   ThemeScope, Button, Badge, Input, ProgressSpinner,
   Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription,
@@ -9,7 +9,7 @@ import {
   Select, SelectTrigger, SelectValue, SelectContent, SelectItem,
   DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem,
   ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem,
-} from "@molcrafts/design";
+} from "@molcrafts/ui";
 
 const purple: ProductTheme = {
   primary: { background: "#7b327e", hover: "#652669", pressed: "#4f1c53", foreground: "#ffffff", muted: "#f4e7f5", mutedForeground: "#652669", link: "#c98fce", linkHover: "#e3b7e6" },

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, userEvent } from "storybook/test";
-import { fluentIcons } from "@molcrafts/design-web-components";
+import { fluentIcons } from "@molcrafts/ui-web-components";
 import { expectNative, NativeCanvas } from "./native-canvas";
 
 const markup = `
@@ -14,7 +14,7 @@ const markup = `
 
 const meta = {
   title: "Web Components/Button",
-  parameters: { docs: { description: { component: "import { registerMolcraftsComponents } from \"@molcrafts/design-web-components\" — <fluent-button>" } } },
+  parameters: { docs: { description: { component: "import { registerMolcraftsComponents } from \"@molcrafts/ui-web-components\" — <fluent-button>" } } },
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;

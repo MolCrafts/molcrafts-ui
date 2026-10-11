@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Label, Switch } from "@molcrafts/design";
+import { Label, Switch } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Switch",
   component: Switch,
-  parameters: { docs: { description: { component: 'import { Switch } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Switch } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Switch>;
 export default meta;
 type Story = StoryObj<typeof meta>;

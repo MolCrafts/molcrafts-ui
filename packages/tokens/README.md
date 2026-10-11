@@ -1,15 +1,15 @@
-# @molcrafts/design-tokens
+# @molcrafts/ui-tokens
 
 Framework-independent CSS tokens owned by MolCrafts, with a pinned Fluent 2
 reference input. No React, headless primitive or application runtime dependencies.
-Confirmed name for molcrafts-design; MIT licensed, published on npm `alpha`.
+Confirmed name for molcrafts-ui; MIT licensed, published on npm `alpha`.
 
 ```css
 /* Plain CSS; standalone, flattened, no build plugin required. */
-@import "@molcrafts/design-tokens/runtime.css";
+@import "@molcrafts/ui-tokens/runtime.css";
 
 /* Optional Tailwind v4 integration, for applications authoring own utilities. */
-/* @import "tailwindcss"; @import "@molcrafts/design-tokens/tailwind.css"; */
+/* @import "tailwindcss"; @import "@molcrafts/ui-tokens/tailwind.css"; */
 ```
 
 `runtime.css` supplies light/dark semantic colors, geometry, typography, motion,

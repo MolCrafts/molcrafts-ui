@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { VegaView, createChartConfig, type VegaViewProps, type VegaSpec, type ChartTheme } from "@molcrafts/design-vega";
+import { VegaView, createChartConfig, type VegaViewProps, type VegaSpec, type ChartTheme } from "@molcrafts/ui-vega";
 import type { TopLevelSpec, Config } from "vega-lite";
 export type { TopLevelSpec as VegaLiteSpec } from "vega-lite";
-export type { VegaViewHandle, ChartTheme, ChartData, ChartSignals } from "@molcrafts/design-vega";
+export type { VegaViewHandle, ChartTheme, ChartData, ChartSignals } from "@molcrafts/ui-vega";
 
 /** Compiler loaded only by consumers invoking this optional adapter. */
 export async function compileVegaLite(spec: TopLevelSpec): Promise<VegaSpec> {

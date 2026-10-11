@@ -1,4 +1,4 @@
-# @molcrafts/design-vega-lite
+# @molcrafts/ui-vega-lite
 
 ## 0.1.0-alpha.0
 
@@ -11,4 +11,4 @@
 
 - Updated dependencies [606108a]
 - Updated dependencies [6ab0276]
-  - @molcrafts/design-vega@0.1.0-alpha.0
+  - @molcrafts/ui-vega@0.1.0-alpha.0

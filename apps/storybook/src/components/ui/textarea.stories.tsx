@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Label, Textarea } from "@molcrafts/design";
+import { Label, Textarea } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Textarea",
   component: Textarea,
-  parameters: { docs: { description: { component: 'import { Textarea } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Textarea } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Textarea>;
 export default meta;
 type Story = StoryObj<typeof meta>;

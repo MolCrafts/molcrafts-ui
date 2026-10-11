@@ -4,11 +4,11 @@
   "commit": false,
   "fixed": [
     [
-      "@molcrafts/design-tokens",
-      "@molcrafts/design",
-      "@molcrafts/design-web-components",
-      "@molcrafts/design-vega",
-      "@molcrafts/design-vega-lite"
+      "@molcrafts/ui-tokens",
+      "@molcrafts/ui",
+      "@molcrafts/ui-web-components",
+      "@molcrafts/ui-vega",
+      "@molcrafts/ui-vega-lite"
     ]
   ],
   "linked": [],

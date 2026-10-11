@@ -1,7 +1,7 @@
-# MolCrafts Design: pre-publish preparation and the release process
+# MolCrafts UI: pre-publish preparation and the release process
 
 2026-10-11 · Current status: first release `0.1.0-alpha.0` on the npm `alpha` dist-tag, published on the owner's explicit request.
-The user has chosen the `@molcrafts/design` package-name family and MIT. The GitHub repository is still
+The user has chosen the `@molcrafts/ui` package-name family and MIT. The GitHub repository is still
 [MolCrafts/molcrafts-ui](https://github.com/MolCrafts/molcrafts-ui). Renaming it externally is handled separately.
 The machine-readable plan is [release/plan.json](../release/plan.json).
 
@@ -9,11 +9,11 @@ The machine-readable plan is [release/plan.json](../release/plan.json).
 
 | Package | Content | Public entries |
 | --- | --- | --- |
-| `@molcrafts/design-tokens` | Framework-agnostic tokens, types, and metadata | root, runtime.css, tailwind.css, contract.json |
-| `@molcrafts/design` | React 19 components and compiled CSS | root, utils, styles.css |
-| `@molcrafts/design-web-components` | Independent native components, registration, CSS, a manifest, and a browser bundle | root, register, theme.css, custom-elements.json, browser.js |
-| `@molcrafts/design-vega` | Optional Vega runtime and React viewer | root (VegaView, createChartConfig, useChartTheme, and public types) |
-| `@molcrafts/design-vega-lite` | Optional Vega-Lite compiler that reuses the same viewer | root (VegaLiteView, compileVegaLite, and public types) |
+| `@molcrafts/ui-tokens` | Framework-agnostic tokens, types, and metadata | root, runtime.css, tailwind.css, contract.json |
+| `@molcrafts/ui` | React 19 components and compiled CSS | root, utils, styles.css |
+| `@molcrafts/ui-web-components` | Independent native components, registration, CSS, a manifest, and a browser bundle | root, register, theme.css, custom-elements.json, browser.js |
+| `@molcrafts/ui-vega` | Optional Vega runtime and React viewer | root (VegaView, createChartConfig, useChartTheme, and public types) |
+| `@molcrafts/ui-vega-lite` | Optional Vega-Lite compiler that reuses the same viewer | root (VegaLiteView, compileVegaLite, and public types) |
 
 The root, Storybook, and consumer fixtures are not published. The five distributable packages temporarily share one version so the shared theme
 contract can be adopted as one versioned set. A Changesets fixed group manages that rule, and apps are excluded.
@@ -83,7 +83,6 @@ Segoe font files are not distributed. The font stack uses only fonts already ins
 - Review of the API, states, stories, and upgrade notes for the public components chosen for the first release is complete, and the remaining scope is explicitly marked.
 - At least one real MolCrafts product uses the new imports and CSS, and there is evidence of functional verification.
 - In an explicit release task, check npm scope ownership, the five names, and the publish account's permissions. Choosing the package names is not the same as holding those permissions.
-- Confirm when the external GitHub rename happens, and align repository, homepage, and bugs, the Registry URL, the docs, and the product links.
 - Review the real alpha manifests and changelogs, and the candidate tarballs built from a clean commit. Confirm what is published, the channel, and the source.
 
 These are unfinished items on the [roadmap](design-system-roadmap.md). This rehearsal does not skip them automatically.

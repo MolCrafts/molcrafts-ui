@@ -5,7 +5,7 @@ const markup = `<fluent-text-input value="Workspace">Name</fluent-text-input>`;
 
 const meta = {
   title: "Web Components/TextInput",
-  parameters: { docs: { description: { component: "<fluent-text-input> from @molcrafts/design-web-components. The default slot is the accessible name." } } },
+  parameters: { docs: { description: { component: "<fluent-text-input> from @molcrafts/ui-web-components. The default slot is the accessible name." } } },
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;

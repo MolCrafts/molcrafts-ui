@@ -1,7 +1,7 @@
 import { useState, type ComponentProps } from "react";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { VegaView } from "@molcrafts/design-vega";
-import { ThemeScope } from "@molcrafts/design";
+import { VegaView } from "@molcrafts/ui-vega";
+import { ThemeScope } from "@molcrafts/ui";
 import { FIGURE_HEIGHT, FIGURE_WIDTH } from "./figures/acs";
 import { scatter } from "./figures/pairwise";
 
@@ -19,7 +19,7 @@ const meta = {
     layout: "centered",
     docs: {
       description: {
-        component: 'import { VegaView } from "@molcrafts/design-vega". Pass an official Vega spec, or spec(theme) so marks inherit semantic color. Only trusted specs: this viewer is not a sandbox. This page is the only one that shows the figure title, caption, and states. Charts/Plot types shows each figure alone, named after the Matplotlib plot-types gallery. label is the visible figure title. description is the caption, shown once the chart is ready and hidden while loading, empty, or failed. viewRef exposes getView, setSignal, setData, exportSVG, and exportImage.',
+        component: 'import { VegaView } from "@molcrafts/ui-vega". Pass an official Vega spec, or spec(theme) so marks inherit semantic color. Only trusted specs: this viewer is not a sandbox. This page is the only one that shows the figure title, caption, and states. Charts/Plot types shows each figure alone, named after the Matplotlib plot-types gallery. label is the visible figure title. description is the caption, shown once the chart is ready and hidden while loading, empty, or failed. viewRef exposes getView, setSignal, setData, exportSVG, and exportImage.',
       },
     },
   },

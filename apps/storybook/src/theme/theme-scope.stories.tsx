@@ -4,7 +4,7 @@ import { expect, userEvent, within } from "storybook/test";
 import {
   ThemeScope, Button, Badge, Dialog, DialogContent, DialogTitle, DialogDescription, DialogTrigger,
   type ProductTheme,
-} from "@molcrafts/design";
+} from "@molcrafts/ui";
 
 const brand: ProductTheme = {
   primary: { background: "#00665e", hover: "#00574f", pressed: "#00473f", foreground: "#ffffff", muted: "#dcf3ee", mutedForeground: "#00574f", link: "#65dfcb", linkHover: "#8cf0df" },
@@ -16,7 +16,7 @@ const meta = {
   args: { theme: "light" },
   parameters: {
     layout: "padded",
-    docs: { description: { component: 'import { ThemeScope } from "@molcrafts/design". Pass theme "light" or "dark", and a brand with both complete families. Overlays portal into that scope.' } },
+    docs: { description: { component: 'import { ThemeScope } from "@molcrafts/ui". Pass theme "light" or "dark", and a brand with both complete families. Overlays portal into that scope.' } },
   },
   render: args => <ThemeScope {...args} className="space-y-4 rounded-panel p-4">
     <h2 className="text-title font-semibold">Scoped design system</h2>

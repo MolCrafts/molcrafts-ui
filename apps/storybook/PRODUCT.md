@@ -12,7 +12,7 @@ Product engineers building molexp, molvis, or molhub. They open Storybook to che
 
 ## Product Purpose
 
-MolCrafts Design (`molcrafts-design`) is the shared UI for molexp, molvis, and molhub. It gives those products one owned component, token, and theme contract.
+MolCrafts UI (`molcrafts-ui`) is the shared UI for molexp, molvis, and molhub. It gives those products one owned component, token, and theme contract.
 
 Storybook (`apps/storybook`, `@molcrafts/storybook`) is the documentation and playground for that system. It stays a private workspace app. Success is a product engineer finding the public component, token, or theme in Storybook and consuming the built package correctly.
 
@@ -28,10 +28,10 @@ Engineers work in the product repositories and consult this Storybook while impl
 
 They consume built public entries, not library source:
 
-- `@molcrafts/design` and `@molcrafts/design/styles.css` for React 19
-- `@molcrafts/design-tokens/runtime.css` for framework-free CSS, or `@molcrafts/design-tokens/tailwind.css` when the app authors Tailwind v4 utilities
-- `@molcrafts/design-web-components` for a separate custom-element runtime
-- `@molcrafts/design-vega` and `@molcrafts/design-vega-lite` only when a product needs charts
+- `@molcrafts/ui` and `@molcrafts/ui/styles.css` for React 19
+- `@molcrafts/ui-tokens/runtime.css` for framework-free CSS, or `@molcrafts/ui-tokens/tailwind.css` when the app authors Tailwind v4 utilities
+- `@molcrafts/ui-web-components` for a separate custom-element runtime
+- `@molcrafts/ui-vega` and `@molcrafts/ui-vega-lite` only when a product needs charts
 
 React themes and overlays use `ThemeScope`. Explicit light and dark modes use `data-mol-theme`. Products keep their own mode switch and provide both modes of both brand families. Neutral actions and status colors stay shared. Scientific chart colors stay with the product. Registry entries are setup and composition examples of the same packages.
 
@@ -43,7 +43,7 @@ Paths below are from the repository root.
 
 Confirmed:
 
-- Workspace packages are `@molcrafts/design`, `@molcrafts/design-tokens`, and `@molcrafts/design-web-components`, plus optional `@molcrafts/design-vega` and `@molcrafts/design-vega-lite`. The project name is `molcrafts-design`. MIT is approved. The packages are private and unpublished. The external repository rename is deferred. Publishing, tagging, and external renaming wait for a later release task.
+- Workspace packages are `@molcrafts/ui`, `@molcrafts/ui-tokens`, and `@molcrafts/ui-web-components`, plus optional `@molcrafts/ui-vega` and `@molcrafts/ui-vega-lite`. The project name is `molcrafts-ui`. MIT is approved. The packages are private and unpublished. The external repository rename is deferred. Publishing, tagging, and external renaming wait for a later release task.
 - Consumers move directly to the public imports and the compiled CSS.
 - Tokens do not depend on React, primitives, or applications. Packages do not import apps. Applications do not scan library source.
 - Web Components share tokens through an independent runtime. They keep their own native APIs. Thirteen official elements are managed today, and elements are not registered during SSR.
@@ -59,7 +59,7 @@ Undecided:
 
 ## Brand Commitments
 
-The product name is MolCrafts Design. The project name is `molcrafts-design`. The binding visual baseline is the current Fluent 2 Web contract, including official Fluent icons. Each product owns its primary and secondary brand colors.
+The product name is MolCrafts UI. The project name is `molcrafts-ui`. The binding visual baseline is the current Fluent 2 Web contract, including official Fluent icons. Each product owns its primary and secondary brand colors.
 
 ## Evidence on Hand
 

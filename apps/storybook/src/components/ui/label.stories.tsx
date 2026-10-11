@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Input, Label } from "@molcrafts/design";
+import { Input, Label } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Label",
   component: Label,
-  parameters: { docs: { description: { component: 'import { Label } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Label } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Label>;
 export default meta;
 type Story = StoryObj<typeof meta>;

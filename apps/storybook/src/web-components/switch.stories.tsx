@@ -6,7 +6,7 @@ const markup = `<div class="flex items-center gap-2"><fluent-switch id="wc-switc
 
 const meta = {
   title: "Web Components/Switch",
-  parameters: { docs: { description: { component: "<fluent-switch> from @molcrafts/design-web-components." } } },
+  parameters: { docs: { description: { component: "<fluent-switch> from @molcrafts/ui-web-components." } } },
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;

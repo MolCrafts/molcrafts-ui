@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Button, Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@molcrafts/design";
+import { Button, Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/Sheet",
   component: Sheet,
-  parameters: { docs: { description: { component: 'import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof Sheet>;
 export default meta;
 type Story = StoryObj<typeof meta>;

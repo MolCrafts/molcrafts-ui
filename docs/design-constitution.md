@@ -1,4 +1,4 @@
-# MolCrafts Design Constitution · Fluent 2
+# MolCrafts UI Constitution · Fluent 2
 
 Version: v1.5, 2026-10-10. Applies to the shared foundational UI of molexp, molvis, and molhub.
 
@@ -202,9 +202,9 @@ check light and dark themes and component interaction, and record the version an
 
 ## 10. Product integration and change acceptance
 
-React consumers import `@molcrafts/design/styles.css`, which includes the default tokens, compiled utilities, and
-preflight, without scanning library source. Framework-agnostic CSS uses `@molcrafts/design-tokens/runtime.css`.
-An application's own Tailwind utilities may use `@molcrafts/design-tokens/tailwind.css`.
+React consumers import `@molcrafts/ui/styles.css`, which includes the default tokens, compiled utilities, and
+preflight, without scanning library source. Framework-agnostic CSS uses `@molcrafts/ui-tokens/runtime.css`.
+An application's own Tailwind utilities may use `@molcrafts/ui-tokens/tailwind.css`.
 The product supplies complete primary / secondary brand families. Neutral actions use neutral. Status colors stay independent.
 The user requires no backward compatibility. Old src paths, a separate public constitution CSS entry, accent/link
 aliases, stock radius aliases, product-private cn extensions, and the source-sync workflow have all been removed.

@@ -1,4 +1,4 @@
-import type { ChartTheme, VegaSpec } from "@molcrafts/design-vega";
+import type { ChartTheme, VegaSpec } from "@molcrafts/ui-vega";
 import { AXIS, FONT, LINE, MARKER, TYPE, figure, frame, legend, normal, pt, ramp, round, series } from "./acs";
 
 const CONDITIONS = ["A", "B", "C"];

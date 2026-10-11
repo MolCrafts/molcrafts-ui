@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { ProgressSpinner } from "@molcrafts/design";
+import { ProgressSpinner } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/ProgressSpinner",
   component: ProgressSpinner,
-  parameters: { docs: { description: { component: 'import { ProgressSpinner } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { ProgressSpinner } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof ProgressSpinner>;
 export default meta;
 type Story = StoryObj<typeof meta>;

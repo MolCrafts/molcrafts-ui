@@ -1,5 +1,5 @@
 {
-  "name": "@molcrafts/design-vega",
+  "name": "@molcrafts/ui-vega",
   "version": "0.1.0-alpha.0",
   "type": "module",
   "description": "Optional MolCrafts vega React chart adapter",
@@ -20,7 +20,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@molcrafts/design-tokens": "workspace:*",
+    "@molcrafts/ui-tokens": "workspace:*",
     "vega": "6.4.0"
   },
   "peerDependencies": {

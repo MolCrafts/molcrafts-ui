@@ -1,4 +1,4 @@
-import type { ChartTheme, VegaSpec } from "@molcrafts/design-vega";
+import type { ChartTheme, VegaSpec } from "@molcrafts/ui-vega";
 import { AXIS, LINE, figure, frame, legend, pt, ramp, round } from "./acs";
 
 /** Matplotlib's contour demo surface on [-3, 3] × [-3, 3]. */

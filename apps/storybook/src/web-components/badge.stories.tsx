@@ -5,7 +5,7 @@ const markup = `<div class="flex flex-wrap gap-2"><fluent-badge appearance="tint
 
 const meta = {
   title: "Web Components/Badge",
-  parameters: { docs: { description: { component: "<fluent-badge> from @molcrafts/design-web-components. Status text stays readable." } } },
+  parameters: { docs: { description: { component: "<fluent-badge> from @molcrafts/ui-web-components. Status text stays readable." } } },
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;

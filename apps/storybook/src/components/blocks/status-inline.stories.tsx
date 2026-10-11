@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { StatusInline } from "@molcrafts/design";
+import { StatusInline } from "@molcrafts/ui";
 
 const meta = {
   title: "Blocks/StatusInline",
   component: StatusInline,
-  parameters: { layout: "padded", docs: { description: { component: 'import { StatusInline } from "@molcrafts/design". A distribution over statuses in one line. The bar has a text alternative and the legend repeats each count with its word.' } } },
+  parameters: { layout: "padded", docs: { description: { component: 'import { StatusInline } from "@molcrafts/ui". A distribution over statuses in one line. The bar has a text alternative and the legend repeats each count with its word.' } } },
   args: { total: "6 records", segments: [
     { status: "completed", count: 4, label: "completed" },
     { status: "warning", count: 1, label: "warning" },

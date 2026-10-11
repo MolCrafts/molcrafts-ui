@@ -1,11 +1,11 @@
 import { AddRegular } from "@fluentui/react-icons";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Button, ExplorerPanel, NavList, NavListItem } from "@molcrafts/design";
+import { Button, ExplorerPanel, NavList, NavListItem } from "@molcrafts/ui";
 
 const meta = {
   title: "Blocks/ExplorerPanel",
   component: ExplorerPanel,
-  parameters: { layout: "fullscreen", docs: { description: { component: 'import { ExplorerPanel } from "@molcrafts/design". A titled, scrollable navigator column. Place it in a labelled nav region.' } } },
+  parameters: { layout: "fullscreen", docs: { description: { component: 'import { ExplorerPanel } from "@molcrafts/ui". A titled, scrollable navigator column. Place it in a labelled nav region.' } } },
   args: {
     title: "Projects",
     children: <NavList>{["molcrafts-ci", "molrs", "molpy"].map((id, i) => <NavListItem key={id} current={i === 0}>{id}</NavListItem>)}</NavList>,

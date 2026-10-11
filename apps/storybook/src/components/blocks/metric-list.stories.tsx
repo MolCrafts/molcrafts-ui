@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { MetricList } from "@molcrafts/design";
+import { MetricList } from "@molcrafts/ui";
 
 const meta = {
   title: "Blocks/MetricList",
   component: MetricList,
-  parameters: { layout: "padded", docs: { description: { component: 'import { MetricList } from "@molcrafts/design". Scalar fields of one object. Two columns from the small breakpoint.' } } },
+  parameters: { layout: "padded", docs: { description: { component: 'import { MetricList } from "@molcrafts/ui". Scalar fields of one object. Two columns from the small breakpoint.' } } },
   args: { metrics: [
     { label: "neighbor_list/1k", value: "18.4", unit: "µs" },
     { label: "neighbor_list/10k", value: "201", unit: "µs" },

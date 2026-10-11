@@ -1,9 +1,9 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import { Code } from "@molcrafts/design";
-import { fluentIcons, registerMolcraftsComponents } from "@molcrafts/design-web-components";
-import "@molcrafts/design-web-components/theme.css";
+import { Code } from "@molcrafts/ui";
+import { fluentIcons, registerMolcraftsComponents } from "@molcrafts/ui-web-components";
+import "@molcrafts/ui-web-components/theme.css";
 
 function WebComponentsPreview({ customBrand = false }: { customBrand?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -50,8 +50,8 @@ function WebComponentsPreview({ customBrand = false }: { customBrand?: boolean }
     <main className="mx-auto max-w-3xl space-y-6 p-4 sm:p-8 mol-product-theme" style={palette}>
       <h1 className="text-heading font-semibold">Fluent Web Components</h1>
       <p className="text-body text-muted-foreground">Native custom elements with Shadow DOM, shared tokens, and framework-independent APIs. Call register before the first element mounts.</p>
-      <Code variant="block" wrap="anywhere">{`import { registerMolcraftsComponents } from "@molcrafts/design-web-components";
-import "@molcrafts/design-web-components/theme.css";`}</Code>
+      <Code variant="block" wrap="anywhere">{`import { registerMolcraftsComponents } from "@molcrafts/ui-web-components";
+import "@molcrafts/ui-web-components/theme.css";`}</Code>
       <a href="#wc-contract" className="text-body font-semibold text-primary-link">Brand link</a>
       <div className="flex gap-2 text-body font-semibold"><span className="rounded-control bg-primary p-3 text-primary-foreground">Primary</span><span className="rounded-control bg-secondary p-3 text-secondary-foreground">Secondary</span></div>
       <div ref={ref} className="grid gap-4 text-body" />
@@ -64,7 +64,7 @@ const meta = {
   component: WebComponentsPreview,
   parameters: {
     layout: "fullscreen",
-    docs: { description: { component: 'import { registerMolcraftsComponents } from "@molcrafts/design-web-components"' } },
+    docs: { description: { component: 'import { registerMolcraftsComponents } from "@molcrafts/ui-web-components"' } },
   },
   play: async ({ canvasElement, args }) => {
     await waitFor(() => expect(canvasElement.querySelector('[data-ready="true"]')).not.toBeNull());

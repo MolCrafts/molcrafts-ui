@@ -5,7 +5,7 @@ const markup = `<fluent-tablist aria-label="Sections"><fluent-tab>Overview</flue
 
 const meta = {
   title: "Web Components/Tab",
-  parameters: { docs: { description: { component: "<fluent-tab> from @molcrafts/design-web-components. A tab is used inside fluent-tablist." } } },
+  parameters: { docs: { description: { component: "<fluent-tab> from @molcrafts/ui-web-components. A tab is used inside fluent-tablist." } } },
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;

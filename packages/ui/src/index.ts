@@ -35,7 +35,7 @@ export * from "./components/ui/tooltip";
 export * from "./components/blocks/blocks";
 export { cn } from "./lib/utils";
 export { ThemeScope, type ThemeScopeProps } from "./theme/theme-scope";
-export type { ThemeMode, BrandPalette, PrimaryPalette, ProductTheme } from "@molcrafts/design-tokens";
+export type { ThemeMode, BrandPalette, PrimaryPalette, ProductTheme } from "@molcrafts/ui-tokens";
 
 export type { PanelImperativeHandle as ResizablePanelHandle } from "react-resizable-panels";
 export { NativeSelect, type NativeSelectProps } from "./components/ui/native-select";

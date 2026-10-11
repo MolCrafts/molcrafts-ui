@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@molcrafts/design";
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@molcrafts/ui";
 
 const meta = {
   title: "UI/DropdownMenu",
   component: DropdownMenu,
-  parameters: { docs: { description: { component: 'import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@molcrafts/design"' } } },
+  parameters: { docs: { description: { component: 'import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@molcrafts/ui"' } } },
 } satisfies Meta<typeof DropdownMenu>;
 export default meta;
 type Story = StoryObj<typeof meta>;
