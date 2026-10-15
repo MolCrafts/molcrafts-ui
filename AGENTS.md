@@ -84,7 +84,9 @@ pnpm test:storybook
 CI follows the MolCrafts CI scheme from molcrafts-ci. Local hooks (`.pre-commit-config.yaml`,
 profile `node` in `.github/partners.env`) run the workflow check and `pnpm typecheck` at pre-commit
 and `pnpm verify:packages` at pre-push; GitHub CI does not repeat them in a lint workflow.
-`test.yml` (`test / packages`, `test / browsers`) is opened by a `test / context` job. Shared actions are pinned to one molcrafts-ci SHA; bump them together.
+`test.yml` has one job, `test / browsers`, opened by a `test / context` job: it builds the packages once, checks
+what no hook checks (committed generated sources, registry, catalog, chart boundaries, the release
+rehearsal), then runs the Playwright suites on that build. Shared actions are pinned to one molcrafts-ci SHA; bump them together.
 `test / browsers` submits the Playwright results as the `molcrafts-ui` tests record; only a push
 to master is tracked. Browser tests require Playwright Chromium installed. Token/registry/native generation
 must leave committed generated sources consistent; edit generators rather than outputs.
