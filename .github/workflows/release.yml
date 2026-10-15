@@ -124,7 +124,8 @@ jobs:
             if npm view "$name@$version" version >/dev/null 2>&1; then
               echo "$name@$version is already on npm; skipped"
             else
-              npm publish "release-artifacts/$file" --tag "$CHANNEL" --access public --provenance
+              # "./": without it npm reads "release-artifacts/x.tgz" as a GitHub owner/repo.
+              npm publish "./release-artifacts/$file" --tag "$CHANNEL" --access public --provenance
             fi
           done
 
