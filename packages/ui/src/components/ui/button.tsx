@@ -14,7 +14,9 @@ const buttonVariants = cva(
           "bg-destructive text-destructive-foreground hover:bg-status-failed-hover active:bg-status-failed-hover",
         outline:
           "bg-transparent hover:bg-interactive active:bg-interactive-pressed hover:text-interactive-foreground",
-        secondary: "bg-neutral text-neutral-foreground hover:bg-interactive active:bg-interactive-pressed",
+        // The border keeps it visible on --surface, where --neutral has the same fill.
+        secondary:
+          "border border-input bg-neutral text-neutral-foreground hover:border-input-hover hover:bg-interactive active:bg-interactive-pressed disabled:border-disabled-border",
         ghost: "hover:bg-interactive active:bg-interactive-pressed hover:text-interactive-foreground",
         link: "text-primary-link underline-offset-4 hover:text-primary-link-hover hover:underline",
       },
