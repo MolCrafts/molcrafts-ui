@@ -70,6 +70,19 @@ const visuallyHidden = {
 } as const;
 const asError = (error: unknown) => error instanceof Error ? error : new Error(String(error));
 
+/** Vega-Lite wraps one anonymous field as `{ tooltip: "…" }`. Show the sentence, not the field name. */
+const tooltipText = (value: unknown): string => {
+  if (value == null) return "";
+  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") return String(value);
+  if (Array.isArray(value)) return value.map((item) => tooltipText(item)).filter(Boolean).join("\n");
+  if (typeof value === "object") {
+    const entries = Object.entries(value as Record<string, unknown>).filter(([, item]) => item != null && item !== "");
+    if (entries.length === 1 && entries[0]?.[0].toLowerCase() === "tooltip") return tooltipText(entries[0][1]);
+    return entries.map(([key, item]) => `${key}: ${tooltipText(item)}`).join("\n");
+  }
+  return String(value);
+};
+
 /** One optional Vega runtime. No Vega-Lite compiler or embed dependency. */
 export function VegaView({
   spec, label, labelHidden = false, description, width, height = 240, renderer = "svg", data, signals,
@@ -88,7 +101,7 @@ export function VegaView({
   const theme = useChartTheme(host);
   const [error, setError] = useState<Error | null>(null);
   const [pending, setPending] = useState(true);
-  const [tooltip, setTooltip] = useState<{ text: string; x: number; y: number } | null>(null);
+  const [tooltip, setTooltip] = useState<{ text: string; x: number; y: number; below: boolean } | null>(null);
   const callbacks = useRef({ onReady, onError, onSignalChange });
   callbacks.current = { onReady, onError, onSignalChange };
   const latest = useRef({ data, signals });
@@ -142,12 +155,17 @@ export function VegaView({
       view.current = active;
       active.tooltip((_view: View, event: ScenegraphEvent, _item: unknown, value: unknown) => {
         if (!alive()) return;
-        if (value == null) { setTooltip(null); return; }
+        const text = tooltipText(value);
+        if (!text) { setTooltip(null); return; }
         const bounds = (frame.current ?? host.current!).getBoundingClientRect();
         const pointer = event as MouseEvent;
-        setTooltip({ text: typeof value === "object" ? Object.entries(value).map(([key, item]) => `${key}: ${String(item)}`).join(" · ") : String(value),
-          x: Math.max(0, Math.min(bounds.width - 20, (pointer.clientX ?? bounds.left) - bounds.left)),
-          y: Math.max(0, (pointer.clientY ?? bounds.top) - bounds.top) });
+        const y = Math.max(0, (pointer.clientY ?? bounds.top) - bounds.top);
+        setTooltip({
+          text,
+          x: Math.max(8, Math.min(bounds.width - 8, (pointer.clientX ?? bounds.left) - bounds.left)),
+          y,
+          below: y < 28,
+        });
       });
       for (const name of JSON.parse(signalKey) as string[]) active.addSignalListener(name, (name, value) => {
         if (alive()) callbacks.current.onSignalChange?.(name, value);
@@ -212,11 +230,14 @@ export function VegaView({
       </div>}
       {state === "empty" && <div role="status" style={{ marginBlock: "auto", paddingBlock: gap }}>{emptyFallback}</div>}
       {state === "error" && errorBody && <div role="alert" style={{ marginBlock: "auto", padding: gap, borderRadius: "var(--radius-control)", border: "1px solid var(--status-failed)", background: "var(--status-failed-soft)", color: "var(--status-failed-foreground)" }}>{errorBody}</div>}
-      {tooltip && <div role="tooltip" style={{ position: "absolute", left: tooltip.x, top: tooltip.y,
-        transform: "translate(-50%, -100%)", pointerEvents: "none", maxWidth: "100%", padding: gap,
+      {tooltip && <div role="tooltip" style={{ position: "absolute", left: tooltip.x, top: tooltip.y, zIndex: 2,
+        transform: tooltip.below ? "translate(-50%, 12px)" : "translate(-50%, calc(-100% - 8px))", pointerEvents: "none", maxWidth: "100%", padding: gap,
         borderRadius: "var(--radius-control)", background: "var(--popover)", color: "var(--popover-foreground)",
-        border: "1px solid var(--border)", boxShadow: "var(--shadow-overlay)", fontSize: "var(--text-label)", lineHeight: "var(--text-label--line-height)" }}>{tooltip.text}</div>}
+        border: "1px solid var(--border)", boxShadow: "var(--shadow-overlay)", fontSize: "var(--text-label)", lineHeight: "var(--text-label--line-height)", whiteSpace: "pre-line" }}>{tooltip.text}</div>}
     </div>
     {state === "ready" && description && <p id={descriptionId} style={{ margin: `${gap} 0 0`, fontSize: "var(--text-body)", lineHeight: "var(--text-body--line-height)" }}>{description}</p>}
   </div>;
 }
+
+export { ArcChart, BarChart, Plot, arcSlices, arcSpec, barSpec, plotSpec } from "./charts";
+export type { ArcDatum, BarDatum, PlotPoint } from "./charts";

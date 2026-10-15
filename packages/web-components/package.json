@@ -1,6 +1,6 @@
 {
   "name": "@molcrafts/ui-web-components",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Framework-independent MolCrafts Fluent 2 Web Components",
   "type": "module",
   "files": [

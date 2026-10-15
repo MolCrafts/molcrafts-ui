@@ -1,6 +1,7 @@
 # MolCrafts UI: pre-publish preparation and the release process
 
 2026-10-11 · Current status: first release `0.1.0-alpha.0` on the npm `alpha` dist-tag, published on the owner's explicit request.
+`0.1.0-alpha.1` is versioned in the repository (release plan target) and is not published yet; it ships when its `v0.1.0-alpha.1` tag is pushed on master.
 The user has chosen the `@molcrafts/ui` package-name family and MIT. The GitHub repository is still
 [MolCrafts/molcrafts-ui](https://github.com/MolCrafts/molcrafts-ui). Renaming it externally is handled separately.
 The machine-readable plan is [release/plan.json](../release/plan.json).

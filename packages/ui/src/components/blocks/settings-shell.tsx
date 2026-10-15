@@ -30,11 +30,16 @@ function NavSeparator({ label }: { label: string }): JSX.Element {
   );
 }
 
-interface SettingsShellProps {
+export interface SettingsShellProps {
   title?: string;
   entries: SettingsNavEntry[];
   defaultId?: string;
   className?: string;
+  /**
+   * `card` paints the panel title and border.
+   * `plain` is the nav and the scrolling body, for a dialog that already has a title.
+   */
+  chrome?: "card" | "plain";
 }
 
 export function SettingsShell({
@@ -42,6 +47,7 @@ export function SettingsShell({
   entries,
   defaultId,
   className,
+  chrome = "card",
 }: SettingsShellProps): JSX.Element {
   const visible = useMemo(() => entries.filter((e) => !e.hidden), [entries]);
   const [activeId, setActiveId] = useState(defaultId ?? visible[0]?.id ?? "");
@@ -114,13 +120,18 @@ export function SettingsShell({
   return (
     <div
       className={cn(
-        "flex h-full min-h-0 w-full flex-col overflow-hidden rounded-panel border border-border bg-card",
+        "flex min-h-0 w-full flex-col overflow-hidden",
+        chrome === "card"
+          ? "h-full rounded-panel border border-border bg-card"
+          : "flex-1",
         className,
       )}
     >
-      <header className="shrink-0 border-b border-border/70 px-5 py-3.5">
-        <h2 className="text-title font-semibold">{title}</h2>
-      </header>
+      {chrome === "card" ? (
+        <header className="shrink-0 border-b border-border/70 px-5 py-3.5">
+          <h2 className="text-title font-semibold">{title}</h2>
+        </header>
+      ) : null}
 
       <div className="flex min-h-0 flex-1">
         <nav

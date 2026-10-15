@@ -30,3 +30,7 @@ export const Default: Story = {
   args: { title: "Settings", entries },
   render: (args) => <SettingsShell {...args} className="h-[28rem] w-full max-w-3xl" />,
 };
+export const Plain: Story = {
+  args: { chrome: "plain", entries },
+  render: (args) => <SettingsShell {...args} className="h-[28rem] w-full max-w-3xl border border-border" />,
+};

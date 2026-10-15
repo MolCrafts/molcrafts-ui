@@ -3,7 +3,7 @@ import { access, readFile, readdir } from "node:fs/promises";
 import { createRequire } from "node:module";
 
 const root = new URL("../", import.meta.url);
-for (const name of ["tokens", "ui"]) {
+for (const name of ["tokens", "ui", "web-components"]) {
   const pkgRoot = new URL(`packages/${name}/`, root);
   const pkg = JSON.parse(await readFile(new URL("package.json", pkgRoot), "utf8"));
   // Distributable packages are publishable; the workspace root and applications stay private.

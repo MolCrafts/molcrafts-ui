@@ -23,3 +23,18 @@ splitting npm packages does not ensure smaller entry bundles: verify the native 
 route and core UI entry exclude the compiler. Figure editing, selection semantics,
 Artist Tree, property inspectors and Undo/Redo belong to MolPlot. CI record mappings
 belong to CI; Molab can use this package without importing MolPlot.
+
+`<molcrafts-chart>` is the non-React element for static pages. Load `browser.js`
+(one self-contained module). It reads a Vega-Lite JSON script, and `preset="molplot"`
+applies the scienceplots snapshot from `@molcrafts/ui-vega/preset`. `VegaLiteView`
+without that preset keeps the Fluent product theme. The element is not registered
+from `@molcrafts/ui` or `@molcrafts/ui-web-components`.
+
+```html
+<script type="module" src="./browser.js"></script>
+<molcrafts-chart preset="molplot" theme="auto" aspect="16:10" label="Chart" label-hidden>
+  <script type="application/json">{ "mark": "line", "data": { "values": [] },
+    "encoding": { "x": {"field":"x","type":"quantitative"},
+                  "y": {"field":"y","type":"quantitative"} } }</script>
+</molcrafts-chart>
+```

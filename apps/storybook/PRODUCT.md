@@ -43,7 +43,7 @@ Paths below are from the repository root.
 
 Confirmed:
 
-- Workspace packages are `@molcrafts/ui`, `@molcrafts/ui-tokens`, and `@molcrafts/ui-web-components`, plus optional `@molcrafts/ui-vega` and `@molcrafts/ui-vega-lite`. The project name is `molcrafts-ui`. MIT is approved. The packages are private and unpublished. The external repository rename is deferred. Publishing, tagging, and external renaming wait for a later release task.
+- Workspace packages are `@molcrafts/ui`, `@molcrafts/ui-tokens`, and `@molcrafts/ui-web-components`, plus optional `@molcrafts/ui-vega` and `@molcrafts/ui-vega-lite`. The project name is `molcrafts-ui`. MIT is approved. `0.1.0-alpha.0` is published on npm. There is no package-name alias. The external repository rename is not planned.
 - Consumers move directly to the public imports and the compiled CSS.
 - Tokens do not depend on React, primitives, or applications. Packages do not import apps. Applications do not scan library source.
 - Web Components share tokens through an independent runtime. They keep their own native APIs. Thirteen official elements are managed today, and elements are not registered during SSR.
@@ -53,7 +53,7 @@ Confirmed:
 
 Undecided:
 
-- npm publish permission, public hosting, and the external repository URL.
+- Public hosting and the external repository URL.
 - Which product migrates first.
 - A named WCAG conformance level.
 

@@ -1,6 +1,6 @@
 {
   "name": "@molcrafts/ui-vega-lite",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "type": "module",
   "description": "Optional MolCrafts vega-lite React chart adapter",
   "license": "MIT",
@@ -16,9 +16,17 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./element": {
+      "types": "./dist/element.d.ts",
+      "import": "./dist/element.js"
+    },
+    "./browser.js": "./dist/browser/browser.js"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/browser/browser.js",
+    "./src/browser.ts"
+  ],
   "dependencies": {
     "@molcrafts/ui-vega": "workspace:*",
     "vega-lite": "6.5.0"

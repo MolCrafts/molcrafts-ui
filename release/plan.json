@@ -4,7 +4,7 @@
   "license": "MIT",
   "repository": "https://github.com/MolCrafts/molcrafts-ui",
   "firstRelease": {
-    "target": "0.1.0-alpha.0",
+    "target": "0.1.0-alpha.1",
     "channel": "alpha",
     "status": "candidate"
   },

@@ -5,7 +5,7 @@ import type * as React from "react";
 import { cn } from "../../lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-control border border-transparent text-body font-semibold outline-none transition-colors duration-(--motion-fast) ease-standard disabled:pointer-events-none disabled:bg-disabled-background disabled:text-disabled-foreground disabled:border-disabled-border mol-focus aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/30 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-control border-0 text-body font-semibold outline-none transition-colors duration-(--motion-fast) ease-standard disabled:pointer-events-none disabled:bg-disabled-background disabled:text-disabled-foreground mol-focus aria-invalid:ring-2 aria-invalid:ring-destructive/30 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -13,8 +13,10 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-status-failed-hover active:bg-status-failed-hover",
         outline:
-          "border-input bg-transparent hover:bg-interactive active:bg-interactive-pressed hover:text-interactive-foreground",
-        secondary: "border-input bg-neutral text-neutral-foreground hover:bg-interactive active:bg-interactive-pressed",
+          "bg-transparent hover:bg-interactive active:bg-interactive-pressed hover:text-interactive-foreground",
+        // The border keeps it visible on --surface, where --neutral has the same fill.
+        secondary:
+          "border border-input bg-neutral text-neutral-foreground hover:border-input-hover hover:bg-interactive active:bg-interactive-pressed disabled:border-disabled-border",
         ghost: "hover:bg-interactive active:bg-interactive-pressed hover:text-interactive-foreground",
         link: "text-primary-link underline-offset-4 hover:text-primary-link-hover hover:underline",
       },
