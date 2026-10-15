@@ -171,7 +171,7 @@ Compact-first guidance is withdrawn. Default controls are 40px, large controls 4
 
 ## Molvis intake (2026-10-11)
 
-Recorded from molvis. Nothing in this section is implemented. molvis still vendors local copies, and its page `package.json` does not depend on `@molcrafts/ui`. Shared controls are 40px, `primary`, and Fluent icons. The molvis copies still describe 32px and accent, so replacing them is a visual migration even where the names and APIs are close.
+Recorded from molvis on 2026-10-11. The page now depends on `@molcrafts/ui` and, while the intake below is still open, resolves that package to this checkout's source. Publish the next alpha only after the remaining rows are aligned. Shared controls are 40px, `primary`, and Fluent icons.
 
 ### Add to the shared React library
 
@@ -186,13 +186,13 @@ Recorded from molvis. Nothing in this section is implemented. molvis still vendo
 | InspectorSection | `SidebarSection`: subtitle, badge, controlled exclusive expansion, `keepMounted` | The sidebar section. Accordion unmounts closed content and has no badge or subtitle. |
 | Tabs icon strip | `PanelTabStrip`: equal width, icon only, tooltip, underline | A `TabsList` variant. `TabsList` already has `default` and `line`. Keep a single Tabs implementation. |
 
-- [ ] Alert / Callout
-- [ ] Field
+- [x] Alert / Callout — `Callout`
+- [x] Field — `Field` (`caption` is the description line)
 - [ ] ColorField
-- [ ] Kbd
+- [x] Kbd
 - [ ] RadioGroup
-- [ ] IconAction
-- [ ] InspectorSection
+- [x] IconAction — icon button plus tooltip. Molvis `ViewerToolButton` (accent ring) and `ViewerToggleAction` (text toggle) stay product-owned.
+- [x] InspectorSection
 - [ ] Tabs icon-strip variant on the existing Tabs
 
 ### Extend Slider and NumberField

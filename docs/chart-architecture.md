@@ -33,23 +33,23 @@ The compiler adapter owns compilation and reuses the exact Viewer. Contracts/exa
 MolPlot should consume these components for figure rendering and retain Selection,
 Artist Tree, Property Inspector, Undo/Redo and scientific presets. Its actual migration
 is outside this batch. Molab can use either Viewer without importing a figure editor.
-MolVis retains molecular/domain interaction. React is not rendered through existing
-Web Components; native chart registration/adapter support is a subsequent managed
-runtime task and is not implemented in this delivery.
+MolVis retains molecular/domain interaction. React is not rendered through the Fluent web components. `<molcrafts-chart>` is
+registered from `@molcrafts/ui-vega-lite` for static docs. The MolPlot editor is
+not part of that element.
 
 CI dashboard is the first real migration: delete source-sync/vendored primitives;
 consume built package APIs/CSS, NativeSelect and official Fluent icons; replace MolPlot
 with VegaLiteView. Snapshot parsing, verdict semantics, coverage sorting, URL/deep links,
 plugin registration and product layout composition stay in CI. No compatibility shims.
 Product primary/secondary colors are complete light/dark families; shared visual values
-and status roles come from Design tokens.
+and status roles come from `@molcrafts/ui-tokens`.
 
 ## Unpublished consumer installation
 
 Until publishing is separately authorized, the CI product PR commits four immutable
 local tarballs (tokens/core/runtime/compiler) with their producer SHA and SHA-256 hashes.
 These are compiled package artifacts, not independently maintained component sources.
-`npm ci` installs from the repository and does not run the Design workflow, clone a
+`npm ci` installs from the repository and does not run the UI workflow, clone a
 moving branch, or depend on temporary Actions downloads. Review/version their refresh
 as a coherent set. A verifier checks archive hashes, exported files, packed package
 names/versions and exact internal dependency versions. The npm lockfile pins transitive

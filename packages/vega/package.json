@@ -1,6 +1,6 @@
 {
   "name": "@molcrafts/ui-vega",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "type": "module",
   "description": "Optional MolCrafts vega React chart adapter",
   "license": "MIT",
@@ -16,6 +16,14 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./preset": {
+      "types": "./dist/scienceplots.d.ts",
+      "import": "./dist/scienceplots.js"
+    },
+    "./view": {
+      "types": "./dist/render.d.ts",
+      "import": "./dist/render.js"
     }
   },
   "sideEffects": false,

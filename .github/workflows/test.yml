@@ -70,6 +70,7 @@ jobs:
       - name: Registry and component catalog are committed
         run: git diff --exit-code -- public/r docs/component-catalog.md
       - run: pnpm verify:chart-boundaries
+      - run: pnpm test:charts
       - run: pnpm release:status
       - run: pnpm verify:release
       - uses: actions/upload-artifact@v4

@@ -26,7 +26,7 @@ User instructions take precedence over these repository rules.
 - Keep one canonical implementation. Registry contains package setup/examples, not copied core sources.
 - Web Components are an independent managed runtime sharing tokens, not React rendering
   across frameworks. Do not claim React API parity or register elements during SSR.
-- Optional design-vega uses Vega View API; design-vega-lite compiles into that same viewer.
+- Optional `@molcrafts/ui-vega` uses the Vega View API; `@molcrafts/ui-vega-lite` compiles into that same viewer.
   Core UI/tokens never depend on plotting engines or MolPlot. See docs/chart-architecture.md.
 - Avoid product-domain UI and premature utility/icon/category packages.
 
@@ -81,9 +81,10 @@ pnpm build:storybook
 pnpm test:storybook
 ```
 
-CI follows the MolCrafts CI scheme from molcrafts-ci: `lint.yml` (`lint / workflows` runs
-`actions/check-workflows`) and `test.yml` (`test / packages`, `test / browsers`), each opened by a
-`<file> / context` job. Shared actions are pinned to one molcrafts-ci SHA; bump them together.
+CI follows the MolCrafts CI scheme from molcrafts-ci. Local hooks (`.pre-commit-config.yaml`,
+profile `node` in `.github/partners.env`) run the workflow check and `pnpm typecheck` at pre-commit
+and `pnpm verify:packages` at pre-push; GitHub CI does not repeat them in a lint workflow.
+`test.yml` (`test / packages`, `test / browsers`) is opened by a `test / context` job. Shared actions are pinned to one molcrafts-ci SHA; bump them together.
 `test / browsers` submits the Playwright results as the `molcrafts-ui` tests record; only a push
 to master is tracked. Browser tests require Playwright Chromium installed. Token/registry/native generation
 must leave committed generated sources consistent; edit generators rather than outputs.

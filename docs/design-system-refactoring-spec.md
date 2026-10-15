@@ -6,7 +6,7 @@ Future project name: **molcrafts-ui**
 
 This specification consolidates the user-provided v1.0 and incorporates the previously confirmed Fluent 2, product brand colors, icons, and
 Web Components requirements. On 2026-10-10 the user subsequently authorized implementation and explicitly required no backward compatibility; that decision supersedes the original v1.0
-Preserve compatibility requirement. Actual completion scope follows the roadmap; nothing has been published.
+Preserve compatibility requirement. Actual completion scope follows the roadmap. `0.1.0-alpha.0` is the published alpha; old package names have no alias.
 Implementation order is in [roadmap](design-system-roadmap.md); current status is in
 [pre-implementation audit](design-system-readiness.md).
 
@@ -33,7 +33,7 @@ Do not keep old imports, old source distribution, old token aliases, or sync ada
 | Library build | Rslib | JS, type declarations, CSS assets, and explicit exports |
 | Development / documentation | Rsbuild + Storybook Rsbuild | Use the Rspack ecosystem |
 | Workspace | pnpm | Pinned versions and a single workspace lockfile |
-| Future primary distribution | npm-compatible versioned packages | Not published in this round |
+| Primary distribution | npm packages at `0.1.0-alpha.0` | Published on the `alpha` tag; no name alias |
 | Agent / optional source integration | Skills + shadcn Registry | Static discovery and integration scaffolding |
 
 The component library does not introduce Next.js, Vite, or other application frameworks. Do not replace every Radix component merely to unify them,
@@ -67,7 +67,7 @@ Do not implicitly modify the external GitHub repository, npm identity, or real p
 4. Packages do not import consumer applications and do not depend on application-level aliases, Tailwind scanning, or implicit global configuration.
 5. Circular dependencies are forbidden; utilities, icons, and component categories are not split into packages yet.
 6. Optional chart boundaries are in [chart architecture](chart-architecture.md): core UI/tokens do not depend on Vega;
-   design-vega uses the View API, and design-vega-lite only compiles and reuses the Viewer; neither depends on MolPlot.
+   `@molcrafts/ui-vega` uses the View API, and `@molcrafts/ui-vega-lite` only compiles and reuses the Viewer; neither depends on MolPlot.
 7. Web Components have an independent runtime and distribution boundary and may be kept independently; they do not reference the React implementation.
 
 ## 4. Design tokens and Fluent 2 themes

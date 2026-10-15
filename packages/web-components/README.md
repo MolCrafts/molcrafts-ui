@@ -4,12 +4,10 @@ The framework-agnostic Fluent 2 entry point for MolCrafts. It is based on the of
 and uses FAST Web Components. It does not depend on React or Tailwind. It shares the design constitution,
 product primary / secondary, light and dark modes, and accessibility acceptance rules with the React primitives.
 
-This package is currently used through the workspace or a built tarball. It is not yet published to npm.
+Install the published package. `0.1.0-alpha.0` is on the npm `alpha` tag. There is no older-name alias.
 
 ```bash
-pnpm build:web-components              # Run from the repository root; Rslib / Rspack
-pnpm --filter @molcrafts/ui-web-components pack
-# Install the generated tarball in the consuming project, then import the entry points below
+npm install @molcrafts/ui-web-components@0.1.0-alpha.0
 ```
 
 ```ts

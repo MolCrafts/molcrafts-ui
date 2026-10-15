@@ -1,7 +1,7 @@
 # @molcrafts/ui-vega
 
 Optional native Vega viewer. MIT; published on npm `alpha`. Built with Rslib. Core
-`@molcrafts/ui` does not depend on this package. Import the Design stylesheet
+`@molcrafts/ui` does not depend on this package. Import the UI stylesheet
 (or tokens runtime for a plain viewer) in the application.
 
 ```tsx
@@ -10,6 +10,22 @@ import "@molcrafts/ui/styles.css";
 <VegaView label="Experiment measurements" description="Measurements increase over time."
   spec={vegaSpec} height={240} renderer="svg" />;
 ```
+
+Three data shapes have a component. The caller picks from the shape; these
+components do not know a product's domain.
+
+| Data | Component | Mark |
+| --- | --- | --- |
+| Parts of one total (`label`, `value`, optional resolved `color`) | `ArcChart` | arc |
+| One magnitude per category | `BarChart` | bar, `orientation` `vertical` or `horizontal` |
+| An ordered series (`x`, `y`; numeric `x` is linear) | `Plot` | line |
+
+```tsx
+import { ArcChart, BarChart, Plot } from "@molcrafts/ui-vega";
+```
+
+`color` must already be a paint Vega can use. A CSS variable is not resolved here.
+`label` stays the accessible name; pass `labelHidden` when the page titles the figure.
 
 Accepts official Vega Spec only. No compiler, vega-embed, MolPlot or custom IR.
 The runtime is dynamically imported after mounting. SSR imports do not initialize
@@ -47,5 +63,6 @@ className/style/ref are available. No forward-compatibility guarantees for domai
 
 Remote specs/data follow Vega's loader and expression behavior. Only use trusted
 specs; this viewer is not a security sandbox. Browser export of remote images depends
-on same-origin/CORS policy. Web Components viewer is not yet implemented; the existing
-Design Web Components package must not be described as chart parity.
+on same-origin/CORS policy. `<molcrafts-chart>` is registered by `@molcrafts/ui-vega-lite`,
+not by `@molcrafts/ui-web-components`. The React viewers stay on the Fluent product theme
+unless a caller opts into the scienceplots preset.

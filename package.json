@@ -7,10 +7,10 @@
   "scripts": {
     "build:tokens": "node scripts/build-design-tokens.mjs && node scripts/build-tokens-package.mjs",
     "build:ui": "pnpm build:tokens && pnpm --filter @molcrafts/ui build",
-    "build:packages": "pnpm build:ui && pnpm build:charts && pnpm build:web-components && pnpm build:notices",
+    "build:packages": "pnpm build:ui && pnpm --filter @molcrafts/ui-markdown build && pnpm build:charts && pnpm build:web-components && pnpm build:notices",
     "build:registry": "node scripts/build-registry.mjs",
     "dev:registry": "pnpm dlx serve public -p 4177",
-    "typecheck": "pnpm build:packages && tsc --noEmit && pnpm --filter @molcrafts/ui typecheck && pnpm --filter @molcrafts/ui-web-components typecheck && pnpm --filter @molcrafts/ui-vega typecheck && pnpm --filter @molcrafts/ui-vega-lite typecheck",
+    "typecheck": "pnpm build:packages && tsc --noEmit && pnpm --filter @molcrafts/ui typecheck && pnpm --filter @molcrafts/ui-markdown typecheck && pnpm --filter @molcrafts/ui-web-components typecheck && pnpm --filter @molcrafts/ui-vega typecheck && pnpm --filter @molcrafts/ui-vega-lite typecheck",
     "storybook": "pnpm build:packages && pnpm --filter @molcrafts/storybook dev",
     "build:storybook": "pnpm build:packages && pnpm --filter @molcrafts/storybook build",
     "generate:web-components": "node scripts/build-web-components.mjs",
@@ -31,6 +31,7 @@
     "verify:release": "pnpm verify:release-version && node scripts/prepare-release.mjs && pnpm verify:consumer-tarball",
     "verify:release-version": "node scripts/verify-release-version.mjs",
     "build:charts": "pnpm --filter @molcrafts/ui-vega build && pnpm --filter @molcrafts/ui-vega-lite build",
+    "test:charts": "node --test packages/vega/tests/*.test.mjs packages/vega-lite/tests/*.test.mjs",
     "verify:chart-boundaries": "pnpm --filter @molcrafts/consumer-fixture build:native-vega && node scripts/verify-chart-boundaries.mjs"
   },
   "devDependencies": {

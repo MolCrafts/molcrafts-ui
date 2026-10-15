@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "type": "module",
   "files": [
     "dist",
@@ -20,6 +20,10 @@
     "./utils": {
       "types": "./dist/lib/utils.d.ts",
       "import": "./dist/lib/utils.js"
+    },
+    "./workflow": {
+      "types": "./dist/workflow/index.d.ts",
+      "import": "./dist/workflow/index.js"
     }
   },
   "sideEffects": [
@@ -27,6 +31,7 @@
   ],
   "dependencies": {
     "@molcrafts/ui-tokens": "workspace:*",
+    "@flowgram.ai/free-layout-editor": "1.0.11",
     "@fluentui/react-icons": "2.0.344",
     "@radix-ui/react-accordion": "1.2.21",
     "@radix-ui/react-alert-dialog": "1.1.24",

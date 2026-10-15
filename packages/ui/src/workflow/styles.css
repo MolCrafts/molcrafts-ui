@@ -1,0 +1,25 @@
+.workflow-edge-success stop {
+  stop-color: var(--status-completed) !important;
+}
+.workflow-edge-failed stop {
+  stop-color: var(--status-failed) !important;
+}
+.workflow-edge-pending stop {
+  stop-color: var(--status-draft) !important;
+}
+.workflow-edge-skipped stop {
+  stop-color: var(--status-cancelled) !important;
+}
+.workflow-edge-running stop {
+  stop-color: var(--status-running) !important;
+}
+.workflow-edge-running .flowing-line {
+  stroke-dasharray: 5 26 !important;
+  stroke-linecap: round;
+}
+@media (prefers-reduced-motion: reduce) {
+  .workflow-edge-running .flowing-line {
+    animation: none !important;
+    stroke-dasharray: none !important;
+  }
+}
