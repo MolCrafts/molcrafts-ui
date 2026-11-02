@@ -1,0 +1,10 @@
+# Checks for MolCrafts/molcrafts-ci. The same commands run in CI.
+
+[tools]
+node = "22"
+
+[check.typecheck]
+run = ["npm ci", "npm run typecheck"]
+
+[check.registry]
+run = ["npm ci", "npm run build:registry"]
