@@ -166,6 +166,8 @@ export function scienceplotsConfig(
       titleLimit: Math.round(240 * scale),
       labelOverlap: true,
       labelFlush: true,
+      // Nominal axes otherwise default to a vertical label.
+      labelAngle: 0,
     },
     legend: {
       labelColor: inkColor,
@@ -273,12 +275,19 @@ export function prepareChartSpec(author: VegaLiteSpec, options: {
     ? (spec.config as Record<string, unknown>)
     : null;
   const config = authorConfig ? deepMerge(baseConfig, stripFrozenTypeSizes(authorConfig)) : baseConfig;
+  const {
+    width: _authorWidth,
+    height: _authorHeight,
+    autosize: _authorAutosize,
+    ...rest
+  } = spec;
+  // Host size wins over a numeric height in the author spec.
   const base: VegaLiteSpec = {
     $schema: VL_SCHEMA,
+    ...rest,
     width: options.width,
     height,
     autosize: { type: "fit", contains: "padding" },
-    ...spec,
     config,
   };
   if (options.title && base.title == null) base.title = options.title;

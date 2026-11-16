@@ -23,21 +23,23 @@ function installElementStyles(): void {
   display: block;
   position: relative;
   box-sizing: border-box;
-  width: min(100%, var(--molplot-width, 28rem));
-  aspect-ratio: var(--molplot-aspect, 16 / 10);
-  padding: 0.5rem;
+  /* Preview fills the host. A bare embed with no parent height uses min-height. */
+  width: var(--molplot-width, 100%);
+  height: 100%;
+  min-height: 16rem;
+  aspect-ratio: var(--molplot-aspect, auto);
   overflow: hidden;
 }
 :where([data-molcrafts-chart]) > :where(.molcrafts-chart__surface) {
   position: absolute;
-  inset: 0.5rem;
+  inset: 0;
   min-width: 0;
   min-height: 0;
   overflow: hidden;
 }
 :where([data-molcrafts-chart]) > :where(.molcrafts-chart__status[data-visible]) {
   position: absolute;
-  inset: 0.5rem;
+  inset: 0;
   z-index: 1;
   box-sizing: border-box;
   margin: 0;
@@ -157,9 +159,11 @@ export function defineMolcraftsChart(tag = "molcrafts-chart"): void {
     }
 
     private observe(): void {
-      if (!this.resizeObserver && typeof ResizeObserver !== "undefined" && this.surface) {
+      if (!this.resizeObserver && typeof ResizeObserver !== "undefined") {
+        // Observe the host, not the surface Vega sizes. A height written onto
+        // the embed otherwise re-enters render and the chart grows forever.
         this.resizeObserver = new ResizeObserver(() => this.schedule());
-        this.resizeObserver.observe(this.surface);
+        this.resizeObserver.observe(this);
       }
       if (!this.themeObserver && typeof MutationObserver !== "undefined") {
         this.themeObserver = new MutationObserver(() => {
@@ -195,7 +199,7 @@ export function defineMolcraftsChart(tag = "molcrafts-chart"): void {
     }
 
     private measure(): { width: number; height: number } {
-      const rect = this.surface?.getBoundingClientRect();
+      const rect = this.getBoundingClientRect();
       const aspect = parseAspect(this.getAttribute("aspect"));
       let width = Math.round(rect?.width || 0);
       let height = Math.round(rect?.height || 0);

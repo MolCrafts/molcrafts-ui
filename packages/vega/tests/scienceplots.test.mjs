@@ -71,6 +71,20 @@ test("layered specs put zoom on the first layer only", () => {
   assert.equal(spec.layer[1].mark.strokeWidth, 2.6);
 });
 
+test("host size wins over an authored height and category labels stay horizontal", () => {
+  const { spec } = prepareChartSpec({
+    mark: "bar",
+    height: 320,
+    encoding: { x: { field: "cat", type: "nominal" }, y: { field: "val", type: "quantitative" } },
+  }, {
+    preset: "molplot-paper", width: 800, height: 480, aspectRatio: 16 / 10,
+    interactive: true, mode: "light", hostFontPx: 16, ink: null,
+  });
+  assert.equal(spec.width, 800);
+  assert.equal(spec.height, 480);
+  assert.equal(spec.config.axis.labelAngle, 0);
+});
+
 test("interactive false leaves the domain alone", () => {
   const { spec } = prepareChartSpec({
     mark: "line",
