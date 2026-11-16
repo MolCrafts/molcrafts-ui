@@ -1,0 +1,12 @@
+# Where molcrafts-ui publishes (molcrafts-ci release contract). release.yml
+# uploads the five audited tarballs to npm, then records the GitHub Release.
+[npm]
+packages = [
+  "@molcrafts/ui-tokens",
+  "@molcrafts/ui",
+  "@molcrafts/ui-web-components",
+  "@molcrafts/ui-vega",
+  "@molcrafts/ui-vega-lite",
+]
+
+[github-release]
