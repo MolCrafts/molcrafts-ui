@@ -31,7 +31,8 @@ const purposes = {
   field: "label, unit, control and caption", "inspector-section": "titled inspector group",
   "node-inspector": "selected-node panel", "node-inspector-row": "inspector label and value",
   "node-inspector-section": "titled inspector rows", "parameter-field": "typed parameter control",
-  "parameter-group": "titled parameter fields", "workbench-action": "workbench command buttons",
+  "parameter-group": "titled parameter fields", "preview-header": "chart and viewer header actions and notice",
+  "workbench-action": "workbench command buttons",
   "workbench-heartbeat": "refresh pulse", "workbench-operation-state": "idle, loading, empty, error and run states",
   "workbench-status-strip": "bottom status line", "workbench-tag": "semantic tag", "workflow-node": "workflow canvas node body",
 };

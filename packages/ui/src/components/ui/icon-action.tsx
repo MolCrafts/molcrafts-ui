@@ -8,6 +8,7 @@
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "../../lib/utils";
 import { Button } from "./button";
+import { Kbd } from "./kbd";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 
 export interface IconActionProps
@@ -19,6 +20,8 @@ export interface IconActionProps
   /** Accessible name and tooltip. */
   label: string;
   selected?: boolean;
+  /** One key that runs the action, e.g. "F". Shown in the tooltip. */
+  shortcut?: string;
   tooltipSide?: ComponentProps<typeof TooltipContent>["side"];
 }
 
@@ -26,6 +29,7 @@ export function IconAction({
   icon,
   label,
   selected,
+  shortcut,
   tooltipSide = "bottom",
   className,
   ...props
@@ -38,13 +42,17 @@ export function IconAction({
           size="icon-sm"
           aria-label={label}
           aria-pressed={selected === undefined ? undefined : selected}
+          aria-keyshortcuts={shortcut}
           className={cn("size-control-compact [&_svg]:size-4", className)}
           {...props}
         >
           {icon}
         </Button>
       </TooltipTrigger>
-      <TooltipContent side={tooltipSide}>{label}</TooltipContent>
+      <TooltipContent side={tooltipSide}>
+        {label}
+        {shortcut && <Kbd className="ml-2">{shortcut.toUpperCase()}</Kbd>}
+      </TooltipContent>
     </Tooltip>
   );
 }

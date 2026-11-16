@@ -21,6 +21,10 @@
       "types": "./dist/lib/utils.d.ts",
       "import": "./dist/lib/utils.js"
     },
+    "./preview": {
+      "types": "./dist/preview/mount.d.ts",
+      "import": "./dist/preview/mount.js"
+    },
     "./workflow": {
       "types": "./dist/workflow/index.d.ts",
       "import": "./dist/workflow/index.js"

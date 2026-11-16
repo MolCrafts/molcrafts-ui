@@ -53,6 +53,24 @@ export {
   type FlatFile,
 } from "./lib/file-tree";
 export { cn } from "./lib/utils";
+export {
+  parsePreviewMode,
+  previewActions,
+  previewFileName,
+  PREVIEW_GROUPS,
+  PREVIEW_ICONS,
+  PREVIEW_MODES,
+  type PreviewAction,
+  type PreviewButtonAction,
+  type PreviewGroup,
+  type PreviewHeaderOptions,
+  type PreviewIconName,
+  type PreviewMenuAction,
+  type PreviewMenuItem,
+  type PreviewMode,
+  type PreviewState,
+  type PreviewToggleAction,
+} from "./lib/preview";
 export { ThemeScope, type ThemeScopeProps } from "./theme/theme-scope";
 export type { ThemeMode, BrandPalette, PrimaryPalette, ProductTheme } from "@molcrafts/ui-tokens";
 

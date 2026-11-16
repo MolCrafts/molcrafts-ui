@@ -16,6 +16,7 @@
     "generate:web-components": "node scripts/build-web-components.mjs",
     "build:web-components": "pnpm build:tokens && pnpm generate:web-components && pnpm --filter @molcrafts/ui-web-components build && node scripts/build-web-components.mjs --assets && node scripts/verify-web-components-package.mjs",
     "test:web-components": "playwright test",
+    "test:ui": "node --test tests/ui/*.test.mjs",
     "build:consumer": "pnpm build:ui && pnpm build:charts && pnpm --filter @molcrafts/consumer-fixture build",
     "test:consumer": "playwright test --config tests/consumer/playwright.config.ts",
     "verify:packages": "node scripts/verify-packages.mjs",

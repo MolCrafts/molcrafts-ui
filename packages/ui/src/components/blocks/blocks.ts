@@ -81,3 +81,4 @@ export {
   type WorkbenchRegionLabels,
   type WorkbenchShellProps,
 } from "./workbench-shell";
+export { PreviewHeader, type PreviewHeaderProps, PreviewNotice } from "./preview-header";
