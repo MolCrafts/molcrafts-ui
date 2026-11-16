@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "project": "molcrafts-ui",
+  "license": "MIT",
+  "repository": "https://github.com/MolCrafts/molcrafts-ui",
+  "firstRelease": {
+    "target": "0.1.0-alpha.1",
+    "channel": "alpha",
+    "status": "candidate"
+  },
+  "packages": [
+    {
+      "directory": "packages/tokens",
+      "name": "@molcrafts/ui-tokens"
+    },
+    {
+      "directory": "packages/ui",
+      "name": "@molcrafts/ui"
+    },
+    {
+      "directory": "packages/web-components",
+      "name": "@molcrafts/ui-web-components"
+    },
+    {
+      "directory": "packages/vega",
+      "name": "@molcrafts/ui-vega"
+    },
+    {
+      "directory": "packages/vega-lite",
+      "name": "@molcrafts/ui-vega-lite"
+    }
+  ],
+  "remaining": [
+    "Complete the selected public component API/state documentation scope",
+    "Verify npm scope ownership and publisher access in an explicit release task"
+  ]
+}

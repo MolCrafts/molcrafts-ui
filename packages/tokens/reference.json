@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "reference": {
+    "package": "@fluentui/react-theme",
+    "version": "9.2.2"
+  },
+  "policy": "CSS custom properties and curated mappings are MolCrafts-owned. Review visual changes before updating the reference version."
+}

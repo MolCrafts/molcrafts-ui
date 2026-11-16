@@ -2,6 +2,16 @@
 
 Inventory date: 2026-08-10. Sources: `molexp/ui`, `molvis/page`, `molvis/plugin`, `molhub/apps/web`.
 
+## Web Components management (2026-10-10)
+
+`packages/web-components/components.json` additionally manages 13 official Fluent 2
+custom elements: button, badge, checkbox, switch, text-input, textarea, label,
+field, divider, spinner, tab, tablist, tooltip. These share the constitution and
+brand contract with React, and ship through a separate ESM/browser package with
+generated types, CSS, icons, and Custom Elements Manifest. They are included in
+Storybook and CI browser checks. This inventory does not imply full React API or
+component parity; see [the package guide](../packages/web-components/README.md).
+
 ## Legend
 
 | Tag | Meaning |
@@ -79,13 +89,10 @@ Public package API (`@molcrafts/molvis/plugin/ui`) **stays** as the plugin runti
 
 Sources: molexp `components/ui/*` primary; molvis-only adds `switch`, `empty-state`, `number-field`.
 
-### Blocks (6)
+### Blocks (3)
 
 | Item | Notes |
 |------|-------|
-| `content-section` | Semantic title, description, action, and body grouping; deliberately no card chrome or product semantics. |
-| `page-header` | One work-surface title and action cluster with shared toolbar geometry; products supply icon and actions. |
-| `explorer-shell` | Domain-free icon rail plus titled, scrollable explorer column; products supply navigation descriptors, actions, and content. |
 | `settings-section` | `SettingsSection` + `SettingsRow` |
 | `settings-shell` | left-nav settings shell |
 | `edge-panel` | Pull-from-edge rail (`bottom` / `left` / `right`); drag resize + snap-close; bundles `use-pointer-drag`. molvis bottom workbench uses it; L/R stay product `ViewerSidePanel` (drawer + focus trap + resizable shell). |

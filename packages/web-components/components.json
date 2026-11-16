@@ -1,0 +1,18 @@
+{
+  "components": [
+    { "tag": "fluent-button", "class": "Button", "reactEquivalent": "button" },
+    { "tag": "fluent-badge", "class": "Badge", "reactEquivalent": "badge" },
+    { "tag": "fluent-checkbox", "class": "Checkbox", "reactEquivalent": "checkbox" },
+    { "tag": "fluent-switch", "class": "Switch", "reactEquivalent": "switch" },
+    { "tag": "fluent-text-input", "class": "TextInput", "reactEquivalent": "input" },
+    { "tag": "fluent-textarea", "class": "TextArea", "reactEquivalent": "textarea" },
+    { "tag": "fluent-label", "class": "Label", "reactEquivalent": "label" },
+    { "tag": "fluent-field", "class": "Field", "reactEquivalent": null },
+    { "tag": "fluent-divider", "class": "Divider", "reactEquivalent": "separator" },
+    { "tag": "fluent-spinner", "class": "Spinner", "reactEquivalent": "progress-spinner" },
+    { "tag": "fluent-tab", "class": "Tab", "reactEquivalent": "tabs" },
+    { "tag": "fluent-tablist", "class": "Tablist", "reactEquivalent": "tabs" },
+    { "tag": "fluent-tooltip", "class": "Tooltip", "reactEquivalent": "tooltip" }
+  ],
+  "icons": ["add", "settings", "dismiss", "search", "checkmark", "warning", "chevron_down", "folder_open"]
+}

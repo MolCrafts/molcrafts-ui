@@ -1,0 +1,1768 @@
+/* Generated official host styles; protects custom elements from document resets. */
+fluent-button[hidden] {
+  display: none;
+}
+fluent-button {
+  display: inline-flex;
+}
+
+fluent-button {
+  --icon-spacing: var(--spacingHorizontalSNudge);
+  position: relative;
+  contain: layout style;
+  vertical-align: middle;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  text-align: center;
+  text-decoration-line: none;
+  margin: 0;
+  min-height: 32px;
+  outline-style: none;
+  background-color: var(--colorNeutralBackground1);
+  color: var(--colorNeutralForeground1);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  padding: 0 var(--spacingHorizontalM);
+  min-width: 96px;
+  border-radius: var(--borderRadiusMedium);
+  font-size: var(--fontSizeBase300);
+  font-family: var(--fontFamilyBase);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase300);
+  transition-duration: var(--durationFaster);
+  transition-property: background, border, color;
+  transition-timing-function: var(--curveEasyEase);
+  cursor: pointer;
+  user-select: none;
+}
+
+fluent-button:hover {
+  background-color: var(--colorNeutralBackground1Hover);
+  color: var(--colorNeutralForeground1Hover);
+  border-color: var(--colorNeutralStroke1Hover);
+}
+
+fluent-button:hover:active {
+  background-color: var(--colorNeutralBackground1Pressed);
+  border-color: var(--colorNeutralStroke1Pressed);
+  color: var(--colorNeutralForeground1Pressed);
+  outline-style: none;
+}
+
+fluent-button:focus-visible {
+  border-color: var(--colorTransparentStroke);
+  outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
+  box-shadow: var(--shadow4), 0 0 0 2px var(--colorStrokeFocus2);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  fluent-button {
+    transition-duration: 0.01ms;
+  }
+}
+
+fluent-button[icon-only] {
+  min-width: 32px;
+  max-width: 32px;
+}
+
+fluent-button[size='small'] {
+  --icon-spacing: var(--spacingHorizontalXS);
+  min-height: 24px;
+  min-width: 64px;
+  padding: 0 var(--spacingHorizontalS);
+  border-radius: var(--borderRadiusSmall);
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  font-weight: var(--fontWeightRegular);
+}
+
+fluent-button[size='small'][icon-only] {
+  min-width: 24px;
+  max-width: 24px;
+}
+
+fluent-button[size='large'] {
+  min-height: 40px;
+  border-radius: var(--borderRadiusLarge);
+  padding: 0 var(--spacingHorizontalL);
+  font-size: var(--fontSizeBase400);
+  line-height: var(--lineHeightBase400);
+}
+
+fluent-button[size='large'][icon-only] {
+  min-width: 40px;
+  max-width: 40px;
+}
+
+fluent-button[size='large'] >svg {
+  font-size: 24px;
+  height: 24px;
+  width: 24px;
+}
+
+fluent-button:is([shape='circular'], [shape='circular']:focus-visible) {
+  border-radius: var(--borderRadiusCircular);
+}
+
+fluent-button:is([shape='square'], [shape='square']:focus-visible) {
+  border-radius: var(--borderRadiusNone);
+}
+
+fluent-button[appearance='primary'] {
+  background-color: var(--colorBrandBackground);
+  color: var(--colorNeutralForegroundOnBrand);
+  border-color: transparent;
+}
+
+fluent-button[appearance='primary']:hover {
+  background-color: var(--colorBrandBackgroundHover);
+}
+
+fluent-button[appearance='primary']:is(:hover, :hover:active):not(:focus-visible) {
+  border-color: transparent;
+}
+
+fluent-button[appearance='primary']:is(:hover, :hover:active) {
+  color: var(--colorNeutralForegroundOnBrand);
+}
+
+fluent-button[appearance='primary']:hover:active {
+  background-color: var(--colorBrandBackgroundPressed);
+}
+
+fluent-button[appearance='primary']:focus-visible {
+  border-color: var(--colorNeutralForegroundOnBrand);
+  box-shadow: var(--shadow2), 0 0 0 2px var(--colorStrokeFocus2);
+}
+
+fluent-button[appearance='outline'] {
+  background-color: var(--colorTransparentBackground);
+}
+
+fluent-button[appearance='outline']:hover {
+  background-color: var(--colorTransparentBackgroundHover);
+}
+
+fluent-button[appearance='outline']:hover:active {
+  background-color: var(--colorTransparentBackgroundPressed);
+}
+
+fluent-button[appearance='subtle'] {
+  background-color: var(--colorSubtleBackground);
+  color: var(--colorNeutralForeground2);
+  border-color: transparent;
+}
+
+fluent-button[appearance='subtle']:hover {
+  background-color: var(--colorSubtleBackgroundHover);
+  color: var(--colorNeutralForeground2Hover);
+  border-color: transparent;
+}
+
+fluent-button[appearance='subtle']:hover:active {
+  background-color: var(--colorSubtleBackgroundPressed);
+  color: var(--colorNeutralForeground2Pressed);
+  border-color: transparent;
+}
+
+fluent-button[appearance='subtle']:hover >svg {
+  fill: var(--colorNeutralForeground2BrandHover);
+}
+
+fluent-button[appearance='subtle']:hover:active >svg {
+  fill: var(--colorNeutralForeground2BrandPressed);
+}
+
+fluent-button[appearance='transparent'] {
+  background-color: var(--colorTransparentBackground);
+  color: var(--colorNeutralForeground2);
+}
+
+fluent-button[appearance='transparent']:hover {
+  background-color: var(--colorTransparentBackgroundHover);
+  color: var(--colorNeutralForeground2BrandHover);
+}
+
+fluent-button[appearance='transparent']:hover:active {
+  background-color: var(--colorTransparentBackgroundPressed);
+  color: var(--colorNeutralForeground2BrandPressed);
+}
+
+fluent-button:is([appearance='transparent'], [appearance='transparent']:is(:hover, :active)) {
+  border-color: transparent;
+}
+
+fluent-button
+    :is(
+        :disabled,
+        [disabled],
+        [disabled-focusable],
+        [appearance]:disabled,
+        [appearance][disabled],
+        [appearance][disabled-focusable]
+      )
+  ,fluent-button
+    :is(
+        :disabled,
+        [disabled],
+        [disabled-focusable],
+        [appearance]:disabled,
+        [appearance][disabled],
+        [appearance][disabled-focusable]
+      ):hover
+  ,fluent-button
+    :is(
+        :disabled,
+        [disabled],
+        [disabled-focusable],
+        [appearance]:disabled,
+        [appearance][disabled],
+        [appearance][disabled-focusable]
+      ):hover:active
+   {
+  background-color: var(--colorNeutralBackgroundDisabled);
+  border-color: var(--colorNeutralStrokeDisabled);
+  color: var(--colorNeutralForegroundDisabled);
+  cursor: not-allowed;
+}
+
+fluent-button[appearance='primary']:is(:disabled, [disabled], [disabled-focusable]),fluent-button[appearance='primary']:is(:disabled, [disabled], [disabled-focusable]):is(:hover, :hover:active) {
+  border-color: transparent;
+}
+
+fluent-button[appearance='outline']:is(:disabled, [disabled], [disabled-focusable]),fluent-button[appearance='outline']:is(:disabled, [disabled], [disabled-focusable]):is(:hover, :hover:active) {
+  background-color: var(--colorTransparentBackground);
+}
+
+fluent-button[appearance='subtle']:is(:disabled, [disabled], [disabled-focusable]),fluent-button[appearance='subtle']:is(:disabled, [disabled], [disabled-focusable]):is(:hover, :hover:active) {
+  background-color: var(--colorTransparentBackground);
+  border-color: transparent;
+}
+
+fluent-button[appearance='transparent']:is(:disabled, [disabled], [disabled-focusable]),fluent-button[appearance='transparent']:is(:disabled, [disabled], [disabled-focusable]):is(:hover, :hover:active) {
+  border-color: transparent;
+  background-color: var(--colorTransparentBackground);
+}
+
+@media (forced-colors: active) {
+  fluent-button {
+    background-color: ButtonFace;
+    color: ButtonText;
+  }
+
+  fluent-button:is(:hover, :focus-visible) {
+    border-color: Highlight !important;
+  }
+
+  fluent-button[appearance='primary']:not(:is(:hover, :focus-visible)) {
+    background-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  fluent-button
+      :is(
+          :disabled,
+          [disabled],
+          [disabled-focusable],
+          [appearance]:disabled,
+          [appearance][disabled],
+          [appearance][disabled-focusable]
+        )
+     {
+    background-color: ButtonFace;
+    color: GrayText;
+    border-color: ButtonText;
+  }
+}
+
+fluent-badge[shape='square'] {
+  border-radius: var(--borderRadiusNone);
+}
+
+fluent-badge[shape='rounded'] {
+  border-radius: var(--borderRadiusMedium);
+}
+
+fluent-badge[shape='rounded']:is([size='tiny'], [size='extra-small'], [size='small']) {
+  border-radius: var(--borderRadiusSmall);
+}
+
+fluent-badge[appearance='tint'] {
+  background-color: var(--colorBrandBackground2);
+  color: var(--colorBrandForeground2);
+  border-color: var(--colorBrandStroke2);
+}
+
+fluent-badge[appearance='tint'][color='danger'] {
+  background-color: var(--colorPaletteRedBackground1);
+  color: var(--colorPaletteRedForeground1);
+  border-color: var(--colorPaletteRedBorder1);
+}
+
+fluent-badge[appearance='tint'][color='important'] {
+  background-color: var(--colorNeutralForeground3);
+  color: var(--colorNeutralBackground1);
+  border-color: var(--colorTransparentStroke);
+}
+
+fluent-badge[appearance='tint'][color='informative'] {
+  background-color: var(--colorNeutralBackground4);
+  color: var(--colorNeutralForeground3);
+  border-color: var(--colorNeutralStroke2);
+}
+
+fluent-badge[appearance='tint'][color='severe'] {
+  background-color: var(--colorPaletteDarkOrangeBackground1);
+  color: var(--colorPaletteDarkOrangeForeground1);
+  border-color: var(--colorPaletteDarkOrangeBorder1);
+}
+
+fluent-badge[appearance='tint'][color='subtle'] {
+  background-color: var(--colorNeutralBackground1);
+  color: var(--colorNeutralForeground3);
+  border-color: var(--colorNeutralStroke2);
+}
+
+fluent-badge[appearance='tint'][color='success'] {
+  background-color: var(--colorPaletteGreenBackground1);
+  color: var(--colorPaletteGreenForeground1);
+  border-color: var(--colorPaletteGreenBorder2);
+}
+
+fluent-badge[appearance='tint'][color='warning'] {
+  background-color: var(--colorPaletteYellowBackground1);
+  color: var(--colorPaletteYellowForeground2);
+  border-color: var(--colorPaletteYellowBorder1);
+}
+
+fluent-badge[appearance='outline'] {
+  border-color: currentColor;
+  color: var(--colorBrandForeground1);
+  background-color: initial;
+}
+
+fluent-badge[appearance='outline'][color='danger'] {
+  color: var(--colorPaletteRedForeground3);
+}
+
+fluent-badge[appearance='outline'][color='important'] {
+  color: var(--colorNeutralForeground3);
+  border-color: var(--colorNeutralStrokeAccessible);
+}
+
+fluent-badge[appearance='outline'][color='informative'] {
+  color: var(--colorNeutralForeground3);
+  border-color: var(--colorNeutralStroke2);
+}
+
+fluent-badge[appearance='outline'][color='severe'] {
+  color: var(--colorPaletteDarkOrangeForeground3);
+}
+
+fluent-badge[appearance='outline'][color='subtle'] {
+  color: var(--colorNeutralForegroundStaticInverted);
+}
+
+fluent-badge[appearance='outline'][color='success'] {
+  color: var(--colorPaletteGreenForeground2);
+}
+
+fluent-badge[appearance='outline'][color='warning'] {
+  color: var(--colorPaletteYellowForeground2);
+}
+
+fluent-badge[appearance='ghost'] {
+  color: var(--colorBrandForeground1);
+  background-color: initial;
+}
+
+fluent-badge[appearance='ghost'][color='danger'] {
+  color: var(--colorPaletteRedForeground3);
+}
+
+fluent-badge[appearance='ghost'][color='important'] {
+  color: var(--colorNeutralForeground1);
+}
+
+fluent-badge[appearance='ghost'][color='informative'] {
+  color: var(--colorNeutralForeground3);
+}
+
+fluent-badge[appearance='ghost'][color='severe'] {
+  color: var(--colorPaletteDarkOrangeForeground3);
+}
+
+fluent-badge[appearance='ghost'][color='subtle'] {
+  color: var(--colorNeutralForegroundInverted);
+}
+
+fluent-badge[appearance='ghost'][color='success'] {
+  color: var(--colorPaletteGreenForeground3);
+}
+
+fluent-badge[appearance='ghost'][color='warning'] {
+  color: var(--colorPaletteYellowForeground2);
+}
+
+fluent-badge[color='danger'] {
+  background-color: var(--colorPaletteRedBackground3);
+  color: var(--colorNeutralForegroundOnBrand);
+}
+
+fluent-badge[color='important'] {
+  background-color: var(--colorNeutralForeground1);
+  color: var(--colorNeutralBackground1);
+}
+
+fluent-badge[color='informative'] {
+  background-color: var(--colorNeutralBackground5);
+  color: var(--colorNeutralForeground3);
+}
+
+fluent-badge[color='severe'] {
+  background-color: var(--colorPaletteDarkOrangeBackground3);
+  color: var(--colorNeutralForegroundOnBrand);
+}
+
+fluent-badge[color='subtle'] {
+  background-color: var(--colorNeutralBackground1);
+  color: var(--colorNeutralForeground1);
+}
+
+fluent-badge[color='success'] {
+  background-color: var(--colorPaletteGreenBackground3);
+  color: var(--colorNeutralForegroundOnBrand);
+}
+
+fluent-badge[color='warning'] {
+  background-color: var(--colorPaletteYellowBackground3);
+  color: var(--colorNeutralForeground1Static);
+}
+
+fluent-badge[size='tiny'] {
+  width: 6px;
+  height: 6px;
+  font-size: 4px;
+  line-height: 4px;
+  padding-inline: 0;
+  min-width: unset;
+}
+fluent-badge[size='tiny'] >svg {
+  font-size: 6px;
+}
+fluent-badge[size='extra-small'] {
+  width: 10px;
+  height: 10px;
+  font-size: 6px;
+  line-height: 6px;
+  padding-inline: 0;
+  min-width: unset;
+}
+fluent-badge[size='extra-small'] >svg {
+  font-size: 10px;
+}
+fluent-badge[size='small'] {
+  min-width: 16px;
+  height: 16px;
+  font-size: var(--fontSizeBase100);
+  line-height: var(--lineHeightBase100);
+  padding-inline: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+}
+fluent-badge[size='small'] >svg {
+  font-size: 12px;
+}
+fluent-badge[size='large'] {
+  min-width: 24px;
+  height: 24px;
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  padding-inline: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+}
+fluent-badge[size='large'] >svg {
+  font-size: 16px;
+}
+fluent-badge[size='extra-large'] {
+  min-width: 32px;
+  height: 32px;
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  padding-inline: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+}
+fluent-badge[size='extra-large'] >svg {
+  font-size: 20px;
+}
+
+fluent-badge[hidden] {
+  display: none;
+}
+fluent-badge {
+  display: inline-flex;
+}
+fluent-badge {
+  position: relative;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fontFamilyBase);
+  font-weight: var(--fontWeightSemibold);
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  min-width: 20px;
+  height: 20px;
+  padding-inline: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+  border-radius: var(--borderRadiusCircular);
+  border-color: var(--colorTransparentStroke);
+  background-color: var(--colorBrandBackground);
+  color: var(--colorNeutralForegroundOnBrand);
+  contain: content;
+}
+
+fluent-badge:not([appearance='ghost'])::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-style: solid;
+  border-width: var(--strokeWidthThin);
+  border-color: inherit;
+  border-radius: inherit;
+}
+
+@media (forced-colors: active) {
+  fluent-badge,fluent-badge[appearance='outline'],fluent-badge[appearance='tint'] {
+    border-color: CanvasText;
+  }
+}
+
+fluent-checkbox[hidden] {
+  display: none;
+}
+fluent-checkbox {
+  display: inline-flex;
+}
+
+fluent-checkbox {
+  --size: 16px;
+  background-color: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusSmall);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  width: var(--size);
+}
+
+fluent-checkbox {
+  aspect-ratio: 1;
+}
+
+fluent-checkbox:hover {
+  border-color: var(--colorNeutralStrokeAccessibleHover);
+}
+
+fluent-checkbox:active {
+  border-color: var(--colorNeutralStrokeAccessiblePressed);
+}
+
+fluent-checkbox:state(checked):hover {
+  background-color: var(--colorCompoundBrandBackgroundHover);
+  border-color: var(--colorCompoundBrandStrokeHover);
+}
+
+fluent-checkbox:state(checked):active {
+  background-color: var(--colorCompoundBrandBackgroundPressed);
+  border-color: var(--colorCompoundBrandStrokePressed);
+}
+
+fluent-checkbox:focus-visible {
+  outline: none;
+}
+
+fluent-checkbox:not([slot='input'])::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  box-sizing: border-box;
+  outline: none;
+  border: var(--strokeWidthThick) solid var(--colorTransparentStroke);
+  border-radius: var(--borderRadiusMedium);
+}
+
+fluent-checkbox:not([slot='input']):focus-visible::after {
+  border-color: var(--colorStrokeFocus2);
+}
+
+fluent-checkbox:not(:state(checked)) *:is(>[slot='checked-indicator'], .checked-indicator) {
+  display: none;
+}
+
+fluent-checkbox:state(checked),fluent-checkbox:state(indeterminate) {
+  border-color: var(--colorCompoundBrandStroke);
+}
+
+fluent-checkbox:state(checked),fluent-checkbox:state(indeterminate) .indeterminate-indicator {
+  background-color: var(--colorCompoundBrandBackground);
+}
+
+fluent-checkbox:state(indeterminate) .indeterminate-indicator {
+  border-radius: var(--borderRadiusSmall);
+  position: absolute;
+  width: calc(var(--size) / 2);
+  inset: 0;
+}
+
+fluent-checkbox[size='large'] {
+  --size: 20px;
+}
+
+fluent-checkbox[size='large'] >[slot='checked-indicator'],fluent-checkbox[size='large'] .checked-indicator {
+  width: 16px;
+}
+
+fluent-checkbox[shape='circular'],fluent-checkbox[shape='circular'] .indeterminate-indicator {
+  border-radius: var(--borderRadiusCircular);
+}
+
+fluent-checkbox:is([disabled], :disabled),fluent-checkbox:is([disabled], :disabled):state(checked) {
+  background-color: var(--colorNeutralBackgroundDisabled);
+  border-color: var(--colorNeutralStrokeDisabled);
+}
+
+fluent-checkbox:is([disabled], :disabled) {
+  cursor: unset;
+}
+
+fluent-checkbox:is([disabled], :disabled):state(indeterminate) .indeterminate-indicator {
+  background-color: var(--colorNeutralStrokeDisabled);
+}
+
+fluent-checkbox:is([disabled], :disabled):state(checked) .checked-indicator {
+  color: var(--colorNeutralStrokeDisabled);
+}
+
+@media (forced-colors: active) {
+  fluent-checkbox {
+    border-color: FieldText;
+  }
+
+  fluent-checkbox:not([slot='input']:focus-visible)::after {
+    border-color: Canvas;
+  }
+
+  fluent-checkbox:not(:is([disabled], :disabled)):hover,fluent-checkbox:state(checked):not(:is([disabled], :disabled)):hover,fluent-checkbox:not([slot='input']):focus-visible::after {
+    border-color: Highlight;
+  }
+
+  fluent-checkbox:state(checked),fluent-checkbox:state(indeterminate) .indeterminate-indicator {
+    background-color: FieldText;
+  }
+
+  fluent-checkbox:state(checked):not(:is([disabled], :disabled)):hover,fluent-checkbox:state(indeterminate):not(:is([disabled], :disabled)):hover .indeterminate-indicator {
+    background-color: Highlight;
+  }
+
+  fluent-checkbox:is([disabled], :disabled) {
+    border-color: GrayText;
+  }
+
+  fluent-checkbox:is([disabled], :disabled):state(indeterminate) .indeterminate-indicator {
+    background-color: GrayText;
+  }
+
+  fluent-checkbox:is([disabled], :disabled),fluent-checkbox:is([disabled], :disabled):state(checked) .checked-indicator {
+    color: GrayText;
+  }
+}
+
+fluent-switch[hidden] {
+  display: none;
+}
+fluent-switch {
+  display: inline-flex;
+}
+
+fluent-switch {
+  box-sizing: border-box;
+  align-items: center;
+  flex-direction: row;
+  outline: none;
+  user-select: none;
+  contain: content;
+  padding: 0 var(--spacingHorizontalXXS);
+  width: 40px;
+  height: 20px;
+  background-color: var(--colorTransparentBackground);
+  border: 1px solid var(--colorNeutralStrokeAccessible);
+  border-radius: var(--borderRadiusCircular);
+}
+
+fluent-switch:enabled {
+  cursor: pointer;
+}
+
+fluent-switch:hover {
+  background: none;
+  border-color: var(--colorNeutralStrokeAccessibleHover);
+}
+fluent-switch:active {
+  border-color: var(--colorNeutralStrokeAccessiblePressed);
+}
+fluent-switch:is([disabled], :disabled),fluent-switch[readonly] {
+  border: 1px solid var(--colorNeutralStrokeDisabled);
+  background-color: none;
+  pointer: default;
+}
+fluent-switch:state(checked) {
+  background: var(--colorCompoundBrandBackground);
+  border-color: var(--colorCompoundBrandBackground);
+}
+fluent-switch:state(checked):hover {
+  background: var(--colorCompoundBrandBackgroundHover);
+  border-color: var(--colorCompoundBrandBackgroundHover);
+}
+fluent-switch:state(checked):active {
+  background: var(--colorCompoundBrandBackgroundPressed);
+  border-color: var(--colorCompoundBrandBackgroundPressed);
+}
+fluent-switch:state(checked):is([disabled], :disabled) {
+  background: var(--colorNeutralBackgroundDisabled);
+  border-color: var(--colorNeutralStrokeDisabled);
+}
+fluent-switch:state(checked) .checked-indicator {
+  background-color: var(--colorNeutralForegroundInverted);
+  margin-inline-start: calc(100% - 14px);
+}
+fluent-switch:state(checked):hover .checked-indicator {
+  background: var(--colorNeutralForegroundInvertedHover);
+}
+fluent-switch:state(checked):active .checked-indicator {
+  background: var(--colorNeutralForegroundInvertedPressed);
+}
+fluent-switch:hover .checked-indicator {
+  background-color: var(--colorNeutralForeground3Hover);
+}
+fluent-switch:active .checked-indicator {
+  background-color: var(--colorNeutralForeground3Pressed);
+}
+fluent-switch:is([disabled], :disabled) .checked-indicator,fluent-switch[readonly] .checked-indicator {
+  background: var(--colorNeutralForegroundDisabled);
+}
+fluent-switch:state(checked):is([disabled], :disabled) .checked-indicator {
+  background: var(--colorNeutralForegroundDisabled);
+}
+
+fluent-switch:focus-visible {
+  outline: none;
+}
+
+fluent-switch:not([slot='input']):focus-visible {
+  border-color: var(--colorTransparentStroke);
+  outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
+  outline-offset: 1px;
+  box-shadow: var(--shadow4), 0 0 0 2px var(--colorStrokeFocus2);
+}
+
+@media (forced-colors: active) {
+  fluent-switch {
+    border-color: InactiveBorder;
+  }
+  fluent-switch:state(checked),fluent-switch:state(checked):active,fluent-switch:state(checked):hover {
+    background: Highlight;
+    border-color: Highlight;
+  }
+  fluent-switch:hover .checked-indicator,fluent-switch:active .checked-indicator {
+    background-color: ActiveCaption;
+  }
+  fluent-switch:state(checked) .checked-indicator,fluent-switch:state(checked):hover .checked-indicator,fluent-switch:state(checked):active .checked-indicator {
+    background-color: ButtonFace;
+  }
+  fluent-switch:is([disabled], :disabled) .checked-indicator,fluent-switch:state(checked):is([disabled], :disabled) .checked-indicator {
+    background-color: GrayText;
+  }
+}
+
+fluent-text-input[hidden] {
+  display: none;
+}
+fluent-text-input {
+  display: block;
+}
+
+fluent-text-input {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  max-width: 400px;
+}
+
+fluent-text-input:empty .label {
+  display: none;
+}
+fluent-text-input >[slot='start'],fluent-text-input >[slot='end'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--colorNeutralForeground3);
+  font-size: var(--fontSizeBase500);
+}
+fluent-text-input >[slot='start'] {
+  padding-right: var(--spacingHorizontalXXS);
+}
+fluent-text-input >[slot='end'] {
+  padding-left: var(--spacingHorizontalXXS);
+  gap: var(--spacingHorizontalXS);
+}
+fluent-text-input:hover .root {
+  border-color: var(--colorNeutralStroke1Hover);
+  border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+}
+fluent-text-input:active .root {
+  border-color: var(--colorNeutralStroke1Pressed);
+}
+fluent-text-input:focus-within .root {
+  outline: transparent solid 2px;
+  border-bottom: 0;
+}
+fluent-text-input:focus-within .root::after {
+  transform: scaleX(1);
+  transition-property: transform;
+  transition-duration: var(--durationNormal);
+  transition-delay: var(--curveDecelerateMid);
+}
+fluent-text-input:focus-within:active .root:after {
+  border-bottom-color: var(--colorCompoundBrandStrokePressed);
+}
+fluent-text-input[appearance='outline']:focus-within .root {
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+}
+fluent-text-input:focus-within .control {
+  color: var(--colorNeutralForeground1);
+}
+fluent-text-input:is([disabled], :disabled) .root {
+  background: var(--colorTransparentBackground);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStrokeDisabled);
+}
+fluent-text-input:is([disabled], :disabled) .control::placeholder,fluent-text-input:is([disabled], :disabled) >[slot='start'],fluent-text-input:is([disabled], :disabled) >[slot='end'] {
+  color: var(--colorNeutralForegroundDisabled);
+}
+fluent-text-input[control-size='small'] .control {
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase200);
+}
+fluent-text-input[control-size='small'] .root {
+  height: 24px;
+  gap: var(--spacingHorizontalXXS);
+  padding: 0 var(--spacingHorizontalSNudge);
+}
+fluent-text-input[control-size='small'] >[slot='start'],fluent-text-input[control-size='small'] >[slot='end'] {
+  font-size: var(--fontSizeBase400);
+}
+fluent-text-input[control-size='large'] .control {
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase400);
+}
+fluent-text-input[control-size='large'] .root {
+  height: 40px;
+  gap: var(--spacingHorizontalS);
+  padding: 0 var(--spacingHorizontalM);
+}
+fluent-text-input[control-size='large'] >[slot='start'],fluent-text-input[control-size='large'] >[slot='end'] {
+  font-size: var(--fontSizeBase600);
+}
+fluent-text-input[appearance='underline'] .root {
+  background: var(--colorTransparentBackground);
+  border: 0;
+  border-radius: 0;
+  border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+}
+fluent-text-input[appearance='underline']:hover .root {
+  border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+}
+fluent-text-input[appearance='underline']:active .root {
+  border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+}
+fluent-text-input[appearance='underline']:focus-within .root {
+  border: 0;
+  border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+}
+fluent-text-input[appearance='underline']:is([disabled], :disabled) .root {
+  border-bottom-color: var(--colorNeutralStrokeDisabled);
+}
+fluent-text-input[appearance='filled-lighter'] .root,fluent-text-input[appearance='filled-darker'] .root {
+  border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  box-shadow: var(--shadow2);
+}
+fluent-text-input[appearance='filled-lighter'] .root {
+  background: var(--colorNeutralBackground1);
+}
+fluent-text-input[appearance='filled-darker'] .root {
+  background: var(--colorNeutralBackground3);
+}
+fluent-text-input[appearance='filled-lighter']:hover .root,fluent-text-input[appearance='filled-darker']:hover .root {
+  border-color: var(--colorTransparentStrokeInteractive);
+}
+fluent-text-input[appearance='filled-lighter']:active .root,fluent-text-input[appearance='filled-darker']:active .root {
+  border-color: var(--colorTransparentStrokeInteractive);
+  background: var(--colorNeutralBackground3);
+}
+
+fluent-textarea[hidden] {
+  display: none;
+}
+fluent-textarea {
+  display: inline-block;
+}
+
+fluent-textarea {
+  /* typography */
+  --font-size: var(--fontSizeBase300);
+  --line-height: var(--lineHeightBase300);
+
+  /* layout */
+  --padding-inline: var(--spacingHorizontalMNudge);
+  --padding-block: var(--spacingVerticalSNudge);
+  --min-block-size: 52px;
+  --block-size: var(--min-block-size);
+  --inline-size: 18rem;
+  --border-width: var(--strokeWidthThin);
+  --control-padding-inline: var(--spacingHorizontalXXS);
+
+  /* colors */
+  --color: var(--colorNeutralForeground1);
+  --background-color: var(--colorNeutralBackground1);
+  --border-color: var(--colorNeutralStroke1);
+  --border-block-end-color: var(--colorNeutralStrokeAccessible);
+  --placeholder-color: var(--colorNeutralForeground4);
+  --focus-indicator-color: var(--colorCompoundBrandStroke);
+
+  /* elevations */
+  --box-shadow: none;
+
+  /* others */
+  --contain-size: size;
+  --resize: none;
+
+  color: var(--color);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--font-size);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--line-height);
+  position: relative;
+}
+
+fluent-textarea:hover {
+  --border-color: var(--colorNeutralStroke1Hover);
+  --border-block-end-color: var(--colorNeutralStrokeAccessibleHover);
+}
+
+fluent-textarea:active {
+  --border-color: var(--colorNeutralStroke1Pressed);
+  --border-block-end-color: var(--colorNeutralStrokeAccessiblePressed);
+}
+
+fluent-textarea:focus-within {
+  outline: none;
+}
+
+fluent-textarea[block]:not([hidden]) {
+  display: block;
+}
+
+fluent-textarea[size='small'] {
+  --font-size: var(--fontSizeBase200);
+  --line-height: var(--lineHeightBase200);
+  --min-block-size: 40px;
+  --padding-block: var(--spacingVerticalXS);
+  --padding-inline: var(--spacingHorizontalSNudge);
+  --control-padding-inline: var(--spacingHorizontalXXS);
+}
+
+fluent-textarea[size='large'] {
+  --font-size: var(--fontSizeBase400);
+  --line-height: var(--lineHeightBase400);
+  --min-block-size: 64px;
+  --padding-block: var(--spacingVerticalS);
+  --padding-inline: var(--spacingHorizontalM);
+  --control-padding-inline: var(--spacingHorizontalSNudge);
+}
+
+fluent-textarea[resize='both']:not(:is([disabled], :disabled)) {
+  --resize: both;
+}
+
+fluent-textarea[resize='horizontal']:not(:is([disabled], :disabled)) {
+  --resize: horizontal;
+}
+
+fluent-textarea[resize='vertical']:not(:is([disabled], :disabled)) {
+  --resize: vertical;
+}
+
+fluent-textarea[auto-resize] {
+  --block-size: auto;
+  --contain-size: inline-size;
+}
+
+fluent-textarea[appearance='filled-darker'] {
+  --background-color: var(--colorNeutralBackground3);
+  --border-color: var(--background-color);
+  --border-block-end-color: var(--border-color);
+}
+
+fluent-textarea[appearance='filled-lighter'] {
+  --border-color: var(--background-color);
+  --border-block-end-color: var(--border-color);
+}
+
+fluent-textarea[appearance='filled-darker'][display-shadow],fluent-textarea[appearance='filled-lighter'][display-shadow] {
+  --box-shadow: var(--shadow2);
+}
+
+fluent-textarea:state(user-invalid) {
+  --border-color: var(--colorPaletteRedBorder2);
+  --border-block-end-color: var(--colorPaletteRedBorder2);
+}
+
+fluent-textarea:is([disabled], :disabled) {
+  --color: var(--colorNeutralForegroundDisabled);
+  --background-color: var(--colorTransparentBackground);
+  --border-color: var(--colorNeutralStrokeDisabled);
+  --border-block-end-color: var(--border-color);
+  --box-shadow: none;
+  --placeholder-color: var(--colorNeutralForegroundDisabled);
+
+  cursor: no-drop;
+  user-select: none;
+}
+
+fluent-textarea[block] .root {
+  inline-size: auto;
+}
+
+fluent-textarea:focus-within .root::after {
+  transform: scaleX(1);
+  transition-property: transform;
+  transition-duration: var(--durationNormal);
+  transition-delay: var(--curveDecelerateMid);
+}
+
+fluent-textarea[readonly] .root::after,fluent-textarea:is([disabled], :disabled) .root::after {
+  content: none;
+}
+
+fluent-textarea:empty label {
+  display: none;
+}
+
+fluent-textarea[auto-resize] .auto-sizer {
+  display: block;
+}
+
+@media (forced-colors: active) {
+  fluent-textarea {
+    --border-color: FieldText;
+    --border-block-end-color: FieldText;
+    --focus-indicator-color: Highlight;
+    --placeholder-color: FieldText;
+  }
+
+  fluent-textarea:hover,fluent-textarea:active,fluent-textarea:focus-within {
+    --border-color: Highlight;
+    --border-block-end-color: Highlight;
+  }
+
+  fluent-textarea:is([disabled], :disabled) {
+    --color: GrayText;
+    --border-color: GrayText;
+    --border-block-end-color: GrayText;
+    --placeholder-color: GrayText;
+  }
+}
+
+fluent-label[hidden] {
+  display: none;
+}
+fluent-label {
+  display: inline-flex;
+}
+
+fluent-label {
+  color: var(--colorNeutralForeground1);
+  cursor: pointer;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  user-select: none;
+}
+
+fluent-label[size='small'] {
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+}
+
+fluent-label[size='large'] {
+  font-size: var(--fontSizeBase400);
+  line-height: var(--lineHeightBase400);
+}
+
+fluent-label:is([size='large'], [weight='semibold']) {
+  font-weight: var(--fontWeightSemibold);
+}
+
+fluent-label[disabled],fluent-label[disabled] .asterisk {
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+fluent-field[hidden] {
+  display: none;
+}
+fluent-field {
+  display: inline-grid;
+}
+
+fluent-field {
+  color: var(--colorNeutralForeground1);
+  align-items: center;
+  gap: 0 var(--spacingHorizontalM);
+  justify-items: start;
+}
+
+fluent-field[label-position='before'] {
+  grid-template-areas: 'label input' 'label message';
+}
+
+fluent-field[label-position='after'] {
+  gap: 0;
+  grid-template-areas: 'input label' 'message message';
+  grid-template-columns: auto 1fr;
+}
+
+fluent-field[label-position='after'] >[slot='input'] {
+  margin-inline-end: var(--spacingHorizontalM);
+}
+
+fluent-field[label-position='above'] {
+  grid-template-areas: 'label' 'input' 'message';
+  row-gap: var(--spacingVerticalXXS);
+}
+
+fluent-field[label-position='below'] {
+  grid-template-areas: 'input' 'label' 'message';
+  justify-items: center;
+}
+
+fluent-field[label-position='below'] >[slot='label'] {
+  margin-block-start: var(--spacingVerticalM);
+}
+
+fluent-field:state(required) >[slot='label']::after {
+  content: '*' / '';
+  color: var(--colorPaletteRedForeground1);
+  margin-inline-start: var(--spacingHorizontalXS);
+}
+
+fluent-field:state(focus-visible):focus-within {
+  border-radius: var(--borderRadiusMedium);
+  outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+}
+
+fluent-field[size='small'] >label {
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+}
+
+fluent-field[size='large'] >label {
+  font-size: var(--fontSizeBase400);
+  line-height: var(--lineHeightBase400);
+}
+
+fluent-field[size='large'] >label,fluent-field[weight='semibold'] >label {
+  font-weight: var(--fontWeightSemibold);
+}
+
+fluent-field:state(disabled) {
+  cursor: default;
+}
+
+fluent-field:state(bad-input) >[flag='bad-input'],fluent-field:state(custom-error) >[flag='custom-error'],fluent-field:state(pattern-mismatch) >[flag='pattern-mismatch'],fluent-field:state(range-overflow) >[flag='range-overflow'],fluent-field:state(range-underflow) >[flag='range-underflow'],fluent-field:state(step-mismatch) >[flag='step-mismatch'],fluent-field:state(too-long) >[flag='too-long'],fluent-field:state(too-short) >[flag='too-short'],fluent-field:state(type-mismatch) >[flag='type-mismatch'],fluent-field:state(value-missing) >[flag='value-missing'],fluent-field:state(valid) >[flag='valid'] {
+  display: block;
+}
+
+fluent-divider[hidden] {
+  display: none;
+}
+fluent-divider {
+  display: flex;
+}
+
+fluent-divider {
+  contain: content;
+}
+
+fluent-divider::after,fluent-divider::before {
+  align-self: center;
+  background: var(--colorNeutralStroke2);
+  box-sizing: border-box;
+  content: '';
+  display: flex;
+  flex-grow: 1;
+  height: var(--strokeWidthThin);
+}
+
+fluent-divider[inset] {
+  padding: 0 12px;
+}
+
+fluent-divider >* {
+  color: var(--colorNeutralForeground2);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightRegular);
+  margin: 0;
+  padding: 0 12px;
+}
+
+fluent-divider[align-content='start']::before,fluent-divider[align-content='end']::after {
+  flex-basis: 12px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+fluent-divider[orientation='vertical'] {
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  min-height: 84px;
+}
+
+fluent-divider[orientation='vertical']:empty {
+  min-height: 20px;
+}
+
+fluent-divider[orientation='vertical'][inset]::before {
+  margin-top: 12px;
+}
+fluent-divider[orientation='vertical'][inset]::after {
+  margin-bottom: 12px;
+}
+
+fluent-divider[orientation='vertical']:empty::before,fluent-divider[orientation='vertical']:empty::after {
+  height: 10px;
+  min-height: 10px;
+  flex-grow: 0;
+}
+
+fluent-divider[orientation='vertical']::before,fluent-divider[orientation='vertical']::after {
+  width: var(--strokeWidthThin);
+  min-height: 20px;
+  height: 100%;
+}
+
+fluent-divider[orientation='vertical'] >* {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  line-height: 20px;
+}
+
+fluent-divider[orientation='vertical'][align-content='start']::before {
+  min-height: 8px;
+}
+fluent-divider[orientation='vertical'][align-content='end']::after {
+  min-height: 8px;
+}
+
+fluent-divider[appearance='strong']::before,fluent-divider[appearance='strong']::after {
+  background: var(--colorNeutralStroke1);
+}
+fluent-divider[appearance='strong'] >* {
+  color: var(--colorNeutralForeground1);
+}
+fluent-divider[appearance='brand']::before,fluent-divider[appearance='brand']::after {
+  background: var(--colorBrandStroke1);
+}
+fluent-divider[appearance='brand'] >* {
+  color: var(--colorBrandForeground1);
+}
+fluent-divider[appearance='subtle']::before,fluent-divider[appearance='subtle']::after {
+  background: var(--colorNeutralStroke3);
+}
+fluent-divider[appearance='subtle'] >* {
+  color: var(--colorNeutralForeground3);
+}
+
+@media (forced-colors: active) {
+  fluent-divider[appearance='strong']::before,fluent-divider[appearance='strong']::after,fluent-divider[appearance='brand']::before,fluent-divider[appearance='brand']::after,fluent-divider[appearance='subtle']::before,fluent-divider[appearance='subtle']::after,fluent-divider::after,fluent-divider::before {
+    background: WindowText;
+    color: WindowText;
+  }
+}
+
+fluent-spinner[hidden] {
+  display: none;
+}
+fluent-spinner {
+  display: inline-flex;
+}
+
+fluent-spinner {
+  --duration: 1.5s;
+  --indicatorSize: var(--strokeWidthThicker);
+  --size: 32px;
+  height: var(--size);
+  width: var(--size);
+  contain: strict;
+  content-visibility: auto;
+}
+
+fluent-spinner[size='tiny'] {
+  --indicatorSize: var(--strokeWidthThick);
+  --size: 20px;
+}
+fluent-spinner[size='extra-small'] {
+  --indicatorSize: var(--strokeWidthThick);
+  --size: 24px;
+}
+fluent-spinner[size='small'] {
+  --indicatorSize: var(--strokeWidthThick);
+  --size: 28px;
+}
+fluent-spinner[size='large'] {
+  --indicatorSize: var(--strokeWidthThicker);
+  --size: 36px;
+}
+fluent-spinner[size='extra-large'] {
+  --indicatorSize: var(--strokeWidthThicker);
+  --size: 40px;
+}
+fluent-spinner[size='huge'] {
+  --indicatorSize: var(--strokeWidthThickest);
+  --size: 44px;
+}
+
+fluent-spinner[appearance='inverted'] .background {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+fluent-spinner[appearance='inverted'] .indicator {
+  color: var(--colorNeutralStrokeOnBrand2);
+}
+
+fluent-tab[hidden] {
+  display: none;
+}
+fluent-tab {
+  display: inline-flex;
+}
+
+fluent-tab {
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  justify-content: center;
+  line-height: var(--lineHeightBase300);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  color: var(--colorNeutralForeground2);
+  fill: currentcolor;
+  grid-row: 1;
+  padding: var(--spacingHorizontalM) var(--spacingHorizontalMNudge);
+  border-radius: var(--borderRadiusMedium);
+  gap: 4px;
+}
+
+fluent-tab .tab-content {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 0 2px;
+  grid-column: 3;
+}
+
+fluent-tab[aria-selected='true'] {
+  color: var(--colorNeutralForeground1);
+  font-weight: var(--fontWeightSemibold);
+}
+
+/* adds hidden textContent to prevent shifting ui on bold / unbolding of text */
+fluent-tab .tab-content::after {
+  content: var(--textContent);
+  visibility: hidden;
+  height: 0;
+  line-height: var(--lineHeightBase300);
+  font-weight: var(--fontWeightSemibold);
+}
+
+fluent-tab[aria-selected='true']::after {
+  background-color: var(--colorCompoundBrandStroke);
+  border-radius: var(--borderRadiusCircular);
+  content: '';
+  inset: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+fluent-tab[aria-selected='false']:hover::after {
+  background-color: var(--colorNeutralStroke1Hover);
+  border-radius: var(--borderRadiusCircular);
+  content: '';
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+/*
+   * TODO: Remove '(text-size-adjust: auto)' after this bug is fixed:
+   * https://bugs.webkit.org/show_bug.cgi?id=298646
+   * Also remove the same trick from tablist.styles.ts.
+   * Using '@supports (text-size-adjust: auto)' here to exclude Safari 26 from
+   * using CSS Anchor Positioning here because it crashes.
+   */
+@supports (anchor-name: --a) and (text-size-adjust: auto) {
+  fluent-tab[aria-selected='true']::after {
+    background-color: transparent;
+  }
+
+  fluent-tab[aria-selected='true']:hover::after {
+    background-color: var(--colorNeutralStroke1Hover);
+  }
+}
+
+fluent-tab[aria-selected='true'][disabled]::after {
+  background-color: var(--colorNeutralForegroundDisabled);
+}
+fluent-tab[disabled] {
+  cursor: not-allowed;
+  fill: var(--colorNeutralForegroundDisabled);
+  color: var(--colorNeutralForegroundDisabled);
+  pointer-events: none;
+}
+
+fluent-tab[disabled]:hover::after {
+  background-color: unset;
+}
+
+fluent-tab:focus {
+  outline: none;
+}
+
+fluent-tab:focus-visible {
+  border-radius: var(--borderRadiusSmall);
+  box-shadow: 0 0 0 3px var(--colorStrokeFocus2);
+  outline: 1px solid var(--colorStrokeFocus1);
+}
+
+@media (forced-colors: active) {
+  fluent-tab[aria-selected='true']::after {
+    background-color: Highlight;
+  }
+}
+
+fluent-tablist[hidden] {
+  display: none;
+}
+fluent-tablist {
+  display: flex;
+}
+
+fluent-tablist {
+  --tabPaddingInline: var(--spacingHorizontalMNudge);
+  --tabPaddingBlock: var(--spacingHorizontalM);
+  --tabIndicatorInsetInline: var(--tabPaddingInline);
+  --tabIndicatorInsetBlock: 0;
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground2);
+  flex-direction: row;
+  position: relative;
+}
+
+fluent-tablist[size='small'] {
+  --tabPaddingBlock: var(--spacingVerticalSNudge);
+  --tabPaddingInline: var(--spacingHorizontalSNudge);
+}
+
+fluent-tablist[size='large'] {
+  --tabPaddingBlock: var(--spacingVerticalL);
+  --tabPaddingInline: var(--spacingHorizontalMNudge);
+}
+
+fluent-tablist[orientation='vertical'] {
+  --tabPaddingBlock: var(--spacingVerticalS);
+  --tabIndicatorInsetBlock: var(--spacingVerticalS);
+  --_col-start-width: 0px;
+  display: grid;
+  grid-template-columns: var(--spacingHorizontalMNudge) var(--_col-start-width) 1fr auto var(--spacingHorizontalMNudge);
+}
+
+fluent-tablist:has([slot='start']) {
+  --_col-start-width: 24px;
+}
+
+fluent-tablist[orientation='vertical'][size='small'] {
+  --tabPaddingBlock: var(--spacingVerticalXXS);
+  --tabIndicatorInsetBlock: var(--spacingVerticalSNudge);
+}
+
+fluent-tablist[orientation='vertical'][size='large'] {
+  --tabPaddingBlock: var(--spacingVerticalS);
+  --tabIndicatorInsetBlock: var(--spacingVerticalMNudge);
+}
+
+fluent-tablist[orientation='vertical'] >[role='tab'] {
+  justify-content: flex-start;
+  display: grid;
+  gap: 0;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  grid-row: unset;
+  padding-inline: 0;
+}
+
+fluent-tablist >[slot='tab']::after {
+  height: var(--strokeWidthThicker);
+  margin-block-start: auto;
+}
+
+fluent-tablist[orientation='vertical'] >[slot='tab']::after {
+  width: var(--strokeWidthThicker);
+  height: unset;
+  margin-block-start: unset;
+}
+
+/* ::before adds a secondary indicator placeholder that appears right after click on the active tab */
+fluent-tablist >[slot='tab']::before {
+  height: var(--strokeWidthThicker);
+  border-radius: var(--borderRadiusCircular);
+  content: '';
+  inset-inline: var(--tabIndicatorInsetInline);
+  inset-block: var(--tabIndicatorInsetBlock);
+  position: absolute;
+  margin-top: auto;
+}
+
+fluent-tablist >[slot='tab']::before {
+  inset-inline: var(--tabIndicatorInsetInline);
+  inset-block: var(--tabIndicatorInsetBlock);
+}
+
+fluent-tablist >[slot='tab'][aria-selected='true']::before {
+  background-color: var(--colorNeutralForegroundDisabled);
+}
+
+fluent-tablist >[slot='tab'][aria-selected='false']:hover::after {
+  height: var(--strokeWidthThicker);
+  margin-block-start: auto;
+  transform-origin: left;
+}
+
+fluent-tablist[orientation='vertical'] >[slot='tab']::before,fluent-tablist[orientation='vertical'] >[slot='tab'][aria-selected='false']:hover::after {
+  height: unset;
+  width: var(--strokeWidthThicker);
+  margin-inline-end: auto;
+  transform-origin: top;
+}
+
+fluent-tablist[size='small'] >[slot='tab'] {
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+}
+
+fluent-tablist[size='large'] >[slot='tab'] {
+  font-size: var(--fontSizeBase400);
+  line-height: var(--lineHeightBase400);
+}
+
+/* horizontal spacing for indicator */
+fluent-tablist >[slot='tab']::after,fluent-tablist >[slot='tab']::before,fluent-tablist >[slot='tab']:hover::after {
+  inset-inline: var(--tabIndicatorInsetInline);
+}
+
+fluent-tablist[orientation='vertical'] >[slot='tab']::after,fluent-tablist[orientation='vertical'] >[slot='tab']::before,fluent-tablist[orientation='vertical'] >[slot='tab']:hover::after {
+  inset-inline: 0;
+  inset-block: var(--tabIndicatorInsetBlock);
+}
+
+/* disabled styles */
+fluent-tablist[disabled] {
+  cursor: not-allowed;
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+fluent-tablist[disabled] >[slot='tab'] {
+  pointer-events: none;
+  cursor: not-allowed;
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+fluent-tablist[disabled] >[slot='tab']:after {
+  background-color: var(--colorNeutralForegroundDisabled);
+}
+
+fluent-tablist[disabled] >[slot='tab'][aria-selected='true']::after {
+  background-color: var(--colorNeutralForegroundDisabled);
+}
+
+fluent-tablist[disabled] >[slot='tab']:hover:before {
+  content: unset;
+}
+
+fluent-tablist[appearance='subtle'] >[slot='tab']:hover {
+  background-color: var(--colorSubtleBackgroundHover);
+  color: var(--colorNeutralForeground1Hover);
+  fill: var(--colorCompoundBrandForeground1Hover);
+}
+
+fluent-tablist[appearance='subtle'] >[slot='tab']:active {
+  background-color: var(--colorSubtleBackgroundPressed);
+  fill: var(--colorSubtleBackgroundPressed);
+  color: var(--colorNeutralForeground1);
+}
+
+/*
+   * TODO: Remove '(text-size-adjust: auto)' after this bug is fixed:
+   * https://bugs.webkit.org/show_bug.cgi?id=298646
+   * Also remove the same trick from tab.styles.ts.
+   * Using '@supports (text-size-adjust: auto)' here to exclude Safari 26.0 from
+   * using CSS Anchor Positioning here because it crashes.
+   */
+@supports (anchor-name: --a) and (text-size-adjust: auto) {
+
+  fluent-tablist::after {
+    background-color: var(--colorCompoundBrandStroke);
+    content: '';
+    inline-size: 100%;
+    inset-block: auto anchor(end);
+    inset-inline: anchor(center) auto;
+    position: fixed;
+    position-anchor: --tab;
+    transform: translateX(-50%);
+    transition-property: inset-inline, width;
+    transition-duration: var(--durationSlow);
+    transition-timing-function: var(--curveDecelerateMax);
+    z-index: 3;
+
+    /* These styles should be in sync with tab.styles.ts’s :host::after */
+    border-radius: var(--borderRadiusCircular);
+    width: calc(anchor-size() - var(--tabIndicatorInsetInline) * 2);
+    height: var(--strokeWidthThicker);
+  }
+
+  fluent-tablist:dir(rtl)::after {
+    transform: translateX(50%);
+  }
+
+  fluent-tablist[orientation='vertical']::after {
+    inset-block: anchor(center) auto;
+    inset-inline: anchor(start) auto;
+    transform: translateY(-50%);
+    transition-property: inset-block, height;
+
+    /* These styles should be in sync with #vertical-tab-highlight above */
+    width: var(--strokeWidthThicker);
+    height: calc(anchor-size() - var(--tabIndicatorInsetBlock) * 2);
+  }
+
+  fluent-tablist[disabled]::after {
+    background-color: var(--colorNeutralForegroundDisabled);
+  }
+}
+
+fluent-tooltip[hidden] {
+  display: none;
+}
+fluent-tooltip {
+  display: inline-flex;
+}
+
+fluent-tooltip:not(:popover-open) {
+  display: none;
+}
+
+fluent-tooltip {
+  --position-area: block-start;
+  --position-try-options: flip-block;
+  --block-offset: var(--spacingVerticalXS);
+  --inline-offset: var(--spacingHorizontalXS);
+  background: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusMedium);
+  border: 1px solid var(--colorTransparentStroke);
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground1);
+  display: inline-flex;
+  filter: drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey));
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  inset: unset;
+  line-height: var(--lineHeightBase200);
+  margin: unset; /* Remove browser default for [popover] */
+  max-width: 240px;
+  overflow: visible;
+  padding: 4px var(--spacingHorizontalMNudge) 6px;
+  position: absolute;
+  position-area: var(--position-area);
+  position-try-fallbacks: var(--position-try-options);
+  width: auto;
+  z-index: 1;
+}
+
+@supports (inset-area: block-start) {
+  fluent-tooltip {
+    inset-area: var(--position-area);
+    position-try-fallbacks: var(--position-try-options);
+  }
+}
+
+fluent-tooltip:is([positioning^='above'], [positioning^='below'], :not([positioning])) {
+  margin-block: var(--block-offset);
+}
+
+fluent-tooltip:is([positioning^='before'], [positioning^='after']) {
+  margin-inline: var(--inline-offset);
+  --position-try-options: flip-inline;
+}
+
+fluent-tooltip[positioning='above-start'] {
+  --position-area: block-start span-inline-end;
+}
+fluent-tooltip[positioning='above'] {
+  --position-area: block-start;
+}
+fluent-tooltip[positioning='above-end'] {
+  --position-area: block-start span-inline-start;
+}
+fluent-tooltip[positioning='below-start'] {
+  --position-area: block-end span-inline-end;
+}
+fluent-tooltip[positioning='below'] {
+  --position-area: block-end;
+}
+fluent-tooltip[positioning='below-end'] {
+  --position-area: block-end span-inline-start;
+}
+fluent-tooltip[positioning='before-top'] {
+  --position-area: inline-start span-block-end;
+}
+fluent-tooltip[positioning='before'] {
+  --position-area: inline-start;
+}
+fluent-tooltip[positioning='before-bottom'] {
+  --position-area: inline-start span-block-start;
+}
+fluent-tooltip[positioning='after-top'] {
+  --position-area: inline-end span-block-end;
+}
+fluent-tooltip[positioning='after'] {
+  --position-area: inline-end;
+}
+fluent-tooltip[positioning='after-bottom'] {
+  --position-area: inline-end span-block-start;
+}

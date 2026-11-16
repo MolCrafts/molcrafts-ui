@@ -1,0 +1,27 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.1.2/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [
+    [
+      "@molcrafts/ui-tokens",
+      "@molcrafts/ui",
+      "@molcrafts/ui-web-components",
+      "@molcrafts/ui-vega",
+      "@molcrafts/ui-vega-lite"
+    ]
+  ],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "origin/master",
+  "updateInternalDependencies": "patch",
+  "ignore": [
+    "@molcrafts/storybook",
+    "@molcrafts/consumer-fixture"
+  ],
+  "privatePackages": {
+    "version": true,
+    "tag": false
+  },
+  "bumpVersionsWithWorkspaceProtocolOnly": true
+}

@@ -1,0 +1,26 @@
+@import "tailwindcss" source(none);
+@import "@molcrafts/ui/styles.css";
+@import "@molcrafts/ui-tokens/tailwind.css";
+
+@source "../src";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  * {
+    @apply border-border;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  ::selection {
+    background: var(--primary-muted);
+    color: var(--primary-muted-foreground);
+  }
+
+  :where(input, textarea) {
+    caret-color: var(--primary);
+  }
+}

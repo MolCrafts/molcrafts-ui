@@ -6,19 +6,28 @@ mol_project:
   specs_path: .claude/specs/
   notes_path: .claude/notes/
   build:
-    install: "pnpm install || npm install"
-    check: "pnpm typecheck || npm run typecheck"
-    test: "pnpm build:registry || npm run build:registry"
+    install: "pnpm install --frozen-lockfile"
+    check: "pnpm typecheck"
+    test: "pnpm build:registry"
   doc:
     style: google
 ---
 
 # molcrafts-ui
 
-Shared **shadcn registry source** for MolCrafts products (molexp, molvis, molhub).
+Read [AGENTS.md](AGENTS.md) for current architecture and development rules.
 
-- Spec: `.claude/specs/molcrafts-ui-registry-01.md`
-- Extraction matrix: `docs/extraction-matrix.md`
-- Build registry: `pnpm build:registry` → `public/r/`
+- Current spec: [design-system-refactoring-spec](docs/design-system-refactoring-spec.md).
+- Implementation plan: [roadmap](docs/design-system-roadmap.md).
+- Current capabilities and gaps: [readiness audit](docs/design-system-readiness.md).
+- Visual rules: [design constitution](docs/design-constitution.md).
+- Historical Registry spec: `.claude/specs/molcrafts-ui-registry-01.md`.
+- Historical extraction matrix: `docs/extraction-matrix.md`.
 
-Do not put product-domain UI (entity dashboards, viewer chrome, agent conversation) here.
+The target is an independent React design system using pnpm, Rslib and Storybook
+Rsbuild, with versioned packages as future primary distribution. Workspace and public-package
+boundaries are implemented; remaining ownership/quality work follows the roadmap.
+No backward compatibility is required. `0.1.0-alpha.0` was published to npm `alpha` on the owner's explicit request; each later
+release and any external renaming still needs its own explicit request. Confirmed package names use `@molcrafts/ui`; MIT and
+local release preparation are approved. See [releasing](docs/releasing.md).
+Do not put product-domain UI here or copy changes into sibling products implicitly.

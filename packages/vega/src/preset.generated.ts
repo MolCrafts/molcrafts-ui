@@ -1,0 +1,151 @@
+// Generated from molplot/presets/molplot.json and molplot-paper.json
+// by scripts/check-scienceplots-preset.mjs. Do not edit.
+// Refresh: node scripts/check-scienceplots-preset.mjs --write
+
+export const molplotPresets = {
+  "molplot": {
+    "$schema": "./preset.schema.json",
+    "name": "molplot",
+    "label": "MolPlot",
+    "description": "MolCrafts unified scientific charting preset, faithful to scienceplots' 'science' base — its standard seven-colour cycle, thin 1.0 pt lines, serif type, and black-on-white axes — so a browser chart and a matplotlib figure share the same scienceplots look.",
+    "sciencePlotsBase": [
+      "science",
+      "no-latex"
+    ],
+    "typography": {
+      "family": "Times New Roman, Times, Nimbus Roman, serif",
+      "familyMono": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "familySerif": "Times New Roman, Times, Nimbus Roman, serif",
+      "size": {
+        "base": 10,
+        "title": 12,
+        "label": 10,
+        "tick": 9,
+        "legend": 9
+      }
+    },
+    "palette": {
+      "categorical": [
+        "#0c5da5",
+        "#00b945",
+        "#ff9500",
+        "#ff2c00",
+        "#845b97",
+        "#474747",
+        "#9e9e9e"
+      ],
+      "defaultColor": "#0c5da5",
+      "sequential": "viridis",
+      "diverging": "RdBu"
+    },
+    "geometry": {
+      "lineWidth": 1,
+      "markerSize": 6,
+      "barGap": 0.2,
+      "figSize": [
+        3.5,
+        2.625
+      ],
+      "dpi": 400,
+      "margin": {
+        "l": 40,
+        "r": 10,
+        "t": 10,
+        "b": 40
+      }
+    },
+    "modes": {
+      "light": {
+        "background": "transparent",
+        "figureFace": "#ffffff",
+        "foreground": "#000000",
+        "gridColor": "rgba(0,0,0,0.10)",
+        "gridColorSolid": "#cccccc",
+        "tickColor": "#000000",
+        "highlightRing": "#111827"
+      },
+      "dark": {
+        "background": "transparent",
+        "figureFace": "#111113",
+        "foreground": "#e5e5e5",
+        "gridColor": "rgba(255,255,255,0.10)",
+        "gridColorSolid": "#444444",
+        "tickColor": "#e5e5e5",
+        "highlightRing": "#f9fafb"
+      }
+    }
+  },
+  "molplot-paper": {
+    "$schema": "./preset.schema.json",
+    "name": "molplot-paper",
+    "label": "MolPlot Paper",
+    "description": "Publication variant layered on scienceplots' 'science' + 'nature' bases — the same standard seven-colour cycle as the default, thin 1.0 pt lines and serif type, but a tighter single-column figure and higher DPI. Web and paper figures stay colour-consistent.",
+    "sciencePlotsBase": [
+      "science",
+      "nature",
+      "no-latex"
+    ],
+    "typography": {
+      "family": "Times New Roman, Times, Nimbus Roman, serif",
+      "familyMono": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "familySerif": "Times New Roman, Times, Nimbus Roman, serif",
+      "size": {
+        "base": 9,
+        "title": 10,
+        "label": 9,
+        "tick": 8,
+        "legend": 8
+      }
+    },
+    "palette": {
+      "categorical": [
+        "#0c5da5",
+        "#00b945",
+        "#ff9500",
+        "#ff2c00",
+        "#845b97",
+        "#474747",
+        "#9e9e9e"
+      ],
+      "defaultColor": "#0c5da5",
+      "sequential": "viridis",
+      "diverging": "RdBu"
+    },
+    "geometry": {
+      "lineWidth": 1,
+      "markerSize": 3,
+      "barGap": 0.2,
+      "figSize": [
+        3.3,
+        2.5
+      ],
+      "dpi": 600,
+      "margin": {
+        "l": 44,
+        "r": 8,
+        "t": 8,
+        "b": 40
+      }
+    },
+    "modes": {
+      "light": {
+        "background": "transparent",
+        "figureFace": "#ffffff",
+        "foreground": "#000000",
+        "gridColor": "rgba(0,0,0,0.10)",
+        "gridColorSolid": "#cccccc",
+        "tickColor": "#000000",
+        "highlightRing": "#000000"
+      },
+      "dark": {
+        "background": "transparent",
+        "figureFace": "#111113",
+        "foreground": "#e5e5e5",
+        "gridColor": "rgba(255,255,255,0.10)",
+        "gridColorSolid": "#444444",
+        "tickColor": "#e5e5e5",
+        "highlightRing": "#ffffff"
+      }
+    }
+  }
+} as const;

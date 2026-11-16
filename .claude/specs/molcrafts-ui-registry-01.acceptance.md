@@ -1,3 +1,7 @@
+> Historical Registry document. The registry-first distribution direction is superseded by
+> [Refactoring Spec v1.0](../../docs/design-system-refactoring-spec.md). The owner subsequently required no backward compatibility; old source workflows
+> are removed. This document does not establish completion of the new refactor.
+
 # Acceptance — molcrafts-ui-registry-01
 
 Binding “done” contract for the shared registry scaffold and v0 readiness.
@@ -17,10 +21,10 @@ Binding “done” contract for the shared registry scaffold and v0 readiness.
 
 ## Non-criteria (explicitly not required)
 
-- Full v0 batch of all 15 primitives landed in one PR
-- Hosted production URL live
-- molvis-plugin rewritten to import from this package
-- Visual regression screenshots
+- Full v0 batch of all 15 primitives landed in one PR  
+- Hosted production URL live  
+- molvis-plugin rewritten to import from this package  
+- Visual regression screenshots  
 
 ## Done when
 

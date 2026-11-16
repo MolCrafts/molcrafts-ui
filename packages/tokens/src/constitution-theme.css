@@ -1,0 +1,44 @@
+/** Generated from @fluentui/react-theme 9.2.2. Run pnpm build:tokens. */
+/* Shared geometry only. Product brand mappings belong to the product theme. */
+@theme inline reference {
+  --spacing: var(--spacing);
+  --border-width-default: var(--border-width-default);
+  --focus-width: var(--focus-width);
+  --focus-offset: var(--focus-offset);
+  --font-weight-normal: var(--font-weight-normal);
+  --font-weight-semibold: var(--font-weight-semibold);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --text-micro: var(--text-micro);
+  --text-micro--line-height: var(--text-micro--line-height);
+  --text-label: var(--text-label);
+  --text-label--line-height: var(--text-label--line-height);
+  --text-body: var(--text-body);
+  --text-body--line-height: var(--text-body--line-height);
+  --text-body-lg: var(--text-body-lg);
+  --text-body-lg--line-height: var(--text-body-lg--line-height);
+  --text-title: var(--text-title);
+  --text-title--line-height: var(--text-title--line-height);
+  --text-heading: var(--text-heading);
+  --text-heading--line-height: var(--text-heading--line-height);
+  --text-display: var(--text-display);
+  --text-display--line-height: var(--text-display--line-height);
+  --radius-control: var(--radius-control);
+  --radius-panel: var(--radius-panel);
+  --radius-overlay: var(--radius-overlay);
+  --radius-checkbox: var(--radius-checkbox);
+  --spacing-control-compact: var(--spacing-control-compact);
+  --spacing-control: var(--spacing-control);
+  --spacing-control-comfortable: var(--spacing-control-comfortable);
+  --spacing-toolbar-compact: var(--spacing-toolbar-compact);
+  --spacing-toolbar: var(--spacing-toolbar);
+  --spacing-statusbar: var(--spacing-statusbar);
+  --spacing-touch-target: var(--spacing-touch-target);
+  --spacing-menu: var(--spacing-menu);
+  --spacing-dialog-sm: var(--spacing-dialog-sm);
+  --spacing-dialog-md: var(--spacing-dialog-md);
+  --spacing-dialog-lg: var(--spacing-dialog-lg);
+  --spacing-dialog-scroll: var(--spacing-dialog-scroll);
+  --spacing-overlay-viewport: var(--spacing-overlay-viewport);
+  --ease-standard: var(--ease-standard);
+}

@@ -4,4 +4,21 @@ dist/
 *.log
 .turbo/
 .vite/
+storybook-static/
+test-results/
+playwright-report/
 node_modules/
+release-artifacts/
+dist-native-vega/
+.ci-out/
+
+# Local agent and design-tool state: installed skills/agents, critiques,
+# browser captures. Design material and screenshots stay out of the repo.
+.claude/agents/
+.claude/skills/
+.github/agents/
+.github/hooks/
+.github/skills/
+.impeccable/
+.playwright-mcp/
+.wrangler/
